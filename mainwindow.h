@@ -1,25 +1,25 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QFileDialog>
-#include <QStandardPaths>
-#include <QMessageBox>
-#include <QFileInfo>
-#include <QGraphicsScene>
-#include <QGraphicsPixmapItem>
-#include <QFile>
-#include <QImage>
 #include <QDebug>
+#include <QFile>
+#include <QFileDialog>
+#include <QFileInfo>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include <QImage>
 #include <QImageReader>
+#include <QMainWindow>
+#include <QMessageBox>
+#include <QStandardPaths>
 
-
-#define WINDOW_TITLE    "ImageQt"
+#define WINDOW_TITLE "ImageQt"
 #define WINDOW_CRITICAL "Error - ImageQt"
-#define WINDOW_WARNING  "Notice - ImageQt"
-#define WINDOW_ABOUT    "About - ImageQt"
+#define WINDOW_WARNING "Notice - ImageQt"
+#define WINDOW_ABOUT "About - ImageQt"
 
-namespace Ui {
+namespace Ui
+{
 class MainWindow;
 }
 
@@ -31,7 +31,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void updateRightImage(QImage & newImage);
+    void updateRightImage(QImage &newImage);
 
 private slots:
     void on_actionOpen_triggered();
@@ -43,10 +43,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QGraphicsScene  *leftScene;
-    QGraphicsScene  *rightScene;
-    QGraphicsPixmapItem* leftPixmapItem;
-    QGraphicsPixmapItem* rightPixmapItem;
+    QGraphicsScene *leftScene;
+    QGraphicsScene *rightScene;
+    QGraphicsPixmapItem *leftPixmapItem;
+    QGraphicsPixmapItem *rightPixmapItem;
 
     QFileInfo *info;
 

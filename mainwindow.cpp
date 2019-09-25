@@ -99,7 +99,6 @@ void MainWindow::on_actionSamplingRate_triggered()
                         {0, 1, 3, 1, 0},
                         {0, 0, 1, 0, 0}};
 
-
     int kernelSize = 5;
     int sumKernel = 27;
     int r, g, b;

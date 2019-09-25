@@ -44,7 +44,7 @@
         "utility": "cpp",
         "valarray": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled", // 格式化时调整include的顺序（按字母排序）
+    "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/Qt3DAnimation",
