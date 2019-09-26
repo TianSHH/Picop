@@ -91,7 +91,7 @@ void MainWindow::on_actionSamplingRate_triggered()
     QImage originImage = rightPixmapItem->pixmap().toImage();
     QImage newImage = rightPixmapItem->pixmap().toImage();
 
-    int samplingRate = 4;
+    int samplingRate = 16;
 
     int width = newImage.width();
     int height = newImage.height();
