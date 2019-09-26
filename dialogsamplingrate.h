@@ -3,7 +3,8 @@
 
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class DialogSamplingRate;
 }
 
@@ -17,6 +18,12 @@ public:
 
 private:
     Ui::DialogSamplingRate *ui;
+
+signals:
+    void samplingRateSignal(const int &rate);
+
+private slots:
+    void emitSamplingRateSignal();
 };
 
 #endif // DIALOGSAMPLINGRATE_H
