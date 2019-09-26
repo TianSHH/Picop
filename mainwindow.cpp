@@ -100,7 +100,42 @@ void MainWindow::quantifyLevel(const int &level)
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = leftPixmapItem->pixmap().toImage();
 
+    int width = newImage.width();
+    int height = newImage.height();
 
+    int r, g, b;
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            int temp = level;
+            while (temp <= 255)
+            {
+                QColor color(originImage.pixel(i, j));
+
+                if ((temp - level <= color.red()) && (color.red() < temp))
+                {
+                    if (temp - 1 - color.red() <= color.red() - (temp - level))
+                    {
+                        r = g = b = temp - 1 - color.red();
+                        newImage.setPixel(i, j, qRgb(r, g, b));
+                        break;
+                    }
+                    else
+                    {
+                        r = g = b = color.red() - (temp - level);
+                        newImage.setPixel(i, j, qRgb(r, g, b));
+                        break;
+                    }
+                }
+                else
+                    temp += level;
+            }
+        }
+    }
+
+    updateRightImage(newImage);
 
     qDebug() << "Done!";
 }
