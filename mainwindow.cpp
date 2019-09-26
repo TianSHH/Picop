@@ -31,6 +31,7 @@ void MainWindow::updateRightImage(QImage &newImage)
 {
     rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
+    qDebug() << "更新右侧图片";
 }
 
 void MainWindow::showSamplingRateDialog()
@@ -61,8 +62,8 @@ void MainWindow::samplingRate(const int &rate)
 
     QColor color;
 
-    for (int i = 0; i < height; i += rate)
-        for (int j = 0; j < width; j += rate)
+    for (int i = 0; i < width; i += rate)
+        for (int j = 0; j < height; j += rate)
         {
             color = QColor(originImage.pixel(i, j));
             r = color.red();
@@ -97,40 +98,55 @@ void MainWindow::quantifyLevel(const int &level)
 {
     qDebug() << "开始修改量化等级";
 
+    if(level == 1)
+    {
+        qDebug() << "量化等级不能为1";
+        return;
+    }
+
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = leftPixmapItem->pixmap().toImage();
 
     int width = newImage.width();
     int height = newImage.height();
 
-    int r, g, b;
+    // 区间长度
+    int length = 256 / (level - 1); // 128
 
-    for (int i = 0; i < height; i++)
+    // 遍历像素点
+    for (int i = 0; i < width; i++)
     {
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j < height; j++)
         {
-            int temp = level;
-            while (temp <= 255)
-            {
-                QColor color(originImage.pixel(i, j));
+            // 获取该点灰度值
+            QColor color(originImage.pixel(i, j));
+            int gray = color.red();
 
-                if ((temp - level <= color.red()) && (color.red() < temp))
+            int left = 0;
+            int right = length - 1;
+
+            // 对于某一个像素点, 开始判断它的灰度值处于哪个区间
+            while (right <= 255)
+            {
+
+                if ((left <= gray) && (gray <= right))
                 {
-                    if (temp - 1 - color.red() <= color.red() - (temp - level))
+                    if (right - gray <= gray - left)
                     {
-                        r = g = b = temp - 1 - color.red();
-                        newImage.setPixel(i, j, qRgb(r, g, b));
+                        newImage.setPixel(i, j, qRgb(right, right, right));
                         break;
                     }
                     else
                     {
-                        r = g = b = color.red() - (temp - level);
-                        newImage.setPixel(i, j, qRgb(r, g, b));
+                        newImage.setPixel(i, j, qRgb(left, left, left));
                         break;
                     }
                 }
                 else
-                    temp += level;
+                {
+                    left += length;
+                    right += length;
+                }
             }
         }
     }
