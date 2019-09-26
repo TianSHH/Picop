@@ -81,6 +81,25 @@ void MainWindow::samplingRate(const int &rate)
     qDebug() << "Done!";
 }
 
+void MainWindow::showQuantifyLevelDialog()
+{
+    DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(nullptr);
+
+    if (dialogQuantifyLevel->isVisible())
+        dialogQuantifyLevel->activateWindow();
+    else
+        dialogQuantifyLevel->show();
+
+    connect(dialogQuantifyLevel, SIGNAL(quantifyLevelSignal(const int &)), this, SLOT(quantifyLevel(const int &)));
+}
+
+void MainWindow::quantifyLevel(const int &level)
+{
+    qDebug() << "开始应用量化等级";
+
+    qDebug() << "Done!";
+}
+
 void MainWindow::on_actionOpen_triggered()
 {
     QString imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
@@ -138,4 +157,9 @@ void MainWindow::on_actionQuit_triggered()
 void MainWindow::on_actionSamplingRate_triggered()
 {
     showSamplingRateDialog();
+}
+
+void MainWindow::on_actionQuantifyLevel_triggered()
+{
+    showQuantifyLevelDialog();
 }

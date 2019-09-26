@@ -42,7 +42,9 @@
         "type_traits": "cpp",
         "tuple": "cpp",
         "utility": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "qdebug": "cpp",
+        "qgraphicspixmapitem": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [

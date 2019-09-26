@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
 #include <QDebug>
 #include <QFile>
@@ -38,9 +39,13 @@ private slots:
     void showSamplingRateDialog();
     void samplingRate(const int &rate);
 
+    void showQuantifyLevelDialog();
+    void quantifyLevel(const int &level);
+
     void on_actionOpen_triggered();
     void on_actionQuit_triggered();
     void on_actionSamplingRate_triggered();
+    void on_actionQuantifyLevel_triggered();
 
 private:
     Ui::MainWindow *ui;

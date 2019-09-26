@@ -22,7 +22,7 @@ void DialogSamplingRate::emitSamplingRateSignal()
     if (ui->lineEdit->text().isEmpty())
         return;
 
-    qDebug() << "本次操作采样率" << rate ;
+    qDebug() << "设定采样率" << rate ;
 
     emit samplingRateSignal(rate);
 }

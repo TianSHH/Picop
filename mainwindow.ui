@@ -52,7 +52,7 @@
      <string>显示</string>
     </property>
     <addaction name="actionSamplingRate"/>
-    <addaction name="action_2"/>
+    <addaction name="actionQuantifyLevel"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuDisplay"/>
@@ -109,12 +109,12 @@
   </action>
   <action name="actionSamplingRate">
    <property name="text">
-    <string>采样率</string>
+    <string>设置采样率(&amp;S)</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="actionQuantifyLevel">
    <property name="text">
-    <string>量化等级</string>
+    <string>设置量化等级(&amp;Q)</string>
    </property>
   </action>
  </widget>
