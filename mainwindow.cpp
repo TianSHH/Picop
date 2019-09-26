@@ -33,6 +33,54 @@ void MainWindow::updateRightImage(QImage &newImage)
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
 }
 
+void MainWindow::showSamplingRateDialog()
+{
+    DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(nullptr);
+
+    if (dialogSamplingRate->isVisible())
+        dialogSamplingRate->activateWindow();
+    else
+        dialogSamplingRate->show();
+
+    connect(dialogSamplingRate, SIGNAL(samplingRateSignal(const int &)), this, SLOT(samplingRate(const int &)));
+
+    qDebug() << "reach there";
+}
+
+void MainWindow::samplingRate(const int &rate)
+{
+    qDebug() << "开始应用采样率";
+
+    QImage originImage = leftPixmapItem->pixmap().toImage();
+    QImage newImage = rightPixmapItem->pixmap().toImage();
+
+    int width = newImage.width();
+    int height = newImage.height();
+
+    int r, g, b;
+
+    QColor color;
+
+    for (int i = 0; i < height; i += rate)
+        for (int j = 0; j < width; j += rate)
+        {
+            color = QColor(originImage.pixel(i, j));
+            r = color.red();
+            g = color.green();
+            b = color.blue();
+
+            newImage.setPixel(i + 1, j + 1, qRgb(r, g, b));
+
+            for (int p = 0; p < rate && i + p < height; p++)
+                for (int q = 0; q < rate && j + q < width; q++)
+                    newImage.setPixel(i + p, j + q, qRgb(r, g, b));
+        }
+
+    updateRightImage(newImage);
+
+    qDebug() << "Done!";
+}
+
 void MainWindow::on_actionOpen_triggered()
 {
     QString imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
@@ -45,6 +93,7 @@ void MainWindow::on_actionOpen_triggered()
                                                         "Image PNG (*.png);;"
                                                         "Image PPM (*.ppm);;"
                                                         "Image XBM (*.xbm);;"
+                                                        "Image BMP (*.bmp);;"
                                                         "Image XPM (*.xpm);;"));
 
     if (!imagePath.isEmpty())
@@ -88,34 +137,5 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSamplingRate_triggered()
 {
-    QImage originImage = rightPixmapItem->pixmap().toImage();
-    QImage newImage = rightPixmapItem->pixmap().toImage();
-
-    int samplingRate = 64;
-
-    int width = newImage.width();
-    int height = newImage.height();
-
-    int r, g, b;
-
-    QColor color;
-
-    for (int i = 1; i <= height; i += samplingRate)
-        for (int j = 1; j <= width; j += samplingRate)
-        {
-            color = QColor(originImage.pixel(i, j));
-            r = color.red();
-            g = color.green();
-            b = color.blue();
-
-            newImage.setPixel(i + 1, j + 1, qRgb(r, g, b));
-
-            for (int p = 0; p < samplingRate && i + p <= height; p++)
-                for (int q = 0; q < samplingRate && j + q <= width; q++)
-                    newImage.setPixel(i + p, j + q, qRgb(r, g, b));
-        }
-
-    updateRightImage(newImage);
-
-    qDebug() << "Done!";
+    showSamplingRateDialog();
 }

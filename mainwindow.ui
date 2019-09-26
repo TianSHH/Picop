@@ -49,7 +49,7 @@
    </widget>
    <widget class="QMenu" name="menuDisplay">
     <property name="title">
-     <string>显示效果</string>
+     <string>显示</string>
     </property>
     <addaction name="actionSamplingRate"/>
     <addaction name="action_2"/>

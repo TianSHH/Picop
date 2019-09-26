@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "dialogsamplingrate.h"
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
@@ -34,10 +35,11 @@ public:
     void updateRightImage(QImage &newImage);
 
 private slots:
+    void showSamplingRateDialog();
+    void samplingRate(const int &rate);
+
     void on_actionOpen_triggered();
-
     void on_actionQuit_triggered();
-
     void on_actionSamplingRate_triggered();
 
 private:

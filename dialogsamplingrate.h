@@ -20,7 +20,7 @@ private:
     Ui::DialogSamplingRate *ui;
 
 signals:
-    void samplingRateSignal(const int &rate);
+    void samplingRateSignal(const int &);
 
 private slots:
     void emitSamplingRateSignal();
