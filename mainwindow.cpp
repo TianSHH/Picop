@@ -111,7 +111,7 @@ void MainWindow::quantifyLevel(const int &level)
     int height = newImage.height();
 
     // 区间长度
-    int length = 256 / (level - 1); // 128
+    int length = 256 / (level - 1);
 
     // 遍历像素点
     for (int i = 0; i < width; i++)
