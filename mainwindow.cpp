@@ -49,7 +49,7 @@ void MainWindow::showSamplingRateDialog()
 
 void MainWindow::samplingRate(const int &rate)
 {
-    qDebug() << "开始应用采样率";
+    qDebug() << "开始修改采样率";
 
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = rightPixmapItem->pixmap().toImage();
@@ -95,7 +95,12 @@ void MainWindow::showQuantifyLevelDialog()
 
 void MainWindow::quantifyLevel(const int &level)
 {
-    qDebug() << "开始应用量化等级";
+    qDebug() << "开始修改量化等级";
+
+    QImage originImage = leftPixmapItem->pixmap().toImage();
+    QImage newImage = leftPixmapItem->pixmap().toImage();
+
+
 
     qDebug() << "Done!";
 }
