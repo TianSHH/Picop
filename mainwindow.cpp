@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "../build-Picop-Desktop_Qt_5_9_8_GCC_64bit-Debug/ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::MainWindow)
@@ -35,8 +35,6 @@ void MainWindow::updateRightImage(QImage &newImage)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    // Automatically detects the current user's home directory
-    // And then wait the user to select one image
     QString imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
                                                      tr("All Files (*);;"
                                                         "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"

@@ -27,15 +27,15 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    dialogsamplingrate.cpp
+        dialogsamplingrate.cpp
 
 HEADERS += \
         mainwindow.h \
-    dialogsamplingrate.h
+        dialogsamplingrate.h
 
 FORMS += \
         mainwindow.ui \
-    dialogsamplingrate.ui
+        dialogsamplingrate.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

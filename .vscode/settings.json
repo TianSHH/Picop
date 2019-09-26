@@ -129,6 +129,7 @@
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtX11Extras",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXml",
-        "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns"
+        "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns",
+        "/home/xhls/Documents/Code/Picop/Picop/src/build-Picop-Desktop_Qt_5_9_8_GCC_64bit-Debug/"
     ]
 }

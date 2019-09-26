@@ -1,5 +1,5 @@
 #include "dialogsamplingrate.h"
-#include "ui_dialogsamplingrate.h"
+#include "../build-Picop-Desktop_Qt_5_9_8_GCC_64bit-Debug/ui_dialogsamplingrate.h"
 
 DialogSamplingRate::DialogSamplingRate(QWidget *parent) :
     QDialog(parent),
