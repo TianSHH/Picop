@@ -213,6 +213,10 @@ void MainWindow::on_actionSave_triggered()
     qDebug() << "Done!";
 }
 
+void MainWindow::on_actionSaveAs_triggered()
+{
+}
+
 void MainWindow::on_actionQuit_triggered()
 {
     qApp->quit();
