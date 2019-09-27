@@ -44,8 +44,6 @@ void MainWindow::showSamplingRateDialog()
         dialogSamplingRate->show();
 
     connect(dialogSamplingRate, SIGNAL(samplingRateSignal(const int &)), this, SLOT(samplingRate(const int &)));
-
-    qDebug() << "reach there";
 }
 
 void MainWindow::samplingRate(const int &rate)
@@ -98,7 +96,7 @@ void MainWindow::quantifyLevel(const int &level)
 {
     qDebug() << "开始修改量化等级";
 
-    if(level == 1)
+    if (level == 1)
     {
         qDebug() << "量化等级不能为1";
         return;
@@ -158,18 +156,18 @@ void MainWindow::quantifyLevel(const int &level)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
-                                                     tr("All Files (*);;"
-                                                        "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
-                                                        "Image BPM (*.bpm);;"
-                                                        "Image GIF (*.gif);;"
-                                                        "Image JPG (*.jpg);;"
-                                                        "Image JPEG (*.jpeg);;"
-                                                        "Image PNG (*.png);;"
-                                                        "Image PPM (*.ppm);;"
-                                                        "Image XBM (*.xbm);;"
-                                                        "Image BMP (*.bmp);;"
-                                                        "Image XPM (*.xpm);;"));
+    imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
+                                             tr("All Files (*);;"
+                                                "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
+                                                "Image BPM (*.bpm);;"
+                                                "Image GIF (*.gif);;"
+                                                "Image JPG (*.jpg);;"
+                                                "Image JPEG (*.jpeg);;"
+                                                "Image PNG (*.png);;"
+                                                "Image PPM (*.ppm);;"
+                                                "Image XBM (*.xbm);;"
+                                                "Image BMP (*.bmp);;"
+                                                "Image XPM (*.xpm);;"));
 
     if (!imagePath.isEmpty())
     {
@@ -199,10 +197,20 @@ void MainWindow::on_actionOpen_triggered()
     }
 }
 
-QString MainWindow::getUserPath()
+void MainWindow::on_actionSave_triggered()
 {
-    QString userPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-    return userPath;
+    QString imageSavePath = imagePath;
+    QString imageFormat = imagePath;
+
+    // 获取图片所在目录
+    imageSavePath = imageSavePath.left(imageSavePath.lastIndexOf("/") + 1);
+    // 获取图片格式
+    imageFormat = imageFormat.right(imageFormat.length() - imageFormat.lastIndexOf(".") - 1);
+
+    rightPixmapItem->pixmap().toImage().save(imagePath, (const char *)imageFormat.toStdString().c_str(), 100);
+
+    qDebug() << "保存到" << imageSavePath;
+    qDebug() << "Done!";
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -218,4 +226,10 @@ void MainWindow::on_actionSamplingRate_triggered()
 void MainWindow::on_actionQuantifyLevel_triggered()
 {
     showQuantifyLevelDialog();
+}
+
+QString MainWindow::getUserPath()
+{
+    QString userPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    return userPath;
 }

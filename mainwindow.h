@@ -43,9 +43,11 @@ private slots:
     void quantifyLevel(const int &level);
 
     void on_actionOpen_triggered();
+    void on_actionSave_triggered();
     void on_actionQuit_triggered();
     void on_actionSamplingRate_triggered();
     void on_actionQuantifyLevel_triggered();
+
 
 private:
     Ui::MainWindow *ui;
@@ -56,6 +58,7 @@ private:
     QGraphicsPixmapItem *rightPixmapItem;
 
     QFileInfo *info;
+    QString imagePath; // 当前打开图像的路径
 
     QString getUserPath(); // 获取当前用户所在根目录
 };
