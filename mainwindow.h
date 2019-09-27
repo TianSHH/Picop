@@ -48,7 +48,6 @@ private slots:
     void on_actionSamplingRate_triggered();
     void on_actionQuantifyLevel_triggered();
 
-
 private:
     Ui::MainWindow *ui;
 
