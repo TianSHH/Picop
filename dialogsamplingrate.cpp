@@ -58,4 +58,4 @@ void DialogSamplingRate::emitSignalSetSamplingRate()
     qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "设定采样率" << rate;
 
     emit signalSetSamplingRate(rate);
-}
+} // emitSignalSetSamplingRate

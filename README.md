@@ -1,3 +1,3 @@
 # Picop
-a personal works of Digital Image Processing
 
+a personal works of Digital Image Processing

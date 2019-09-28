@@ -57,6 +57,7 @@ public:
     QAction *actionOpen;
     QAction *actionSave;
     QAction *actionSaveAs;
+    QAction *actionClose;
     QAction *actionQuit;
     QAction *actionSetSamplingRate;
     QAction *actionSetQuantifyLevel;
@@ -84,7 +85,9 @@ private slots:
     void on_actionOpen_triggered();
     void on_actionSave_triggered();
     void on_actionSaveAs_triggered();
+    void on_actionClose_triggered();
     void on_actionQuit_triggered();
+
     void on_actionSetSamplingRate_triggered();
     void on_actionSetQuantifyLevel_triggered();
     // void on_actionAbout_triggered();

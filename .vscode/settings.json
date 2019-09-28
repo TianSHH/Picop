@@ -47,7 +47,15 @@
         "qgraphicspixmapitem": "cpp",
         "qaction": "cpp",
         "list": "cpp",
-        "qbuttongroup": "cpp"
+        "qbuttongroup": "cpp",
+        "qjsonobject": "cpp",
+        "qwebenginepage": "cpp",
+        "*.rh": "cpp",
+        "qwidget": "cpp",
+        "xlocale": "cpp",
+        "qwebenginehistory": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
@@ -135,5 +143,29 @@
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtX11Extras",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXml",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/GPATH": true,
+        "**/GRTAGS": true,
+        "**/GTAGS": true,
+        "**/*.user": true,
+        "**/Makefile*": true,
+        "**/debug": true,
+        "**/release": true,
+        "**/Debug": true,
+        "**/Release": true,
+        "**/*.stash": true,
+        "**/*cache": true,
+        "**/*.sdf": true,
+        "**/*.suo": true,
+        "**/ipch": true,
+        "**/x64": true,
+        "**/GeneratedFiles": true,
+        "**/build": true
+    }
 }

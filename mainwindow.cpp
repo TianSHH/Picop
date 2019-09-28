@@ -15,7 +15,8 @@ void MainWindow::setup()
 {
     if (this->objectName().isEmpty())
         this->setObjectName(QStringLiteral("this"));
-    this->resize(400, 300);
+
+    this->resize(800, 600);
 
     actionOpen = new QAction(this);
     actionOpen->setObjectName(QStringLiteral("actionOpen"));
@@ -23,12 +24,16 @@ void MainWindow::setup()
     actionSave->setObjectName(QStringLiteral("actionSave"));
     actionSaveAs = new QAction(this);
     actionSaveAs->setObjectName(QStringLiteral("actionSaveAs"));
+    actionClose = new QAction(this);
+    actionClose->setObjectName(QStringLiteral("actionClose"));
     actionQuit = new QAction(this);
     actionQuit->setObjectName(QStringLiteral("actionQuit"));
+
     actionSetSamplingRate = new QAction(this);
     actionSetSamplingRate->setObjectName(QStringLiteral("actionSetSamplingRate"));
     actionSetQuantifyLevel = new QAction(this);
     actionSetQuantifyLevel->setObjectName(QStringLiteral("actionSetQuantifyLevel"));
+
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
 
@@ -38,14 +43,13 @@ void MainWindow::setup()
     gridLayout->setSpacing(6);
     gridLayout->setContentsMargins(11, 11, 11, 11);
     gridLayout->setObjectName(QStringLiteral("gridLayout"));
+
     graphicsViewLeft = new QGraphicsView(centralWidget);
     graphicsViewLeft->setObjectName(QStringLiteral("graphicsViewLeft"));
-
     gridLayout->addWidget(graphicsViewLeft, 0, 0, 1, 1);
 
     graphicsViewRight = new QGraphicsView(centralWidget);
     graphicsViewRight->setObjectName(QStringLiteral("graphicsViewRight"));
-
     gridLayout->addWidget(graphicsViewRight, 0, 1, 1, 1);
 
     this->setCentralWidget(centralWidget);
@@ -75,6 +79,9 @@ void MainWindow::setup()
     menuFile->addAction(actionOpen);
     menuFile->addAction(actionSave);
     menuFile->addAction(actionSaveAs);
+    menuFile->addSeparator();
+    menuFile->addAction(actionClose);
+    menuFile->addSeparator();
     menuFile->addAction(actionQuit);
     menuDisplay->addAction(actionSetSamplingRate);
     menuDisplay->addAction(actionSetQuantifyLevel);
@@ -94,7 +101,7 @@ void MainWindow::setup()
     graphicsViewRight->setScene(rightScene);
 
     QMetaObject::connectSlotsByName(this);
-}
+} // setup
 
 void MainWindow::retranslate()
 {
@@ -106,6 +113,8 @@ void MainWindow::retranslate()
     actionSave->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", Q_NULLPTR));
     actionSaveAs->setText(QApplication::translate("MainWindow", "另存为……", Q_NULLPTR));
     actionSaveAs->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+S", Q_NULLPTR));
+    actionClose->setText(QApplication::translate("MainWindos", "关闭(&C)", Q_NULLPTR));
+    actionClose->setShortcut(QApplication::translate("MainWindow", "Ctrl+W", Q_NULLPTR));
     actionQuit->setText(QApplication::translate("MainWindow", "退出(&Q)", Q_NULLPTR));
     actionQuit->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", Q_NULLPTR));
 
@@ -116,7 +125,7 @@ void MainWindow::retranslate()
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
 
     menuFile->setTitle(QApplication::translate("MainWindow", "文件(&F)", Q_NULLPTR));
-    menuDisplay->setTitle(QApplication::translate("MainWindow", "显示", Q_NULLPTR));
+    menuDisplay->setTitle(QApplication::translate("MainWindow", "显示(&D)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 } // retranslate
 
@@ -130,12 +139,12 @@ void MainWindow::updateRightScene(QImage &newImage)
 {
     rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "更新右侧图片";
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "更新右侧图片";
 } // updateRightScene
 
 void MainWindow::setSamplingRate(const int &rate)
 {
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "修改采样率";
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "修改采样率";
 
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = rightPixmapItem->pixmap().toImage();
@@ -164,15 +173,16 @@ void MainWindow::setSamplingRate(const int &rate)
 
     updateRightScene(newImage);
 
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
 } // setSamplingRate
+
 void MainWindow::setQuantifyLevel(const int &level)
 {
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "修改量化等级";
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "修改量化等级";
 
     if (level == 1)
     {
-        qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "量化等级不能为 1";
+        qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "量化等级不能为 1";
         return;
     }
 
@@ -225,7 +235,7 @@ void MainWindow::setQuantifyLevel(const int &level)
 
     updateRightScene(newImage);
 
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
 } // setQuantifyLevel
 
 void MainWindow::on_actionOpen_triggered()
@@ -268,6 +278,8 @@ void MainWindow::on_actionOpen_triggered()
 
         rightImage.load(imagePath);
         rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(rightImage));
+
+        qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "打开文件" << imagePath;
     }
 } // on_actionOpen_triggered
 
@@ -283,8 +295,8 @@ void MainWindow::on_actionSave_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imagePath, (const char *)imageFormat.toStdString().c_str(), 100);
 
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "保存" << imageSavePath;
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "保存" << imageSavePath;
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
 } // on_actionSave_triggered
 
 void MainWindow::on_actionSaveAs_triggered()
@@ -307,13 +319,25 @@ void MainWindow::on_actionSaveAs_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imageSaveAsPath, nullptr, 100);
 
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "另存为" << imageSaveAsPath;
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "另存为" << imageSaveAsPath;
 
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
 } // on_actionSaveAs_triggered
+
+void MainWindow::on_actionClose_triggered()
+{
+    leftScene->clear();
+    graphicsViewLeft->resetTransform();
+
+    rightScene->clear();
+    graphicsViewRight->resetTransform();
+
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc().toString("")<< "关闭图片" << imagePath;
+} // on_actionClose_triggered
 
 void MainWindow::on_actionQuit_triggered()
 {
+    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "程序退出";
     qApp->quit();
 } // on_actionQuit_triggered
 
