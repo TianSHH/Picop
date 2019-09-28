@@ -34,6 +34,9 @@ void MainWindow::setup()
     actionSetQuantifyLevel = new QAction(this);
     actionSetQuantifyLevel->setObjectName(QStringLiteral("actionSetQuantifyLevel"));
 
+    actionDisplayBitPlane = new QAction(this);
+    actionDisplayBitPlane->setObjectName(QStringLiteral("actionDisplayBitPlane"));
+
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
 
@@ -59,6 +62,8 @@ void MainWindow::setup()
     menuBar->setGeometry(QRect(0, 0, 400, 27));
     menuFile = new QMenu(menuBar);
     menuFile->setObjectName(QStringLiteral("menuFile"));
+    menuEdit = new QMenu(menuBar);
+    menuEdit->setObjectName(QStringLiteral("menuEdit"));
     menuDisplay = new QMenu(menuBar);
     menuDisplay->setObjectName(QStringLiteral("menuDisplay"));
     menuHelp = new QMenu(menuBar);
@@ -74,8 +79,10 @@ void MainWindow::setup()
     this->setStatusBar(statusBar);
 
     menuBar->addAction(menuFile->menuAction());
+    menuBar->addAction(menuEdit->menuAction());
     menuBar->addAction(menuDisplay->menuAction());
     menuBar->addAction(menuHelp->menuAction());
+
     menuFile->addAction(actionOpen);
     menuFile->addAction(actionSave);
     menuFile->addAction(actionSaveAs);
@@ -83,8 +90,12 @@ void MainWindow::setup()
     menuFile->addAction(actionClose);
     menuFile->addSeparator();
     menuFile->addAction(actionQuit);
-    menuDisplay->addAction(actionSetSamplingRate);
-    menuDisplay->addAction(actionSetQuantifyLevel);
+
+    menuEdit->addAction(actionSetSamplingRate);
+    menuEdit->addAction(actionSetQuantifyLevel);
+
+    menuDisplay->addAction(actionDisplayBitPlane);
+
     menuHelp->addAction(actionAbout);
 
     leftScene = new QGraphicsScene;
@@ -121,10 +132,13 @@ void MainWindow::retranslate()
     actionSetSamplingRate->setText(QApplication::translate("MainWindow", "设定采样率(&S)", Q_NULLPTR));
     actionSetQuantifyLevel->setText(QApplication::translate("MainWindow", "设定量化等级(&Q)", Q_NULLPTR));
 
+    actionDisplayBitPlane->setText(QApplication::translate("MainWindow", "显示位平面(&B)", Q_NULLPTR));
+
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
 
     menuFile->setTitle(QApplication::translate("MainWindow", "文件(&F)", Q_NULLPTR));
+    menuEdit->setTitle(QApplication::translate("MainWindow", "编辑(&E)", Q_NULLPTR));
     menuDisplay->setTitle(QApplication::translate("MainWindow", "显示(&D)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 } // retranslate
@@ -249,8 +263,113 @@ void MainWindow::setQuantifyLevel(const int &level)
     qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
 } // setQuantifyLevel
 
+void MainWindow::displayBitPlane()
+{
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "获取位平面";
+
+    DialogBitPlane *dialogBitPlane = new DialogBitPlane(nullptr);
+
+    if (dialogBitPlane->isVisible())
+        dialogBitPlane->activateWindow();
+    else
+        dialogBitPlane->show();
+
+    QImage originImage = leftPixmapItem->pixmap().toImage();
+    QImage newImage0 = leftPixmapItem->pixmap().toImage();
+    QImage newImage1 = leftPixmapItem->pixmap().toImage();
+    QImage newImage2 = leftPixmapItem->pixmap().toImage();
+    QImage newImage3 = leftPixmapItem->pixmap().toImage();
+    QImage newImage4 = leftPixmapItem->pixmap().toImage();
+    QImage newImage5 = leftPixmapItem->pixmap().toImage();
+    QImage newImage6 = leftPixmapItem->pixmap().toImage();
+    QImage newImage7 = leftPixmapItem->pixmap().toImage();
+
+    int width = originImage.width();
+    int height = originImage.height();
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            QColor color = QColor(originImage.pixel(i, j));
+            int gray = color.red();
+            QString binary = QString::number(gray, 2);
+
+            for (int k = 7; k >= 0; k--)
+            {
+                char bit = binary.toStdString().c_str()[k];
+                switch (k)
+                {
+                case 0:
+                    if (bit == '0')
+                        newImage0.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage0.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+                case 1:
+                    if (bit == '0')
+                        newImage1.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage1.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+                case 2:
+                    if (bit == '0')
+                        newImage2.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage2.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+                case 3:
+                    if (bit == '0')
+                        newImage3.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage3.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+                case 4:
+                    if (bit == '0')
+                        newImage4.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage4.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+                case 5:
+                    if (bit == '0')
+                        newImage5.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage5.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+                case 6:
+                    if (bit == '0')
+                        newImage6.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage6.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+                case 7:
+                    if (bit == '0')
+                        newImage7.setPixel(i, j, qRgb(255, 255, 255));
+                    else
+                        newImage7.setPixel(i, j, qRgb(0, 0, 0));
+                    break;
+
+                default:
+                    break;
+                }
+            }
+        }
+    }
+
+    dialogBitPlane->graphicsItem0 = dialogBitPlane->graphicsSceneBitPlane0->addPixmap(QPixmap::fromImage(newImage0));
+    dialogBitPlane->graphicsItem1 = dialogBitPlane->graphicsSceneBitPlane1->addPixmap(QPixmap::fromImage(newImage1));
+    dialogBitPlane->graphicsItem2 = dialogBitPlane->graphicsSceneBitPlane2->addPixmap(QPixmap::fromImage(newImage2));
+    dialogBitPlane->graphicsItem3 = dialogBitPlane->graphicsSceneBitPlane3->addPixmap(QPixmap::fromImage(newImage3));
+    dialogBitPlane->graphicsItem4 = dialogBitPlane->graphicsSceneBitPlane4->addPixmap(QPixmap::fromImage(newImage4));
+    dialogBitPlane->graphicsItem5 = dialogBitPlane->graphicsSceneBitPlane5->addPixmap(QPixmap::fromImage(newImage5));
+    dialogBitPlane->graphicsItem6 = dialogBitPlane->graphicsSceneBitPlane6->addPixmap(QPixmap::fromImage(newImage6));
+    dialogBitPlane->graphicsItem7 = dialogBitPlane->graphicsSceneBitPlane7->addPixmap(QPixmap::fromImage(newImage7));
+} // displayBitPlane
+
 void MainWindow::on_actionOpen_triggered()
 {
+    closeImage();
+
     imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
                                              tr("All Files (*);;"
                                                 "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
@@ -369,3 +488,8 @@ void MainWindow::on_actionSetQuantifyLevel_triggered()
 
     connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel(const int &)), this, SLOT(setQuantifyLevel(const int &)));
 } // on_actionSetQuantifyLevel_triggered
+
+void MainWindow::on_actionDisplayBitPlane_triggered()
+{
+    displayBitPlane();
+}

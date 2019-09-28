@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     dialogquantifylevel.cpp \
-    dialogsamplingrate.cpp
+    dialogsamplingrate.cpp \
+    dialogbitplane.cpp
 
 HEADERS += \
         mainwindow.h \
     dialogquantifylevel.h \
-    dialogsamplingrate.h
+    dialogsamplingrate.h \
+    dialogbitplane.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

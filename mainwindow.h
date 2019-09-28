@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "dialogbitplane.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
 #include <QAction>
@@ -51,6 +52,7 @@ public:
     QStatusBar *statusBar;
 
     QMenu *menuFile;
+    QMenu *menuEdit;
     QMenu *menuDisplay;
     QMenu *menuHelp;
 
@@ -59,8 +61,12 @@ public:
     QAction *actionSaveAs;
     QAction *actionClose;
     QAction *actionQuit;
+
     QAction *actionSetSamplingRate;
     QAction *actionSetQuantifyLevel;
+
+    QAction *actionDisplayBitPlane;
+
     QAction *actionAbout;
 
     QGraphicsScene *leftScene;
@@ -82,6 +88,8 @@ private slots:
     void setSamplingRate(const int &rate);
     void setQuantifyLevel(const int &level);
 
+    void displayBitPlane();
+
 private slots:
     void on_actionOpen_triggered();
     void on_actionSave_triggered();
@@ -91,6 +99,9 @@ private slots:
 
     void on_actionSetSamplingRate_triggered();
     void on_actionSetQuantifyLevel_triggered();
+
+    void on_actionDisplayBitPlane_triggered();
+
     // void on_actionAbout_triggered();
 };
 

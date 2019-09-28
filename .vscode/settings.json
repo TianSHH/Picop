@@ -55,7 +55,11 @@
         "xlocale": "cpp",
         "qwebenginehistory": "cpp",
         "xstring": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "qdialogbuttonbox": "cpp",
+        "qgridlayout": "cpp",
+        "qdialog": "cpp",
+        "qmainwindow": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
