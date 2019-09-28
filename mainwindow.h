@@ -76,6 +76,7 @@ public:
     void retranslate();
     QString getUserPath();
     void updateRightScene(QImage &newImage);
+    void closeImage();
 
 private slots:
     void setSamplingRate(const int &rate);

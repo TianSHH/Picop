@@ -139,12 +139,23 @@ void MainWindow::updateRightScene(QImage &newImage)
 {
     rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "更新右侧图片";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "更新右侧图片";
 } // updateRightScene
+
+void MainWindow::closeImage()
+{
+    leftScene->clear();
+    graphicsViewLeft->resetTransform();
+
+    rightScene->clear();
+    graphicsViewRight->resetTransform();
+
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "关闭图片" << imagePath;
+} // closeImage
 
 void MainWindow::setSamplingRate(const int &rate)
 {
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "修改采样率";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "修改采样率";
 
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = rightPixmapItem->pixmap().toImage();
@@ -173,16 +184,16 @@ void MainWindow::setSamplingRate(const int &rate)
 
     updateRightScene(newImage);
 
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
 } // setSamplingRate
 
 void MainWindow::setQuantifyLevel(const int &level)
 {
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "修改量化等级";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "修改量化等级";
 
     if (level == 1)
     {
-        qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "量化等级不能为 1";
+        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "量化等级不能为 1";
         return;
     }
 
@@ -235,7 +246,7 @@ void MainWindow::setQuantifyLevel(const int &level)
 
     updateRightScene(newImage);
 
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
 } // setQuantifyLevel
 
 void MainWindow::on_actionOpen_triggered()
@@ -279,7 +290,7 @@ void MainWindow::on_actionOpen_triggered()
         rightImage.load(imagePath);
         rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(rightImage));
 
-        qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "打开文件" << imagePath;
+        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "打开文件" << imagePath;
     }
 } // on_actionOpen_triggered
 
@@ -295,8 +306,8 @@ void MainWindow::on_actionSave_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imagePath, (const char *)imageFormat.toStdString().c_str(), 100);
 
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "保存" << imageSavePath;
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "保存" << imageSavePath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
 } // on_actionSave_triggered
 
 void MainWindow::on_actionSaveAs_triggered()
@@ -319,25 +330,19 @@ void MainWindow::on_actionSaveAs_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imageSaveAsPath, nullptr, 100);
 
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "另存为" << imageSaveAsPath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "另存为" << imageSaveAsPath;
 
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
 } // on_actionSaveAs_triggered
 
 void MainWindow::on_actionClose_triggered()
 {
-    leftScene->clear();
-    graphicsViewLeft->resetTransform();
-
-    rightScene->clear();
-    graphicsViewRight->resetTransform();
-
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc().toString("")<< "关闭图片" << imagePath;
+    closeImage();
 } // on_actionClose_triggered
 
 void MainWindow::on_actionQuit_triggered()
 {
-    qDebug() << "[Debug]"<<QDateTime::currentDateTimeUtc()<< "程序退出";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "程序退出";
     qApp->quit();
 } // on_actionQuit_triggered
 
