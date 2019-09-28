@@ -1,1 +1,0 @@
-# Picop -- Picture Shop

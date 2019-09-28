@@ -1,28 +1,43 @@
 #ifndef DIALOGQUANTIFYLEVEL_H
 #define DIALOGQUANTIFYLEVEL_H
 
-#include <QDialog>
-
-namespace Ui {
-class DialogQuantifyLevel;
-}
+#include <QtCore/QDateTime>
+#include <QtCore/QDebug>
+#include <QtCore/QVariant>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 
 class DialogQuantifyLevel : public QDialog
 {
+
     Q_OBJECT
 
 public:
     explicit DialogQuantifyLevel(QWidget *parent = nullptr);
     ~DialogQuantifyLevel();
 
-private:
-    Ui::DialogQuantifyLevel *ui;
+public:
+    QDialogButtonBox *buttonBox;
+    QGridLayout *gridLayout;
+    QLabel *label;
+    QLineEdit *lineEdit;
+
+public:
+    void setup();
+    void retranslate();
 
 signals:
-    void quantifyLevelSignal(const int &);
+    void signalSetQuantifyLevel(const int &);
 
 private slots:
-    void emitQuantifyLevelSignal();
+    void emitSignalSetQuantifyLevel();
 };
 
 #endif // DIALOGQUANTIFYLEVEL_H

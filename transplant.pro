@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-09-25T08:58:07
+# Project created by QtCreator 2019-09-28T08:22:43
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Picop
+TARGET = transplant
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -27,18 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    dialogsamplingrate.cpp \
-    dialogquantifylevel.cpp
+    dialogquantifylevel.cpp \
+    dialogsamplingrate.cpp
 
 HEADERS += \
         mainwindow.h \
-    dialogsamplingrate.h \
-    dialogquantifylevel.h
-
-FORMS += \
-        mainwindow.ui \
-    dialogsamplingrate.ui \
-    dialogquantifylevel.ui
+    dialogquantifylevel.h \
+    dialogsamplingrate.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

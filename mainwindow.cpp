@@ -1,10 +1,84 @@
 #include "mainwindow.h"
-#include "../build-Picop-Desktop_Qt_5_9_8_GCC_64bit-Debug/ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-                                          ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
 {
-    ui->setupUi(this);
+    setup();
+    retranslate();
+}
+
+MainWindow::~MainWindow()
+{
+}
+
+void MainWindow::setup()
+{
+    if (this->objectName().isEmpty())
+        this->setObjectName(QStringLiteral("this"));
+    this->resize(400, 300);
+
+    actionOpen = new QAction(this);
+    actionOpen->setObjectName(QStringLiteral("actionOpen"));
+    actionSave = new QAction(this);
+    actionSave->setObjectName(QStringLiteral("actionSave"));
+    actionSaveAs = new QAction(this);
+    actionSaveAs->setObjectName(QStringLiteral("actionSaveAs"));
+    actionQuit = new QAction(this);
+    actionQuit->setObjectName(QStringLiteral("actionQuit"));
+    actionSetSamplingRate = new QAction(this);
+    actionSetSamplingRate->setObjectName(QStringLiteral("actionSetSamplingRate"));
+    actionSetQuantifyLevel = new QAction(this);
+    actionSetQuantifyLevel->setObjectName(QStringLiteral("actionSetQuantifyLevel"));
+    actionAbout = new QAction(this);
+    actionAbout->setObjectName(QStringLiteral("actionAbout"));
+
+    centralWidget = new QWidget(this);
+    centralWidget->setObjectName(QStringLiteral("centralWidget"));
+    gridLayout = new QGridLayout(centralWidget);
+    gridLayout->setSpacing(6);
+    gridLayout->setContentsMargins(11, 11, 11, 11);
+    gridLayout->setObjectName(QStringLiteral("gridLayout"));
+    graphicsViewLeft = new QGraphicsView(centralWidget);
+    graphicsViewLeft->setObjectName(QStringLiteral("graphicsViewLeft"));
+
+    gridLayout->addWidget(graphicsViewLeft, 0, 0, 1, 1);
+
+    graphicsViewRight = new QGraphicsView(centralWidget);
+    graphicsViewRight->setObjectName(QStringLiteral("graphicsViewRight"));
+
+    gridLayout->addWidget(graphicsViewRight, 0, 1, 1, 1);
+
+    this->setCentralWidget(centralWidget);
+
+    menuBar = new QMenuBar(this);
+    menuBar->setObjectName(QStringLiteral("menuBar"));
+    menuBar->setGeometry(QRect(0, 0, 400, 27));
+    menuFile = new QMenu(menuBar);
+    menuFile->setObjectName(QStringLiteral("menuFile"));
+    menuDisplay = new QMenu(menuBar);
+    menuDisplay->setObjectName(QStringLiteral("menuDisplay"));
+    menuHelp = new QMenu(menuBar);
+    menuHelp->setObjectName(QStringLiteral("menuHelp"));
+    this->setMenuBar(menuBar);
+
+    toolBar = new QToolBar(this);
+    toolBar->setObjectName(QStringLiteral("toolBar"));
+    this->addToolBar(Qt::TopToolBarArea, toolBar);
+
+    statusBar = new QStatusBar(this);
+    statusBar->setObjectName(QStringLiteral("statusBar"));
+    this->setStatusBar(statusBar);
+
+    menuBar->addAction(menuFile->menuAction());
+    menuBar->addAction(menuDisplay->menuAction());
+    menuBar->addAction(menuHelp->menuAction());
+    menuFile->addAction(actionOpen);
+    menuFile->addAction(actionSave);
+    menuFile->addAction(actionSaveAs);
+    menuFile->addAction(actionQuit);
+    menuDisplay->addAction(actionSetSamplingRate);
+    menuDisplay->addAction(actionSetQuantifyLevel);
+    menuHelp->addAction(actionAbout);
 
     leftScene = new QGraphicsScene;
     rightScene = new QGraphicsScene;
@@ -15,40 +89,53 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     info = nullptr;
 
     leftScene->setBackgroundBrush(QColor::fromRgb(224, 224, 224));
-    ui->graphicsViewLeft->setScene(leftScene);
+    graphicsViewLeft->setScene(leftScene);
     rightScene->setBackgroundBrush(QColor::fromRgb(224, 224, 224));
-    ui->graphicsViewRight->setScene(rightScene);
+    graphicsViewRight->setScene(rightScene);
 
-    setWindowTitle("Picop");
+    QMetaObject::connectSlotsByName(this);
 }
 
-MainWindow::~MainWindow()
+void MainWindow::retranslate()
 {
-    delete ui;
-}
+    this->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
 
-void MainWindow::updateRightImage(QImage &newImage)
+    actionOpen->setText(QApplication::translate("MainWindow", "打开(&O)", Q_NULLPTR));
+    actionOpen->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", Q_NULLPTR));
+    actionSave->setText(QApplication::translate("MainWindow", "保存(&S)", Q_NULLPTR));
+    actionSave->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", Q_NULLPTR));
+    actionSaveAs->setText(QApplication::translate("MainWindow", "另存为……", Q_NULLPTR));
+    actionSaveAs->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+S", Q_NULLPTR));
+    actionQuit->setText(QApplication::translate("MainWindow", "退出(&Q)", Q_NULLPTR));
+    actionQuit->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", Q_NULLPTR));
+
+    actionSetSamplingRate->setText(QApplication::translate("MainWindow", "设定采样率(&S)", Q_NULLPTR));
+    actionSetQuantifyLevel->setText(QApplication::translate("MainWindow", "设定量化等级(&Q)", Q_NULLPTR));
+
+    actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
+    actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
+
+    menuFile->setTitle(QApplication::translate("MainWindow", "文件(&F)", Q_NULLPTR));
+    menuDisplay->setTitle(QApplication::translate("MainWindow", "显示", Q_NULLPTR));
+    menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
+} // retranslate
+
+QString MainWindow::getUserPath()
+{
+    QString userPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    return userPath;
+} // getUserPath
+
+void MainWindow::updateRightScene(QImage &newImage)
 {
     rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
-    qDebug() << "更新右侧图片";
-}
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "更新右侧图片";
+} // updateRightScene
 
-void MainWindow::showSamplingRateDialog()
+void MainWindow::setSamplingRate(const int &rate)
 {
-    DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(nullptr);
-
-    if (dialogSamplingRate->isVisible())
-        dialogSamplingRate->activateWindow();
-    else
-        dialogSamplingRate->show();
-
-    connect(dialogSamplingRate, SIGNAL(samplingRateSignal(const int &)), this, SLOT(samplingRate(const int &)));
-}
-
-void MainWindow::samplingRate(const int &rate)
-{
-    qDebug() << "开始修改采样率";
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "修改采样率";
 
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = rightPixmapItem->pixmap().toImage();
@@ -75,30 +162,17 @@ void MainWindow::samplingRate(const int &rate)
                     newImage.setPixel(i + p, j + q, qRgb(r, g, b));
         }
 
-    updateRightImage(newImage);
+    updateRightScene(newImage);
 
-    qDebug() << "Done!";
-}
-
-void MainWindow::showQuantifyLevelDialog()
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+} // setSamplingRate
+void MainWindow::setQuantifyLevel(const int &level)
 {
-    DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(nullptr);
-
-    if (dialogQuantifyLevel->isVisible())
-        dialogQuantifyLevel->activateWindow();
-    else
-        dialogQuantifyLevel->show();
-
-    connect(dialogQuantifyLevel, SIGNAL(quantifyLevelSignal(const int &)), this, SLOT(quantifyLevel(const int &)));
-}
-
-void MainWindow::quantifyLevel(const int &level)
-{
-    qDebug() << "开始修改量化等级";
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "修改量化等级";
 
     if (level == 1)
     {
-        qDebug() << "量化等级不能为1";
+        qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "量化等级不能为 1";
         return;
     }
 
@@ -149,10 +223,10 @@ void MainWindow::quantifyLevel(const int &level)
         }
     }
 
-    updateRightImage(newImage);
+    updateRightScene(newImage);
 
-    qDebug() << "Done!";
-}
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+} // setQuantifyLevel
 
 void MainWindow::on_actionOpen_triggered()
 {
@@ -195,7 +269,7 @@ void MainWindow::on_actionOpen_triggered()
         rightImage.load(imagePath);
         rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(rightImage));
     }
-}
+} // on_actionOpen_triggered
 
 void MainWindow::on_actionSave_triggered()
 {
@@ -209,9 +283,9 @@ void MainWindow::on_actionSave_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imagePath, (const char *)imageFormat.toStdString().c_str(), 100);
 
-    qDebug() << "保存" << imageSavePath;
-    qDebug() << "Done!";
-}
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "保存" << imageSavePath;
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+} // on_actionSave_triggered
 
 void MainWindow::on_actionSaveAs_triggered()
 {
@@ -233,28 +307,36 @@ void MainWindow::on_actionSaveAs_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imageSaveAsPath, nullptr, 100);
 
-    qDebug() << "另存为" << imageSaveAsPath;
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "另存为" << imageSaveAsPath;
 
-    qDebug() << "Done!";
-}
+    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "Done!";
+} // on_actionSaveAs_triggered
 
 void MainWindow::on_actionQuit_triggered()
 {
     qApp->quit();
-}
+} // on_actionQuit_triggered
 
-void MainWindow::on_actionSamplingRate_triggered()
+void MainWindow::on_actionSetSamplingRate_triggered()
 {
-    showSamplingRateDialog();
-}
+    DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(nullptr);
 
-void MainWindow::on_actionQuantifyLevel_triggered()
-{
-    showQuantifyLevelDialog();
-}
+    if (dialogSamplingRate->isVisible())
+        dialogSamplingRate->activateWindow();
+    else
+        dialogSamplingRate->show();
 
-QString MainWindow::getUserPath()
+    connect(dialogSamplingRate, SIGNAL(signalSetSamplingRate(const int &)), this, SLOT(setSamplingRate(const int &)));
+} // on_actionSetSamplingRate_triggered
+
+void MainWindow::on_actionSetQuantifyLevel_triggered()
 {
-    QString userPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-    return userPath;
-}
+    DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(nullptr);
+
+    if (dialogQuantifyLevel->isVisible())
+        dialogQuantifyLevel->activateWindow();
+    else
+        dialogQuantifyLevel->show();
+
+    connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel(const int &)), this, SLOT(setQuantifyLevel(const int &)));
+} // on_actionSetQuantifyLevel_triggered

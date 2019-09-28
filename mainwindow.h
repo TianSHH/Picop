@@ -3,56 +3,64 @@
 
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
+#include <QAction>
+#include <QApplication>
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGridLayout>
 #include <QImage>
 #include <QImageReader>
+#include <QLabel>
 #include <QMainWindow>
+#include <QMenu>
+#include <QMenuBar>
 #include <QMessageBox>
 #include <QStandardPaths>
+#include <QStatusBar>
+#include <QToolBar>
+#include <QtCore/QDateTime>
 
 #define WINDOW_TITLE "ImageQt"
 #define WINDOW_CRITICAL "Error - ImageQt"
 #define WINDOW_WARNING "Notice - ImageQt"
 #define WINDOW_ABOUT "About - ImageQt"
 
-namespace Ui
-{
-class MainWindow;
-}
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void updateRightImage(QImage &newImage);
+public:
+    QWidget *centralWidget;
 
-private slots:
-    void showSamplingRateDialog();
-    void samplingRate(const int &rate);
+    QGridLayout *gridLayout;
 
-    void showQuantifyLevelDialog();
-    void quantifyLevel(const int &level);
+    QGraphicsView *graphicsViewLeft;
+    QGraphicsView *graphicsViewRight;
 
-    void on_actionOpen_triggered();
-    void on_actionSave_triggered();
-    void on_actionSaveAs_triggered();
-    void on_actionQuit_triggered();
+    QMenuBar *menuBar;
+    QToolBar *toolBar;
+    QStatusBar *statusBar;
 
-    void on_actionSamplingRate_triggered();
-    void on_actionQuantifyLevel_triggered();
+    QMenu *menuFile;
+    QMenu *menuDisplay;
+    QMenu *menuHelp;
 
-
-private:
-    Ui::MainWindow *ui;
+    QAction *actionOpen;
+    QAction *actionSave;
+    QAction *actionSaveAs;
+    QAction *actionQuit;
+    QAction *actionSetSamplingRate;
+    QAction *actionSetQuantifyLevel;
+    QAction *actionAbout;
 
     QGraphicsScene *leftScene;
     QGraphicsScene *rightScene;
@@ -62,7 +70,24 @@ private:
     QFileInfo *info;
     QString imagePath; // 当前打开图像的路径
 
-    QString getUserPath(); // 获取当前用户所在根目录
+public:
+    void setup();
+    void retranslate();
+    QString getUserPath();
+    void updateRightScene(QImage &newImage);
+
+private slots:
+    void setSamplingRate(const int &rate);
+    void setQuantifyLevel(const int &level);
+
+private slots:
+    void on_actionOpen_triggered();
+    void on_actionSave_triggered();
+    void on_actionSaveAs_triggered();
+    void on_actionQuit_triggered();
+    void on_actionSetSamplingRate_triggered();
+    void on_actionSetQuantifyLevel_triggered();
+    // void on_actionAbout_triggered();
 };
 
 #endif // MAINWINDOW_H
