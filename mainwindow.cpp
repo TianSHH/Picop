@@ -295,63 +295,68 @@ void MainWindow::displayBitPlane()
             int gray = color.red();
             QString binary = QString::number(gray, 2);
 
-            for (int k = 7; k >= 0; k--)
-            {
-                char bit = binary.toStdString().c_str()[k];
-                switch (k)
-                {
-                case 0: // 最高位
-                    if (bit == '0')
-                        newImage0.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage0.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
-                case 1:
-                    if (bit == '0')
-                        newImage1.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage1.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
-                case 2:
-                    if (bit == '0')
-                        newImage2.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage2.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
-                case 3:
-                    if (bit == '0')
-                        newImage3.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage3.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
-                case 4:
-                    if (bit == '0')
-                        newImage4.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage4.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
-                case 5:
-                    if (bit == '0')
-                        newImage5.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage5.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
-                case 6:
-                    if (bit == '0')
-                        newImage6.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage6.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
-                case 7: // 最低位
-                    if (bit == '0')
-                        newImage7.setPixel(i, j, qRgb(255, 255, 255));
-                    else
-                        newImage7.setPixel(i, j, qRgb(0, 0, 0));
-                    break;
+            { // 最低层
+                int bit = gray & 0x1;
+                if (bit == 1)
+                    newImage7.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage7.setPixel(i, j, qRgb(0, 0, 0));
+            }
 
-                default:
-                    break;
-                }
+            {
+                int bit = gray & 0x2;
+                if (bit == 0x2)
+                    newImage6.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage6.setPixel(i, j, qRgb(0, 0, 0));
+            }
+
+            {
+                int bit = gray & 0x4;
+                if (bit == 0x4)
+                    newImage5.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage5.setPixel(i, j, qRgb(0, 0, 0));
+            }
+
+            {
+                int bit = gray & 0x8;
+                if (bit == 0x8)
+                    newImage4.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage4.setPixel(i, j, qRgb(0, 0, 0));
+            }
+
+            {
+                int bit = gray & 0x10;
+                if (bit == 0x10)
+                    newImage3.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage3.setPixel(i, j, qRgb(0, 0, 0));
+            }
+
+            {
+                int bit = gray & 0x20;
+                if (bit == 0x20)
+                    newImage2.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage2.setPixel(i, j, qRgb(0, 0, 0));
+            }
+
+            {
+                int bit = gray & 0x40;
+                if (bit == 0x40)
+                    newImage1.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage1.setPixel(i, j, qRgb(0, 0, 0));
+            }
+
+            { // 最高层
+                int bit = gray & 0x80;
+                if (bit == 0x80)
+                    newImage0.setPixel(i, j, qRgb(255, 255, 255));
+                else
+                    newImage0.setPixel(i, j, qRgb(0, 0, 0));
             }
         }
     }
