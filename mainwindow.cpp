@@ -300,7 +300,7 @@ void MainWindow::displayBitPlane()
                 char bit = binary.toStdString().c_str()[k];
                 switch (k)
                 {
-                case 0:
+                case 0: // 最高位
                     if (bit == '0')
                         newImage0.setPixel(i, j, qRgb(255, 255, 255));
                     else
@@ -342,7 +342,7 @@ void MainWindow::displayBitPlane()
                     else
                         newImage6.setPixel(i, j, qRgb(0, 0, 0));
                     break;
-                case 7:
+                case 7: // 最低位
                     if (bit == '0')
                         newImage7.setPixel(i, j, qRgb(255, 255, 255));
                     else

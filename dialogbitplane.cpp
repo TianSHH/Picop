@@ -24,37 +24,37 @@ void DialogBitPlane::setup()
     gridLayout->setContentsMargins(11, 11, 11, 11);
     gridLayout->setObjectName(QStringLiteral("gridLayout"));
 
-    graphicsViewBitPlane0 = new QGraphicsView(centralWidget);
-    graphicsViewBitPlane0->setObjectName(QStringLiteral("graphicsViewBitPlane0"));
-    gridLayout->addWidget(graphicsViewBitPlane0, 0, 0, 1, 1);
-
-    graphicsViewBitPlane1 = new QGraphicsView(centralWidget);
-    graphicsViewBitPlane1->setObjectName(QStringLiteral("graphicsViewBitPlane1"));
-    gridLayout->addWidget(graphicsViewBitPlane1, 0, 1, 1, 1);
-
-    graphicsViewBitPlane2 = new QGraphicsView(centralWidget);
-    graphicsViewBitPlane2->setObjectName(QStringLiteral("graphicsViewBitPlane2"));
-    gridLayout->addWidget(graphicsViewBitPlane2, 0, 2, 1, 1);
-
-    graphicsViewBitPlane3 = new QGraphicsView(centralWidget);
-    graphicsViewBitPlane3->setObjectName(QStringLiteral("graphicsViewBitPlane3"));
-    gridLayout->addWidget(graphicsViewBitPlane3, 0, 3, 1, 1);
-
-    graphicsViewBitPlane4 = new QGraphicsView(centralWidget);
-    graphicsViewBitPlane4->setObjectName(QStringLiteral("graphicsViewBitPlane4"));
-    gridLayout->addWidget(graphicsViewBitPlane4, 1, 0, 1, 1);
-
-    graphicsViewBitPlane5 = new QGraphicsView(centralWidget);
-    graphicsViewBitPlane5->setObjectName(QStringLiteral("graphicsViewBitPlane5"));
-    gridLayout->addWidget(graphicsViewBitPlane5, 1, 1, 1, 1);
+    graphicsViewBitPlane7 = new QGraphicsView(centralWidget);
+    graphicsViewBitPlane7->setObjectName(QStringLiteral("graphicsViewBitPlane7"));
+    gridLayout->addWidget(graphicsViewBitPlane7, 0, 0, 1, 1);
 
     graphicsViewBitPlane6 = new QGraphicsView(centralWidget);
     graphicsViewBitPlane6->setObjectName(QStringLiteral("graphicsViewBitPlane6"));
-    gridLayout->addWidget(graphicsViewBitPlane6, 1, 2, 1, 1);
+    gridLayout->addWidget(graphicsViewBitPlane6, 0, 1, 1, 1);
 
-    graphicsViewBitPlane7 = new QGraphicsView(centralWidget);
-    graphicsViewBitPlane7->setObjectName(QStringLiteral("graphicsViewBitPlane7"));
-    gridLayout->addWidget(graphicsViewBitPlane7, 1, 3, 1, 1);
+    graphicsViewBitPlane5 = new QGraphicsView(centralWidget);
+    graphicsViewBitPlane5->setObjectName(QStringLiteral("graphicsViewBitPlane5"));
+    gridLayout->addWidget(graphicsViewBitPlane5, 0, 2, 1, 1);
+
+    graphicsViewBitPlane4 = new QGraphicsView(centralWidget);
+    graphicsViewBitPlane4->setObjectName(QStringLiteral("graphicsViewBitPlane4"));
+    gridLayout->addWidget(graphicsViewBitPlane4, 0, 3, 1, 1);
+
+    graphicsViewBitPlane3 = new QGraphicsView(centralWidget);
+    graphicsViewBitPlane3->setObjectName(QStringLiteral("graphicsViewBitPlane3"));
+    gridLayout->addWidget(graphicsViewBitPlane3, 1, 0, 1, 1);
+
+    graphicsViewBitPlane2 = new QGraphicsView(centralWidget);
+    graphicsViewBitPlane2->setObjectName(QStringLiteral("graphicsViewBitPlane2"));
+    gridLayout->addWidget(graphicsViewBitPlane2, 1, 1, 1, 1);
+
+    graphicsViewBitPlane1 = new QGraphicsView(centralWidget);
+    graphicsViewBitPlane1->setObjectName(QStringLiteral("graphicsViewBitPlane1"));
+    gridLayout->addWidget(graphicsViewBitPlane1, 1, 2, 1, 1);
+
+    graphicsViewBitPlane0 = new QGraphicsView(centralWidget);
+    graphicsViewBitPlane0->setObjectName(QStringLiteral("graphicsViewBitPlane0"));
+    gridLayout->addWidget(graphicsViewBitPlane0, 1, 3, 1, 1);
 
     this->setCentralWidget(centralWidget);
 
