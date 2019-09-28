@@ -209,12 +209,33 @@ void MainWindow::on_actionSave_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imagePath, (const char *)imageFormat.toStdString().c_str(), 100);
 
-    qDebug() << "保存到" << imageSavePath;
+    qDebug() << "保存" << imageSavePath;
     qDebug() << "Done!";
 }
 
 void MainWindow::on_actionSaveAs_triggered()
 {
+    QString imageSaveAsPath = QFileDialog::getSaveFileName(this, tr("Open image"), getUserPath() + "/Pictures",
+                                                           tr("All Files (*);;"
+                                                              "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
+                                                              "Image BPM (*.bpm);;"
+                                                              "Image GIF (*.gif);;"
+                                                              "Image JPG (*.jpg);;"
+                                                              "Image JPEG (*.jpeg);;"
+                                                              "Image PNG (*.png);;"
+                                                              "Image PPM (*.ppm);;"
+                                                              "Image XBM (*.xbm);;"
+                                                              "Image BMP (*.bmp);;"
+                                                              "Image XPM (*.xpm);;"));
+
+    if (imageSaveAsPath.isEmpty())
+        return;
+
+    rightPixmapItem->pixmap().toImage().save(imageSaveAsPath, nullptr, 100);
+
+    qDebug() << "另存为" << imageSaveAsPath;
+
+    qDebug() << "Done!";
 }
 
 void MainWindow::on_actionQuit_triggered()
