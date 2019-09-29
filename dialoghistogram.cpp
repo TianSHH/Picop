@@ -1,6 +1,24 @@
 #include "dialoghistogram.h"
 
-DialogHistogram::DialogHistogram(QWidget *parent) : QLabel(parent)
+DialogHistogram::DialogHistogram(QWidget *parent) : QDialog(parent)
+{
+    setup();
+}
+
+DialogHistogram::~DialogHistogram()
+{
+}
+
+void DialogHistogram::setup()
+{
+    init();
+
+    this->resize(800, 800);
+
+    this->setWindowTitle("直方图 - Picop");
+} // setup
+
+void DialogHistogram::init()
 {
     for (int i = 0; i < 256; i++)
     {
@@ -21,20 +39,7 @@ DialogHistogram::DialogHistogram(QWidget *parent) : QLabel(parent)
 
     bwHistogram[257] = 0;
     bwHistogram[258] = 0;
-}
-
-DialogHistogram::DialogHistogram(QWidget *parent, DialogHistogram *histogram) : QLabel(parent)
-{
-    for (int i = 0; i < 258; i++)
-    {
-        bwHistogram[i] = histogram->bwHistogram[i];
-        redHistogram[i] = histogram->redHistogram[i];
-        greenHistogram[i] = histogram->greenHistogram[i];
-        blueHistogram[i] = histogram->blueHistogram[i];
-    }
-
-    bwHistogram[258] = histogram->bwHistogram[258];
-}
+} // init
 
 void DialogHistogram::computeHistogram(QImage img)
 {
@@ -130,7 +135,7 @@ void DialogHistogram::drawBwHistogram(int xBase, int yBase, int height)
     painter.drawText(xBase + 220, yBase + 25, tr("white"));
     painter.setPen(Qt::black);
 
-    painter.drawText(xBase + 40, yBase - height - 10, tr("GRAY LEVELS HISTOGRAM"));
+    painter.drawText(xBase + 40, yBase - height - 10, tr("灰度直方图"));
 
     painter.drawText(xBase + 100, yBase + 15, tr("Intensity"));
     painter.drawText(xBase - 84, yBase - height / 2 + 5, tr("Pixels count"));

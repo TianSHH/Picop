@@ -1,31 +1,39 @@
 #ifndef DIALOGHISTOGRAM_H
 #define DIALOGHISTOGRAM_H
 
+#include <QImage>
 #include <QPainter>
 #include <QtCore/QDebug>
+#include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
 #include <iostream>
 #include <sstream>
 
-class DialogHistogram : public QLabel
+class DialogHistogram : public QDialog
 {
 public:
-    DialogHistogram(QWidget *parent = nullptr);
-    DialogHistogram(QWidget *, DialogHistogram *);
+    DialogHistogram(QWidget *parent);
+    ~DialogHistogram();
+
+    void setup();
+    void init();
 
     void computeHistogram(QImage img);
+
     void paintEvent(QPaintEvent *e);
+
     void drawBwHistogram(int xBase, int yBase, int height);
     void drawRedHistogram(int xBase, int yBase, int height);
     void drawGreenHistogram(int xBase, int yBase, int height);
     void drawBlueHistogram(int xBase, int yBase, int height);
+
     int getBwHistogram(int index);
     int getRedHistogram(int index);
     int getGreenHistogram(int index);
     int getBlueHistogram(int index);
 
-private:
+public:
     // index 0 to 255 => count of image's pixels for this value
     // index 256 => maximum value
     // index 257 => total value of the dark component

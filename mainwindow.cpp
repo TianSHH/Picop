@@ -157,7 +157,8 @@ void MainWindow::updateRightScene(QImage &newImage)
 {
     rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "更新右侧图片";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "更新右侧图片";
 } // updateRightScene
 
 void MainWindow::closeImage()
@@ -168,12 +169,14 @@ void MainWindow::closeImage()
     rightScene->clear();
     graphicsViewRight->resetTransform();
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "关闭图片" << imagePath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "关闭图片" << imagePath;
 } // closeImage
 
 void MainWindow::setSamplingRate(const int &rate)
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "修改采样率";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "修改采样率";
 
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = rightPixmapItem->pixmap().toImage();
@@ -202,16 +205,19 @@ void MainWindow::setSamplingRate(const int &rate)
 
     updateRightScene(newImage);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "Done!";
 } // setSamplingRate
 
 void MainWindow::setQuantifyLevel(const int &level)
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "修改量化等级";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "修改量化等级";
 
     if (level == 1)
     {
-        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "量化等级不能为 1";
+        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+                 << "量化等级不能为 1";
         return;
     }
 
@@ -264,12 +270,14 @@ void MainWindow::setQuantifyLevel(const int &level)
 
     updateRightScene(newImage);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "Done!";
 } // setQuantifyLevel
 
 void MainWindow::displayBitPlane()
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "获取位平面";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "获取位平面";
 
     DialogBitPlane *dialogBitPlane = new DialogBitPlane(nullptr);
 
@@ -377,47 +385,39 @@ void MainWindow::displayBitPlane()
 
 void MainWindow::displayHistogram()
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "显示直方图";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "显示直方图";
 
-    QDialog *dialogHistogram = new QDialog(this);
-    QScrollArea *scrollArea = new QScrollArea(dialogHistogram);
+    DialogHistogram *dialogHistogram = new DialogHistogram(nullptr);
 
-    DialogHistogram *histogram = new DialogHistogram(scrollArea);
+    if (dialogHistogram->isVisible())
+        dialogHistogram->activateWindow();
+    else
+        dialogHistogram->show();
 
-    histogram->computeHistogram(rightPixmapItem->pixmap().toImage());
+    QImage originImage = leftPixmapItem->pixmap().toImage();
 
-    if(histogram == nullptr)
-        return;
-
-    scrollArea->setWidget(histogram);
-
-    histogram->resize(800, 800);
-    dialogHistogram->setFixedWidth(800);
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollArea->adjustSize();
-
-    dialogHistogram->setWindowTitle("直方图 - Picop");
-
-    dialogHistogram->show();
-
+    dialogHistogram->computeHistogram(originImage);
 } // diaplayHistogram
 
 void MainWindow::on_actionOpen_triggered()
 {
     closeImage();
 
-    imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
-                                             tr("All Files (*);;"
-                                                "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
-                                                "Image BPM (*.bpm);;"
-                                                "Image GIF (*.gif);;"
-                                                "Image JPG (*.jpg);;"
-                                                "Image JPEG (*.jpeg);;"
-                                                "Image PNG (*.png);;"
-                                                "Image PPM (*.ppm);;"
-                                                "Image XBM (*.xbm);;"
-                                                "Image BMP (*.bmp);;"
-                                                "Image XPM (*.xpm);;"));
+    QFileDialog *fileDialog = new QFileDialog(this);
+
+    imagePath = fileDialog->getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
+                                            tr("All Files (*);;"
+                                               "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
+                                               "Image BPM (*.bpm);;"
+                                               "Image GIF (*.gif);;"
+                                               "Image JPG (*.jpg);;"
+                                               "Image JPEG (*.jpeg);;"
+                                               "Image PNG (*.png);;"
+                                               "Image PPM (*.ppm);;"
+                                               "Image XBM (*.xbm);;"
+                                               "Image BMP (*.bmp);;"
+                                               "Image XPM (*.xpm);;"));
 
     if (!imagePath.isEmpty())
     {
@@ -445,7 +445,8 @@ void MainWindow::on_actionOpen_triggered()
         rightImage.load(imagePath);
         rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(rightImage));
 
-        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "打开文件" << imagePath;
+        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+                 << "打开文件" << imagePath;
     }
 } // on_actionOpen_triggered
 
@@ -461,8 +462,10 @@ void MainWindow::on_actionSave_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imagePath, (const char *)imageFormat.toStdString().c_str(), 100);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "保存" << imageSavePath;
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "保存" << imageSavePath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "Done!";
 } // on_actionSave_triggered
 
 void MainWindow::on_actionSaveAs_triggered()
@@ -485,9 +488,11 @@ void MainWindow::on_actionSaveAs_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imageSaveAsPath, nullptr, 100);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "另存为" << imageSaveAsPath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "另存为" << imageSaveAsPath;
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "Done!";
 } // on_actionSaveAs_triggered
 
 void MainWindow::on_actionClose_triggered()
@@ -497,7 +502,8 @@ void MainWindow::on_actionClose_triggered()
 
 void MainWindow::on_actionQuit_triggered()
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "程序退出";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
+             << "程序退出";
     qApp->quit();
 } // on_actionQuit_triggered
 
