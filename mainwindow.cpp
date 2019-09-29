@@ -36,6 +36,8 @@ void MainWindow::setup()
 
     actionDisplayBitPlane = new QAction(this);
     actionDisplayBitPlane->setObjectName(QStringLiteral("actionDisplayBitPlane"));
+    actionDisplayHistogram = new QAction(this);
+    actionDisplayHistogram->setObjectName(QStringLiteral("actionDisplayHistogram"));
 
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
@@ -95,6 +97,7 @@ void MainWindow::setup()
     menuEdit->addAction(actionSetQuantifyLevel);
 
     menuDisplay->addAction(actionDisplayBitPlane);
+    menuDisplay->addAction(actionDisplayHistogram);
 
     menuHelp->addAction(actionAbout);
 
@@ -133,6 +136,7 @@ void MainWindow::retranslate()
     actionSetQuantifyLevel->setText(QApplication::translate("MainWindow", "设定量化等级(&Q)", Q_NULLPTR));
 
     actionDisplayBitPlane->setText(QApplication::translate("MainWindow", "显示位平面(&B)", Q_NULLPTR));
+    actionDisplayHistogram->setText(QApplication::translate("MainWindow", "显示直方图(&H)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -371,6 +375,12 @@ void MainWindow::displayBitPlane()
     dialogBitPlane->graphicsItem7 = dialogBitPlane->graphicsSceneBitPlane7->addPixmap(QPixmap::fromImage(newImage7));
 } // displayBitPlane
 
+void MainWindow::displayHistogram()
+{
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "显示直方图";
+
+} // diaplayHistogram
+
 void MainWindow::on_actionOpen_triggered()
 {
     closeImage();
@@ -497,4 +507,9 @@ void MainWindow::on_actionSetQuantifyLevel_triggered()
 void MainWindow::on_actionDisplayBitPlane_triggered()
 {
     displayBitPlane();
+}
+
+void MainWindow::on_actionDisplayHistogram_triggered()
+{
+    displayHistogram();
 }

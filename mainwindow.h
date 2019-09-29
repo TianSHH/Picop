@@ -66,6 +66,7 @@ public:
     QAction *actionSetQuantifyLevel;
 
     QAction *actionDisplayBitPlane;
+    QAction *actionDisplayHistogram;
 
     QAction *actionAbout;
 
@@ -89,6 +90,7 @@ private slots:
     void setQuantifyLevel(const int &level);
 
     void displayBitPlane();
+    void displayHistogram();
 
 private slots:
     void on_actionOpen_triggered();
@@ -101,6 +103,7 @@ private slots:
     void on_actionSetQuantifyLevel_triggered();
 
     void on_actionDisplayBitPlane_triggered();
+    void on_actionDisplayHistogram_triggered();
 
     // void on_actionAbout_triggered();
 };
