@@ -41,6 +41,3 @@ private slots:
 };
 
 #endif // DIALOGQUANTIFYLEVEL_H
-
-
-    // qDebug("[Debug] %s: %s %d", qPrintable(QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz")), "设定灰度阀值", threshold);

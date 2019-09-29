@@ -56,7 +56,8 @@ void DialogQuantifyLevel::emitSignalSetQuantifyLevel()
     if (lineEdit->text().isEmpty())
         return;
 
-    qDebug() << QDateTime::currentDateTime().addSecs(-10).toString("yyyy-MM-dd hh:mm:ss") << "设定量化等级" << level;
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "设定量化等级" << level;
 
     emit signalSetQuantifyLevel(level);
 } // emitSignalSetQuantifyLevel
