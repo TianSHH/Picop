@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "dialogbitplane.h"
+#include "dialoghistogram.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
 #include <QAction>

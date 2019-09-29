@@ -379,6 +379,27 @@ void MainWindow::displayHistogram()
 {
     qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc() << "显示直方图";
 
+    QDialog *dialogHistogram = new QDialog(this);
+    QScrollArea *scrollArea = new QScrollArea(dialogHistogram);
+
+    DialogHistogram *histogram = new DialogHistogram(scrollArea);
+
+    histogram->computeHistogram(rightPixmapItem->pixmap().toImage());
+
+    if(histogram == nullptr)
+        return;
+
+    scrollArea->setWidget(histogram);
+
+    histogram->resize(800, 800);
+    dialogHistogram->setFixedWidth(800);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->adjustSize();
+
+    dialogHistogram->setWindowTitle("直方图 - Picop");
+
+    dialogHistogram->show();
+
 } // diaplayHistogram
 
 void MainWindow::on_actionOpen_triggered()
