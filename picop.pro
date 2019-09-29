@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = transplant
+TARGET = picop
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -30,14 +30,16 @@ SOURCES += \
     dialogquantifylevel.cpp \
     dialogsamplingrate.cpp \
     dialogbitplane.cpp \
-    dialoghistogram.cpp
+    dialoghistogram.cpp \
+    dialoggrayscalethreshold.cpp
 
 HEADERS += \
         mainwindow.h \
     dialogquantifylevel.h \
     dialogsamplingrate.h \
     dialogbitplane.h \
-    dialoghistogram.h
+    dialoghistogram.h \
+    dialoggrayscalethreshold.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

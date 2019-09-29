@@ -33,6 +33,8 @@ void MainWindow::setup()
     actionSetSamplingRate->setObjectName(QStringLiteral("actionSetSamplingRate"));
     actionSetQuantifyLevel = new QAction(this);
     actionSetQuantifyLevel->setObjectName(QStringLiteral("actionSetQuantifyLevel"));
+    actionSetGrayscaleThreshold = new QAction(this);
+    actionSetGrayscaleThreshold->setObjectName(QStringLiteral("actionSetGrayscaleThreshold"));
 
     actionDisplayBitPlane = new QAction(this);
     actionDisplayBitPlane->setObjectName(QStringLiteral("actionDisplayBitPlane"));
@@ -95,6 +97,7 @@ void MainWindow::setup()
 
     menuEdit->addAction(actionSetSamplingRate);
     menuEdit->addAction(actionSetQuantifyLevel);
+    menuEdit->addAction(actionSetGrayscaleThreshold);
 
     menuDisplay->addAction(actionDisplayBitPlane);
     menuDisplay->addAction(actionDisplayHistogram);
@@ -134,6 +137,7 @@ void MainWindow::retranslate()
 
     actionSetSamplingRate->setText(QApplication::translate("MainWindow", "设定采样率(&S)", Q_NULLPTR));
     actionSetQuantifyLevel->setText(QApplication::translate("MainWindow", "设定量化等级(&Q)", Q_NULLPTR));
+    actionSetGrayscaleThreshold->setText(QApplication::translate("MainWindow", "设定灰度阀值(&G)", Q_NULLPTR));
 
     actionDisplayBitPlane->setText(QApplication::translate("MainWindow", "显示位平面(&B)", Q_NULLPTR));
     actionDisplayHistogram->setText(QApplication::translate("MainWindow", "显示直方图(&H)", Q_NULLPTR));
@@ -157,8 +161,7 @@ void MainWindow::updateRightScene(QImage &newImage)
 {
     rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "更新右侧图片";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "更新右侧图片";
 } // updateRightScene
 
 void MainWindow::closeImage()
@@ -169,14 +172,12 @@ void MainWindow::closeImage()
     rightScene->clear();
     graphicsViewRight->resetTransform();
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "关闭图片" << imagePath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "关闭图片" << imagePath;
 } // closeImage
 
 void MainWindow::setSamplingRate(const int &rate)
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "修改采样率";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "修改采样率";
 
     QImage originImage = leftPixmapItem->pixmap().toImage();
     QImage newImage = rightPixmapItem->pixmap().toImage();
@@ -205,19 +206,16 @@ void MainWindow::setSamplingRate(const int &rate)
 
     updateRightScene(newImage);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "Done!";
 } // setSamplingRate
 
 void MainWindow::setQuantifyLevel(const int &level)
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "修改量化等级";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "修改量化等级";
 
     if (level == 1)
     {
-        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-                 << "量化等级不能为 1";
+        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "量化等级不能为 1";
         return;
     }
 
@@ -270,14 +268,45 @@ void MainWindow::setQuantifyLevel(const int &level)
 
     updateRightScene(newImage);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "Done!";
 } // setQuantifyLevel
+
+void MainWindow::setGrayscaleThreshold(const int &threshold)
+{
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "设定灰度阀值" << threshold;
+
+    QImage originImage = leftPixmapItem->pixmap().toImage();
+    QImage newImage = rightPixmapItem->pixmap().toImage();
+
+    int width = newImage.width();
+    int height = newImage.height();
+
+    int gray;
+
+    QColor color;
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            color = QColor(originImage.pixel(i, j));
+            gray = color.red();
+
+            if (gray < threshold)
+                newImage.setPixel(i, j, qRgb(0, 0, 0));
+            else
+                newImage.setPixel(i, j, qRgb(255, 255, 255));
+        }
+    }
+
+    updateRightScene(newImage);
+
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "二值化成功!";
+} // setGrayscaleThreshold
 
 void MainWindow::displayBitPlane()
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "获取位平面";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "获取位平面";
 
     DialogBitPlane *dialogBitPlane = new DialogBitPlane(nullptr);
 
@@ -385,8 +414,7 @@ void MainWindow::displayBitPlane()
 
 void MainWindow::displayHistogram()
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "显示直方图";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "显示直方图";
 
     DialogHistogram *dialogHistogram = new DialogHistogram(nullptr);
 
@@ -404,20 +432,18 @@ void MainWindow::on_actionOpen_triggered()
 {
     closeImage();
 
-    QFileDialog *fileDialog = new QFileDialog(this);
-
-    imagePath = fileDialog->getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
-                                            tr("All Files (*);;"
-                                               "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
-                                               "Image BPM (*.bpm);;"
-                                               "Image GIF (*.gif);;"
-                                               "Image JPG (*.jpg);;"
-                                               "Image JPEG (*.jpeg);;"
-                                               "Image PNG (*.png);;"
-                                               "Image PPM (*.ppm);;"
-                                               "Image XBM (*.xbm);;"
-                                               "Image BMP (*.bmp);;"
-                                               "Image XPM (*.xpm);;"));
+    imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
+                                             tr("All Files (*);;"
+                                                "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
+                                                "Image BPM (*.bpm);;"
+                                                "Image GIF (*.gif);;"
+                                                "Image JPG (*.jpg);;"
+                                                "Image JPEG (*.jpeg);;"
+                                                "Image PNG (*.png);;"
+                                                "Image PPM (*.ppm);;"
+                                                "Image XBM (*.xbm);;"
+                                                "Image BMP (*.bmp);;"
+                                                "Image XPM (*.xpm);;"));
 
     if (!imagePath.isEmpty())
     {
@@ -445,8 +471,7 @@ void MainWindow::on_actionOpen_triggered()
         rightImage.load(imagePath);
         rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(rightImage));
 
-        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-                 << "打开文件" << imagePath;
+        qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "打开文件" << imagePath;
     }
 } // on_actionOpen_triggered
 
@@ -462,10 +487,8 @@ void MainWindow::on_actionSave_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imagePath, (const char *)imageFormat.toStdString().c_str(), 100);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "保存" << imageSavePath;
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "保存" << imageSavePath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "Done!";
 } // on_actionSave_triggered
 
 void MainWindow::on_actionSaveAs_triggered()
@@ -488,11 +511,9 @@ void MainWindow::on_actionSaveAs_triggered()
 
     rightPixmapItem->pixmap().toImage().save(imageSaveAsPath, nullptr, 100);
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "另存为" << imageSaveAsPath;
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "另存为" << imageSaveAsPath;
 
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "Done!";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "Done!";
 } // on_actionSaveAs_triggered
 
 void MainWindow::on_actionClose_triggered()
@@ -502,8 +523,7 @@ void MainWindow::on_actionClose_triggered()
 
 void MainWindow::on_actionQuit_triggered()
 {
-    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") + ":"
-             << "程序退出";
+    qDebug() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << "程序退出";
     qApp->quit();
 } // on_actionQuit_triggered
 
@@ -530,6 +550,18 @@ void MainWindow::on_actionSetQuantifyLevel_triggered()
 
     connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel(const int &)), this, SLOT(setQuantifyLevel(const int &)));
 } // on_actionSetQuantifyLevel_triggered
+
+void MainWindow::on_actionSetGrayscaleThreshold_triggered()
+{
+    DialogGrayscaleThreshold *dialogGrayscaleThreshold = new DialogGrayscaleThreshold(this);
+
+    if (dialogGrayscaleThreshold->isVisible())
+        dialogGrayscaleThreshold->activateWindow();
+    else
+        dialogGrayscaleThreshold->show();
+
+    connect(dialogGrayscaleThreshold, SIGNAL(signalThresholdChanged(const int &)), this, SLOT(setGrayscaleThreshold(const int &)));
+} // on_actionSetGrayscaleThreshold_triggered
 
 void MainWindow::on_actionDisplayBitPlane_triggered()
 {

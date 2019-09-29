@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "dialogbitplane.h"
+#include "dialoggrayscalethreshold.h"
 #include "dialoghistogram.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
@@ -65,6 +66,7 @@ public:
 
     QAction *actionSetSamplingRate;
     QAction *actionSetQuantifyLevel;
+    QAction *actionSetGrayscaleThreshold;
 
     QAction *actionDisplayBitPlane;
     QAction *actionDisplayHistogram;
@@ -89,6 +91,7 @@ public:
 private slots:
     void setSamplingRate(const int &rate);
     void setQuantifyLevel(const int &level);
+    void setGrayscaleThreshold(const int &threshold);
 
     void displayBitPlane();
     void displayHistogram();
@@ -102,6 +105,7 @@ private slots:
 
     void on_actionSetSamplingRate_triggered();
     void on_actionSetQuantifyLevel_triggered();
+    void on_actionSetGrayscaleThreshold_triggered();
 
     void on_actionDisplayBitPlane_triggered();
     void on_actionDisplayHistogram_triggered();
