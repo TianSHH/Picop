@@ -94,8 +94,6 @@ signals:
     void signalSendImage(QImage *);
 
 private slots:
-    void setGrayscaleThreshold(const int &threshold);
-
     void displayBitPlane();
     void displayHistogram();
 

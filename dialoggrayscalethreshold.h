@@ -13,6 +13,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
 
 class DialogGrayscaleThreshold : public QDialog
 {
@@ -26,18 +27,21 @@ public:
     QLineEdit *lineEdit;
     QGridLayout *gridLayout;
     QSlider *slider;
+    QMainWindow *ptr = (QMainWindow *)parentWidget();
 
 public:
     void setup();
 
 signals:
-    void signalThresholdChanged(const int &);
+    void signalSetGrayscaleThreshold();
+    void signalSetGrayscaleThresholdFinished(QImage &);
 
 private slots:
+    void emitSignalSetGrayscaleThreshold();
+
     void setLineEditValue();
     void setSliderValue();
-
-    void emitSignalThresholdChanged();
+    void setGrayscaleThreshold(QImage *originImage);
 };
 
 #endif // DIALOGGRAYSCALETHRESHOLD_H

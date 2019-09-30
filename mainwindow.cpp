@@ -185,40 +185,6 @@ void MainWindow::showHideDialog(QDialog *dialog)
         dialog->show();
 } // showHideDialog
 
-void MainWindow::setGrayscaleThreshold(const int &threshold)
-{
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "修改灰度阀值" << threshold;
-
-    QImage originImage = leftPixmapItem->pixmap().toImage();
-    QImage newImage = rightPixmapItem->pixmap().toImage();
-
-    int width = newImage.width();
-    int height = newImage.height();
-
-    int gray;
-
-    QColor color;
-
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            color = QColor(originImage.pixel(i, j));
-            gray = color.red();
-
-            if (gray < threshold)
-                newImage.setPixel(i, j, qRgb(0, 0, 0));
-            else
-                newImage.setPixel(i, j, qRgb(255, 255, 255));
-        }
-    }
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "图像二值化";
-
-    updateRightScene(newImage);
-} // setGrayscaleThreshold
-
 void MainWindow::displayBitPlane()
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -384,7 +350,9 @@ void MainWindow::on_actionSetGrayscaleThreshold_triggered()
 
     showHideDialog(dialogGrayscaleThreshold);
 
-    connect(dialogGrayscaleThreshold, SIGNAL(signalThresholdChanged(const int &)), this, SLOT(setGrayscaleThreshold(const int &)));
+    connect(dialogGrayscaleThreshold, SIGNAL(signalSetGrayscaleThreshold()), this, SLOT(emitSignalSendImage()));
+
+    connect(dialogGrayscaleThreshold, SIGNAL(signalSetGrayscaleThresholdFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionSetGrayscaleThreshold_triggered
 
 void MainWindow::on_actionDisplayBitPlane_triggered()

@@ -41,6 +41,7 @@ signals:
 
 private slots:
     void emitSignalSetQuantifyLevel();
+
     void setQuantifyLevel(QImage *originImage);
 };
 
