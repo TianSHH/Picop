@@ -13,6 +13,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
 
 class DialogQuantifyLevel : public QDialog
 {
@@ -28,16 +29,19 @@ public:
     QGridLayout *gridLayout;
     QLabel *label;
     QLineEdit *lineEdit;
+    QMainWindow *ptr = (QMainWindow *)parentWidget();
 
 public:
     void setup();
     void retranslate();
 
 signals:
-    void signalSetQuantifyLevel(const int &);
+    void signalSetQuantifyLevel();
+    void signalSetQuantifyLevelFinished(QImage &);
 
 private slots:
     void emitSignalSetQuantifyLevel();
+    void setQuantifyLevel(QImage *originImage);
 };
 
 #endif // DIALOGQUANTIFYLEVEL_H

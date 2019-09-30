@@ -185,72 +185,6 @@ void MainWindow::showHideDialog(QDialog *dialog)
         dialog->show();
 } // showHideDialog
 
-// void MainWindow::setSamplingRate(const int &rate)
-// {
-// } // setSamplingRate
-
-void MainWindow::setQuantifyLevel(const int &level)
-{
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "修改量化等级" << level;
-
-    if (level <= 1 || level >= 257)
-    {
-        qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                           << "量化等级范围 2-256";
-        return;
-    }
-
-    QImage originImage = leftPixmapItem->pixmap().toImage();
-    QImage newImage = leftPixmapItem->pixmap().toImage();
-
-    int width = newImage.width();
-    int height = newImage.height();
-
-    // 区间长度
-    int length = 256 / (level - 1);
-
-    // 遍历像素点
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            // 获取该点灰度值
-            QColor color(originImage.pixel(i, j));
-            int gray = color.red();
-
-            int left = 0;
-            int right = length - 1;
-
-            // 对于某一个像素点, 开始判断它的灰度值处于哪个区间
-            while (right <= 255)
-            {
-
-                if ((left <= gray) && (gray <= right))
-                {
-                    if (right - gray <= gray - left)
-                    {
-                        newImage.setPixel(i, j, qRgb(right, right, right));
-                        break;
-                    }
-                    else
-                    {
-                        newImage.setPixel(i, j, qRgb(left, left, left));
-                        break;
-                    }
-                }
-                else
-                {
-                    left += length;
-                    right += length;
-                }
-            }
-        }
-    }
-
-    updateRightScene(newImage);
-} // setQuantifyLevel
-
 void MainWindow::setGrayscaleThreshold(const int &threshold)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -439,7 +373,9 @@ void MainWindow::on_actionSetQuantifyLevel_triggered()
 
     showHideDialog(dialogQuantifyLevel);
 
-    connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel(const int &)), this, SLOT(setQuantifyLevel(const int &)));
+    connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel()), this, SLOT(emitSignalSendImage()));
+
+    connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevelFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionSetQuantifyLevel_triggered
 
 void MainWindow::on_actionSetGrayscaleThreshold_triggered()

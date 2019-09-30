@@ -1,7 +1,6 @@
 #ifndef DIALOGSAMPLINGRATE_H
 #define DIALOGSAMPLINGRATE_H
 
-#include "mainwindow.h"
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
