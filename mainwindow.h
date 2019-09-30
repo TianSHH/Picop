@@ -90,13 +90,17 @@ public:
     void closeImage();
     void showHideDialog(QDialog * dialog);
 
+signals:
+    void signalSendImage(QImage *);
+
 private slots:
-    void setSamplingRate(const int &rate);
     void setQuantifyLevel(const int &level);
     void setGrayscaleThreshold(const int &threshold);
 
     void displayBitPlane();
     void displayHistogram();
+
+    void emitSignalSendImage();
 
 private slots:
     void on_actionOpen_triggered();
@@ -113,6 +117,8 @@ private slots:
     void on_actionDisplayHistogram_triggered();
 
     // void on_actionAbout_triggered();
+
+    void updateRightImage(QImage & newImage);
 };
 
 #endif // MAINWINDOW_H

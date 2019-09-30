@@ -4,7 +4,21 @@ DialogSamplingRate::DialogSamplingRate(QWidget *parent) : QDialog(parent)
 {
     setup();
     retranslate();
+
+    // ! 若不设置 dialog 在退出时自动 delete 自己
+    // ! 会导致下面第二个 connect 建立重复的映射
+    setAttribute(Qt::WA_DeleteOnClose);
+
     connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalSetSamplingRate()));
+
+    // 监听主窗口信号
+    // ! 只有这个 connect 会建立重复的映射
+    // ! 原因是每次修改采样率时都会 new 一个 dialogSamplingRate
+    // ! 但却不会被 delete, 这就导致第 n 次设定采样率时
+    // ! 会构造 n 个 dialogSamplingRate, 建立 n 个映射
+    // ! 导致出现按照构造顺序重复接收信号, 重复调用槽函数的 Bug
+    // ! 例如这里会重复设定采样率的问题
+    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(setSamplingRate(QImage *)), Qt::UniqueConnection);
 }
 
 DialogSamplingRate::~DialogSamplingRate()
@@ -57,5 +71,33 @@ void DialogSamplingRate::emitSignalSetSamplingRate()
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "设定采样率" << rate;
-    emit signalSetSamplingRate(rate);
+    emit signalSetSamplingRate();
 } // emitSignalSetSamplingRate
+
+void DialogSamplingRate::setSamplingRate(QImage *originImage)
+{
+    int rate = lineEdit->text().toInt();
+
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "修改采样率" << rate;
+
+    int width = originImage->width();
+    int height = originImage->height();
+
+    for (int i = 0; i < width; i += rate)
+        for (int j = 0; j < height; j += rate)
+        {
+            QColor color = QColor(originImage->pixel(i, j));
+            int r = color.red();
+            int g = color.green();
+            int b = color.blue();
+
+            originImage->setPixel(i + 1, j + 1, qRgb(r, g, b));
+
+            for (int p = 0; p < rate && i + p < height; p++)
+                for (int q = 0; q < rate && j + q < width; q++)
+                    originImage->setPixel(i + p, j + q, qRgb(r, g, b));
+        }
+
+    emit signalSetSamplingRateFinished((QImage &)(*originImage));
+} // setSamplingRate

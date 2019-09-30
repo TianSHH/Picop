@@ -185,38 +185,9 @@ void MainWindow::showHideDialog(QDialog *dialog)
         dialog->show();
 } // showHideDialog
 
-void MainWindow::setSamplingRate(const int &rate)
-{
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "修改采样率" << rate;
-
-    QImage originImage = leftPixmapItem->pixmap().toImage();
-    QImage newImage = rightPixmapItem->pixmap().toImage();
-
-    int width = newImage.width();
-    int height = newImage.height();
-
-    int r, g, b;
-
-    QColor color;
-
-    for (int i = 0; i < width; i += rate)
-        for (int j = 0; j < height; j += rate)
-        {
-            color = QColor(originImage.pixel(i, j));
-            r = color.red();
-            g = color.green();
-            b = color.blue();
-
-            newImage.setPixel(i + 1, j + 1, qRgb(r, g, b));
-
-            for (int p = 0; p < rate && i + p < height; p++)
-                for (int q = 0; q < rate && j + q < width; q++)
-                    newImage.setPixel(i + p, j + q, qRgb(r, g, b));
-        }
-
-    updateRightScene(newImage);
-} // setSamplingRate
+// void MainWindow::setSamplingRate(const int &rate)
+// {
+// } // setSamplingRate
 
 void MainWindow::setQuantifyLevel(const int &level)
 {
@@ -346,6 +317,16 @@ void MainWindow::displayHistogram()
     delete originImage;
 } // diaplayHistogram
 
+void MainWindow::emitSignalSendImage()
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "发送图片";
+
+    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+
+    emit signalSendImage(originImage);
+}
+
 void MainWindow::on_actionOpen_triggered()
 {
     closeImage();
@@ -443,16 +424,18 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSetSamplingRate_triggered()
 {
-    DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(nullptr);
+    DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(this);
 
     showHideDialog(dialogSamplingRate);
 
-    connect(dialogSamplingRate, SIGNAL(signalSetSamplingRate(const int &)), this, SLOT(setSamplingRate(const int &)));
+    connect(dialogSamplingRate, SIGNAL(signalSetSamplingRate()), this, SLOT(emitSignalSendImage()));
+
+    connect(dialogSamplingRate, SIGNAL(signalSetSamplingRateFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionSetSamplingRate_triggered
 
 void MainWindow::on_actionSetQuantifyLevel_triggered()
 {
-    DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(nullptr);
+    DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(this);
 
     showHideDialog(dialogQuantifyLevel);
 
@@ -471,9 +454,17 @@ void MainWindow::on_actionSetGrayscaleThreshold_triggered()
 void MainWindow::on_actionDisplayBitPlane_triggered()
 {
     displayBitPlane();
-}
+} // on_actionDisplayBitPlane_triggered
 
 void MainWindow::on_actionDisplayHistogram_triggered()
 {
     displayHistogram();
+} // on_actionDisplayHistogram_triggered
+
+void MainWindow::updateRightImage(QImage &newImage)
+{
+    rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
+    //    rightScene->setSceneRect(QRectF(pixmap.rect()));
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "更新右侧图像通过槽函数";
 }
