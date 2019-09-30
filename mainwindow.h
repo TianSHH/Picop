@@ -10,6 +10,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QFile>
+#include <QtWidgets/QDialog>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QGraphicsPixmapItem>
@@ -87,6 +88,7 @@ public:
     QString getUserPath();
     void updateRightScene(QImage &newImage);
     void closeImage();
+    void showHideDialog(QDialog * dialog);
 
 private slots:
     void setSamplingRate(const int &rate);

@@ -177,6 +177,14 @@ void MainWindow::closeImage()
                        << "关闭图像";
 } // closeImage
 
+void MainWindow::showHideDialog(QDialog *dialog)
+{
+    if (dialog->isVisible())
+        dialog->activateWindow();
+    else
+        dialog->show();
+} // showHideDialog
+
 void MainWindow::setSamplingRate(const int &rate)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -313,12 +321,10 @@ void MainWindow::displayBitPlane()
 
     DialogBitPlane *dialogBitPlane = new DialogBitPlane(nullptr);
 
-    if (dialogBitPlane->isVisible())
-        dialogBitPlane->activateWindow();
-    else
-        dialogBitPlane->show();
+    showHideDialog(dialogBitPlane);
 
     QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+
     dialogBitPlane->displayBitPlane(originImage);
 
     delete originImage;
@@ -331,10 +337,7 @@ void MainWindow::displayHistogram()
 
     DialogHistogram *dialogHistogram = new DialogHistogram(nullptr);
 
-    if (dialogHistogram->isVisible())
-        dialogHistogram->activateWindow();
-    else
-        dialogHistogram->show();
+    showHideDialog(dialogHistogram);
 
     QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
 
@@ -369,15 +372,10 @@ void MainWindow::on_actionOpen_triggered()
             return;
         }
 
-        // delete previous image
-        //        cleanImage();
-
-        // upload image
         info = new QFileInfo(imagePath);
 
         QImage leftImage;
 
-        // 使用 QImage 加载图像
         leftImage.load(imagePath);
         leftPixmapItem = leftScene->addPixmap(QPixmap::fromImage(leftImage));
 
@@ -438,7 +436,8 @@ void MainWindow::on_actionClose_triggered()
 
 void MainWindow::on_actionQuit_triggered()
 {
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":" << "程序运行结束";
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "程序运行结束";
     qApp->quit();
 } // on_actionQuit_triggered
 
@@ -446,10 +445,7 @@ void MainWindow::on_actionSetSamplingRate_triggered()
 {
     DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(nullptr);
 
-    if (dialogSamplingRate->isVisible())
-        dialogSamplingRate->activateWindow();
-    else
-        dialogSamplingRate->show();
+    showHideDialog(dialogSamplingRate);
 
     connect(dialogSamplingRate, SIGNAL(signalSetSamplingRate(const int &)), this, SLOT(setSamplingRate(const int &)));
 } // on_actionSetSamplingRate_triggered
@@ -458,10 +454,7 @@ void MainWindow::on_actionSetQuantifyLevel_triggered()
 {
     DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(nullptr);
 
-    if (dialogQuantifyLevel->isVisible())
-        dialogQuantifyLevel->activateWindow();
-    else
-        dialogQuantifyLevel->show();
+    showHideDialog(dialogQuantifyLevel);
 
     connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel(const int &)), this, SLOT(setQuantifyLevel(const int &)));
 } // on_actionSetQuantifyLevel_triggered
@@ -470,10 +463,7 @@ void MainWindow::on_actionSetGrayscaleThreshold_triggered()
 {
     DialogGrayscaleThreshold *dialogGrayscaleThreshold = new DialogGrayscaleThreshold(this);
 
-    if (dialogGrayscaleThreshold->isVisible())
-        dialogGrayscaleThreshold->activateWindow();
-    else
-        dialogGrayscaleThreshold->show();
+    showHideDialog(dialogGrayscaleThreshold);
 
     connect(dialogGrayscaleThreshold, SIGNAL(signalThresholdChanged(const int &)), this, SLOT(setGrayscaleThreshold(const int &)));
 } // on_actionSetGrayscaleThreshold_triggered
