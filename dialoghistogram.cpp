@@ -41,19 +41,19 @@ void DialogHistogram::init()
     bwHistogram[258] = 0;
 } // init
 
-void DialogHistogram::computeHistogram(QImage img)
+void DialogHistogram::displayHistogram(QImage *originImage)
 {
-    if (!img.isNull())
+    if (!originImage->isNull())
     {
-        for (int i = 0; i < img.height(); i++)
+        for (int i = 0; i < originImage->height(); i++)
         {
-            for (int j = 0; j < img.width(); j++)
+            for (int j = 0; j < originImage->width(); j++)
             {
-                int bwValue = qGray(img.pixel(j, i));
+                int bwValue = qGray(originImage->pixel(j, i));
 
-                int redValue = qRed(img.pixel(j, i));
-                int greenValue = qGreen(img.pixel(j, i));
-                int blueValue = qBlue(img.pixel(j, i));
+                int redValue = qRed(originImage->pixel(j, i));
+                int greenValue = qGreen(originImage->pixel(j, i));
+                int blueValue = qBlue(originImage->pixel(j, i));
 
                 bwHistogram[bwValue]++;
                 redHistogram[redValue]++;
@@ -89,7 +89,7 @@ void DialogHistogram::computeHistogram(QImage img)
                 bwHistogram[258] += (i - 127) * bwHistogram[i];
         }
     }
-}
+} // displayHistogram
 
 void DialogHistogram::paintEvent(QPaintEvent *event)
 {
@@ -107,7 +107,7 @@ void DialogHistogram::paintEvent(QPaintEvent *event)
         drawBwHistogram(xBase, yBase, height);
     else
         painter.drawText(xBase, yBase - height / 2 + 5, tr("Can not load the gray level histogram."));
-}
+} // paintEvent
 
 void DialogHistogram::drawBwHistogram(int xBase, int yBase, int height)
 {
@@ -159,7 +159,7 @@ void DialogHistogram::drawBwHistogram(int xBase, int yBase, int height)
     // right ordinate arrow
     painter.drawLine(xBase + 256 + 1, yBase - height, xBase + 256 + 1 - 4, yBase - height + 7);
     painter.drawLine(xBase + 256 + 2, yBase - height, xBase + 256 + 2 + 4, yBase - height + 7);
-}
+} // drawBwHistogram
 
 int DialogHistogram::getBwHistogram(int index)
 {
@@ -167,4 +167,4 @@ int DialogHistogram::getBwHistogram(int index)
         return bwHistogram[index];
     else
         return -2;
-}
+} // getBwHistogram

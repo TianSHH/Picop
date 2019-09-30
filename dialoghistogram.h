@@ -16,23 +16,6 @@ public:
     DialogHistogram(QWidget *parent);
     ~DialogHistogram();
 
-    void setup();
-    void init();
-
-    void computeHistogram(QImage img);
-
-    void paintEvent(QPaintEvent *e);
-
-    void drawBwHistogram(int xBase, int yBase, int height);
-    void drawRedHistogram(int xBase, int yBase, int height);
-    void drawGreenHistogram(int xBase, int yBase, int height);
-    void drawBlueHistogram(int xBase, int yBase, int height);
-
-    int getBwHistogram(int index);
-    int getRedHistogram(int index);
-    int getGreenHistogram(int index);
-    int getBlueHistogram(int index);
-
 public:
     // index 0 to 255 => count of image's pixels for this value
     // index 256 => maximum value
@@ -46,6 +29,24 @@ public:
     int redHistogram[258];
     int greenHistogram[258];
     int blueHistogram[258];
+
+public:
+    void setup();
+    void init();
+
+    void displayHistogram(QImage *originImage);
+
+    void paintEvent(QPaintEvent *e);
+
+    void drawBwHistogram(int xBase, int yBase, int height);
+    void drawRedHistogram(int xBase, int yBase, int height);
+    void drawGreenHistogram(int xBase, int yBase, int height);
+    void drawBlueHistogram(int xBase, int yBase, int height);
+
+    int getBwHistogram(int index);
+    int getRedHistogram(int index);
+    int getGreenHistogram(int index);
+    int getBlueHistogram(int index);
 };
 
 #endif // DIALOGHISTOGRAM_H

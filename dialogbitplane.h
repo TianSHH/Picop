@@ -17,7 +17,7 @@
 #include <QMainWindow>
 #include <QtWidgets/QLineEdit>
 
-class DialogBitPlane : public QMainWindow
+class DialogBitPlane : public QDialog
 {
     Q_OBJECT
 
@@ -26,8 +26,6 @@ public:
     ~DialogBitPlane();
 
 public:
-    QWidget *centralWidget;
-
     QGridLayout *gridLayout;
 
     QGraphicsView *graphicsViewBitPlane0;
@@ -59,7 +57,7 @@ public:
 
 public:
     void setup();
-    // void retranslate();
+    void displayBitPlane(QImage * originImage);
 };
 
 #endif // DIALOGBITPLANE_H

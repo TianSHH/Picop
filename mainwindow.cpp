@@ -318,101 +318,10 @@ void MainWindow::displayBitPlane()
     else
         dialogBitPlane->show();
 
-    QImage originImage = leftPixmapItem->pixmap().toImage();
-    QImage newImage0 = leftPixmapItem->pixmap().toImage();
-    QImage newImage1 = leftPixmapItem->pixmap().toImage();
-    QImage newImage2 = leftPixmapItem->pixmap().toImage();
-    QImage newImage3 = leftPixmapItem->pixmap().toImage();
-    QImage newImage4 = leftPixmapItem->pixmap().toImage();
-    QImage newImage5 = leftPixmapItem->pixmap().toImage();
-    QImage newImage6 = leftPixmapItem->pixmap().toImage();
-    QImage newImage7 = leftPixmapItem->pixmap().toImage();
+    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+    dialogBitPlane->displayBitPlane(originImage);
 
-    int width = originImage.width();
-    int height = originImage.height();
-
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            QColor color = QColor(originImage.pixel(i, j));
-            int gray = color.red();
-            QString binary = QString::number(gray, 2);
-
-            { // 最低层
-                int bit = gray & 0x1;
-                if (bit == 1)
-                    newImage7.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage7.setPixel(i, j, qRgb(0, 0, 0));
-            }
-
-            {
-                int bit = gray & 0x2;
-                if (bit == 0x2)
-                    newImage6.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage6.setPixel(i, j, qRgb(0, 0, 0));
-            }
-
-            {
-                int bit = gray & 0x4;
-                if (bit == 0x4)
-                    newImage5.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage5.setPixel(i, j, qRgb(0, 0, 0));
-            }
-
-            {
-                int bit = gray & 0x8;
-                if (bit == 0x8)
-                    newImage4.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage4.setPixel(i, j, qRgb(0, 0, 0));
-            }
-
-            {
-                int bit = gray & 0x10;
-                if (bit == 0x10)
-                    newImage3.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage3.setPixel(i, j, qRgb(0, 0, 0));
-            }
-
-            {
-                int bit = gray & 0x20;
-                if (bit == 0x20)
-                    newImage2.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage2.setPixel(i, j, qRgb(0, 0, 0));
-            }
-
-            {
-                int bit = gray & 0x40;
-                if (bit == 0x40)
-                    newImage1.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage1.setPixel(i, j, qRgb(0, 0, 0));
-            }
-
-            { // 最高层
-                int bit = gray & 0x80;
-                if (bit == 0x80)
-                    newImage0.setPixel(i, j, qRgb(255, 255, 255));
-                else
-                    newImage0.setPixel(i, j, qRgb(0, 0, 0));
-            }
-        }
-    }
-
-    dialogBitPlane->graphicsItem0 = dialogBitPlane->graphicsSceneBitPlane0->addPixmap(QPixmap::fromImage(newImage0));
-    dialogBitPlane->graphicsItem1 = dialogBitPlane->graphicsSceneBitPlane1->addPixmap(QPixmap::fromImage(newImage1));
-    dialogBitPlane->graphicsItem2 = dialogBitPlane->graphicsSceneBitPlane2->addPixmap(QPixmap::fromImage(newImage2));
-    dialogBitPlane->graphicsItem3 = dialogBitPlane->graphicsSceneBitPlane3->addPixmap(QPixmap::fromImage(newImage3));
-    dialogBitPlane->graphicsItem4 = dialogBitPlane->graphicsSceneBitPlane4->addPixmap(QPixmap::fromImage(newImage4));
-    dialogBitPlane->graphicsItem5 = dialogBitPlane->graphicsSceneBitPlane5->addPixmap(QPixmap::fromImage(newImage5));
-    dialogBitPlane->graphicsItem6 = dialogBitPlane->graphicsSceneBitPlane6->addPixmap(QPixmap::fromImage(newImage6));
-    dialogBitPlane->graphicsItem7 = dialogBitPlane->graphicsSceneBitPlane7->addPixmap(QPixmap::fromImage(newImage7));
+    delete originImage;
 } // displayBitPlane
 
 void MainWindow::displayHistogram()
@@ -427,9 +336,11 @@ void MainWindow::displayHistogram()
     else
         dialogHistogram->show();
 
-    QImage originImage = leftPixmapItem->pixmap().toImage();
+    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
 
-    dialogHistogram->computeHistogram(originImage);
+    dialogHistogram->displayHistogram(originImage);
+
+    delete originImage;
 } // diaplayHistogram
 
 void MainWindow::on_actionOpen_triggered()
@@ -527,7 +438,7 @@ void MainWindow::on_actionClose_triggered()
 
 void MainWindow::on_actionQuit_triggered()
 {
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":";
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":" << "程序运行结束";
     qApp->quit();
 } // on_actionQuit_triggered
 
