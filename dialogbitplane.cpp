@@ -3,6 +3,7 @@
 DialogBitPlane::DialogBitPlane(QWidget *parent) : QDialog(parent)
 {
     setup();
+    setAttribute(Qt::WA_DeleteOnClose);
 }
 
 DialogBitPlane::~DialogBitPlane()
@@ -185,7 +186,9 @@ void DialogBitPlane::displayBitPlane(QImage *originImage)
             }
         }
     }
-
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "显示位平面";
+                       
     graphicsItem0 = graphicsSceneBitPlane0->addPixmap(QPixmap::fromImage(newImage0));
     graphicsItem1 = graphicsSceneBitPlane1->addPixmap(QPixmap::fromImage(newImage1));
     graphicsItem2 = graphicsSceneBitPlane2->addPixmap(QPixmap::fromImage(newImage2));

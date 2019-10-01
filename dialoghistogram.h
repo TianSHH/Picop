@@ -3,6 +3,7 @@
 
 #include <QImage>
 #include <QPainter>
+#include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>

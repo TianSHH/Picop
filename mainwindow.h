@@ -88,15 +88,11 @@ public:
     QString getUserPath();
     void updateRightScene(QImage &newImage);
     void closeImage();
-    void showHideDialog(QDialog * dialog);
 
 signals:
     void signalSendImage(QImage *);
 
 private slots:
-    void displayBitPlane();
-    void displayHistogram();
-
     void emitSignalSendImage();
 
 private slots:

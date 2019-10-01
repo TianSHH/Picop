@@ -3,6 +3,7 @@
 DialogHistogram::DialogHistogram(QWidget *parent) : QDialog(parent)
 {
     setup();
+    setAttribute(Qt::WA_DeleteOnClose);
 }
 
 DialogHistogram::~DialogHistogram()
@@ -43,6 +44,9 @@ void DialogHistogram::init()
 
 void DialogHistogram::displayHistogram(QImage *originImage)
 {
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "显示直方图";
+                       
     if (!originImage->isNull())
     {
         for (int i = 0; i < originImage->height(); i++)

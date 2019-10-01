@@ -177,46 +177,6 @@ void MainWindow::closeImage()
                        << "关闭图像";
 } // closeImage
 
-void MainWindow::showHideDialog(QDialog *dialog)
-{
-    if (dialog->isVisible())
-        dialog->activateWindow();
-    else
-        dialog->show();
-} // showHideDialog
-
-void MainWindow::displayBitPlane()
-{
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "显示位平面";
-
-    DialogBitPlane *dialogBitPlane = new DialogBitPlane(nullptr);
-
-    showHideDialog(dialogBitPlane);
-
-    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
-
-    dialogBitPlane->displayBitPlane(originImage);
-
-    delete originImage;
-} // displayBitPlane
-
-void MainWindow::displayHistogram()
-{
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "显示直方图";
-
-    DialogHistogram *dialogHistogram = new DialogHistogram(nullptr);
-
-    showHideDialog(dialogHistogram);
-
-    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
-
-    dialogHistogram->displayHistogram(originImage);
-
-    delete originImage;
-} // diaplayHistogram
-
 void MainWindow::emitSignalSendImage()
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -326,7 +286,7 @@ void MainWindow::on_actionSetSamplingRate_triggered()
 {
     DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(this);
 
-    showHideDialog(dialogSamplingRate);
+    dialogSamplingRate->show();
 
     connect(dialogSamplingRate, SIGNAL(signalSetSamplingRate()), this, SLOT(emitSignalSendImage()));
 
@@ -337,7 +297,7 @@ void MainWindow::on_actionSetQuantifyLevel_triggered()
 {
     DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(this);
 
-    showHideDialog(dialogQuantifyLevel);
+    dialogQuantifyLevel->show();
 
     connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel()), this, SLOT(emitSignalSendImage()));
 
@@ -348,7 +308,7 @@ void MainWindow::on_actionSetGrayscaleThreshold_triggered()
 {
     DialogGrayscaleThreshold *dialogGrayscaleThreshold = new DialogGrayscaleThreshold(this);
 
-    showHideDialog(dialogGrayscaleThreshold);
+    dialogGrayscaleThreshold->show();
 
     connect(dialogGrayscaleThreshold, SIGNAL(signalSetGrayscaleThreshold()), this, SLOT(emitSignalSendImage()));
 
@@ -357,12 +317,29 @@ void MainWindow::on_actionSetGrayscaleThreshold_triggered()
 
 void MainWindow::on_actionDisplayBitPlane_triggered()
 {
-    displayBitPlane();
+    DialogBitPlane *dialogBitPlane = new DialogBitPlane(nullptr);
+
+    dialogBitPlane->show();
+
+    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+
+    dialogBitPlane->displayBitPlane(originImage);
+
+    delete originImage;
 } // on_actionDisplayBitPlane_triggered
 
 void MainWindow::on_actionDisplayHistogram_triggered()
 {
-    displayHistogram();
+
+    DialogHistogram *dialogHistogram = new DialogHistogram(nullptr);
+
+    dialogHistogram->show();
+
+    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+
+    dialogHistogram->displayHistogram(originImage);
+
+    delete originImage;
 } // on_actionDisplayHistogram_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
