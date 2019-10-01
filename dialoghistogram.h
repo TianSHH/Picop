@@ -1,6 +1,7 @@
 #ifndef DIALOGHISTOGRAM_H
 #define DIALOGHISTOGRAM_H
 
+#include <QColor>
 #include <QImage>
 #include <QPainter>
 #include <QtCore/QDateTime>
@@ -8,6 +9,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
+#include <cmath>
 #include <iostream>
 #include <sstream>
 
@@ -35,9 +37,20 @@ public:
     int heightMaxLine = 148;                      // 直方图中最长线的最大高度
     int heightHistogram = heightMaxLine + 10 + 2; // 直方图高度
 
-    int dist = 30;                       // 直方图之间的距离
-    int xBase = 30;                       // 第一个直方图原点的 x 坐标
-    int yBase = 30 + heightHistogram + 2; // 第一个直方图原点的 y 坐标
+    // 容纳直方图和相关信息的矩形框初始坐标, 原点在左上方
+    int xBaseRect = 30; // 第一个直方图矩形框 x 坐标
+    int yBaseRect = 30; // 第一个直方图矩形框 y 坐标
+
+    int paddingUp = 20;     // 矩形框上内边距
+    int paddingLeft = 15;   // 矩形框左内边距
+    int paddingRight = 15;  // 矩形框右内边距
+    int paddingBottom = 90; // 矩形框下内边距
+
+    int widthRect = paddingLeft + widthHistogram + paddingRight;
+    int heightRect = paddingUp + heightHistogram + paddingBottom;
+
+    int distH = widthRect + 30;  // 直方图之间的水平距离
+    int distV = heightRect + 30; // 直方图之间的竖直距离
 
     int width;
     int height;
@@ -51,7 +64,11 @@ public:
 
     void paintEvent(QPaintEvent *e);
 
-    void drawHistogram(int xBase, int yBase, int width, int height, int *histogram);
+    void drawHistogram(int xBaseRect, int yBaseRect, int *histogram, QColor color);
+
+    QString getMean(int *histogram);
+    QString getMedian(int *histogram);
+    QString getSD(int *histogram);
 };
 
 #endif // DIALOGHISTOGRAM_H
