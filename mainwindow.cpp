@@ -185,7 +185,7 @@ void MainWindow::emitSignalSendImage()
     QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
 
     emit signalSendImage(originImage);
-}
+} // emitSignalSendImage
 
 void MainWindow::on_actionOpen_triggered()
 {
@@ -348,4 +348,4 @@ void MainWindow::updateRightImage(QImage &newImage)
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "更新右侧图像通过槽函数";
-}
+} // updateRightImage

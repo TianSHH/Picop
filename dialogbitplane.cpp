@@ -188,7 +188,7 @@ void DialogBitPlane::displayBitPlane(QImage *originImage)
     }
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "显示位平面";
-                       
+
     graphicsItem0 = graphicsSceneBitPlane0->addPixmap(QPixmap::fromImage(newImage0));
     graphicsItem1 = graphicsSceneBitPlane1->addPixmap(QPixmap::fromImage(newImage1));
     graphicsItem2 = graphicsSceneBitPlane2->addPixmap(QPixmap::fromImage(newImage2));
@@ -197,4 +197,4 @@ void DialogBitPlane::displayBitPlane(QImage *originImage)
     graphicsItem5 = graphicsSceneBitPlane5->addPixmap(QPixmap::fromImage(newImage5));
     graphicsItem6 = graphicsSceneBitPlane6->addPixmap(QPixmap::fromImage(newImage6));
     graphicsItem7 = graphicsSceneBitPlane7->addPixmap(QPixmap::fromImage(newImage7));
-}
+} // displayBitPlane
