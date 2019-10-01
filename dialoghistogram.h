@@ -22,7 +22,7 @@ public:
     // index 256 => maximum value
     // index 257 => total value of the dark component
     // index 258 => total value of the light component
-    int bwHistogram[259];
+    int grayHistogram[259];
 
     // index 0 to 255 => count of image's pixels for this value
     // index 256 => maximum value
@@ -39,12 +39,12 @@ public:
 
     void paintEvent(QPaintEvent *e);
 
-    void drawBwHistogram(int xBase, int yBase, int height);
+    void drawGrayHistogram(int xBase, int yBase, int height);
     void drawRedHistogram(int xBase, int yBase, int height);
     void drawGreenHistogram(int xBase, int yBase, int height);
     void drawBlueHistogram(int xBase, int yBase, int height);
 
-    int getBwHistogram(int index);
+    int getGrayHistogram(int index);
     int getRedHistogram(int index);
     int getGreenHistogram(int index);
     int getBlueHistogram(int index);
