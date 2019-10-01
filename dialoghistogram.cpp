@@ -12,21 +12,14 @@ DialogHistogram::~DialogHistogram()
 
 void DialogHistogram::setup()
 {
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "setup";
-
     init();
 
     this->setFixedSize(606, 410);
-
     this->setWindowTitle("直方图 - Picop");
 } // setup
 
 void DialogHistogram::init()
 {
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "init";
-
     for (int i = 0; i < 256; i++)
     {
         grayHistogram[i] = 0;
@@ -50,9 +43,6 @@ void DialogHistogram::init()
 
 void DialogHistogram::displayHistogram(QImage *originImage)
 {
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "displayHistogram";
-
     width = originImage->width();
     height = originImage->height();
     totalPixel = width * height;
@@ -107,9 +97,6 @@ void DialogHistogram::displayHistogram(QImage *originImage)
 
 void DialogHistogram::paintEvent(QPaintEvent *event)
 {
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "paintEvent";
-
     Q_UNUSED(event);
 
     QPainter painter(this);
@@ -126,9 +113,6 @@ void DialogHistogram::paintEvent(QPaintEvent *event)
 
 void DialogHistogram::drawHistogram(int xBase, int yBase, int widthHistogram, int heightHistogram, int *histogram)
 {
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "drawGrayHistogram";
-
     QPainter painter(this);
 
     float max = histogram[256];
