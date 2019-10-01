@@ -29,10 +29,10 @@
 #include <QToolBar>
 #include <QtCore/QDateTime>
 
-#define WINDOW_TITLE "ImageQt"
-#define WINDOW_CRITICAL "Error - ImageQt"
-#define WINDOW_WARNING "Notice - ImageQt"
-#define WINDOW_ABOUT "About - ImageQt"
+#define WINDOW_TITLE "Picop"
+#define WINDOW_CRITICAL "Error - Picop"
+#define WINDOW_WARNING "Notice - Picop"
+#define WINDOW_ABOUT "About - Picop"
 
 class MainWindow : public QMainWindow
 {
