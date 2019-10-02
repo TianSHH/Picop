@@ -121,15 +121,6 @@ void DialogHistogram::drawHistogram(int xBaseRect, int yBaseRect, int *histogram
     painter.setPen(Qt::black);
     painter.drawText(xBaseRect + 20, yBaseRect + 5, "灰度通道"); // 一个汉字的高为 10, 宽为 15
 
-    painter.setPen(Qt::gray);
-    painter.drawLine(xBaseRect, yBaseRect, xBaseRect, yBaseRect + heightRect);                          // left
-    painter.drawLine(xBaseRect, yBaseRect, xBaseRect + 10, yBaseRect);                                  // up
-    painter.drawLine(xBaseRect + 90, yBaseRect, xBaseRect + widthRect, yBaseRect);                      // up
-    painter.drawLine(xBaseRect + widthRect, yBaseRect, xBaseRect + widthRect, yBaseRect + heightRect);  // right
-    painter.drawLine(xBaseRect, yBaseRect + heightRect, xBaseRect + widthRect, yBaseRect + heightRect); // buttom
-
-    painter.drawRect(xBaseRect + paddingLeft, yBaseRect + paddingUp, widthHistogram, heightHistogram);
-
     float max = histogram[256];
 
     // 直方图初始坐标, 原点在左下方
@@ -149,6 +140,14 @@ void DialogHistogram::drawHistogram(int xBaseRect, int yBaseRect, int *histogram
     painter.drawText(xBaseHistogram + 100, yBaseHistogram + 50, getMedian(histogram));
     painter.drawText(xBaseHistogram + 100, yBaseHistogram + 75, getSD(histogram));
 
+    painter.setPen(Qt::gray);
+    painter.drawLine(xBaseRect, yBaseRect, xBaseRect, yBaseRect + heightRect);                          // left
+    painter.drawLine(xBaseRect, yBaseRect, xBaseRect + 10, yBaseRect);                                  // up
+    painter.drawLine(xBaseRect + 90, yBaseRect, xBaseRect + widthRect, yBaseRect);                      // up
+    painter.drawLine(xBaseRect + widthRect, yBaseRect, xBaseRect + widthRect, yBaseRect + heightRect);  // right
+    painter.drawLine(xBaseRect, yBaseRect + heightRect, xBaseRect + widthRect, yBaseRect + heightRect); // buttom
+
+    painter.drawRect(xBaseRect + paddingLeft, yBaseRect + paddingUp, widthHistogram, heightHistogram);
 } // drawHistogram
 
 QString DialogHistogram::getMean(int *histogram)
