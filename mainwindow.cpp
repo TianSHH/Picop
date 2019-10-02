@@ -1,3 +1,6 @@
+// TODO 根据打开图像大小自动调整窗口大小
+// TODO 实现滚轮控制图片缩放
+// TODO 自选, 实现bmp2txt
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -5,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     setup();
     retranslate();
+    setStatus(false);
 }
 
 MainWindow::~MainWindow()
@@ -40,7 +44,6 @@ void MainWindow::setup()
     actionDisplayBitPlane->setObjectName(QStringLiteral("actionDisplayBitPlane"));
     actionDisplayHistogram = new QAction(this);
     actionDisplayHistogram->setObjectName(QStringLiteral("actionDisplayHistogram"));
-
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
 
@@ -78,9 +81,14 @@ void MainWindow::setup()
     toolBar->setObjectName(QStringLiteral("toolBar"));
     this->addToolBar(Qt::TopToolBarArea, toolBar);
 
+    statusSize = new QLabel(this);
+    statusSize->setObjectName(QStringLiteral("stuatusSize"));
+
     statusBar = new QStatusBar(this);
     statusBar->setObjectName(QStringLiteral("statusBar"));
     this->setStatusBar(statusBar);
+
+    // 菜单栏添加组件
 
     menuBar->addAction(menuFile->menuAction());
     menuBar->addAction(menuEdit->menuAction());
@@ -103,6 +111,10 @@ void MainWindow::setup()
     menuDisplay->addAction(actionDisplayHistogram);
 
     menuHelp->addAction(actionAbout);
+
+    // 状态栏添加组件
+
+    statusBar->addPermanentWidget(statusSize);
 
     leftScene = new QGraphicsScene;
     rightScene = new QGraphicsScene;
@@ -149,6 +161,8 @@ void MainWindow::retranslate()
     menuEdit->setTitle(QApplication::translate("MainWindow", "编辑(&E)", Q_NULLPTR));
     menuDisplay->setTitle(QApplication::translate("MainWindow", "显示(&D)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
+
+    statusSize->setText(QApplication::translate("MainWindow", "", Q_NULLPTR));
 } // retranslate
 
 QString MainWindow::getUserPath()
@@ -177,6 +191,20 @@ void MainWindow::closeImage()
                        << "关闭图像";
 } // closeImage
 
+void MainWindow::setStatus(bool status)
+{
+    actionSave->setEnabled(status);
+    actionSaveAs->setEnabled(status);
+    actionClose->setEnabled(status);
+
+    actionSetSamplingRate->setEnabled(status);
+    actionSetQuantifyLevel->setEnabled(status);
+    actionSetGrayscaleThreshold->setEnabled(status);
+
+    actionDisplayBitPlane->setEnabled(status);
+    actionDisplayHistogram->setEnabled(status);
+} // setStatus
+
 void MainWindow::emitSignalSendImage()
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -189,8 +217,6 @@ void MainWindow::emitSignalSendImage()
 
 void MainWindow::on_actionOpen_triggered()
 {
-    closeImage();
-
     imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
                                              tr("All Files (*);;"
                                                 "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
@@ -224,6 +250,12 @@ void MainWindow::on_actionOpen_triggered()
 
         rightImage.load(imagePath);
         rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(rightImage));
+
+        statusSize->setText(QString::number(leftPixmapItem->pixmap().width()) + " x " + QString::number(leftPixmapItem->pixmap().height()));
+
+        setStatus(true);
+
+        this->setWindowTitle(info->fileName() + " - Picop");
 
         qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                            << "打开图像" << imagePath;
@@ -273,6 +305,10 @@ void MainWindow::on_actionSaveAs_triggered()
 void MainWindow::on_actionClose_triggered()
 {
     closeImage();
+
+    statusSize->setText("");
+
+    setStatus(false);
 } // on_actionClose_triggered
 
 void MainWindow::on_actionQuit_triggered()

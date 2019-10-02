@@ -10,7 +10,6 @@
 #include <QApplication>
 #include <QDebug>
 #include <QFile>
-#include <QtWidgets/QDialog>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QGraphicsPixmapItem>
@@ -28,6 +27,7 @@
 #include <QStatusBar>
 #include <QToolBar>
 #include <QtCore/QDateTime>
+#include <QtWidgets/QDialog>
 
 #define WINDOW_TITLE "Picop"
 #define WINDOW_CRITICAL "Error - Picop"
@@ -74,6 +74,8 @@ public:
 
     QAction *actionAbout;
 
+    QLabel *statusSize;
+
     QGraphicsScene *leftScene;
     QGraphicsScene *rightScene;
     QGraphicsPixmapItem *leftPixmapItem;
@@ -88,6 +90,7 @@ public:
     QString getUserPath();
     void updateRightScene(QImage &newImage);
     void closeImage();
+    void setStatus(bool status);
 
 signals:
     void signalSendImage(QImage *);
@@ -111,7 +114,7 @@ private slots:
 
     // void on_actionAbout_triggered();
 
-    void updateRightImage(QImage & newImage);
+    void updateRightImage(QImage &newImage);
 };
 
 #endif // MAINWINDOW_H
