@@ -47,6 +47,9 @@ void MainWindow::setup()
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
 
+    actionPointOperationLinear = new QAction(this);
+    actionPointOperationLinear->setObjectName(QStringLiteral("actionPointOperationLinear"));
+
     centralWidget = new QWidget(this);
     centralWidget->setObjectName(QStringLiteral("centralWidget"));
     gridLayout = new QGridLayout(centralWidget);
@@ -73,6 +76,8 @@ void MainWindow::setup()
     menuEdit->setObjectName(QStringLiteral("menuEdit"));
     menuDisplay = new QMenu(menuBar);
     menuDisplay->setObjectName(QStringLiteral("menuDisplay"));
+    menuPointOperation = new QMenu(menuBar);
+    menuPointOperation->setObjectName(QStringLiteral("menuPointOperation"));
     menuHelp = new QMenu(menuBar);
     menuHelp->setObjectName(QStringLiteral("menuHelp"));
     this->setMenuBar(menuBar);
@@ -109,6 +114,8 @@ void MainWindow::setup()
 
     menuDisplay->addAction(actionDisplayBitPlane);
     menuDisplay->addAction(actionDisplayHistogram);
+
+    menuPointOperation->addAction(actionPointOperationLinear);
 
     menuHelp->addAction(actionAbout);
 
@@ -153,6 +160,8 @@ void MainWindow::retranslate()
 
     actionDisplayBitPlane->setText(QApplication::translate("MainWindow", "显示位平面(&B)", Q_NULLPTR));
     actionDisplayHistogram->setText(QApplication::translate("MainWindow", "显示直方图(&H)", Q_NULLPTR));
+
+    actionPointOperationLinear->setText(QApplication::translate("MainWindow", "设定线性点运算参数(&L)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -377,6 +386,16 @@ void MainWindow::on_actionDisplayHistogram_triggered()
 
     delete originImage;
 } // on_actionDisplayHistogram_triggered
+
+void MainWindow::on_actionPointOperationLinear_triggered()
+{
+    DialogLinearPointOperation *_dialogLinearPointOperation = new DialogLinearPointOperation(nullptr);
+
+    _dialogLinearPointOperation->show();
+
+    connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperation()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperationFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
+} // on_actionPointOperationLinear_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

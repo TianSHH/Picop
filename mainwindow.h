@@ -4,6 +4,7 @@
 #include "dialogbitplane.h"
 #include "dialoggrayscalethreshold.h"
 #include "dialoghistogram.h"
+#include "dialoglinearpointoperation.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
 #include <QAction>
@@ -73,7 +74,7 @@ public:
     QAction *actionDisplayBitPlane;
     QAction *actionDisplayHistogram;
 
-    QAction *actionLinearPointOperation;
+    QAction *actionPointOperationLinear;
 
     QAction *actionAbout;
 
@@ -114,6 +115,8 @@ private slots:
 
     void on_actionDisplayBitPlane_triggered();
     void on_actionDisplayHistogram_triggered();
+
+    void on_actionPointOperationLinear_triggered();
 
     // void on_actionAbout_triggered();
 
