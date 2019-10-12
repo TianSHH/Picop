@@ -57,6 +57,7 @@ public:
     QMenu *menuFile;
     QMenu *menuEdit;
     QMenu *menuDisplay;
+    QMenu *menuPointOperation;
     QMenu *menuHelp;
 
     QAction *actionOpen;
@@ -71,6 +72,8 @@ public:
 
     QAction *actionDisplayBitPlane;
     QAction *actionDisplayHistogram;
+
+    QAction *actionLinearPointOperation;
 
     QAction *actionAbout;
 
