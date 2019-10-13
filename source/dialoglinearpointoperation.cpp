@@ -51,15 +51,15 @@ void DialogLinearPointOperation::setup()
     this->setLayout(gridLayout);
 
     retranslate();
-}
+} // setup
 
 void DialogLinearPointOperation::retranslate()
 {
     this->setWindowTitle("设定线性点运算参数");
 
-    labelSlope->setText(QApplication::translate("设定线性点操作参数", "斜率", Q_NULLPTR));
-    labelOffset->setText(QApplication::translate("设定线性点操作参数", "偏移量", Q_NULLPTR));
-}
+    labelSlope->setText(QApplication::translate("设定线性点操作参数", "斜率: ", Q_NULLPTR));
+    labelOffset->setText(QApplication::translate("设定线性点操作参数", "偏移量: ", Q_NULLPTR));
+} // retranslate
 
 void DialogLinearPointOperation::emitSignalPointLinearOperation()
 {
@@ -71,7 +71,7 @@ void DialogLinearPointOperation::emitSignalPointLinearOperation()
                        << "斜率:" << slope << "偏移量:" << offset;
 
     emit signalLinearPointOperation();
-}
+} // emitSignalPointLinearOperation
 
 void DialogLinearPointOperation::pointOperation(QImage *originImage)
 {
@@ -105,4 +105,4 @@ void DialogLinearPointOperation::pointOperation(QImage *originImage)
     }
 
     emit signalLinearPointOperationFinished((QImage &)(*originImage));
-}
+} // pointOperation

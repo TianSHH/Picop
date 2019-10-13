@@ -382,7 +382,7 @@ void MainWindow::on_actionDisplayHistogram_triggered()
 
     dialogHistogram->show();
 
-    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+    QImage *originImage = new QImage(rightPixmapItem->pixmap().toImage()); // 显示右侧图像直方图
 
     dialogHistogram->displayHistogram(originImage);
 

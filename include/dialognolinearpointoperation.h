@@ -20,7 +20,7 @@ public:
     explicit DialogNolinearpointoperation(QWidget *parent = nullptr);
     ~DialogNolinearpointoperation();
 
-
+public:
 };
 
 #endif // DIALOGNOLINEARPOINTOPERATION_H
