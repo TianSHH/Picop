@@ -5,18 +5,23 @@
             "label": "Compile", // 任务名称，与launch.json的preLaunchTask相对应
             "command": "qmake", // 要使用的编译器
             "args": [
-                "/home/xhls/Documents/Code/Picop/Picop/Picop/picop.pro",
+                "/home/xhls/Documents/Code/Picop/Picop.pro",
                 "-spec",
                 "linux-g++",
                 "CONFIG+=debug",
                 "CONFIG+=qml_debug",
+                "|",
+                "lolcat",
                 ";",
                 "make",
                 "-f",
-                "/home/xhls/Documents/Code/Picop/Picop/Picop/Makefile",
+                "/home/xhls/Documents/Code/Picop/Makefile",
                 "qmake_all",
                 ";",
-                "make"
+                "make",
+                "-j8",
+                "|",
+                "lolcat"
             ],
             // "args": [
             //     "${file}",
