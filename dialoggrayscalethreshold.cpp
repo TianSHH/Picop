@@ -29,7 +29,7 @@ void DialogGrayscaleThreshold::setup()
     gridLayout->addWidget(slider, 0, 1);
 
     this->setLayout(gridLayout);
-    this->resize(300, 50);
+    this->setFixedSize(300, 50);
     this->setWindowTitle("设定灰度阀值");
 
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(setLineEditValue()));

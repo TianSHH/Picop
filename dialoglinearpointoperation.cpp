@@ -17,10 +17,16 @@ void DialogLinearPointOperation::setup()
 {
     if (this->objectName().isEmpty())
         this->setObjectName(QStringLiteral("DialogLinearPointOperation"));
-    this->resize(300, 50);
+    this->setFixedSize(300, 112);
 
     gridLayout = new QGridLayout(this);
     gridLayout->setObjectName(QStringLiteral("gridLayout"));
+
+    labelSlope = new QLabel(this);
+    labelSlope->setObjectName(QStringLiteral("labelSlope"));
+
+    labelOffset = new QLabel(this);
+    labelOffset->setObjectName(QStringLiteral("labelOffset"));
 
     lineEditSlope = new QLineEdit(this);
     lineEditSlope->setObjectName(QStringLiteral("lineEditSlope"));
@@ -33,9 +39,11 @@ void DialogLinearPointOperation::setup()
     buttonBox->setOrientation(Qt::Horizontal); // 设置 buttonBox 内部的布局
     buttonBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
 
-    gridLayout->addWidget(lineEditSlope, 0, 0);
-    gridLayout->addWidget(lineEditOffset, 0, 1);
-    gridLayout->addWidget(buttonBox, 0, 2);
+    gridLayout->addWidget(labelSlope, 0, 0);
+    gridLayout->addWidget(lineEditSlope, 0, 1);
+    gridLayout->addWidget(labelOffset, 0, 2);
+    gridLayout->addWidget(lineEditOffset, 0, 3);
+    gridLayout->addWidget(buttonBox, 1, 0, 1, 4);
 
     QObject::connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
     QObject::connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
@@ -48,6 +56,9 @@ void DialogLinearPointOperation::setup()
 void DialogLinearPointOperation::retranslate()
 {
     this->setWindowTitle("设定线性点运算参数");
+
+    labelSlope->setText(QApplication::translate("设定线性点操作参数", "斜率", Q_NULLPTR));
+    labelOffset->setText(QApplication::translate("设定线性点操作参数", "偏移量", Q_NULLPTR));
 }
 
 void DialogLinearPointOperation::emitSignalPointLinearOperation()
@@ -64,8 +75,8 @@ void DialogLinearPointOperation::emitSignalPointLinearOperation()
 
 void DialogLinearPointOperation::pointOperation(QImage *originImage)
 {
-    int slope = lineEditSlope->text().toInt();
-    int offset = lineEditOffset->text().toInt();
+    double slope = lineEditSlope->text().toDouble();
+    double offset = lineEditOffset->text().toDouble();
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "进行线性点运算, 参数,"
@@ -85,9 +96,9 @@ void DialogLinearPointOperation::pointOperation(QImage *originImage)
         for (int j = 0; j < height; j++)
         {
             QColor _color = QColor(originImage->pixel(i, j));
-            int r = _color.red() * slope + offset > 255 ? 255 : (_color.red() * slope + offset < 0 ? 0 : _color.red() * slope + offset);
-            int g = _color.green() * slope + offset > 255 ? 255 : (_color.green() * slope + offset < 0 ? 0 : _color.green() * slope + offset);
-            int b = _color.blue() * slope + offset > 255 ? 255 : (_color.blue() * slope + offset < 0 ? 0 : _color.blue() * slope + offset);
+            double r = _color.red() * slope + offset > 255 ? 255 : (_color.red() * slope + offset < 0 ? 0 : _color.red() * slope + offset);
+            double g = _color.green() * slope + offset > 255 ? 255 : (_color.green() * slope + offset < 0 ? 0 : _color.green() * slope + offset);
+            double b = _color.blue() * slope + offset > 255 ? 255 : (_color.blue() * slope + offset < 0 ? 0 : _color.blue() * slope + offset);
 
             originImage->setPixel(i, j, qRgb(r, g, b));
         }

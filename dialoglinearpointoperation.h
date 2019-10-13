@@ -3,10 +3,12 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
+#include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 
@@ -24,10 +26,13 @@ public:
 
     QDialogButtonBox *buttonBox;
 
+    QLabel *labelSlope;
+    QLabel *labelOffset;
+
     QLineEdit *lineEditSlope;
     QLineEdit *lineEditOffset;
 
-    QMainWindow *ptr = (QMainWindow *) parentWidget();
+    QMainWindow *ptr = (QMainWindow *)parentWidget();
 
 public:
     void setup();

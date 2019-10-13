@@ -29,7 +29,7 @@ void DialogSamplingRate::setup()
 {
     if (this->objectName().isEmpty())
         this->setObjectName(QStringLiteral("DialogSamplingRate"));
-    this->resize(400, 112);
+    this->setFixedSize(400, 112);
     gridLayout = new QGridLayout(this);
     gridLayout->setObjectName(QStringLiteral("gridLayout"));
     lineEdit = new QLineEdit(this);
