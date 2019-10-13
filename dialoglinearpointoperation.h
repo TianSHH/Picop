@@ -1,5 +1,5 @@
-#ifndef DIALOGLINEARPOINTOPERATION
-#define DIALOGLINEARPOINTOPERATION
+#ifndef DIALOGLINEARPOINTOPERATION_H
+#define DIALOGLINEARPOINTOPERATION_H
 
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
@@ -12,6 +12,9 @@
 
 class DialogLinearPointOperation : public QDialog
 {
+
+    Q_OBJECT
+
 public:
     explicit DialogLinearPointOperation(QWidget *parent = nullptr);
     ~DialogLinearPointOperation();
@@ -40,4 +43,4 @@ private slots:
     void pointOperation(QImage *originImage);
 };
 
-#endif // DIALOGLINEARPOINTOPERATION
+#endif // DIALOGLINEARPOINTOPERATION_H

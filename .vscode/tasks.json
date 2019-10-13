@@ -3,7 +3,21 @@
     "tasks": [
         {
             "label": "Compile", // 任务名称，与launch.json的preLaunchTask相对应
-            "command": "g++", // 要使用的编译器
+            "command": "qmake", // 要使用的编译器
+            "args": [
+                "/home/xhls/Documents/Code/Picop/Picop/Picop/picop.pro",
+                "-spec",
+                "linux-g++",
+                "CONFIG+=debug",
+                "CONFIG+=qml_debug",
+                ";",
+                "make",
+                "-f",
+                "/home/xhls/Documents/Code/Picop/Picop/Picop/Makefile",
+                "qmake_all",
+                ";",
+                "make"
+            ],
             // "args": [
             //     "${file}",
             //     "", // 指定输出文件名，不加该参数则默认输出a.exe，Linux下默认a.out
@@ -27,11 +41,10 @@
             //     "focus": false, // 设为true后可以使执行task时焦点聚集在终端，但对编译c和c++来说，设为true没有意义
             //     "panel": "shared" // 不同的文件的编译信息共享一个终端面板
             // }
-            // "problemMatcher":"$g++" // 如果你不使用clang，去掉前面的注释符，并在上一条之后加个逗号。照着我的教程做的不需要改（也可以把这行删去)
+            // "problemMatcher": "g++" // 如果你不使用clang，去掉前面的注释符，并在上一条之后加个逗号。照着我的教程做的不需要改（也可以把这行删去)
         }
     ]
 }
-
 // {
 //     "version": "2.0.0",
 //     "tasks": [
@@ -65,4 +78,3 @@
 //         }
 //     ]
 // }
-

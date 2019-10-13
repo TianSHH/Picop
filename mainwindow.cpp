@@ -98,6 +98,7 @@ void MainWindow::setup()
     menuBar->addAction(menuFile->menuAction());
     menuBar->addAction(menuEdit->menuAction());
     menuBar->addAction(menuDisplay->menuAction());
+    menuBar->addAction(menuPointOperation->menuAction());
     menuBar->addAction(menuHelp->menuAction());
 
     menuFile->addAction(actionOpen);
@@ -169,6 +170,7 @@ void MainWindow::retranslate()
     menuFile->setTitle(QApplication::translate("MainWindow", "文件(&F)", Q_NULLPTR));
     menuEdit->setTitle(QApplication::translate("MainWindow", "编辑(&E)", Q_NULLPTR));
     menuDisplay->setTitle(QApplication::translate("MainWindow", "显示(&D)", Q_NULLPTR));
+    menuPointOperation->setTitle(QApplication::translate("MainWindow", "点运算(&P)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 
     statusSize->setText(QApplication::translate("MainWindow", "", Q_NULLPTR));
@@ -389,7 +391,7 @@ void MainWindow::on_actionDisplayHistogram_triggered()
 
 void MainWindow::on_actionPointOperationLinear_triggered()
 {
-    DialogLinearPointOperation *_dialogLinearPointOperation = new DialogLinearPointOperation(nullptr);
+    DialogLinearPointOperation *_dialogLinearPointOperation = new DialogLinearPointOperation(this);
 
     _dialogLinearPointOperation->show();
 

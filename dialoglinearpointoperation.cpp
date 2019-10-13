@@ -5,7 +5,7 @@ DialogLinearPointOperation::DialogLinearPointOperation(QWidget *parent) : QDialo
     setup();
     setAttribute(Qt::WA_DeleteOnClose);
 
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalSetLinearOperationArg()));
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalPointLinearOperation()));
     connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(pointOperation(QImage *)));
 }
 
@@ -56,7 +56,8 @@ void DialogLinearPointOperation::emitSignalPointLinearOperation()
     int offset = lineEditOffset->text().toInt();
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "设定点线性点运算参数" << slope << offset;
+                       << "设定点线性点运算参数"
+                       << "斜率:" << slope << "偏移量:" << offset;
 
     emit signalLinearPointOperation();
 }
@@ -67,7 +68,8 @@ void DialogLinearPointOperation::pointOperation(QImage *originImage)
     int offset = lineEditOffset->text().toInt();
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "进行线性点运算, 参数" << slope << offset;
+                       << "进行线性点运算, 参数,"
+                       << "斜率:" << slope << "偏移量:" << offset;
 
     if (slope == 1 && offset == 0)
     {
