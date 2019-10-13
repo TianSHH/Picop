@@ -121,7 +121,7 @@ void MainWindow::setup()
     menuDisplay->addAction(actionDisplayHistogram);
 
     menuPointOperation->addAction(actionPointOperationLinear);
-    menuPointOperation->addMenu(actionPointOperationNolinear); // 添加二级菜单
+    menuPointOperation->addMenu(actionPointOperationNolinear);                               // 添加二级菜单
     actionPointOperationNolinear->addAction(actionPointOperationNolinearGrayscaleTransform); // 二级菜单下添加Action
 
     menuHelp->addAction(actionAbout);
@@ -411,11 +411,15 @@ void MainWindow::on_actionPointOperationLinear_triggered()
 
 void MainWindow::on_actionPointOperationNolinearGrayscaleTransform_triggered()
 {
+    // qDebug() << "1";
     DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
+    // qDebug() << "2";
 
-    // _dialogNolinearPointOperation->show();
+    _dialogNolinearPointOperation->setupNolinearGrayscaleTransform();
+    _dialogNolinearPointOperation->show();
 
-    // _dialogNolinearPointOperation->setupNolinearGrayscaleTransform();
+    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperation()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperationFinshed(QImage &)), this, SLOT(updateRightImage(QImage &)));
 }
 
 void MainWindow::updateRightImage(QImage &newImage)
@@ -423,5 +427,5 @@ void MainWindow::updateRightImage(QImage &newImage)
     rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "更新右侧图像通过槽函数";
+                       << "通过槽函数更新右侧图像";
 } // updateRightImage

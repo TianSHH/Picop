@@ -4,24 +4,18 @@ DialogNolinearPointOperation::DialogNolinearPointOperation(QWidget *parent) : QD
 {
     setAttribute(Qt::WA_DeleteOnClose);
 
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalNolinearPointOperation()));
-    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(transformTypeSwitch(transformType, QImage *)));
+    // 触发的槽函数参数要和接收的信号所携带的参数一样
+    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(transformTypeSwitch(QImage *)));
 }
 
 DialogNolinearPointOperation::~DialogNolinearPointOperation()
 {
 }
 
-void DialogNolinearPointOperation::transformTypeSwitch(QString transformType, QImage *originImage)
+void DialogNolinearPointOperation::transformTypeSwitch(QImage *originImage)
 {
     if (transformType == "nolinearGrayscaleTransform")
         nolinearGrayscaleTransform(originImage);
-    else if (transformType == "sinTransform")
-    {
-    }
-    else if (transformType == "tanTransform")
-    {
-    }
 } // transformTypeSwitch
 
 void DialogNolinearPointOperation::setupNolinearGrayscaleTransform()
@@ -57,6 +51,8 @@ void DialogNolinearPointOperation::setupNolinearGrayscaleTransform()
     labelVar->setText(QApplication::translate("设定非线性灰度变换函数参数", "C", Q_NULLPTR));
 
     transformType = "nolinearGrayscaleTransform";
+
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalNolinearPointOperation()));
 }
 
 void DialogNolinearPointOperation::emitSignalNolinearPointOperation()
@@ -95,13 +91,13 @@ void DialogNolinearPointOperation::nolinearGrayscaleTransform(QImage *originImag
         {
             QColor _color = QColor(originImage->pixel(i, j));
 
-            double result = _color.red() + var * _color.red() * (rM - _color.red());
+            double result = (_color.red() + var * _color.red() * (rM - _color.red())) / 255;
             double r = result > 255 ? 255 : (result < 0 ? 0 : result);
 
-            result = _color.green() + var * _color.green() * (gM - _color.green());
+            result = (_color.green() + var * _color.green() * (gM - _color.green())) / 255;
             double g = result > 255 ? 255 : (result < 0 ? 0 : result);
 
-            result = _color.blue() + var * _color.blue() * (bM - _color.blue());
+            result = (_color.blue() + var * _color.blue() * (bM - _color.blue())) / 255;
             double b = result > 255 ? 255 : (result < 0 ? 0 : result);
 
             originImage->setPixel(i, j, qRgb(r, g, b));

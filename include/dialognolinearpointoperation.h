@@ -30,7 +30,7 @@ public:
 
     QMainWindow *ptr = (QMainWindow *)parentWidget();
 
-    QString transformType = "null";
+    QString transformType = "nullType";
 
     int rM = 0;
     int gM = 0;
@@ -48,7 +48,7 @@ signals:
 private slots:
     void emitSignalNolinearPointOperation();
 
-    void transformTypeSwitch(QString transformType, QImage *originImage);
+    void transformTypeSwitch(QImage *originImage);
 
 public:
     void nolinearGrayscaleTransform(QImage *originImage);

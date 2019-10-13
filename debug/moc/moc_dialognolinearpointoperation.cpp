@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DialogNolinearPointOperation_t {
-    QByteArrayData data[10];
-    char stringdata0[190];
+    QByteArrayData data[9];
+    char stringdata0[176];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,17 +38,15 @@ QT_MOC_LITERAL(3, 59, 35), // "signalNoLinearPointOperationF..."
 QT_MOC_LITERAL(4, 95, 7), // "QImage&"
 QT_MOC_LITERAL(5, 103, 32), // "emitSignalNolinearPointOperation"
 QT_MOC_LITERAL(6, 136, 19), // "transformTypeSwitch"
-QT_MOC_LITERAL(7, 156, 13), // "transformType"
-QT_MOC_LITERAL(8, 170, 7), // "QImage*"
-QT_MOC_LITERAL(9, 178, 11) // "originImage"
+QT_MOC_LITERAL(7, 156, 7), // "QImage*"
+QT_MOC_LITERAL(8, 164, 11) // "originImage"
 
     },
     "DialogNolinearPointOperation\0"
     "signalNoLinearPointOperation\0\0"
     "signalNoLinearPointOperationFinshed\0"
     "QImage&\0emitSignalNolinearPointOperation\0"
-    "transformTypeSwitch\0transformType\0"
-    "QImage*\0originImage"
+    "transformTypeSwitch\0QImage*\0originImage"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +69,7 @@ static const uint qt_meta_data_DialogNolinearPointOperation[] = {
 
  // slots: name, argc, parameters, tag, flags
        5,    0,   38,    2, 0x08 /* Private */,
-       6,    2,   39,    2, 0x08 /* Private */,
+       6,    1,   39,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -79,7 +77,7 @@ static const uint qt_meta_data_DialogNolinearPointOperation[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, 0x80000000 | 8,    7,    9,
+    QMetaType::Void, 0x80000000 | 7,    8,
 
        0        // eod
 };
@@ -93,7 +91,7 @@ void DialogNolinearPointOperation::qt_static_metacall(QObject *_o, QMetaObject::
         case 0: _t->signalNoLinearPointOperation(); break;
         case 1: _t->signalNoLinearPointOperationFinshed((*reinterpret_cast< QImage(*)>(_a[1]))); break;
         case 2: _t->emitSignalNolinearPointOperation(); break;
-        case 3: _t->transformTypeSwitch((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QImage*(*)>(_a[2]))); break;
+        case 3: _t->transformTypeSwitch((*reinterpret_cast< QImage*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
