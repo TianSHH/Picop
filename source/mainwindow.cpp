@@ -49,6 +49,10 @@ void MainWindow::setup()
 
     actionPointOperationLinear = new QAction(this);
     actionPointOperationLinear->setObjectName(QStringLiteral("actionPointOperationLinear"));
+    actionPointOperationNolinear = new QMenu(this); // 二级菜单
+    actionPointOperationNolinear->setObjectName(QStringLiteral("actionPointOperationNolinear"));
+    actionPointOperationNolinearGrayscaleTransform = new QAction(this);
+    actionPointOperationNolinearGrayscaleTransform->setObjectName(QStringLiteral("actionPointOperationNolinearGrayscaleTransform"));
 
     centralWidget = new QWidget(this);
     centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -117,6 +121,8 @@ void MainWindow::setup()
     menuDisplay->addAction(actionDisplayHistogram);
 
     menuPointOperation->addAction(actionPointOperationLinear);
+    menuPointOperation->addMenu(actionPointOperationNolinear); // 添加二级菜单
+    actionPointOperationNolinear->addAction(actionPointOperationNolinearGrayscaleTransform); // 二级菜单下添加Action
 
     menuHelp->addAction(actionAbout);
 
@@ -162,7 +168,9 @@ void MainWindow::retranslate()
     actionDisplayBitPlane->setText(QApplication::translate("MainWindow", "显示位平面(&B)", Q_NULLPTR));
     actionDisplayHistogram->setText(QApplication::translate("MainWindow", "显示直方图(&H)", Q_NULLPTR));
 
-    actionPointOperationLinear->setText(QApplication::translate("MainWindow", "设定线性点运算参数(&L)", Q_NULLPTR));
+    actionPointOperationLinear->setText(QApplication::translate("MainWindow", "线性点运算参数(&L)", Q_NULLPTR));
+    actionPointOperationNolinear->setTitle(QApplication::translate("MainWindow", "非线性点运算(&N)", Q_NULLPTR));
+    actionPointOperationNolinearGrayscaleTransform->setText(QApplication::translate("MainWindow", "灰度变换(&G)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -251,6 +259,8 @@ void MainWindow::on_actionOpen_triggered()
         }
 
         info = new QFileInfo(imagePath);
+
+        closeImage();
 
         QImage leftImage;
 
@@ -398,6 +408,15 @@ void MainWindow::on_actionPointOperationLinear_triggered()
     connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperation()), this, SLOT(emitSignalSendImage()));
     connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperationFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationLinear_triggered
+
+void MainWindow::on_actionPointOperationNolinearGrayscaleTransform_triggered()
+{
+    DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
+
+    // _dialogNolinearPointOperation->show();
+
+    // _dialogNolinearPointOperation->setupNolinearGrayscaleTransform();
+}
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

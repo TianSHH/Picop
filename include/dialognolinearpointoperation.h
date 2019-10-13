@@ -43,7 +43,7 @@ public:
 
 signals:
     void signalNoLinearPointOperation();
-    void signalNoLinearPointOperationFinshed();
+    void signalNoLinearPointOperationFinshed(QImage &);
 
 private slots:
     void emitSignalNolinearPointOperation();

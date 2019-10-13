@@ -5,6 +5,7 @@
 #include "dialoggrayscalethreshold.h"
 #include "dialoghistogram.h"
 #include "dialoglinearpointoperation.h"
+#include "dialognolinearpointoperation.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
 #include <QAction>
@@ -48,9 +49,6 @@ public:
 
     QGridLayout *gridLayout;
 
-    QGraphicsView *graphicsViewLeft;
-    QGraphicsView *graphicsViewRight;
-
     QMenuBar *menuBar;
     QToolBar *toolBar;
     QStatusBar *statusBar;
@@ -75,10 +73,15 @@ public:
     QAction *actionDisplayHistogram;
 
     QAction *actionPointOperationLinear;
+    QMenu *actionPointOperationNolinear;
+    QAction *actionPointOperationNolinearGrayscaleTransform;
 
     QAction *actionAbout;
 
     QLabel *statusSize;
+
+    QGraphicsView *graphicsViewLeft;
+    QGraphicsView *graphicsViewRight;
 
     QGraphicsScene *leftScene;
     QGraphicsScene *rightScene;
@@ -117,6 +120,7 @@ private slots:
     void on_actionDisplayHistogram_triggered();
 
     void on_actionPointOperationLinear_triggered();
+    void on_actionPointOperationNolinearGrayscaleTransform_triggered();
 
     // void on_actionAbout_triggered();
 

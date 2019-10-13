@@ -19,7 +19,7 @@ SOURCES += \
     source/dialoghistogram.cpp \
     source/dialoggrayscalethreshold.cpp \
     source/dialoglinearpointoperation.cpp \
-    # source/dialognolinearpointoperation.cpp
+    source/dialognolinearpointoperation.cpp
 
 HEADERS += \
         include/mainwindow.h \
@@ -29,7 +29,7 @@ HEADERS += \
     include/dialoghistogram.h \
     include/dialoggrayscalethreshold.h \
     include/dialoglinearpointoperation.h \
-    # include/dialognolinearpointoperation.h
+    include/dialognolinearpointoperation.h
 
     DESTDIR = bin
     OBJECTS_DIR = debug/obj

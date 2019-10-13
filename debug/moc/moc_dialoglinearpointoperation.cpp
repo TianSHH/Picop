@@ -36,7 +36,7 @@ QT_MOC_LITERAL(1, 27, 26), // "signalLinearPointOperation"
 QT_MOC_LITERAL(2, 54, 0), // ""
 QT_MOC_LITERAL(3, 55, 34), // "signalLinearPointOperationFin..."
 QT_MOC_LITERAL(4, 90, 7), // "QImage&"
-QT_MOC_LITERAL(5, 98, 30), // "emitSignalPointLinearOperation"
+QT_MOC_LITERAL(5, 98, 30), // "emitSignalLinearPointOperation"
 QT_MOC_LITERAL(6, 129, 14), // "pointOperation"
 QT_MOC_LITERAL(7, 144, 7), // "QImage*"
 QT_MOC_LITERAL(8, 152, 11) // "originImage"
@@ -45,7 +45,7 @@ QT_MOC_LITERAL(8, 152, 11) // "originImage"
     "DialogLinearPointOperation\0"
     "signalLinearPointOperation\0\0"
     "signalLinearPointOperationFinished\0"
-    "QImage&\0emitSignalPointLinearOperation\0"
+    "QImage&\0emitSignalLinearPointOperation\0"
     "pointOperation\0QImage*\0originImage"
 };
 #undef QT_MOC_LITERAL
@@ -90,7 +90,7 @@ void DialogLinearPointOperation::qt_static_metacall(QObject *_o, QMetaObject::Ca
         switch (_id) {
         case 0: _t->signalLinearPointOperation(); break;
         case 1: _t->signalLinearPointOperationFinished((*reinterpret_cast< QImage(*)>(_a[1]))); break;
-        case 2: _t->emitSignalPointLinearOperation(); break;
+        case 2: _t->emitSignalLinearPointOperation(); break;
         case 3: _t->pointOperation((*reinterpret_cast< QImage*(*)>(_a[1]))); break;
         default: ;
         }

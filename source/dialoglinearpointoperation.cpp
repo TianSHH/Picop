@@ -5,7 +5,7 @@ DialogLinearPointOperation::DialogLinearPointOperation(QWidget *parent) : QDialo
     setup();
     setAttribute(Qt::WA_DeleteOnClose);
 
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalLinearPointrOperation()));
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalLinearPointOperation()));
     connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(pointOperation(QImage *)));
 }
 
