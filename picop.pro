@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = picop
+TARGET = Picop
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -31,7 +31,8 @@ SOURCES += \
     dialogsamplingrate.cpp \
     dialogbitplane.cpp \
     dialoghistogram.cpp \
-    dialoggrayscalethreshold.cpp
+    dialoggrayscalethreshold.cpp \
+    dialoglinearpointoperation.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     dialogsamplingrate.h \
     dialogbitplane.h \
     dialoghistogram.h \
-    dialoggrayscalethreshold.h
+    dialoggrayscalethreshold.h \
+    dialoglinearpointoperation.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
