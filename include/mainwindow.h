@@ -75,6 +75,8 @@ public:
     QAction *actionPointOperationLinear;
     QMenu *actionPointOperationNolinear;
     QAction *actionPointOperationNolinearGrayscaleTransform;
+    QAction *actionPointOperationNoLinearSinTransform;
+    QAction *actionPointOperationNolinearTanTransform;
 
     QAction *actionAbout;
 
@@ -121,6 +123,8 @@ private slots:
 
     void on_actionPointOperationLinear_triggered();
     void on_actionPointOperationNolinearGrayscaleTransform_triggered();
+    void on_actionPointOperationNoLinearSinTransform_triggered();
+    void on_actionPointOperationNolinearTanTransform_triggered();
 
     // void on_actionAbout_triggered();
 

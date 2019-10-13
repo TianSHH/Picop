@@ -3,6 +3,7 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
+#include <QtMath>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
@@ -37,9 +38,8 @@ public:
     int bM = 0;
 
 public:
-    void setupNolinearGrayscaleTransform();
-    void setupSinTransform();
-    void setupTanTransform();
+    void setup();
+    void setTransformMode(QString mode);
 
 signals:
     void signalNoLinearPointOperation();
@@ -51,9 +51,9 @@ private slots:
     void transformTypeSwitch(QImage *originImage);
 
 public:
-    void nolinearGrayscaleTransform(QImage *originImage);
-    void SinTransform(QImage *originImage);
-    void TanTransform(QImage *originImage);
+    void grayscaleTransform(QImage *originImage);
+    void sinTransform(QImage *originImage);
+    void tanTransform(QImage *originImage);
 };
 
 #endif // DIALOGNOLINEARPOINTOPERATION_H

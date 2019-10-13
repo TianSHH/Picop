@@ -884,6 +884,8 @@ debug/moc/moc_mainwindow.cpp: include/dialogbitplane.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
 		include/dialoglinearpointoperation.h \
 		include/dialognolinearpointoperation.h \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
 		include/dialogquantifylevel.h \
 		include/dialogsamplingrate.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
@@ -1756,6 +1758,8 @@ debug/moc/moc_dialognolinearpointoperation.cpp: ../../../Qt5.9.8/5.9.8/gcc_64/in
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -2016,6 +2020,8 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
 		include/dialoglinearpointoperation.h \
 		include/dialognolinearpointoperation.h \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
 		include/dialogquantifylevel.h \
 		include/dialogsamplingrate.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
@@ -2217,6 +2223,8 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
 		include/dialoglinearpointoperation.h \
 		include/dialognolinearpointoperation.h \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
 		include/dialogquantifylevel.h \
 		include/dialogsamplingrate.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
@@ -3194,6 +3202,8 @@ debug/obj/dialognolinearpointoperation.o: source/dialognolinearpointoperation.cp
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
+		../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \

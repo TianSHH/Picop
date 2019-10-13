@@ -31,8 +31,8 @@ HEADERS += \
     include/dialoglinearpointoperation.h \
     include/dialognolinearpointoperation.h
 
-    DESTDIR = bin
-    OBJECTS_DIR = debug/obj
-    MOC_DIR = debug/moc
-    # RCC_DIR
-    # UI_DIR
+DESTDIR = bin
+OBJECTS_DIR = debug/obj
+MOC_DIR = debug/moc
+# RCC_DIR
+# UI_DIR

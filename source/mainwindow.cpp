@@ -53,6 +53,10 @@ void MainWindow::setup()
     actionPointOperationNolinear->setObjectName(QStringLiteral("actionPointOperationNolinear"));
     actionPointOperationNolinearGrayscaleTransform = new QAction(this);
     actionPointOperationNolinearGrayscaleTransform->setObjectName(QStringLiteral("actionPointOperationNolinearGrayscaleTransform"));
+    actionPointOperationNoLinearSinTransform = new QAction(this);
+    actionPointOperationNoLinearSinTransform->setObjectName(QStringLiteral("actionPointOperationNoLinearSinTransform"));
+    actionPointOperationNolinearTanTransform = new QAction(this);
+    actionPointOperationNolinearTanTransform->setObjectName(QStringLiteral("actionPointOperationNolinearTanTransform"));
 
     centralWidget = new QWidget(this);
     centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -123,6 +127,8 @@ void MainWindow::setup()
     menuPointOperation->addAction(actionPointOperationLinear);
     menuPointOperation->addMenu(actionPointOperationNolinear);                               // 添加二级菜单
     actionPointOperationNolinear->addAction(actionPointOperationNolinearGrayscaleTransform); // 二级菜单下添加Action
+    actionPointOperationNolinear->addAction(actionPointOperationNoLinearSinTransform);
+    actionPointOperationNolinear->addAction(actionPointOperationNolinearTanTransform);
 
     menuHelp->addAction(actionAbout);
 
@@ -171,6 +177,8 @@ void MainWindow::retranslate()
     actionPointOperationLinear->setText(QApplication::translate("MainWindow", "线性点运算参数(&L)", Q_NULLPTR));
     actionPointOperationNolinear->setTitle(QApplication::translate("MainWindow", "非线性点运算(&N)", Q_NULLPTR));
     actionPointOperationNolinearGrayscaleTransform->setText(QApplication::translate("MainWindow", "灰度变换(&G)", Q_NULLPTR));
+    actionPointOperationNoLinearSinTransform->setText(QApplication::translate("MainWindow", "正弦变换(&S)", Q_NULLPTR));
+    actionPointOperationNolinearTanTransform->setText(QApplication::translate("MinWindow", "正切变换(&T)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -411,16 +419,36 @@ void MainWindow::on_actionPointOperationLinear_triggered()
 
 void MainWindow::on_actionPointOperationNolinearGrayscaleTransform_triggered()
 {
-    // qDebug() << "1";
     DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
-    // qDebug() << "2";
 
-    _dialogNolinearPointOperation->setupNolinearGrayscaleTransform();
+    _dialogNolinearPointOperation->setTransformMode(QString("grayscaleTransform"));
     _dialogNolinearPointOperation->show();
 
     connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperation()), this, SLOT(emitSignalSendImage()));
     connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperationFinshed(QImage &)), this, SLOT(updateRightImage(QImage &)));
-}
+} // on_actionPointOperationNolinearGrayscaleTransform_triggered
+
+void MainWindow::on_actionPointOperationNoLinearSinTransform_triggered()
+{
+    DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
+
+    _dialogNolinearPointOperation->setTransformMode(QString("sinTransform"));
+    _dialogNolinearPointOperation->show();
+
+    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperation()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperationFinshed(QImage &)), this, SLOT(updateRightImage(QImage &)));
+} // on_actionPointOperationSinTransform_triggered
+
+void MainWindow::on_actionPointOperationNolinearTanTransform_triggered()
+{
+    DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
+
+    _dialogNolinearPointOperation->setTransformMode(QString("tanTransform"));
+    _dialogNolinearPointOperation->show();
+
+    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperation()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperationFinshed(QImage &)), this, SLOT(updateRightImage(QImage &)));
+} // on_actionPointOperationTanTransform_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

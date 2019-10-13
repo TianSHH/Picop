@@ -2,9 +2,11 @@
 
 DialogNolinearPointOperation::DialogNolinearPointOperation(QWidget *parent) : QDialog(parent)
 {
+    setup();
     setAttribute(Qt::WA_DeleteOnClose);
 
     // 触发的槽函数参数要和接收的信号所携带的参数一样
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalNolinearPointOperation()));
     connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(transformTypeSwitch(QImage *)));
 }
 
@@ -12,13 +14,7 @@ DialogNolinearPointOperation::~DialogNolinearPointOperation()
 {
 }
 
-void DialogNolinearPointOperation::transformTypeSwitch(QImage *originImage)
-{
-    if (transformType == "nolinearGrayscaleTransform")
-        nolinearGrayscaleTransform(originImage);
-} // transformTypeSwitch
-
-void DialogNolinearPointOperation::setupNolinearGrayscaleTransform()
+void DialogNolinearPointOperation::setup()
 {
     if (this->objectName().isEmpty())
         this->setObjectName(QStringLiteral("DialogNolinearPointOperation"));
@@ -49,11 +45,22 @@ void DialogNolinearPointOperation::setupNolinearGrayscaleTransform()
 
     this->setWindowTitle("设定非线性灰度变换函数参数");
     labelVar->setText(QApplication::translate("设定非线性灰度变换函数参数", "C", Q_NULLPTR));
+} // setup
 
-    transformType = "nolinearGrayscaleTransform";
+void DialogNolinearPointOperation::setTransformMode(QString mode)
+{
+    transformType = mode;
+} // grayscaleTransform
 
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalNolinearPointOperation()));
-}
+void DialogNolinearPointOperation::transformTypeSwitch(QImage *originImage)
+{
+    if (transformType == "grayscaleTransform")
+        grayscaleTransform(originImage);
+    else if (transformType == "sinTransform")
+        sinTransform(originImage);
+    else if (transformType == "tanTransform")
+        tanTransform(originImage);
+} // transformTypeSwitch
 
 void DialogNolinearPointOperation::emitSignalNolinearPointOperation()
 {
@@ -63,13 +70,13 @@ void DialogNolinearPointOperation::emitSignalNolinearPointOperation()
     emit signalNoLinearPointOperation();
 }
 
-void DialogNolinearPointOperation::nolinearGrayscaleTransform(QImage *originImage)
+void DialogNolinearPointOperation::grayscaleTransform(QImage *originImage)
 {
-    double var = lineEditVar->text().toDouble();
+    double arg = lineEditVar->text().toDouble();
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "进行非线性灰度变换"
-                       << "参数:" << var;
+                       << "参数:" << arg;
 
     int width = originImage->width();
     int height = originImage->height();
@@ -91,13 +98,13 @@ void DialogNolinearPointOperation::nolinearGrayscaleTransform(QImage *originImag
         {
             QColor _color = QColor(originImage->pixel(i, j));
 
-            double result = (_color.red() + var * _color.red() * (rM - _color.red())) / 255;
+            double result = (_color.red() + arg * _color.red() * (rM - _color.red())) / rM;
             double r = result > 255 ? 255 : (result < 0 ? 0 : result);
 
-            result = (_color.green() + var * _color.green() * (gM - _color.green())) / 255;
+            result = (_color.green() + arg * _color.green() * (gM - _color.green())) / gM;
             double g = result > 255 ? 255 : (result < 0 ? 0 : result);
 
-            result = (_color.blue() + var * _color.blue() * (bM - _color.blue())) / 255;
+            result = (_color.blue() + arg * _color.blue() * (bM - _color.blue())) / bM;
             double b = result > 255 ? 255 : (result < 0 ? 0 : result);
 
             originImage->setPixel(i, j, qRgb(r, g, b));
@@ -106,3 +113,91 @@ void DialogNolinearPointOperation::nolinearGrayscaleTransform(QImage *originImag
 
     emit signalNoLinearPointOperationFinshed((QImage &)(*originImage));
 } // nolinearGrayscaleTransform
+
+void DialogNolinearPointOperation::sinTransform(QImage *originImage)
+{
+    double arg = lineEditVar->text().toDouble();
+
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行非线性正弦变换"
+                       << "参数:" << arg;
+
+    int width = originImage->width();
+    int height = originImage->height();
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            QColor _color = QColor(originImage->pixel(i, j));
+            rM = rM > _color.red() ? rM : _color.red();
+            gM = gM > _color.green() ? gM : _color.green();
+            bM = bM > _color.blue() ? bM : _color.blue();
+        }
+    }
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            QColor _color = QColor(originImage->pixel(i, j));
+
+            double result = (rM / 2) * (1 + (1 / (sin((M_PI * arg) / 2))) * sin(arg * M_PI * (_color.red() / rM - 1 / 2)));
+            double r = result > 255 ? 255 : (result < 0 ? 0 : result);
+
+            result = (gM / 2) * (1 + (1 / (sin((M_PI * arg) / 2))) * sin(arg * M_PI * (_color.green() / gM - 1 / 2)));
+            double g = result > 255 ? 255 : (result < 0 ? 0 : result);
+
+            result = (bM / 2) * (1 + (1 / (sin((M_PI * arg) / 2))) * sin(arg * M_PI * (_color.blue() / bM - 1 / 2)));
+            double b = result > 255 ? 255 : (result < 0 ? 0 : result);
+
+            originImage->setPixel(i, j, qRgb(r, g, b));
+        }
+    }
+
+    emit signalNoLinearPointOperationFinshed((QImage &)(*originImage));
+} // sinTransform
+
+void DialogNolinearPointOperation::tanTransform(QImage *originImage)
+{
+    double arg = lineEditVar->text().toDouble();
+
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行非线性正切变换"
+                       << "参数:" << arg;
+
+    int width = originImage->width();
+    int height = originImage->height();
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            QColor _color = QColor(originImage->pixel(i, j));
+            rM = rM > _color.red() ? rM : _color.red();
+            gM = gM > _color.green() ? gM : _color.green();
+            bM = bM > _color.blue() ? bM : _color.blue();
+        }
+    }
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            QColor _color = QColor(originImage->pixel(i, j));
+
+            double result = (rM / 2) * (1 + (1 / (tan((M_PI * arg) / 2))) * tan(arg * M_PI * (_color.red() / rM - 1 / 2)));
+            double r = result > 255 ? 255 : (result < 0 ? 0 : result);
+
+            result = (gM / 2) * (1 + (1 / (tan((M_PI * arg) / 2))) * tan(arg * M_PI * (_color.green() / gM - 1 / 2)));
+            double g = result > 255 ? 255 : (result < 0 ? 0 : result);
+
+            result = (bM / 2) * (1 + (1 / (tan((M_PI * arg) / 2))) * tan(arg * M_PI * (_color.blue() / bM - 1 / 2)));
+            double b = result > 255 ? 255 : (result < 0 ? 0 : result);
+
+            originImage->setPixel(i, j, qRgb(r, g, b));
+        }
+    }
+
+    emit signalNoLinearPointOperationFinshed((QImage &)(*originImage));
+} // tanTransform
