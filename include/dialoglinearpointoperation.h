@@ -43,7 +43,7 @@ signals:
     void signalLinearPointOperationFinished(QImage &);
 
 private slots:
-    void emitSignalPointLinearOperation();
+    void emitSignalLinearPointOperation();
 
     void pointOperation(QImage *originImage);
 };

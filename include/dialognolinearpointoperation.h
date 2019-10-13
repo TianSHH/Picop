@@ -12,15 +12,48 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 
-class DialogNolinearpointoperation:public QDialog
+class DialogNolinearPointOperation : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit DialogNolinearpointoperation(QWidget *parent = nullptr);
-    ~DialogNolinearpointoperation();
+    explicit DialogNolinearPointOperation(QWidget *parent = nullptr);
+    ~DialogNolinearPointOperation();
 
 public:
+    QGridLayout *gridLayout;
+
+    QLabel *labelVar;
+    QLineEdit *lineEditVar;
+
+    QDialogButtonBox *buttonBox;
+
+    QMainWindow *ptr = (QMainWindow *)parentWidget();
+
+    QString transformType = "null";
+
+    int rM = 0;
+    int gM = 0;
+    int bM = 0;
+
+public:
+    void setupNolinearGrayscaleTransform();
+    void setupSinTransform();
+    void setupTanTransform();
+
+signals:
+    void signalNoLinearPointOperation();
+    void signalNoLinearPointOperationFinshed();
+
+private slots:
+    void emitSignalNolinearPointOperation();
+
+    void transformTypeSwitch(QString transformType, QImage *originImage);
+
+public:
+    void nolinearGrayscaleTransform(QImage *originImage);
+    void SinTransform(QImage *originImage);
+    void TanTransform(QImage *originImage);
 };
 
 #endif // DIALOGNOLINEARPOINTOPERATION_H

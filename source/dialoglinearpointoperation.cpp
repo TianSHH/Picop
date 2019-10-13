@@ -5,7 +5,7 @@ DialogLinearPointOperation::DialogLinearPointOperation(QWidget *parent) : QDialo
     setup();
     setAttribute(Qt::WA_DeleteOnClose);
 
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalPointLinearOperation()));
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalLinearPointrOperation()));
     connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(pointOperation(QImage *)));
 }
 
@@ -61,7 +61,7 @@ void DialogLinearPointOperation::retranslate()
     labelOffset->setText(QApplication::translate("设定线性点操作参数", "偏移量: ", Q_NULLPTR));
 } // retranslate
 
-void DialogLinearPointOperation::emitSignalPointLinearOperation()
+void DialogLinearPointOperation::emitSignalLinearPointOperation()
 {
     int slope = lineEditSlope->text().toInt();
     int offset = lineEditOffset->text().toInt();
