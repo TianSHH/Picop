@@ -67,7 +67,8 @@
         "qdatetime": "cpp",
         "qvariant": "cpp",
         "qheaderview": "cpp",
-        "qapplication": "cpp"
+        "qapplication": "cpp",
+        "qfileinfo": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
@@ -154,7 +155,8 @@
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtX11Extras",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXml",
-        "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns"
+        "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns",
+        "/home/xhls/Documents/Code/Picop/include"
     ],
     "files.exclude": {
         "**/.git": true,
