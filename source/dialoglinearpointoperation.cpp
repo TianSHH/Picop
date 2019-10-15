@@ -79,7 +79,7 @@ void DialogLinearPointOperation::pointOperation(QImage *originImage)
     double offset = lineEditOffset->text().toDouble();
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "进行线性点运算, 参数,"
+                       << "进行线性点运算,"
                        << "斜率:" << slope << "偏移量:" << offset;
 
     if (slope == 1 && offset == 0)

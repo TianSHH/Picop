@@ -5,7 +5,6 @@
 #include "dialoggrayscalethreshold.h"
 #include "dialoghistogram.h"
 #include "dialoglinearpointoperation.h"
-#include "dialognolinearpointoperation.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
 #include <QAction>

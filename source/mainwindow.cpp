@@ -391,6 +391,7 @@ void MainWindow::on_actionDisplayBitPlane_triggered()
     dialogBitPlane->displayBitPlane(originImage);
 
     delete originImage;
+    dialogBitPlane->exec();
 } // on_actionDisplayBitPlane_triggered
 
 void MainWindow::on_actionDisplayHistogram_triggered()
@@ -419,35 +420,14 @@ void MainWindow::on_actionPointOperationLinear_triggered()
 
 void MainWindow::on_actionPointOperationNolinearGrayscaleTransform_triggered()
 {
-    DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
-
-    _dialogNolinearPointOperation->setTransformMode(QString("grayscaleTransform"));
-    _dialogNolinearPointOperation->show();
-
-    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperation()), this, SLOT(emitSignalSendImage()));
-    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperationFinshed(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationNolinearGrayscaleTransform_triggered
 
 void MainWindow::on_actionPointOperationNoLinearSinTransform_triggered()
 {
-    DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
-
-    _dialogNolinearPointOperation->setTransformMode(QString("sinTransform"));
-    _dialogNolinearPointOperation->show();
-
-    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperation()), this, SLOT(emitSignalSendImage()));
-    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperationFinshed(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationSinTransform_triggered
 
 void MainWindow::on_actionPointOperationNolinearTanTransform_triggered()
 {
-    DialogNolinearPointOperation *_dialogNolinearPointOperation = new DialogNolinearPointOperation(this);
-
-    _dialogNolinearPointOperation->setTransformMode(QString("tanTransform"));
-    _dialogNolinearPointOperation->show();
-
-    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperation()), this, SLOT(emitSignalSendImage()));
-    connect(_dialogNolinearPointOperation, SIGNAL(signalNoLinearPointOperationFinshed(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationTanTransform_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)

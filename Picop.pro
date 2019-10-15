@@ -18,8 +18,7 @@ SOURCES += \
     source/dialogbitplane.cpp \
     source/dialoghistogram.cpp \
     source/dialoggrayscalethreshold.cpp \
-    source/dialoglinearpointoperation.cpp \
-    source/dialognolinearpointoperation.cpp
+    source/dialoglinearpointoperation.cpp
 
 HEADERS += \
         include/mainwindow.h \
@@ -28,8 +27,7 @@ HEADERS += \
     include/dialogbitplane.h \
     include/dialoghistogram.h \
     include/dialoggrayscalethreshold.h \
-    include/dialoglinearpointoperation.h \
-    include/dialognolinearpointoperation.h
+    include/dialoglinearpointoperation.h
 
 DESTDIR = bin
 OBJECTS_DIR = debug/obj
