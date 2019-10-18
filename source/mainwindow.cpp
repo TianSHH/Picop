@@ -51,12 +51,8 @@ void MainWindow::setup()
     actionPointOperationLinear->setObjectName(QStringLiteral("actionPointOperationLinear"));
     actionPointOperationNolinear = new QMenu(this); // 二级菜单
     actionPointOperationNolinear->setObjectName(QStringLiteral("actionPointOperationNolinear"));
-    actionPointOperationNolinearGrayscaleTransform = new QAction(this);
-    actionPointOperationNolinearGrayscaleTransform->setObjectName(QStringLiteral("actionPointOperationNolinearGrayscaleTransform"));
-    actionPointOperationNoLinearSinTransform = new QAction(this);
-    actionPointOperationNoLinearSinTransform->setObjectName(QStringLiteral("actionPointOperationNoLinearSinTransform"));
-    actionPointOperationNolinearTanTransform = new QAction(this);
-    actionPointOperationNolinearTanTransform->setObjectName(QStringLiteral("actionPointOperationNolinearTanTransform"));
+    actionPointOperationNolinearLogTrans = new QAction(this);
+    actionPointOperationNolinearLogTrans->setObjectName(QStringLiteral("actionPointOperationNolinearLogTrans"));
 
     centralWidget = new QWidget(this);
     centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -125,10 +121,8 @@ void MainWindow::setup()
     menuDisplay->addAction(actionDisplayHistogram);
 
     menuPointOperation->addAction(actionPointOperationLinear);
-    menuPointOperation->addMenu(actionPointOperationNolinear);                               // 添加二级菜单
-    actionPointOperationNolinear->addAction(actionPointOperationNolinearGrayscaleTransform); // 二级菜单下添加Action
-    actionPointOperationNolinear->addAction(actionPointOperationNoLinearSinTransform);
-    actionPointOperationNolinear->addAction(actionPointOperationNolinearTanTransform);
+    menuPointOperation->addMenu(actionPointOperationNolinear);                     // 添加二级菜单
+    actionPointOperationNolinear->addAction(actionPointOperationNolinearLogTrans); // 二级菜单下添加Action
 
     menuHelp->addAction(actionAbout);
 
@@ -174,11 +168,9 @@ void MainWindow::retranslate()
     actionDisplayBitPlane->setText(QApplication::translate("MainWindow", "显示位平面(&B)", Q_NULLPTR));
     actionDisplayHistogram->setText(QApplication::translate("MainWindow", "显示直方图(&H)", Q_NULLPTR));
 
-    actionPointOperationLinear->setText(QApplication::translate("MainWindow", "线性点运算参数(&L)", Q_NULLPTR));
+    actionPointOperationLinear->setText(QApplication::translate("MainWindow", "线性点运算(&L)", Q_NULLPTR));
     actionPointOperationNolinear->setTitle(QApplication::translate("MainWindow", "非线性点运算(&N)", Q_NULLPTR));
-    actionPointOperationNolinearGrayscaleTransform->setText(QApplication::translate("MainWindow", "灰度变换(&G)", Q_NULLPTR));
-    actionPointOperationNoLinearSinTransform->setText(QApplication::translate("MainWindow", "正弦变换(&S)", Q_NULLPTR));
-    actionPointOperationNolinearTanTransform->setText(QApplication::translate("MinWindow", "正切变换(&T)", Q_NULLPTR));
+    actionPointOperationNolinearLogTrans->setText(QApplication::translate("MainWindow", "对数变换(&L)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -418,22 +410,22 @@ void MainWindow::on_actionPointOperationLinear_triggered()
     connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperationFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationLinear_triggered
 
-void MainWindow::on_actionPointOperationNolinearGrayscaleTransform_triggered()
+void MainWindow::on_actionPointOperationNolinearLogTrans_triggered()
 {
-} // on_actionPointOperationNolinearGrayscaleTransform_triggered
+    DialogLogTrans *_dialogLogTrans = new DialogLogTrans(this);
 
-void MainWindow::on_actionPointOperationNoLinearSinTransform_triggered()
-{
-} // on_actionPointOperationSinTransform_triggered
+    _dialogLogTrans->show();
 
-void MainWindow::on_actionPointOperationNolinearTanTransform_triggered()
-{
-} // on_actionPointOperationTanTransform_triggered
+    connect(_dialogLogTrans, SIGNAL(signalLogTransStart()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogLogTrans, SIGNAL(signalLogTransEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
+} // on_actionPointOperationNolinearLogTrans_tirggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {
-    rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
+    // rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "通过槽函数更新右侧图像";
+    rightPixmapItem->setPixmap(QPixmap::fromImage(newImage));
+    rightScene->setSceneRect(QRectF(newImage.rect()));
 } // updateRightImage

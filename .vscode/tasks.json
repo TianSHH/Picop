@@ -18,6 +18,8 @@
                 "-f",
                 "/home/xhls/Documents/Code/Picop/Makefile",
                 "qmake_all",
+                "|",
+                "lolcat",
                 ";",
                 "make",
                 "-j8",
@@ -39,11 +41,14 @@
         },
         { // 执行生成的二进制文件
             "type": "shell",
-            "label":"test",
-            "dependsOn":"build",
-            "command":"picop",
+            "label": "test",
+            "dependsOn": "build",
+            "command": "picop",
             "args": [],
-            "group": "test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
             "presentation": {
                 "echo": true,
                 "reveal": "always",

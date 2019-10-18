@@ -1,6 +1,7 @@
 #ifndef DIALOGBITPLANE_H
 #define DIALOGBITPLANE_H
 
+#include <QMainWindow>
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
@@ -14,7 +15,6 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QMainWindow>
 #include <QtWidgets/QLineEdit>
 
 class DialogBitPlane : public QDialog
@@ -57,7 +57,7 @@ public:
 
 public:
     void setup();
-    void displayBitPlane(QImage * originImage);
+    void displayBitPlane(QImage *originImage);
 };
 
 #endif // DIALOGBITPLANE_H

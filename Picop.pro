@@ -1,6 +1,6 @@
-QT       += core gui concurrent
+QT += core gui concurrent
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = picop
 TEMPLATE = app
@@ -18,7 +18,9 @@ SOURCES += \
     source/dialogbitplane.cpp \
     source/dialoghistogram.cpp \
     source/dialoggrayscalethreshold.cpp \
-    source/dialoglinearpointoperation.cpp
+    source/dialoglinearpointoperation.cpp \
+    source/dialoglogtrans.cpp \ 
+    source/qcustomplot.cpp
 
 HEADERS += \
         include/mainwindow.h \
@@ -27,7 +29,9 @@ HEADERS += \
     include/dialogbitplane.h \
     include/dialoghistogram.h \
     include/dialoggrayscalethreshold.h \
-    include/dialoglinearpointoperation.h
+    include/dialoglinearpointoperation.h \
+    include/dialoglogtrans.h \
+    include/qcustomplot.h
 
 DESTDIR = bin
 OBJECTS_DIR = debug/obj
