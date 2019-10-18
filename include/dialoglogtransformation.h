@@ -2,7 +2,6 @@
 #define DIALOGLOGTRANS_H
 
 #include "qcustomplot.h"
-#include <QMainWindow>
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
@@ -19,6 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
 
 class DialogLogTransformation : public QDialog
 {

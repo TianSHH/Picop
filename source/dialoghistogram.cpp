@@ -1,9 +1,12 @@
 #include "dialoghistogram.h"
+#include <stdio.h>
 
 DialogHistogram::DialogHistogram(QWidget *parent) : QDialog(parent)
 {
     setup();
     setAttribute(Qt::WA_DeleteOnClose);
+
+    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(histogramEqualization(QImage *)));
 }
 
 DialogHistogram::~DialogHistogram()
@@ -34,40 +37,150 @@ void DialogHistogram::displayHistogram(QImage *originImage)
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "显示直方图";
 
-    width = originImage->width();
-    height = originImage->height();
-    totalPixel = width * height;
-
-    for (int i = 0; i < width; i++)
-        for (int j = 0; j < height; j++)
-        {
-            int grayValue = qGray(originImage->pixel(i, j));
-            int redValue = qRed(originImage->pixel(i, j));
-            int greenValue = qGreen(originImage->pixel(i, j));
-            int blueValue = qBlue(originImage->pixel(i, j));
-
-            grayHistogram[grayValue]++;
-            redHistogram[redValue]++;
-            greenHistogram[greenValue]++;
-            blueHistogram[blueValue]++;
-        }
-
-    for (int i = 0; i < 256; i++)
-    {
-        // 获取出现次数最多的像素的出现次数
-        if (grayHistogram[256] < grayHistogram[i])
-            grayHistogram[256] = grayHistogram[i];
-
-        if (redHistogram[256] < redHistogram[i])
-            redHistogram[256] = redHistogram[i];
-
-        if (greenHistogram[256] < greenHistogram[i])
-            greenHistogram[256] = greenHistogram[i];
-
-        if (blueHistogram[256] < blueHistogram[i])
-            blueHistogram[256] = blueHistogram[i];
-    }
+    getImageInfo(originImage);
 } // displayHistogram
+
+void DialogHistogram::histogramEqualization(QImage *originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "直方图均衡化";
+
+    getImageInfo(originImage);
+
+    // step1
+    // 计算初始各像素级所占图像总像素百分比
+
+    double grayHs[256];
+    double redHs[256];
+    double greenHs[256];
+    double blueHs[256];
+
+    for (int i = 0; i <= 255; i++)
+    {
+        grayHs[i] = (double)grayHistogram[i] / (double)totalPixel;
+        redHs[i] = (double)redHistogram[i] / (double)totalPixel;
+        greenHs[i] = (double)greenHistogram[i] / (double)totalPixel;
+        blueHs[i] = (double)blueHistogram[i] / (double)totalPixel;
+    }
+
+    qDebug() << "step1";
+
+    // step2
+    // 计算各像素级的累计分布概率
+
+    // 各像素级的累计分布概率
+    double grayHp[256];
+    double redHp[256];
+    double greenHp[256];
+    double blueHp[256];
+
+    grayHp[0] = grayHs[0];
+    grayHp[0] = grayHs[0];
+    grayHp[0] = grayHs[0];
+    grayHp[0] = grayHs[0];
+
+    for (int i = 1; i <= 255; i++)
+    {
+        /* ***********************************************
+         * 由于之后在 step4 原图的像素级概率, 即 grayHs 还要用到,
+         * 所以这里在使用计算完之后使用另一数组 grayHp 来存储结果,
+         * grayHs 恢复原值.
+         * 如果一开始就使用以下语句计算则会产生错误:
+         * for(int j = 0; j <= i; j++)
+         *      grayHp[i] += grayHs[j];
+         * 在如此得到的 grayHp 中, 会有少量索引对应的值产生溢出
+         * 已经证明这种溢出不是由于未初始化 grayHp 所引起,
+         * 具体原因未知.
+         TODO 找出原因.
+         * **********************************************/
+
+        grayHp[i] = grayHs[i];
+        grayHs[i] += grayHs[i - 1];
+        double temp = grayHs[i];
+        grayHs[i] = grayHp[i];
+        grayHp[i] = temp;
+
+        redHp[i] = redHs[i];
+        redHs[i] += redHs[i - 1];
+        temp = redHs[i];
+        redHs[i] = redHp[i];
+        redHp[i] = temp;
+
+        greenHp[i] = greenHs[i];
+        greenHs[i] += greenHs[i - 1];
+        temp = greenHs[i];
+        greenHs[i] = greenHp[i];
+        greenHp[i] = temp;
+
+        blueHp[i] = blueHs[i];
+        blueHs[i] += blueHs[i - 1];
+        temp = blueHs[i];
+        blueHs[i] = blueHp[i];
+        blueHp[i] = temp;
+    }
+
+    qDebug() << "step2";
+
+    // step3
+    // 计算新的调色板索引值
+
+    // 新调色板索引值
+    double newIndexGrayHs[256];
+    double newIndexRedHs[256];
+    double newIndexGreenHs[256];
+    double newIndexBlueHs[256];
+
+    for (int i = 0; i <= 255; i++)
+    {
+        newIndexGrayHs[i] = grayHp[i] * 255;
+        newIndexRedHs[i] = redHp[i] * 255;
+        newIndexGreenHs[i] = greenHp[i] * 255;
+        newIndexBlueHs[i] = blueHp[i] * 255;
+    }
+
+    qDebug() << "step3";
+
+    // step4
+    // 将老的索引值对应的概率合并, 作为对应的新的索引值的概率
+
+    for (int i = 0; i <= 255; i++)
+    {
+        grayHistogram[i] = 0;
+        redHistogram[i] = 0;
+        greenHistogram[i] = 0;
+        blueHistogram[i] = 0;
+    }
+
+    for (int i = 0; i <= 255; i++)
+    {
+        int index = (int)newIndexGrayHs[i];
+        qDebug() << index;
+        qDebug() << "i1" << i;
+        grayHistogram[index] += grayHs[i];
+
+        index = (int)newIndexRedHs[i];
+        qDebug() << index;
+        qDebug() << "i2" << i;
+        redHistogram[index] += redHs[i];
+
+        index = (int)newIndexGreenHs[i];
+        qDebug() << index;
+        qDebug() << "i3" << i;
+        greenHistogram[index] += greenHs[i];
+
+        index = (int)newIndexBlueHs[i];
+        qDebug() << index;
+        qDebug() << "i4" << i;
+        blueHistogram[index] += blueHs[i];
+    }
+
+    qDebug() << "step4";
+
+    emit signalHistogramEqulizationEnd((QImage &)(*originImage));
+
+    qDebug() << "dialogHistogram 信号发送完毕";
+
+} // histogramEqualization
 
 void DialogHistogram::paintEvent(QPaintEvent *event)
 {
@@ -83,7 +196,7 @@ void DialogHistogram::paintEvent(QPaintEvent *event)
     drawHistogram(xBaseRect + distH, yBaseRect + distV, blueHistogram, Qt::blue);
 } // paintEvent
 
-void DialogHistogram::drawHistogram(int xBaseRect, int yBaseRect, int *histogram, QColor color)
+void DialogHistogram::drawHistogram(int xBaseRect, int yBaseRect, double *histogram, QColor color)
 {
     QPainter painter(this);
     painter.setPen(Qt::black);
@@ -100,11 +213,11 @@ void DialogHistogram::drawHistogram(int xBaseRect, int yBaseRect, int *histogram
     // 直方图初始坐标, 原点在左下方
     int xBaseHistogram = xBaseRect + paddingLeft;
     int yBaseHistogram = yBaseRect + paddingUp + heightHistogram;
-    float max = histogram[256];
+    double max = histogram[256];
 
     painter.setPen(color);
     for (int i = 0; i < 256; i++)
-        painter.drawLine(xBaseHistogram + 1 + i, yBaseHistogram, xBaseHistogram + 1 + i, yBaseHistogram - (float)(heightMaxLine / max) * (float)histogram[i]);
+        painter.drawLine(xBaseHistogram + 1 + i, yBaseHistogram, xBaseHistogram + 1 + i, yBaseHistogram - (heightMaxLine / max) * histogram[i]);
     // 使用长度为 (float)(heightMaxLine / max) * (float)histogram[i]) 的直线代表灰度值 i 的出现频率
     // 为了完整显示直方图, 使出现频率最多的像素值作为直方图中的最高点
 
@@ -129,19 +242,73 @@ void DialogHistogram::drawHistogram(int xBaseRect, int yBaseRect, int *histogram
     painter.drawRect(xBaseRect + paddingLeft, yBaseRect + paddingUp, widthHistogram, heightHistogram);
 } // drawHistogram
 
-QString DialogHistogram::getMean(int *histogram)
+void DialogHistogram::getImageInfo(QImage *originImage)
+{
+    width = originImage->width();
+    height = originImage->height();
+    totalPixel = width * height;
+
+    for (int i = 0; i < width; i++)
+        for (int j = 0; j < height; j++)
+        {
+            int grayValue = qGray(originImage->pixel(i, j));
+            int redValue = qRed(originImage->pixel(i, j));
+            int greenValue = qGreen(originImage->pixel(i, j));
+            int blueValue = qBlue(originImage->pixel(i, j));
+
+            grayHistogram[grayValue]++;
+            redHistogram[redValue]++;
+            greenHistogram[greenValue]++;
+            blueHistogram[blueValue]++;
+        }
+
+    /* **********************************************************
+     * 把 grayHistogram 从存储各像素级出现的次数变为存储各像素级出现的频率,
+     * 这样做对于画直方图无性能提升, 但对于直方图均衡化处理有好处,
+     * 原因是: 直方图均衡化最后的结果用 grayHistogram 存储结果即各像素级
+     * 出现的概率顺其自然, 这里将 grayHistogram 存储的内容和
+     * drawHistogram() 稍作修改就可以避免在 histogramEqulization() 中创建
+     * 新数组存储结果, 并将结果转化为各像素级出现次数的麻烦.
+     * *********************************************************/
+
+    for (int i = 0; i <= 255; i++)
+    {
+        grayHistogram[i] /= (double)totalPixel;
+        redHistogram[i] /= (double)totalPixel;
+        greenHistogram[i] /= (double)totalPixel;
+        blueHistogram[i] /= (double)totalPixel;
+    }
+
+    for (int i = 0; i < 256; i++)
+    {
+        // 获取各像素级出现频率最多的像素的出现频率
+        if (grayHistogram[256] < grayHistogram[i])
+            grayHistogram[256] = grayHistogram[i];
+
+        if (redHistogram[256] < redHistogram[i])
+            redHistogram[256] = redHistogram[i];
+
+        if (greenHistogram[256] < greenHistogram[i])
+            greenHistogram[256] = greenHistogram[i];
+
+        if (blueHistogram[256] < blueHistogram[i])
+            blueHistogram[256] = blueHistogram[i];
+    }
+}
+
+QString DialogHistogram::getMean(double *histogram)
 {
     int sum = 0;
 
     for (int i = 0; i < 256; i++)
         sum += (i * histogram[i]);
 
-    QString res = QString::number(sum / totalPixel, 10);
+    QString res = QString::number((int)(sum / totalPixel) * totalPixel, 10);
 
     return res;
 } // getAverage
 
-QString DialogHistogram::getMedian(int *histogram)
+QString DialogHistogram::getMedian(double *histogram)
 {
     // index 126 127
     int sum = 0;
@@ -160,12 +327,12 @@ QString DialogHistogram::getMedian(int *histogram)
         }
     }
 
-    QString res = QString::number((left + right) / 2, 10);
+    QString res = QString::number((int)((left + right) / 2) * totalPixel, 10);
 
     return res;
 } // getMedian
 
-QString DialogHistogram::getSD(int *histogram)
+QString DialogHistogram::getSD(double *histogram)
 {
     int mean = getMean(histogram).toInt();
 
@@ -174,7 +341,12 @@ QString DialogHistogram::getSD(int *histogram)
     for (int i = 0; i < 256; i++)
         d += ((i - mean) * (i - mean) * histogram[i]);
 
-    QString res = QString::number(sqrt(d), 10, 4);
+    QString res = QString::number((int)((sqrt(d)) * totalPixel), 10, 4);
 
     return res;
 } // getSD
+
+// void DialogHistogram::emitSignalHistogramEqulizationEnd(QImage *originImage)
+// {
+//     emit signalHistogramEqulizationEnd((QImage &)(*originImage));
+// }

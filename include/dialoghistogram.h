@@ -6,15 +6,20 @@
 #include <QtCore/QtMath>
 #include <QtGui/QColor>
 #include <QtGui/QImage>
+#include "mainwindow.h"
 #include <QtGui/QPainter>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
 #include <iostream>
 #include <sstream>
 
 class DialogHistogram : public QDialog
 {
+
+    Q_OBJECT
+
 public:
     DialogHistogram(QWidget *parent);
     ~DialogHistogram();
@@ -22,13 +27,13 @@ public:
 public:
     // 索引 0 to 255 => 取该值的像素总数
     // 索引 256      => 出现次数最多的像素的出现次数
-    int grayHistogram[257];
-    int redHistogram[257];
-    int greenHistogram[257];
-    int blueHistogram[257];
+    double grayHistogram[257];
+    double redHistogram[257];
+    double greenHistogram[257];
+    double blueHistogram[257];
 
     int widthHistogram = 256 + 2;                 // 直方图宽度
-    int heightMaxLine = 148;                      // 直方图中最长线的最大高度
+    double heightMaxLine = 148;                   // 直方图中最长线的最大高度
     int heightHistogram = heightMaxLine + 10 + 2; // 直方图高度
 
     // 容纳直方图和相关信息的矩形框初始坐标, 原点在左上方
@@ -50,6 +55,8 @@ public:
     int height;
     int totalPixel;
 
+    QMainWindow *ptr = (QMainWindow *)parentWidget();
+
 public:
     // 建立
     void setup();
@@ -60,13 +67,22 @@ public:
     // 画图事件, 自动触发, 绘制直方图
     void paintEvent(QPaintEvent *e);
     // 绘制直方图
-    void drawHistogram(int xBaseRect, int yBaseRect, int *histogram, QColor color);
+    void drawHistogram(int xBaseRect, int yBaseRect, double *histogram, QColor color);
+    // 获取绘制直方图信息
+    void getImageInfo(QImage *);
     // 获取平均像素值, 返回类型为 QString 的原因是为了方便使用 QPainter 绘制
-    QString getMean(int *histogram);
+    QString getMean(double *histogram);
     // 获取中位数
-    QString getMedian(int *histogram);
+    QString getMedian(double *histogram);
     // 获取标准差
-    QString getSD(int *histogram);
+    QString getSD(double *histogram);
+
+signals:
+    void signalHistogramEqulizationEnd(QImage &);
+
+private slots:
+    // 直方图均衡化
+    void histogramEqualization(QImage *originImage);
 };
 
 #endif // DIALOGHISTOGRAM_H

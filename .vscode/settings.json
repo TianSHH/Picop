@@ -2,7 +2,7 @@
     "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
     "editor.formatOnType": true, // 输入时就进行格式化，默认触发字符较少，分号可以触发
     "editor.snippetSuggestions": "top", // snippets代码优先显示补全
-    "code-runner.preserveFocus": false, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false
+    // "code-runner.preserveFocus": false, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false
     "C_Cpp.clang_format_sortIncludes": true,
     "files.associations": {
         "iostream": "cpp",
@@ -71,7 +71,8 @@
         "qfileinfo": "cpp",
         "qpainter": "cpp",
         "qpixmap": "cpp",
-        "qtmath": "cpp"
+        "qtmath": "cpp",
+        "qcolor": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [

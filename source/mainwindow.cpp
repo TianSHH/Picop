@@ -125,7 +125,7 @@ void MainWindow::setup()
     menuDisplay->addAction(actionDisplayHistogram);
 
     menuPointOperation->addAction(actionPointOperationLinear);
-    menuPointOperation->addMenu(actionPointOperationNolinear);                     // 添加二级菜单
+    menuPointOperation->addMenu(actionPointOperationNolinear);                              // 添加二级菜单
     actionPointOperationNolinear->addAction(actionPointOperationNolinearLogTransformation); // 二级菜单下添加Action
     actionPointOperationNolinear->addAction(actionPointOperationNolinearPowerTransformation);
     actionPointOperationNolinear->addAction(actionPointOperationNolinearHistogramEqualization);
@@ -240,6 +240,8 @@ void MainWindow::emitSignalSendImage()
     QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
 
     emit signalSendImage(originImage);
+
+    delete originImage;
 } // emitSignalSendImage
 
 void MainWindow::on_actionOpen_triggered()
@@ -441,6 +443,10 @@ void MainWindow::on_actionPointOperationNolinearPowerTransformation_triggered()
 void MainWindow::on_actionPointOperationNolinearHistogramEqualization_triggered()
 {
     DialogHistogram *_dialogHistogram = new DialogHistogram(this);
+
+    emitSignalSendImage();
+
+    connect(_dialogHistogram, SIGNAL(signalHistogramEqulizationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationNolinearHistogramEqualization_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
