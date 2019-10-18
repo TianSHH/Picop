@@ -19,7 +19,7 @@ SOURCES += \
     source/dialoghistogram.cpp \
     source/dialoggrayscalethreshold.cpp \
     source/dialoglinearpointoperation.cpp \
-    source/dialoglogtrans.cpp \ 
+    source/dialoglogtransformation.cpp \ 
     source/dialogpowertransformation.cpp \
     source/qcustomplot.cpp
 
@@ -31,7 +31,7 @@ HEADERS += \
     include/dialoghistogram.h \
     include/dialoggrayscalethreshold.h \
     include/dialoglinearpointoperation.h \
-    include/dialoglogtrans.h \
+    include/dialoglogtransformation.h \
     include/dialogpowertransformation.h \
     include/qcustomplot.h
 

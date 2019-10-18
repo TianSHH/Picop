@@ -20,37 +20,43 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 
-class DialogLogTrans : public QDialog
+class DialogLogTransformation : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit DialogLogTrans(QWidget *parent = nullptr);
-    ~DialogLogTrans();
+    explicit DialogLogTransformation(QWidget *parent = nullptr);
+    ~DialogLogTransformation();
 
 public:
     QCustomPlot *customPlot;
     QDialogButtonBox *buttonBox;
     QDoubleSpinBox *doubleSpinBoxArgA;
+    QDoubleSpinBox *doubleSpinBoxArgB;
+    QDoubleSpinBox *doubleSpinBoxArgC;
     QLabel *labelArgA;
+    QLabel *labelArgB;
+    QLabel *labelArgC;
     QGridLayout *gridLayout;
     QMainWindow *ptr = (QMainWindow *)parentWidget();
 
 public:
     void setup();
     void retranslate();
-    void paintFunctionImage(double a);
+    void paintFunctionImage(double a, double b, double c);
 
 signals:
-    void signalLogTransStart();
-    void signalLogTransEnd(QImage &);
+    void signalLogTransformationStart();
+    void signalLogTransformationEnd(QImage &);
 
 private slots:
     void on_doubleSpinBoxArgA_valueChanged(double arg);
+    void on_doubleSpinBoxArgB_valueChanged(double arg);
+    void on_doubleSpinBoxArgC_valueChanged(double arg);
 
-    void emitSignalLogTransStart();
+    void emitSignalLogTransformationStart();
 
-    void logTrans(QImage *originImage);
+    void logTransformation(QImage *originImage);
 };
 
 #endif // !DIALOGLOGTRANS_H

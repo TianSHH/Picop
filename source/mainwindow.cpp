@@ -51,8 +51,8 @@ void MainWindow::setup()
     actionPointOperationLinear->setObjectName(QStringLiteral("actionPointOperationLinear"));
     actionPointOperationNolinear = new QMenu(this); // 二级菜单
     actionPointOperationNolinear->setObjectName(QStringLiteral("actionPointOperationNolinear"));
-    actionPointOperationNolinearLogTrans = new QAction(this);
-    actionPointOperationNolinearLogTrans->setObjectName(QStringLiteral("actionPointOperationNolinearLogTrans"));
+    actionPointOperationNolinearLogTransformation = new QAction(this);
+    actionPointOperationNolinearLogTransformation->setObjectName(QStringLiteral("actionPointOperationNolinearLogTransformation"));
     actionPointOperationNolinearPowerTransformation = new QAction(this);
     actionPointOperationNolinearPowerTransformation->setObjectName(QStringLiteral("actionPointOperationNolinearPowerTransformation"));
 
@@ -124,7 +124,7 @@ void MainWindow::setup()
 
     menuPointOperation->addAction(actionPointOperationLinear);
     menuPointOperation->addMenu(actionPointOperationNolinear);                     // 添加二级菜单
-    actionPointOperationNolinear->addAction(actionPointOperationNolinearLogTrans); // 二级菜单下添加Action
+    actionPointOperationNolinear->addAction(actionPointOperationNolinearLogTransformation); // 二级菜单下添加Action
     actionPointOperationNolinear->addAction(actionPointOperationNolinearPowerTransformation);
 
     menuHelp->addAction(actionAbout);
@@ -173,7 +173,7 @@ void MainWindow::retranslate()
 
     actionPointOperationLinear->setText(QApplication::translate("MainWindow", "线性点运算(&L)", Q_NULLPTR));
     actionPointOperationNolinear->setTitle(QApplication::translate("MainWindow", "非线性点运算(&N)", Q_NULLPTR));
-    actionPointOperationNolinearLogTrans->setText(QApplication::translate("MainWindow", "对数变换(&L)", Q_NULLPTR));
+    actionPointOperationNolinearLogTransformation->setText(QApplication::translate("MainWindow", "对数变换(&L)", Q_NULLPTR));
     actionPointOperationNolinearPowerTransformation->setText(QApplication::translate("MainWindow", "幂次变换(&P)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
@@ -414,14 +414,14 @@ void MainWindow::on_actionPointOperationLinear_triggered()
     connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperationFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationLinear_triggered
 
-void MainWindow::on_actionPointOperationNolinearLogTrans_triggered()
+void MainWindow::on_actionPointOperationNolinearLogTransformation_triggered()
 {
-    DialogLogTrans *_dialogLogTrans = new DialogLogTrans(this);
+    DialogLogTransformation *_dialogLogTransformation = new DialogLogTransformation(this);
 
-    _dialogLogTrans->show();
+    _dialogLogTransformation->show();
 
-    connect(_dialogLogTrans, SIGNAL(signalLogTransStart()), this, SLOT(emitSignalSendImage()));
-    connect(_dialogLogTrans, SIGNAL(signalLogTransEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
+    connect(_dialogLogTransformation, SIGNAL(signalLogTransformationStart()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogLogTransformation, SIGNAL(signalLogTransformationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionPointOperationNolinearLogTrans_tirggered
 
 void MainWindow::on_actionPointOperationNolinearPowerTransformation_triggered()
@@ -437,7 +437,7 @@ void MainWindow::on_actionPointOperationNolinearPowerTransformation_triggered()
 void MainWindow::updateRightImage(QImage &newImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "通过槽函数更新右侧图像";
+                       << "更新右侧图像";
     rightPixmapItem->setPixmap(QPixmap::fromImage(newImage));
     rightScene->setSceneRect(QRectF(newImage.rect()));
 } // updateRightImage

@@ -87,10 +87,9 @@ void DialogPowerTransformation::retranslate()
 // 幂次灰度变换 y=c*x^r+b
 void DialogPowerTransformation::paintFunctionImage(double c, double r, double b)
 {
-
     QVector<double> x(5101), y(5101);
 
-    for (int i = 0; i < 5101; i++)
+    for (int i = 0; i < 5101; ++i)
     {
         x[i] = i / 20.0;
         y[i] = c * qPow(x[i] / 255, r) * 255 + b;
@@ -105,30 +104,31 @@ void DialogPowerTransformation::paintFunctionImage(double c, double r, double b)
 
     customPlot->xAxis->setRange(0, 255);
     customPlot->yAxis->setRange(0, 255);
+    customPlot->replot();
 } // paintFunctionImage
 
 void DialogPowerTransformation::on_doubleSpinBoxArgC_valueChanged(double arg)
 {
-    qDebug() << "doubleSpinBoxArgC参数改变";
     paintFunctionImage(arg, doubleSpinBoxArgR->value(), doubleSpinBoxArgB->value());
 } // on_doubleSpinBoxArgC_valueChanged
 
 void DialogPowerTransformation::on_doubleSpinBoxArgR_valueChanged(double arg)
 {
-    qDebug() << "doubleSpinBoxArgR参数改变";
     paintFunctionImage(doubleSpinBoxArgC->value(), arg, doubleSpinBoxArgB->value());
 } // on_doubleSpinBoxArgR_valueChanged
 
 void DialogPowerTransformation::on_doubleSpinBoxArgB_valueChanged(double arg)
 {
-    qDebug() << "doubleSpinBoxArgB参数改变";
     paintFunctionImage(doubleSpinBoxArgC->value(), doubleSpinBoxArgR->value(), arg);
 } // on_doubleSpinBoxArgB_valueChanged
 
 void DialogPowerTransformation::powerTransformation(QImage *originImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "进行幂次变换";
+                       << "进行幂次变换"
+                       << "弯曲程度" << doubleSpinBoxArgR->value() << ","
+                       << "上下偏移量" << doubleSpinBoxArgB->value() << ","
+                       << "常数" << doubleSpinBoxArgC->value() << ",";
 
     int width = originImage->width();
     int height = originImage->height();
@@ -160,4 +160,4 @@ void DialogPowerTransformation::powerTransformation(QImage *originImage)
 void DialogPowerTransformation::emitSignalPowerTransformationStart()
 {
     emit signalPowerTransformationStart();
-}
+} // emitSignalPowerTransformationStart

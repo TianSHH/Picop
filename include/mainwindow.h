@@ -5,7 +5,7 @@
 #include "dialoggrayscalethreshold.h"
 #include "dialoghistogram.h"
 #include "dialoglinearpointoperation.h"
-#include "dialoglogtrans.h"
+#include "dialoglogtransformation.h"
 #include "dialogpowertransformation.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
@@ -75,7 +75,7 @@ public:
 
     QAction *actionPointOperationLinear;
     QMenu *actionPointOperationNolinear;
-    QAction *actionPointOperationNolinearLogTrans;
+    QAction *actionPointOperationNolinearLogTransformation;
     QAction *actionPointOperationNolinearPowerTransformation;
 
     QAction *actionAbout;
@@ -122,7 +122,7 @@ private slots:
     void on_actionDisplayHistogram_triggered();
 
     void on_actionPointOperationLinear_triggered();
-    void on_actionPointOperationNolinearLogTrans_triggered();
+    void on_actionPointOperationNolinearLogTransformation_triggered();
     void on_actionPointOperationNolinearPowerTransformation_triggered();
 
     // void on_actionAbout_triggered();
