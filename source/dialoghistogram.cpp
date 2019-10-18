@@ -180,6 +180,12 @@ void DialogHistogram::histogramEqualization(QImage *originImage)
 
     qDebug() << "dialogHistogram 信号发送完毕";
 
+    this->show();
+
+    repaint();
+
+
+
 } // histogramEqualization
 
 void DialogHistogram::paintEvent(QPaintEvent *event)
@@ -345,8 +351,3 @@ QString DialogHistogram::getSD(double *histogram)
 
     return res;
 } // getSD
-
-// void DialogHistogram::emitSignalHistogramEqulizationEnd(QImage *originImage)
-// {
-//     emit signalHistogramEqulizationEnd((QImage &)(*originImage));
-// }
