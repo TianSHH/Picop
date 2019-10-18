@@ -77,6 +77,7 @@ public:
     QMenu *actionPointOperationNolinear;
     QAction *actionPointOperationNolinearLogTransformation;
     QAction *actionPointOperationNolinearPowerTransformation;
+    QAction *actionPointOperationNolinearHistogramEqualization;
 
     QAction *actionAbout;
 
@@ -124,6 +125,7 @@ private slots:
     void on_actionPointOperationLinear_triggered();
     void on_actionPointOperationNolinearLogTransformation_triggered();
     void on_actionPointOperationNolinearPowerTransformation_triggered();
+    void on_actionPointOperationNolinearHistogramEqualization_triggered();
 
     // void on_actionAbout_triggered();
 

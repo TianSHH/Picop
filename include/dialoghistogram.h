@@ -1,15 +1,15 @@
 #ifndef DIALOGHISTOGRAM_H
 #define DIALOGHISTOGRAM_H
 
-#include <QColor>
-#include <QImage>
-#include <QPainter>
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
+#include <QtCore/QtMath>
+#include <QtGui/QColor>
+#include <QtGui/QImage>
+#include <QtGui/QPainter>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
-#include <cmath>
 #include <iostream>
 #include <sstream>
 
@@ -20,18 +20,12 @@ public:
     ~DialogHistogram();
 
 public:
-    // index 0 to 255 => count of image's pixels for this value
-    // index 256 => maximum value
-    // index 257 => total value of the dark component
-    // index 258 => total value of the light component
-    int grayHistogram[259];
-
-    // index 0 to 255 => count of image's pixels for this value
-    // index 256 => maximum value
-    // index 257 => total value of the component
-    int redHistogram[258];
-    int greenHistogram[258];
-    int blueHistogram[258];
+    // 索引 0 to 255 => 取该值的像素总数
+    // 索引 256      => 出现次数最多的像素的出现次数
+    int grayHistogram[257];
+    int redHistogram[257];
+    int greenHistogram[257];
+    int blueHistogram[257];
 
     int widthHistogram = 256 + 2;                 // 直方图宽度
     int heightMaxLine = 148;                      // 直方图中最长线的最大高度
@@ -57,17 +51,21 @@ public:
     int totalPixel;
 
 public:
+    // 建立
     void setup();
+    // 初始化
     void init();
-
+    //
     void displayHistogram(QImage *originImage);
-
+    // 画图事件, 自动触发, 绘制直方图
     void paintEvent(QPaintEvent *e);
-
+    // 绘制直方图
     void drawHistogram(int xBaseRect, int yBaseRect, int *histogram, QColor color);
-
+    // 获取平均像素值, 返回类型为 QString 的原因是为了方便使用 QPainter 绘制
     QString getMean(int *histogram);
+    // 获取中位数
     QString getMedian(int *histogram);
+    // 获取标准差
     QString getSD(int *histogram);
 };
 
