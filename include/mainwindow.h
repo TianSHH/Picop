@@ -6,6 +6,7 @@
 #include "dialoghistogram.h"
 #include "dialoglinearpointoperation.h"
 #include "dialoglogtrans.h"
+#include "dialogpowertransformation.h"
 #include "dialogquantifylevel.h"
 #include "dialogsamplingrate.h"
 #include <QAction>
@@ -75,6 +76,7 @@ public:
     QAction *actionPointOperationLinear;
     QMenu *actionPointOperationNolinear;
     QAction *actionPointOperationNolinearLogTrans;
+    QAction *actionPointOperationNolinearPowerTransformation;
 
     QAction *actionAbout;
 
@@ -121,6 +123,7 @@ private slots:
 
     void on_actionPointOperationLinear_triggered();
     void on_actionPointOperationNolinearLogTrans_triggered();
+    void on_actionPointOperationNolinearPowerTransformation_triggered();
 
     // void on_actionAbout_triggered();
 

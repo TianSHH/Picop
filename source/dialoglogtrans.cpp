@@ -45,7 +45,7 @@ void DialogLogTrans::setup()
     gridLayout->addWidget(labelArgA, 1, 0);
     gridLayout->addWidget(doubleSpinBoxArgA, 1, 1);
     gridLayout->addWidget(customPlot, 0, 2, 3, 4); // 高度3行, 宽度4列
-    gridLayout->addWidget(buttonBox, 4, 0, 1, 4);
+    gridLayout->addWidget(buttonBox, 3, 0, 1, 6);
 
     QObject::connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
     QObject::connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));

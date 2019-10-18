@@ -32,8 +32,8 @@ public:
     QCustomPlot *customPlot;
     QDialogButtonBox *buttonBox;
     QDoubleSpinBox *doubleSpinBoxArgA;
-    QGridLayout *gridLayout;
     QLabel *labelArgA;
+    QGridLayout *gridLayout;
     QMainWindow *ptr = (QMainWindow *)parentWidget();
 
 public:

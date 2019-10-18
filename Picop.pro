@@ -20,6 +20,7 @@ SOURCES += \
     source/dialoggrayscalethreshold.cpp \
     source/dialoglinearpointoperation.cpp \
     source/dialoglogtrans.cpp \ 
+    source/dialogpowertransformation.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     include/dialoggrayscalethreshold.h \
     include/dialoglinearpointoperation.h \
     include/dialoglogtrans.h \
+    include/dialogpowertransformation.h \
     include/qcustomplot.h
 
 DESTDIR = bin
