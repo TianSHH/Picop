@@ -1,6 +1,7 @@
 // TODO 根据打开图像大小自动调整窗口大小
 // TODO 实现滚轮控制图片缩放
 // TODO 自选, 实现bmp2txt
+// TODO 优化直方图均衡化和直方图显示功能
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)

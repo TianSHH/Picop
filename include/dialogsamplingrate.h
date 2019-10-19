@@ -41,7 +41,7 @@ signals:
 
 private slots:
     void emitSignalSetSamplingRate();
-    
+
     void setSamplingRate(QImage *originImage);
 };
 

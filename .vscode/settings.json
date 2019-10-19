@@ -72,7 +72,11 @@
         "qpainter": "cpp",
         "qpixmap": "cpp",
         "qtmath": "cpp",
-        "qcolor": "cpp"
+        "qcolor": "cpp",
+        "qgraphicsscene": "cpp",
+        "qtoolbar": "cpp",
+        "qstandardpaths": "cpp",
+        "qmenu": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
@@ -160,7 +164,7 @@
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtX11Extras",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXml",
         "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns",
-        "/home/xhls/Documents/Code/Picop/include"
+        "${workSpaceFolder}include/"
     ],
     "files.exclude": {
         "**/.git": true,

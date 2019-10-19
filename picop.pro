@@ -35,8 +35,8 @@ HEADERS += \
     include/dialogpowertransformation.h \
     include/qcustomplot.h
 
-DESTDIR = bin
-OBJECTS_DIR = debug/obj
-MOC_DIR = debug/moc
+DESTDIR = ../debug/bin
+OBJECTS_DIR = ../debug/obj
+MOC_DIR = ../debug/moc
 # RCC_DIR
 # UI_DIR

@@ -8,14 +8,14 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/picop",
+            "program": "../debug/bin/picop",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "preLaunchTask":"build", // 预运行 task
+            "preLaunchTask":"build", // 调试前先编译
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

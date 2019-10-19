@@ -6,7 +6,7 @@
             "label": "build", // 任务名称，与launch.json的preLaunchTask相对应
             "command": "qmake", // 要使用的编译器
             "args": [
-                "/home/xhls/Documents/Code/Picop/Picop.pro",
+                "${workSpaceFolder}picop.pro",
                 "-spec",
                 "linux-g++",
                 "CONFIG+=debug",
@@ -16,7 +16,7 @@
                 ";",
                 "make",
                 "-f",
-                "/home/xhls/Documents/Code/Picop/Makefile",
+                "${workSpaceFolder}Makefile",
                 "qmake_all",
                 "|",
                 "lolcat",
@@ -43,7 +43,7 @@
             "type": "shell",
             "label": "test",
             "dependsOn": "build",
-            "command": "picop",
+            "command": "../debug/bin/picop",
             "args": [],
             "group": {
                 "kind": "test",

@@ -2,7 +2,6 @@
 #define DIALOGPOWERTRANSFORMATION_H
 
 #include "qcustomplot.h"
-#include <QMainWindow>
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
@@ -19,6 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
 
 class DialogPowerTransformation : public QDialog
 {
@@ -38,7 +38,7 @@ public:
     QLabel *labelArgR;
     QLabel *labelArgB;
     QGridLayout *gridLayout;
-    QMainWindow *ptr = (QMainWindow *) parentWidget();
+    QMainWindow *ptr = (QMainWindow *)parentWidget();
 
 public:
     void setup();

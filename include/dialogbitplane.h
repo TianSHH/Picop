@@ -1,7 +1,6 @@
 #ifndef DIALOGBITPLANE_H
 #define DIALOGBITPLANE_H
 
-#include <QMainWindow>
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
@@ -16,6 +15,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
 
 class DialogBitPlane : public QDialog
 {
