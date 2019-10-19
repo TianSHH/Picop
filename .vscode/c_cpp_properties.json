@@ -88,8 +88,7 @@
                 "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets",
                 "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtX11Extras",
                 "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXml",
-                "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns",
-                "${workSpaceFolder}include/"
+                "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns"
             ],
             "browse": {
                 "path": [
@@ -177,7 +176,7 @@
                     "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtX11Extras",
                     "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXml",
                     "/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns",
-		            "${workSpaceFolder}include"
+		            "${workSpaceFolder}include/"
                 ]
             },
             "defines": [],
