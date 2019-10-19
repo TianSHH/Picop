@@ -49,67 +49,75 @@ QImage *DialogHistogram::histogramEqualization(QImage *originImage)
     // 计算初始各像素级所占图像总像素百分比
 
     double grayHs[256];
+    double redHs[256];
+    double greenHs[256];
+    double blueHs[256];
 
     for (int i = 0; i <= 255; i++)
     {
-        grayHs[i] = (double)grayHistogram[i];
+        grayHs[i] = grayHistogram[i];
+        redHs[i] = redHistogram[i];
+        greenHs[i] = greenHistogram[i];
+        blueHs[i] = blueHistogram[i];
     }
-
-    qDebug() << "step1";
 
     // step2
     // 计算各像素级的累计分布概率
 
     // 各像素级的累计分布概率
     double grayHp[256];
+    double redHp[256];
+    double greenHp[256];
+    double blueHp[256];
 
     grayHp[0] = grayHs[0];
+    redHp[0] = redHs[0];
+    greenHp[0] = greenHs[0];
+    blueHp[0] = blueHs[0];
 
     for (int i = 1; i <= 255; i++)
     {
-        /* ***********************************************
-         * 由于之后在 step4 原图的像素级概率, 即 grayHs 还要用到,
-         * 所以这里在使用计算完之后使用另一数组 grayHp 来存储结果,
-         * grayHs 恢复原值.
-         * 如果一开始就使用以下语句计算则会产生错误:
-         * for(int j = 0; j <= i; j++)
-         *      grayHp[i] += grayHs[j];
-         * 在如此得到的 grayHp 中, 会有少量索引对应的值产生溢出
-         * 已经证明这种溢出不是由于未初始化 grayHp 所引起,
-         * 具体原因未知.
-         TODO 找出原因.
-         * **********************************************/
-
         grayHp[i] = grayHp[i - 1] + grayHs[i];
+        redHp[i] = redHp[i - 1] + redHs[i];
+        greenHp[i] = greenHp[i - 1] + greenHs[i];
+        blueHp[i] = blueHp[i - 1] + blueHs[i];
     }
-
-    qDebug() << "step2";
 
     // step3
     // 计算新的调色板索引值
 
     // 新调色板索引值
     double newIndexGrayHs[256];
+    double newIndexRedHs[256];
+    double newIndexGreenHs[256];
+    double newIndexBlueHs[256];
 
     for (int i = 0; i <= 255; i++)
     {
         newIndexGrayHs[i] = (int)(255 * grayHp[i] + 0.5);
+        newIndexRedHs[i] = (int)(255 * redHp[i] + 0.5);
+        newIndexGreenHs[i] = (int)(255 * greenHp[i] + 0.5);
+        newIndexBlueHs[i] = (int)(255 * blueHp[i] + 0.5);
     }
-
-    qDebug() << "step3";
 
     // step4
     // 将老的索引值对应的概率合并, 作为对应的新的索引值的概率
 
     for (int i = 0; i <= width; i++)
     {
-        for (int j = 9; j <= height; j++)
+        for (int j = 0; j <= height; j++)
         {
             int gray = qGray(originImage->pixel(i, j));
+            int red = qRed(originImage->pixel(i, j));
+            int green = qGreen(originImage->pixel(i, j));
+            int blue = qBlue(originImage->pixel(i, j));
 
             gray = newIndexGrayHs[gray];
+            red = newIndexRedHs[red];
+            green = newIndexGreenHs[green];
+            blue = newIndexBlueHs[blue];
 
-            originImage->setPixel(i, j, qRgb(gray, gray, gray));
+            originImage->setPixel(i, j, qRgb(red, green, blue));
         }
     }
 
