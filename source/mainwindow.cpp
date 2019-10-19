@@ -200,10 +200,12 @@ QString MainWindow::getUserPath()
 
 void MainWindow::updateRightScene(QImage &newImage)
 {
-    rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
+    // rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "更新右侧图像";
+    rightPixmapItem->setPixmap(QPixmap::fromImage(newImage));
+    rightScene->setSceneRect(QRectF(newImage.rect()));
 } // updateRightScene
 
 void MainWindow::closeImage()
@@ -444,9 +446,11 @@ void MainWindow::on_actionPointOperationNolinearHistogramEqualization_triggered(
 {
     DialogHistogram *_dialogHistogram = new DialogHistogram(this);
 
-    emitSignalSendImage();
+    QImage *originImage = new QImage(rightPixmapItem->pixmap().toImage()); // 显示右侧图像直方图
 
-    connect(_dialogHistogram, SIGNAL(signalHistogramEqulizationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
+    QImage *newImage = _dialogHistogram->histogramEqualization(originImage);
+
+    updateRightScene((QImage &)(*newImage));
 } // on_actionPointOperationNolinearHistogramEqualization_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)

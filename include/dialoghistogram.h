@@ -70,6 +70,8 @@ public:
     void drawHistogram(int xBaseRect, int yBaseRect, double *histogram, QColor color);
     // 获取绘制直方图信息
     void getImageInfo(QImage *);
+    // 直方图均衡化
+    QImage * histogramEqualization(QImage *originImage);
     // 获取平均像素值, 返回类型为 QString 的原因是为了方便使用 QPainter 绘制
     QString getMean(double *histogram);
     // 获取中位数
@@ -80,9 +82,6 @@ public:
 signals:
     void signalHistogramEqulizationEnd(QImage &);
 
-private slots:
-    // 直方图均衡化
-    void histogramEqualization(QImage *originImage);
 };
 
 #endif // DIALOGHISTOGRAM_H

@@ -5,8 +5,6 @@ DialogHistogram::DialogHistogram(QWidget *parent) : QDialog(parent)
 {
     setup();
     setAttribute(Qt::WA_DeleteOnClose);
-
-    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(histogramEqualization(QImage *)));
 }
 
 DialogHistogram::~DialogHistogram()
@@ -40,7 +38,7 @@ void DialogHistogram::displayHistogram(QImage *originImage)
     getImageInfo(originImage);
 } // displayHistogram
 
-void DialogHistogram::histogramEqualization(QImage *originImage)
+QImage *DialogHistogram::histogramEqualization(QImage *originImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "直方图均衡化";
@@ -51,16 +49,10 @@ void DialogHistogram::histogramEqualization(QImage *originImage)
     // 计算初始各像素级所占图像总像素百分比
 
     double grayHs[256];
-    double redHs[256];
-    double greenHs[256];
-    double blueHs[256];
 
     for (int i = 0; i <= 255; i++)
     {
-        grayHs[i] = (double)grayHistogram[i] / (double)totalPixel;
-        redHs[i] = (double)redHistogram[i] / (double)totalPixel;
-        greenHs[i] = (double)greenHistogram[i] / (double)totalPixel;
-        blueHs[i] = (double)blueHistogram[i] / (double)totalPixel;
+        grayHs[i] = (double)grayHistogram[i];
     }
 
     qDebug() << "step1";
@@ -70,13 +62,7 @@ void DialogHistogram::histogramEqualization(QImage *originImage)
 
     // 各像素级的累计分布概率
     double grayHp[256];
-    double redHp[256];
-    double greenHp[256];
-    double blueHp[256];
 
-    grayHp[0] = grayHs[0];
-    grayHp[0] = grayHs[0];
-    grayHp[0] = grayHs[0];
     grayHp[0] = grayHs[0];
 
     for (int i = 1; i <= 255; i++)
@@ -94,29 +80,7 @@ void DialogHistogram::histogramEqualization(QImage *originImage)
          TODO 找出原因.
          * **********************************************/
 
-        grayHp[i] = grayHs[i];
-        grayHs[i] += grayHs[i - 1];
-        double temp = grayHs[i];
-        grayHs[i] = grayHp[i];
-        grayHp[i] = temp;
-
-        redHp[i] = redHs[i];
-        redHs[i] += redHs[i - 1];
-        temp = redHs[i];
-        redHs[i] = redHp[i];
-        redHp[i] = temp;
-
-        greenHp[i] = greenHs[i];
-        greenHs[i] += greenHs[i - 1];
-        temp = greenHs[i];
-        greenHs[i] = greenHp[i];
-        greenHp[i] = temp;
-
-        blueHp[i] = blueHs[i];
-        blueHs[i] += blueHs[i - 1];
-        temp = blueHs[i];
-        blueHs[i] = blueHp[i];
-        blueHp[i] = temp;
+        grayHp[i] = grayHp[i - 1] + grayHs[i];
     }
 
     qDebug() << "step2";
@@ -126,16 +90,10 @@ void DialogHistogram::histogramEqualization(QImage *originImage)
 
     // 新调色板索引值
     double newIndexGrayHs[256];
-    double newIndexRedHs[256];
-    double newIndexGreenHs[256];
-    double newIndexBlueHs[256];
 
     for (int i = 0; i <= 255; i++)
     {
-        newIndexGrayHs[i] = grayHp[i] * 255;
-        newIndexRedHs[i] = redHp[i] * 255;
-        newIndexGreenHs[i] = greenHp[i] * 255;
-        newIndexBlueHs[i] = blueHp[i] * 255;
+        newIndexGrayHs[i] = (int)(255 * grayHp[i] + 0.5);
     }
 
     qDebug() << "step3";
@@ -143,66 +101,19 @@ void DialogHistogram::histogramEqualization(QImage *originImage)
     // step4
     // 将老的索引值对应的概率合并, 作为对应的新的索引值的概率
 
-    for (int i = 0; i <= 255; i++)
+    for (int i = 0; i <= width; i++)
     {
-        grayHistogram[i] = 0;
-        redHistogram[i] = 0;
-        greenHistogram[i] = 0;
-        blueHistogram[i] = 0;
-    }
-
-    // 新旧像素映射表
-    int grayMap[256];
-    int redMap[256];
-    int greenMap[256];
-    int blueMap[256];
-
-    for (int i = 0; i <= 255; i++)
-    {
-        int index = (int)newIndexGrayHs[i];
-        grayHistogram[index] += grayHs[i];
-        grayMap[i] = index;
-
-        index = (int)newIndexRedHs[i];
-        redHistogram[index] += redHs[i];
-        redMap[i] = index;
-
-        index = (int)newIndexGreenHs[i];
-        greenHistogram[index] += greenHs[i];
-        greenMap[i] = index;
-
-        index = (int)newIndexBlueHs[i];
-        blueHistogram[index] += blueHs[i];
-        blueMap[i] = index;
-    }
-
-    qDebug() << "step4";
-
-    // step5
-    // 对像素值进行映射
-
-    int width = originImage->width();
-    int height = originImage->height();
-
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
+        for (int j = 9; j <= height; j++)
         {
             int gray = qGray(originImage->pixel(i, j));
-            int red = qRed(originImage->pixel(i, j));
-            int green = qGreen(originImage->pixel(i, j));
-            int blue = qBlue(originImage->pixel(i, j));
 
-            gray = grayMap[gray];
-            red = redMap[red];
-            green = greenMap[green];
-            blue = blueMap[blue];
+            gray = newIndexGrayHs[gray];
 
-            originImage->setPixel(i, j, qRgb(red, green, blue));
+            originImage->setPixel(i, j, qRgb(gray, gray, gray));
         }
     }
 
-    emit signalHistogramEqulizationEnd((QImage &)(*originImage));
+    return originImage;
 } // histogramEqualization
 
 void DialogHistogram::paintEvent(QPaintEvent *event)
