@@ -58,6 +58,7 @@ public:
     QMenu *menuEdit;
     QMenu *menuDisplay;
     QMenu *menuPointOperation;
+    QMenu *menuGeometricOperation;
     QMenu *menuHelp;
 
     QAction *actionOpen;
@@ -73,11 +74,17 @@ public:
     QAction *actionDisplayBitPlane;
     QAction *actionDisplayHistogram;
 
-    QAction *actionPointOperationLinear;
-    QMenu *actionPointOperationNolinear;
-    QAction *actionPointOperationNolinearLogTransformation;
-    QAction *actionPointOperationNolinearPowerTransformation;
-    QAction *actionPointOperationNolinearHistogramEqualization;
+    QAction *actionLinearTransformation;
+    QMenu *menuNolinearPointOperation;
+    QAction *actionLogTransformation;
+    QAction *actionPowerTransformation;
+    QAction *actionHistogramEqualization;
+
+    QMenu *menuSpatialTransformation;
+    QAction *actionScaling;
+    QAction *actionRotation;
+    QAction *actionTranslation;
+    QMenu *menuGrayLevelInterpolation;
 
     QAction *actionAbout;
 
@@ -122,10 +129,10 @@ private slots:
     void on_actionDisplayBitPlane_triggered();
     void on_actionDisplayHistogram_triggered();
 
-    void on_actionPointOperationLinear_triggered();
-    void on_actionPointOperationNolinearLogTransformation_triggered();
-    void on_actionPointOperationNolinearPowerTransformation_triggered();
-    void on_actionPointOperationNolinearHistogramEqualization_triggered();
+    void on_actionLinearTransformation_triggered();
+    void on_actionLogTransformation_triggered();
+    void on_actionPowerTransformation_triggered();
+    void on_actionHistogramEqualization_triggered();
 
     // void on_actionAbout_triggered();
 

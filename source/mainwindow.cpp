@@ -45,19 +45,31 @@ void MainWindow::setup()
     actionDisplayBitPlane->setObjectName(QStringLiteral("actionDisplayBitPlane"));
     actionDisplayHistogram = new QAction(this);
     actionDisplayHistogram->setObjectName(QStringLiteral("actionDisplayHistogram"));
+
+    actionLinearTransformation = new QAction(this);
+    actionLinearTransformation->setObjectName(QStringLiteral("actionLinearTransformation"));
+    menuNolinearPointOperation = new QMenu(this); // 二级菜单
+    menuNolinearPointOperation->setObjectName(QStringLiteral("menuNolinearPointOperation"));
+    actionLogTransformation = new QAction(this);
+    actionLogTransformation->setObjectName(QStringLiteral("actionLogTransformation"));
+    actionPowerTransformation = new QAction(this);
+    actionPowerTransformation->setObjectName(QStringLiteral("actionPowerTransformation"));
+    actionHistogramEqualization = new QAction(this);
+    actionHistogramEqualization->setObjectName(QStringLiteral("actionHistogramEqualization"));
+
+    menuSpatialTransformation = new QMenu(this);
+    menuSpatialTransformation->setObjectName(QStringLiteral("menuSpatialTransformation"));
+    actionScaling = new QAction(this);
+    actionScaling->setObjectName(QStringLiteral("actionScaling"));
+    actionRotation = new QAction(this);
+    actionRotation->setObjectName(QStringLiteral("actionRotation"));
+    actionTranslation = new QAction(this);
+    actionTranslation->setObjectName(QStringLiteral("actionTranslation"));
+    menuGrayLevelInterpolation = new QMenu(this);
+    menuGrayLevelInterpolation->setObjectName(QStringLiteral("menuGrayLevelInterpolation"));
+
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
-
-    actionPointOperationLinear = new QAction(this);
-    actionPointOperationLinear->setObjectName(QStringLiteral("actionPointOperationLinear"));
-    actionPointOperationNolinear = new QMenu(this); // 二级菜单
-    actionPointOperationNolinear->setObjectName(QStringLiteral("actionPointOperationNolinear"));
-    actionPointOperationNolinearLogTransformation = new QAction(this);
-    actionPointOperationNolinearLogTransformation->setObjectName(QStringLiteral("actionPointOperationNolinearLogTransformation"));
-    actionPointOperationNolinearPowerTransformation = new QAction(this);
-    actionPointOperationNolinearPowerTransformation->setObjectName(QStringLiteral("actionPointOperationNolinearPowerTransformation"));
-    actionPointOperationNolinearHistogramEqualization = new QAction(this);
-    actionPointOperationNolinearHistogramEqualization->setObjectName(QStringLiteral("actionPointOperationNolinearHistogramEqualization"));
 
     centralWidget = new QWidget(this);
     centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -87,6 +99,8 @@ void MainWindow::setup()
     menuDisplay->setObjectName(QStringLiteral("menuDisplay"));
     menuPointOperation = new QMenu(menuBar);
     menuPointOperation->setObjectName(QStringLiteral("menuPointOperation"));
+    menuGeometricOperation = new QMenu(menuBar);
+    menuGeometricOperation->setObjectName(QStringLiteral("menuGeometricOperation"));
     menuHelp = new QMenu(menuBar);
     menuHelp->setObjectName(QStringLiteral("menuHelp"));
     this->setMenuBar(menuBar);
@@ -108,6 +122,7 @@ void MainWindow::setup()
     menuBar->addAction(menuEdit->menuAction());
     menuBar->addAction(menuDisplay->menuAction());
     menuBar->addAction(menuPointOperation->menuAction());
+    menuBar->addAction(menuGeometricOperation->menuAction());
     menuBar->addAction(menuHelp->menuAction());
 
     menuFile->addAction(actionOpen);
@@ -125,11 +140,17 @@ void MainWindow::setup()
     menuDisplay->addAction(actionDisplayBitPlane);
     menuDisplay->addAction(actionDisplayHistogram);
 
-    menuPointOperation->addAction(actionPointOperationLinear);
-    menuPointOperation->addMenu(actionPointOperationNolinear);                              // 添加二级菜单
-    actionPointOperationNolinear->addAction(actionPointOperationNolinearLogTransformation); // 二级菜单下添加Action
-    actionPointOperationNolinear->addAction(actionPointOperationNolinearPowerTransformation);
-    actionPointOperationNolinear->addAction(actionPointOperationNolinearHistogramEqualization);
+    menuPointOperation->addAction(actionLinearTransformation);
+    menuPointOperation->addMenu(menuNolinearPointOperation);        // 添加二级菜单
+    menuNolinearPointOperation->addAction(actionLogTransformation); // 二级菜单下添加Action
+    menuNolinearPointOperation->addAction(actionPowerTransformation);
+    menuNolinearPointOperation->addAction(actionHistogramEqualization);
+
+    menuGeometricOperation->addMenu(menuSpatialTransformation);
+    menuSpatialTransformation->addAction(actionScaling);
+    menuSpatialTransformation->addAction(actionRotation);
+    menuSpatialTransformation->addAction(actionTranslation);
+    menuGeometricOperation->addMenu(menuGrayLevelInterpolation);
 
     menuHelp->addAction(actionAbout);
 
@@ -175,11 +196,17 @@ void MainWindow::retranslate()
     actionDisplayBitPlane->setText(QApplication::translate("MainWindow", "显示位平面(&B)", Q_NULLPTR));
     actionDisplayHistogram->setText(QApplication::translate("MainWindow", "显示直方图(&H)", Q_NULLPTR));
 
-    actionPointOperationLinear->setText(QApplication::translate("MainWindow", "线性点运算(&L)", Q_NULLPTR));
-    actionPointOperationNolinear->setTitle(QApplication::translate("MainWindow", "非线性点运算(&N)", Q_NULLPTR));
-    actionPointOperationNolinearLogTransformation->setText(QApplication::translate("MainWindow", "对数变换(&L)", Q_NULLPTR));
-    actionPointOperationNolinearPowerTransformation->setText(QApplication::translate("MainWindow", "幂次变换(&P)", Q_NULLPTR));
-    actionPointOperationNolinearHistogramEqualization->setText(QApplication::translate("MainWindow", "直方图均衡化(&H)", Q_NULLPTR));
+    actionLinearTransformation->setText(QApplication::translate("MainWindow", "线性点运算(&L)", Q_NULLPTR));
+    menuNolinearPointOperation->setTitle(QApplication::translate("MainWindow", "非线性点运算(&N)", Q_NULLPTR));
+    actionLogTransformation->setText(QApplication::translate("MainWindow", "对数变换(&L)", Q_NULLPTR));
+    actionPowerTransformation->setText(QApplication::translate("MainWindow", "幂次变换(&P)", Q_NULLPTR));
+    actionHistogramEqualization->setText(QApplication::translate("MainWindow", "直方图均衡化(&H)", Q_NULLPTR));
+
+    menuSpatialTransformation->setTitle(QApplication::translate("MainWindow", "空间变换(&S)", Q_NULLPTR));
+    actionScaling->setText(QApplication::translate("MainWindow", "缩放(&S)", Q_NULLPTR));
+    actionRotation->setText(QApplication::translate("MainWindow", "旋转(&R)", Q_NULLPTR));
+    actionTranslation->setText(QApplication::translate("MainWindow", "平移(&T)", Q_NULLPTR));
+    menuGrayLevelInterpolation->setTitle(QApplication::translate("MainWindow", "直方图均衡化(&H)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -188,6 +215,7 @@ void MainWindow::retranslate()
     menuEdit->setTitle(QApplication::translate("MainWindow", "编辑(&E)", Q_NULLPTR));
     menuDisplay->setTitle(QApplication::translate("MainWindow", "显示(&D)", Q_NULLPTR));
     menuPointOperation->setTitle(QApplication::translate("MainWindow", "点运算(&P)", Q_NULLPTR));
+    menuGeometricOperation->setTitle(QApplication::translate("MainWindow", "几何运算(&G)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 
     statusSize->setText(QApplication::translate("MainWindow", "", Q_NULLPTR));
@@ -413,7 +441,7 @@ void MainWindow::on_actionDisplayHistogram_triggered()
     delete originImage;
 } // on_actionDisplayHistogram_triggered
 
-void MainWindow::on_actionPointOperationLinear_triggered()
+void MainWindow::on_actionLinearTransformation_triggered()
 {
     DialogLinearPointOperation *_dialogLinearPointOperation = new DialogLinearPointOperation(this);
 
@@ -421,9 +449,9 @@ void MainWindow::on_actionPointOperationLinear_triggered()
 
     connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperation()), this, SLOT(emitSignalSendImage()));
     connect(_dialogLinearPointOperation, SIGNAL(signalLinearPointOperationFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
-} // on_actionPointOperationLinear_triggered
+} // on_actionLinearTransformation_triggered
 
-void MainWindow::on_actionPointOperationNolinearLogTransformation_triggered()
+void MainWindow::on_actionLogTransformation_triggered()
 {
     DialogLogTransformation *_dialogLogTransformation = new DialogLogTransformation(this);
 
@@ -431,9 +459,9 @@ void MainWindow::on_actionPointOperationNolinearLogTransformation_triggered()
 
     connect(_dialogLogTransformation, SIGNAL(signalLogTransformationStart()), this, SLOT(emitSignalSendImage()));
     connect(_dialogLogTransformation, SIGNAL(signalLogTransformationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
-} // on_actionPointOperationNolinearLogTrans_tirggered
+} // on_actionLogTransformation_triggered
 
-void MainWindow::on_actionPointOperationNolinearPowerTransformation_triggered()
+void MainWindow::on_actionPowerTransformation_triggered()
 {
     DialogPowerTransformation *_dialogPowerTransformation = new DialogPowerTransformation(this);
 
@@ -441,9 +469,9 @@ void MainWindow::on_actionPointOperationNolinearPowerTransformation_triggered()
 
     connect(_dialogPowerTransformation, SIGNAL(signalPowerTransformationStart()), this, SLOT(emitSignalSendImage()));
     connect(_dialogPowerTransformation, SIGNAL(signalPowerTransformationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
-} // on_actionPointOperationNolinearPowerTransformation_triggered
+} // on_actionPowerTransformation_triggered
 
-void MainWindow::on_actionPointOperationNolinearHistogramEqualization_triggered()
+void MainWindow::on_actionHistogramEqualization_triggered()
 {
     DialogHistogram *_dialogHistogram = new DialogHistogram(this);
 
@@ -452,7 +480,7 @@ void MainWindow::on_actionPointOperationNolinearHistogramEqualization_triggered(
     QImage *newImage = _dialogHistogram->histogramEqualization(originImage);
 
     updateRightScene((QImage &)(*newImage));
-} // on_actionPointOperationNolinearHistogramEqualization_triggered
+} // on_actionHistogramEqualization_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {
