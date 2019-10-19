@@ -39,7 +39,7 @@
                 "clear": false
             }
         },
-        { // 执行生成的二进制文件
+        { // 编译运行
             "type": "shell",
             "label": "test",
             "dependsOn": "build",

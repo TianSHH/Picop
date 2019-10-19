@@ -482,6 +482,16 @@ void MainWindow::on_actionHistogramEqualization_triggered()
     updateRightScene((QImage &)(*newImage));
 } // on_actionHistogramEqualization_triggered
 
+void MainWindow::on_actionTranslation_triggered()
+{
+    DialogTranslation *_dialogTranslation = new DialogTranslation(this);
+
+    _dialogTranslation->show();
+
+    connect(_dialogTranslation, SIGNAL(signalTranslationStart()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogTranslation, SIGNAL(signalTranslationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
+}
+
 void MainWindow::updateRightImage(QImage &newImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"

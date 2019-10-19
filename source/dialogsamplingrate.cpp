@@ -30,7 +30,7 @@ void DialogSamplingRate::setup()
     if (this->objectName().isEmpty())
         this->setObjectName(QStringLiteral("DialogSamplingRate"));
     this->setFixedSize(400, 112);
-    
+
     label = new QLabel(this);
     label->setObjectName(QStringLiteral("label"));
     
@@ -58,6 +58,7 @@ void DialogSamplingRate::setup()
 void DialogSamplingRate::retranslate()
 {
     this->setWindowTitle(QApplication::translate("DialogSamplingRate", "Dialog", Q_NULLPTR));
+    
     label->setText(QApplication::translate("DialogSamplingRate", "设定采样率", Q_NULLPTR));
 } // retranslate
 

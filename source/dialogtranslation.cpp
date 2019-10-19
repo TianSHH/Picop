@@ -7,8 +7,8 @@ DialogTranslation::DialogTranslation(QWidget *parent) : QDialog(parent)
 
     setAttribute(Qt::WA_DeleteOnClose);
 
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalSetSamplingRate()));
-    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(setSamplingRate(QImage *)));
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalTranslationEnd()));
+    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(Translation(QImage *)));
 }
 
 DialogTranslation::~DialogTranslation()
@@ -40,7 +40,6 @@ void DialogTranslation::setup()
 
     gridLayout = new QGridLayout(this);
     gridLayout->setObjectName(QStringLiteral("gridLayout"));
-
     gridLayout->addWidget(labelArgDeltaX, 0, 0);
     gridLayout->addWidget(labelArgDeltaY, 1, 0);
     gridLayout->addWidget(lineEditArgDeltaX, 0, 1);
@@ -55,46 +54,62 @@ void DialogTranslation::setup()
 void DialogTranslation::retranslate()
 {
     this->setWindowTitle(QApplication::translate("DialogTranslation", "Dialog", Q_NULLPTR));
+
     labelArgDeltaX->setText(QApplication::translate("DialogTranslation", "设定水平偏移量", Q_NULLPTR));
     labelArgDeltaY->setText(QApplication::translate("DialogTranslation", "设定竖直偏移量", Q_NULLPTR));
 } // retranslate
 
-void DialogTranslation::emitSignalSetSamplingRate()
+void DialogTranslation::emitSignalTranslationEnd()
 {
-    int rate = lineEdit->text().toInt();
+    emit signalTranslationStart();
+} // emitSignalTranslationEnd
 
-    if (lineEdit->text().isEmpty())
-        return;
+void DialogTranslation::Translation(QImage *originImage)
+{
+    int deltaX = lineEditArgDeltaX->text().toInt();
+    int deltaY = lineEditArgDeltaY->text().toInt();
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "设定采样率" << rate;
-    emit signalSetSamplingRate();
-} // emitSignalSetSamplingRate
-
-void DialogTranslation::setSamplingRate(QImage *originImage)
-{
-    int rate = lineEdit->text().toInt();
-
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "修改采样率" << rate;
+                       << "图像平移,"
+                       << "水平偏移量:" << deltaX << ";"
+                       << "竖直偏移量:" << deltaY;
 
     int width = originImage->width();
     int height = originImage->height();
 
-    for (int i = 0; i < width; i += rate)
-        for (int j = 0; j < height; j += rate)
+    QImage targetImage = QImage(width, height, QImage::Format_RGB32);
+
+    for (int i = 0; i < width; i++)
+        for (int j = 0; j < height; j++)
+            targetImage.setPixel(i, j, qRgb(255, 255, 255));
+
+    // 开始平移的初始坐标
+    int i = (width - deltaX) % width;
+    int j = (height - deltaY) % height;
+
+    // 步长, 根据偏移量符号判断坐标 ++ 还是 --
+    int stepX = deltaX / qAbs(deltaX);
+    int stepY = deltaY / qAbs(deltaY);
+
+    // deltaX 有正有负, 用这种方式规避正负问题
+    int translationNumX = width - stepX * deltaX;
+    int translationNumY = height - stepY * deltaY;
+
+    for (int originX = i, countX = 0; countX < translationNumX; originX -= stepX, countX++)
+    { // 由于无法确定 originX >= 0 还是 originX < width, 所以采用 countX 进行计数
+        // 若 countX <= translationX 则会因多计算一次而出现黑边
+        for (int originY = j, countY = 0; countY < translationNumY; originY -= stepY, countY++)
         {
-            QColor color = QColor(originImage->pixel(i, j));
-            int r = color.red();
-            int g = color.green();
-            int b = color.blue();
+            QRgb rgb = QRgb(originImage->pixel(originX, originY));
 
-            originImage->setPixel(i + 1, j + 1, qRgb(r, g, b));
+            // 开始平移时的目标坐标
+            int targetX = originX + deltaX;
+            int targetY = originY + deltaY;
 
-            for (int p = 0; p < rate && i + p < height; p++)
-                for (int q = 0; q < rate && j + q < width; q++)
-                    originImage->setPixel(i + p, j + q, qRgb(r, g, b));
+            if ((targetX < width) && (targetY < height))
+                targetImage.setPixel(targetX, targetY, QRgb(rgb));
         }
+    }
 
-    emit signalSetSamplingRateFinished((QImage &)(*originImage));
-} // setSamplingRate
+    emit signalTranslationEnd((QImage &)(targetImage));
+} // Translation

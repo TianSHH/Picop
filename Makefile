@@ -60,6 +60,7 @@ SOURCES       = source/main.cpp \
 		source/dialoglinearpointoperation.cpp \
 		source/dialoglogtransformation.cpp \
 		source/dialogpowertransformation.cpp \
+		source/dialogtranslation.cpp \
 		source/qcustomplot.cpp ../debug/moc/moc_mainwindow.cpp \
 		../debug/moc/moc_dialogquantifylevel.cpp \
 		../debug/moc/moc_dialogsamplingrate.cpp \
@@ -69,6 +70,7 @@ SOURCES       = source/main.cpp \
 		../debug/moc/moc_dialoglinearpointoperation.cpp \
 		../debug/moc/moc_dialoglogtransformation.cpp \
 		../debug/moc/moc_dialogpowertransformation.cpp \
+		../debug/moc/moc_dialogtranslation.cpp \
 		../debug/moc/moc_qcustomplot.cpp
 OBJECTS       = ../debug/obj/main.o \
 		../debug/obj/mainwindow.o \
@@ -80,6 +82,7 @@ OBJECTS       = ../debug/obj/main.o \
 		../debug/obj/dialoglinearpointoperation.o \
 		../debug/obj/dialoglogtransformation.o \
 		../debug/obj/dialogpowertransformation.o \
+		../debug/obj/dialogtranslation.o \
 		../debug/obj/qcustomplot.o \
 		../debug/obj/moc_mainwindow.o \
 		../debug/obj/moc_dialogquantifylevel.o \
@@ -90,6 +93,7 @@ OBJECTS       = ../debug/obj/main.o \
 		../debug/obj/moc_dialoglinearpointoperation.o \
 		../debug/obj/moc_dialoglogtransformation.o \
 		../debug/obj/moc_dialogpowertransformation.o \
+		../debug/obj/moc_dialogtranslation.o \
 		../debug/obj/moc_qcustomplot.o
 DIST          = ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/common/unix.conf \
@@ -281,6 +285,7 @@ DIST          = ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/spec_pre.prf \
 		include/dialoglinearpointoperation.h \
 		include/dialoglogtransformation.h \
 		include/dialogpowertransformation.h \
+		include/dialogtranslation.h \
 		include/qcustomplot.h source/main.cpp \
 		source/mainwindow.cpp \
 		source/dialogquantifylevel.cpp \
@@ -291,6 +296,7 @@ DIST          = ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/spec_pre.prf \
 		source/dialoglinearpointoperation.cpp \
 		source/dialoglogtransformation.cpp \
 		source/dialogpowertransformation.cpp \
+		source/dialogtranslation.cpp \
 		source/qcustomplot.cpp
 QMAKE_TARGET  = picop
 DESTDIR       = ../debug/bin/
@@ -694,8 +700,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/qcustomplot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/dialogtranslation.h include/qcustomplot.h $(DISTDIR)/
+	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/dialogtranslation.cpp source/qcustomplot.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -727,9 +733,9 @@ compiler_moc_predefs_clean:
 ../debug/moc/moc_predefs.h: ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o ../debug/moc/moc_predefs.h ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: ../debug/moc/moc_mainwindow.cpp ../debug/moc/moc_dialogquantifylevel.cpp ../debug/moc/moc_dialogsamplingrate.cpp ../debug/moc/moc_dialogbitplane.cpp ../debug/moc/moc_dialoghistogram.cpp ../debug/moc/moc_dialoggrayscalethreshold.cpp ../debug/moc/moc_dialoglinearpointoperation.cpp ../debug/moc/moc_dialoglogtransformation.cpp ../debug/moc/moc_dialogpowertransformation.cpp ../debug/moc/moc_qcustomplot.cpp
+compiler_moc_header_make_all: ../debug/moc/moc_mainwindow.cpp ../debug/moc/moc_dialogquantifylevel.cpp ../debug/moc/moc_dialogsamplingrate.cpp ../debug/moc/moc_dialogbitplane.cpp ../debug/moc/moc_dialoghistogram.cpp ../debug/moc/moc_dialoggrayscalethreshold.cpp ../debug/moc/moc_dialoglinearpointoperation.cpp ../debug/moc/moc_dialoglogtransformation.cpp ../debug/moc/moc_dialogpowertransformation.cpp ../debug/moc/moc_dialogtranslation.cpp ../debug/moc/moc_qcustomplot.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) ../debug/moc/moc_mainwindow.cpp ../debug/moc/moc_dialogquantifylevel.cpp ../debug/moc/moc_dialogsamplingrate.cpp ../debug/moc/moc_dialogbitplane.cpp ../debug/moc/moc_dialoghistogram.cpp ../debug/moc/moc_dialoggrayscalethreshold.cpp ../debug/moc/moc_dialoglinearpointoperation.cpp ../debug/moc/moc_dialoglogtransformation.cpp ../debug/moc/moc_dialogpowertransformation.cpp ../debug/moc/moc_qcustomplot.cpp
+	-$(DEL_FILE) ../debug/moc/moc_mainwindow.cpp ../debug/moc/moc_dialogquantifylevel.cpp ../debug/moc/moc_dialogsamplingrate.cpp ../debug/moc/moc_dialogbitplane.cpp ../debug/moc/moc_dialoghistogram.cpp ../debug/moc/moc_dialoggrayscalethreshold.cpp ../debug/moc/moc_dialoglinearpointoperation.cpp ../debug/moc/moc_dialoglogtransformation.cpp ../debug/moc/moc_dialogpowertransformation.cpp ../debug/moc/moc_dialogtranslation.cpp ../debug/moc/moc_qcustomplot.cpp
 ../debug/moc/moc_mainwindow.cpp: include/dialogbitplane.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
@@ -1241,6 +1247,7 @@ compiler_moc_header_clean:
 		include/dialogpowertransformation.h \
 		include/dialogquantifylevel.h \
 		include/dialogsamplingrate.h \
+		include/dialogtranslation.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStandardPaths \
@@ -3167,6 +3174,164 @@ compiler_moc_header_clean:
 		../../../../Qt5.9.8/5.9.8/gcc_64/bin/moc
 	/home/xhls/Qt5.9.8/5.9.8/gcc_64/bin/moc $(DEFINES) --include ../debug/moc/moc_predefs.h -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/mkspecs/linux-g++ -I/home/xhls/Documents/code/picop/picop -I/home/xhls/Documents/code/picop/picop -I/home/xhls/Documents/code/picop/picop/include -I/home/xhls/Documents/code/picop/picop/source -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtGui -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtConcurrent -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/dialogpowertransformation.h -o ../debug/moc/moc_dialogpowertransformation.cpp
 
+../debug/moc/moc_dialogtranslation.cpp: ../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDebug \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
+		include/dialogtranslation.h \
+		../debug/moc/moc_predefs.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/bin/moc
+	/home/xhls/Qt5.9.8/5.9.8/gcc_64/bin/moc $(DEFINES) --include ../debug/moc/moc_predefs.h -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/mkspecs/linux-g++ -I/home/xhls/Documents/code/picop/picop -I/home/xhls/Documents/code/picop/picop -I/home/xhls/Documents/code/picop/picop/include -I/home/xhls/Documents/code/picop/picop/source -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtGui -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtConcurrent -I/home/xhls/Qt5.9.8/5.9.8/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include include/dialogtranslation.h -o ../debug/moc/moc_dialogtranslation.cpp
+
 ../debug/moc/moc_qcustomplot.cpp: ../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig.h \
@@ -4184,6 +4349,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		include/dialogpowertransformation.h \
 		include/dialogquantifylevel.h \
 		include/dialogsamplingrate.h \
+		include/dialogtranslation.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStandardPaths \
@@ -4708,6 +4874,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		include/dialogpowertransformation.h \
 		include/dialogquantifylevel.h \
 		include/dialogsamplingrate.h \
+		include/dialogtranslation.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStandardPaths \
@@ -6615,6 +6782,162 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/dialogpowertransformation.o source/dialogpowertransformation.cpp
 
+../debug/obj/dialogtranslation.o: source/dialogtranslation.cpp include/dialogtranslation.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDebug \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/dialogtranslation.o source/dialogtranslation.cpp
+
 ../debug/obj/qcustomplot.o: source/qcustomplot.cpp include/qcustomplot.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
@@ -7130,6 +7453,9 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ../debug/obj/moc_dialogpowertransformation.o: ../debug/moc/moc_dialogpowertransformation.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/moc_dialogpowertransformation.o ../debug/moc/moc_dialogpowertransformation.cpp
+
+../debug/obj/moc_dialogtranslation.o: ../debug/moc/moc_dialogtranslation.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/moc_dialogtranslation.o ../debug/moc/moc_dialogtranslation.cpp
 
 ../debug/obj/moc_qcustomplot.o: ../debug/moc/moc_qcustomplot.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/moc_qcustomplot.o ../debug/moc/moc_qcustomplot.cpp
