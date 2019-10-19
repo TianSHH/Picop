@@ -151,41 +151,58 @@ void DialogHistogram::histogramEqualization(QImage *originImage)
         blueHistogram[i] = 0;
     }
 
+    // 新旧像素映射表
+    int grayMap[256];
+    int redMap[256];
+    int greenMap[256];
+    int blueMap[256];
+
     for (int i = 0; i <= 255; i++)
     {
         int index = (int)newIndexGrayHs[i];
-        qDebug() << index;
-        qDebug() << "i1" << i;
         grayHistogram[index] += grayHs[i];
+        grayMap[i] = index;
 
         index = (int)newIndexRedHs[i];
-        qDebug() << index;
-        qDebug() << "i2" << i;
         redHistogram[index] += redHs[i];
+        redMap[i] = index;
 
         index = (int)newIndexGreenHs[i];
-        qDebug() << index;
-        qDebug() << "i3" << i;
         greenHistogram[index] += greenHs[i];
+        greenMap[i] = index;
 
         index = (int)newIndexBlueHs[i];
-        qDebug() << index;
-        qDebug() << "i4" << i;
         blueHistogram[index] += blueHs[i];
+        blueMap[i] = index;
     }
 
     qDebug() << "step4";
 
+    // step5
+    // 对像素值进行映射
+
+    int width = originImage->width();
+    int height = originImage->height();
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            int gray = qGray(originImage->pixel(i, j));
+            int red = qRed(originImage->pixel(i, j));
+            int green = qGreen(originImage->pixel(i, j));
+            int blue = qBlue(originImage->pixel(i, j));
+
+            gray = grayMap[gray];
+            red = redMap[red];
+            green = greenMap[green];
+            blue = blueMap[blue];
+
+            originImage->setPixel(i, j, qRgb(red, green, blue));
+        }
+    }
+
     emit signalHistogramEqulizationEnd((QImage &)(*originImage));
-
-    qDebug() << "dialogHistogram 信号发送完毕";
-
-    this->show();
-
-    repaint();
-
-
-
 } // histogramEqualization
 
 void DialogHistogram::paintEvent(QPaintEvent *event)
