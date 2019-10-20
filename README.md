@@ -30,3 +30,6 @@ vscode + Qt5.9.8 + Opencv4.1.1
 qmake ${workSpaceFolder}picop.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 make -f ${workSpaceFolder}Makefile qmake_all
 make -j8
+
+github
+https://github.com/TianSHH/picop
