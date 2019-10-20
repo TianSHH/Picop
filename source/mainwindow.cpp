@@ -483,6 +483,16 @@ void MainWindow::on_actionHistogramEqualization_triggered()
     updateRightScene((QImage &)(*newImage));
 } // on_actionHistogramEqualization_triggered
 
+void MainWindow::on_actionScaling_triggered()
+{
+    DialogScaling *_dialogScaling = new DialogScaling(this);
+
+    _dialogScaling->show();
+
+    connect(_dialogScaling, SIGNAL(signalScalingStart()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogScaling, SIGNAL(signalScalingEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
+} // on_actionScaling_triggered
+
 void MainWindow::on_actionRotation_triggered()
 {
     DialogRotation *_dialogRotation = new DialogRotation(this);
