@@ -22,6 +22,8 @@ SOURCES += \
     source/dialoglogtransformation.cpp \ 
     source/dialogpowertransformation.cpp \
     source/dialogtranslation.cpp \
+    source/dialogrotation.cpp \
+    source/dialogscaling.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -35,6 +37,8 @@ HEADERS += \
     include/dialoglogtransformation.h \
     include/dialogpowertransformation.h \
     include/dialogtranslation.h \
+    include/dialogrotation.h \
+    include/dialogscaling.h \
     include/qcustomplot.h
 
 DESTDIR = ../debug/bin

@@ -8,7 +8,9 @@
 #include "dialoglogtransformation.h"
 #include "dialogpowertransformation.h"
 #include "dialogquantifylevel.h"
+#include "dialogrotation.h"
 #include "dialogsamplingrate.h"
+#include "dialogscaling.h"
 #include "dialogtranslation.h"
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
@@ -135,6 +137,8 @@ private slots:
     void on_actionPowerTransformation_triggered();
     void on_actionHistogramEqualization_triggered();
 
+    void on_actionScaling_triggered();
+    void on_actionRotation_triggered();
     void on_actionTranslation_triggered();
 
     // void on_actionAbout_triggered();
