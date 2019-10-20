@@ -8,7 +8,11 @@ CONFIG += c++11
 
 INCLUDEPATH += ./ \
 	include/ \
-    source/ 
+    source/ \
+    /usr/local/include \
+    /usr/local/include/opencv4/ \
+
+LIBS += /usr/local/lib/libopencv*
 
 SOURCES += \
         source/main.cpp \
@@ -24,6 +28,7 @@ SOURCES += \
     source/dialogtranslation.cpp \
     source/dialogrotation.cpp \
     source/dialogscaling.cpp \
+    source/spectrogram.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -39,7 +44,9 @@ HEADERS += \
     include/dialogtranslation.h \
     include/dialogrotation.h \
     include/dialogscaling.h \
+    include/spectrogram.h \
     include/qcustomplot.h
+
 
 DESTDIR = ../debug/bin
 OBJECTS_DIR = ../debug/obj

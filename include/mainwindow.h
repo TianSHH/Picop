@@ -11,7 +11,10 @@
 #include "dialogrotation.h"
 #include "dialogsamplingrate.h"
 #include "dialogscaling.h"
+#include "spectrogram.h"
 #include "dialogtranslation.h"
+#include <QApplication>
+#include <QCoreApplication>
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtCore/QFile>
@@ -34,6 +37,9 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
+#include <opencv4/opencv2/core/core.hpp>
+#include <opencv4/opencv2/highgui/highgui.hpp>
+#include <opencv4/opencv2/imgproc/imgproc.hpp>
 
 #define WINDOW_TITLE "Picop"
 #define WINDOW_CRITICAL "Error - Picop"
@@ -62,6 +68,7 @@ public:
     QMenu *menuDisplay;
     QMenu *menuPointOperation;
     QMenu *menuGeometricOperation;
+    QMenu *menuImageTransformation;
     QMenu *menuHelp;
 
     QAction *actionOpen;
@@ -87,7 +94,8 @@ public:
     QAction *actionScaling;
     QAction *actionRotation;
     QAction *actionTranslation;
-    QMenu *menuGrayLevelInterpolation;
+
+    QAction *actionSpectrogram;
 
     QAction *actionAbout;
 
@@ -140,6 +148,8 @@ private slots:
     void on_actionScaling_triggered();
     void on_actionRotation_triggered();
     void on_actionTranslation_triggered();
+
+    void on_actionSpectrogram_triggered();
 
     // void on_actionAbout_triggered();
 

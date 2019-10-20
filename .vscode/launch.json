@@ -14,7 +14,8 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
+            "MIMode": "gdb", // 使用的 debug 工具
+            "miDebuggerPath": "/usr/bin/gdb", // gdb 所在目录
             "preLaunchTask":"build", // 调试前先编译
             "setupCommands": [
                 {

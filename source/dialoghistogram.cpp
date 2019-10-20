@@ -243,9 +243,9 @@ QString DialogHistogram::getMean(double *histogram)
     int sum = 0;
 
     for (int i = 0; i < 256; i++)
-        sum += (i * histogram[i]);
+        sum += (i * histogram[i] * totalPixel);
 
-    QString res = QString::number((int)(sum / totalPixel) * totalPixel, 10);
+    QString res = QString::number((int)(sum / totalPixel), 10);
 
     return res;
 } // getAverage
@@ -259,7 +259,7 @@ QString DialogHistogram::getMedian(double *histogram)
 
     for (int i = 0; i < 256; i++)
     {
-        sum += histogram[i];
+        sum += (histogram[i] * totalPixel);
         if (sum >= 126)
             left = i;
         if (sum >= 127)
@@ -269,7 +269,7 @@ QString DialogHistogram::getMedian(double *histogram)
         }
     }
 
-    QString res = QString::number((int)((left + right) / 2) * totalPixel, 10);
+    QString res = QString::number((int)((left + right) / 2), 10);
 
     return res;
 } // getMedian
@@ -283,7 +283,7 @@ QString DialogHistogram::getSD(double *histogram)
     for (int i = 0; i < 256; i++)
         d += ((i - mean) * (i - mean) * histogram[i]);
 
-    QString res = QString::number((int)((sqrt(d)) * totalPixel), 10, 4);
+    QString res = QString::number((int)((sqrt(d))), 10, 4);
 
     return res;
 } // getSD

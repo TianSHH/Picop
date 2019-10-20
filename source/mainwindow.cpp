@@ -66,8 +66,9 @@ void MainWindow::setup()
     actionRotation->setObjectName(QStringLiteral("actionRotation"));
     actionTranslation = new QAction(this);
     actionTranslation->setObjectName(QStringLiteral("actionTranslation"));
-    menuGrayLevelInterpolation = new QMenu(this);
-    menuGrayLevelInterpolation->setObjectName(QStringLiteral("menuGrayLevelInterpolation"));
+
+    actionSpectrogram = new QAction(this);
+    actionSpectrogram->setObjectName(QStringLiteral("actionSpectrogram"));
 
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
@@ -102,6 +103,8 @@ void MainWindow::setup()
     menuPointOperation->setObjectName(QStringLiteral("menuPointOperation"));
     menuGeometricOperation = new QMenu(menuBar);
     menuGeometricOperation->setObjectName(QStringLiteral("menuGeometricOperation"));
+    menuImageTransformation = new QMenu(menuBar);
+    menuImageTransformation->setObjectName(QStringLiteral("menuImageTransformation"));
     menuHelp = new QMenu(menuBar);
     menuHelp->setObjectName(QStringLiteral("menuHelp"));
     this->setMenuBar(menuBar);
@@ -124,6 +127,7 @@ void MainWindow::setup()
     menuBar->addAction(menuDisplay->menuAction());
     menuBar->addAction(menuPointOperation->menuAction());
     menuBar->addAction(menuGeometricOperation->menuAction());
+    menuBar->addAction(menuImageTransformation->menuAction());
     menuBar->addAction(menuHelp->menuAction());
 
     menuFile->addAction(actionOpen);
@@ -151,7 +155,8 @@ void MainWindow::setup()
     menuSpatialTransformation->addAction(actionScaling);
     menuSpatialTransformation->addAction(actionRotation);
     menuSpatialTransformation->addAction(actionTranslation);
-    menuGeometricOperation->addMenu(menuGrayLevelInterpolation);
+
+    menuImageTransformation->addAction(actionSpectrogram);
 
     menuHelp->addAction(actionAbout);
 
@@ -207,7 +212,7 @@ void MainWindow::retranslate()
     actionScaling->setText(QApplication::translate("MainWindow", "缩放(&S)", Q_NULLPTR));
     actionRotation->setText(QApplication::translate("MainWindow", "旋转(&R)", Q_NULLPTR));
     actionTranslation->setText(QApplication::translate("MainWindow", "平移(&T)", Q_NULLPTR));
-    menuGrayLevelInterpolation->setTitle(QApplication::translate("MainWindow", "直方图均衡化(&H)", Q_NULLPTR));
+    actionSpectrogram->setText(QApplication::translate("MainWindow", "频谱图显示(&S)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -217,6 +222,7 @@ void MainWindow::retranslate()
     menuDisplay->setTitle(QApplication::translate("MainWindow", "显示(&D)", Q_NULLPTR));
     menuPointOperation->setTitle(QApplication::translate("MainWindow", "点运算(&P)", Q_NULLPTR));
     menuGeometricOperation->setTitle(QApplication::translate("MainWindow", "几何运算(&G)", Q_NULLPTR));
+    menuImageTransformation->setTitle(QApplication::translate("MainWindow", "图像变换(&I)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 
     statusSize->setText(QApplication::translate("MainWindow", "", Q_NULLPTR));
@@ -512,6 +518,13 @@ void MainWindow::on_actionTranslation_triggered()
     connect(_dialogTranslation, SIGNAL(signalTranslationStart()), this, SLOT(emitSignalSendImage()));
     connect(_dialogTranslation, SIGNAL(signalTranslationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionTranslation_triggered
+
+void MainWindow::on_actionSpectrogram_triggered()
+{
+    Spectrogram *_spectrogram = new Spectrogram();
+
+    _spectrogram->displaySpectrogram(imagePath);
+} // on_actionSpectrogram_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

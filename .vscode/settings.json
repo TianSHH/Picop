@@ -78,7 +78,8 @@
         "qstandardpaths": "cpp",
         "qmenu": "cpp",
         "qvalidator": "cpp",
-        "qradiobutton": "cpp"
+        "qradiobutton": "cpp",
+        "qcoreapplication": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
