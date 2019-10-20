@@ -2,6 +2,7 @@
 // TODO 实现滚轮控制图片缩放
 // TODO 自选, 实现bmp2txt
 // TODO 优化直方图均衡化和直方图显示功能
+// TODO 图片旋转只支持正方形
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)

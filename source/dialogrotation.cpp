@@ -60,7 +60,8 @@ void DialogRotation::emitSignalRotationEnd()
 void DialogRotation::Rotate(QImage *originImage)
 {
     double factor = M_PI / 180.0;
-    double angle = lineEditAngle->text().toDouble();
+    // 取模
+    int angle = (lineEditAngle->text().toInt()) % 360;
     double theta = angle * factor;
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -71,43 +72,48 @@ void DialogRotation::Rotate(QImage *originImage)
     int width = originImage->width();
     int height = originImage->height();
 
-    if (theta >= 0 && theta <= M_PI)
-    { // 顺时针旋转 情况一
-        int symbol = qCos(theta) / qAbs(qCos(theta));
+    if (theta > M_PI && theta <= 2 * M_PI)
+        theta = 2 * M_PI - theta;
 
-        int newWidth = height * qSin(theta) + symbol * width * qCos(theta);
-        int newHeight = width * qSin(theta) + symbol * height * qCos(theta);
+    // 顺时针旋转 情况一
+    // 判断旋转角度象限
+    // 0 - π/2 => 第一象限, 用 + 表示
+    // π/2 - π => 第二象限, 用 - 表示
+    int symbol = qCos(theta) / qAbs(qCos(theta));
 
-        qDebug() << newWidth << newHeight;
+    int newWidth = height * qSin(theta) + symbol * width * qCos(theta);
+    int newHeight = width * qSin(theta) + symbol * height * qCos(theta);
 
-        QImage targetImage = QImage(newWidth, newHeight, QImage ::Format_RGB32);
+    QImage targetImage = QImage(newWidth, newHeight, QImage ::Format_RGB32);
 
-        for (int i = 0; i < newWidth; i++)
-            for (int j = 0; j < newHeight; j++)
-                targetImage.setPixel(i, j, qRgb(255, 255, 255));
+    for (int i = 0; i < newWidth; i++)
+        for (int j = 0; j < newHeight; j++)
+            targetImage.setPixel(i, j, qRgb(255, 255, 255));
 
-        int deltaX = (height * qSin(theta) - symbol * (height * qSin(theta))) / 2;
-        int deltaY = width * qSin(theta);
+    // originImage 和 targetImage 原点坐标差值
+    int deltaX = (-width * qCos(theta) + symbol * (width * qCos(theta))) / 2;
+    int deltaY = (-height * qCos(theta) + symbol * (height * qCos(theta))) / 2 + width * qSin(theta);
 
-        for (int i = 0; i < width; i++)
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
         {
-            for (int j = 0; j < height; j++)
-            {
-                int middleX = i * qCos(theta) - j * qSin(theta);
-                int middleY = i * qSin(theta) + j * qCos(theta);
+            // 在 originImage 坐标系中变换后的坐标
+            int middleX = i * qCos(theta) - j * qSin(theta);
+            int middleY = i * qSin(theta) + j * qCos(theta);
 
-                QRgb rgb = QRgb(originImage->pixel(i, j));
+            QRgb rgb = QRgb(originImage->pixel(i, j));
 
-                int targetX = middleX + deltaY;
-                int targetY = middleY + deltaX;
+            // 由于图片坐标和笛卡尔坐标原点不同, 所以这里变换坐标轴
+            // targetImage 坐标系中的坐标
+            int targetX = middleX + deltaY;
+            int targetY = middleY + deltaX;
 
-                if ((targetX >= 0) && (targetX < newWidth) && (targetY >= 0) && (targetY < newHeight))
-                    targetImage.setPixel(targetX, targetY, QRgb(rgb));
-            }
+            if ((targetX >= 0) && (targetX < newWidth) && (targetY >= 0) && (targetY < newHeight))
+                targetImage.setPixel(targetX, targetY, QRgb(rgb));
         }
-
-        emit signalRotationEnd((QImage &)targetImage);
-        return;
     }
+
+    emit signalRotationEnd((QImage &)targetImage);
 
 } // Rotate
