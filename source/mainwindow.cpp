@@ -383,61 +383,61 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSetSamplingRate_triggered()
 {
-    DialogSamplingRate *dialogSamplingRate = new DialogSamplingRate(this);
+    DialogSamplingRate *_dialogSamplingRate = new DialogSamplingRate(this);
 
-    dialogSamplingRate->show();
+    _dialogSamplingRate->show();
 
-    connect(dialogSamplingRate, SIGNAL(signalSetSamplingRate()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogSamplingRate, SIGNAL(signalSetSamplingRate()), this, SLOT(emitSignalSendImage()));
 
-    connect(dialogSamplingRate, SIGNAL(signalSetSamplingRateFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
+    connect(_dialogSamplingRate, SIGNAL(signalSetSamplingRateFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionSetSamplingRate_triggered
 
 void MainWindow::on_actionSetQuantifyLevel_triggered()
 {
-    DialogQuantifyLevel *dialogQuantifyLevel = new DialogQuantifyLevel(this);
+    DialogQuantifyLevel *_dialogQuantifyLevel = new DialogQuantifyLevel(this);
 
-    dialogQuantifyLevel->show();
+    _dialogQuantifyLevel->show();
 
-    connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevel()), this, SLOT(emitSignalSendImage()));
 
-    connect(dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevelFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
+    connect(_dialogQuantifyLevel, SIGNAL(signalSetQuantifyLevelFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionSetQuantifyLevel_triggered
 
 void MainWindow::on_actionSetGrayscaleThreshold_triggered()
 {
-    DialogGrayscaleThreshold *dialogGrayscaleThreshold = new DialogGrayscaleThreshold(this);
+    DialogGrayscaleThreshold *_dialogGrayscaleThreshold = new DialogGrayscaleThreshold(this);
 
-    dialogGrayscaleThreshold->show();
+    _dialogGrayscaleThreshold->show();
 
-    connect(dialogGrayscaleThreshold, SIGNAL(signalSetGrayscaleThreshold()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogGrayscaleThreshold, SIGNAL(signalSetGrayscaleThreshold()), this, SLOT(emitSignalSendImage()));
 
-    connect(dialogGrayscaleThreshold, SIGNAL(signalSetGrayscaleThresholdFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
+    connect(_dialogGrayscaleThreshold, SIGNAL(signalSetGrayscaleThresholdFinished(QImage &)), this, SLOT(updateRightImage(QImage &)));
 } // on_actionSetGrayscaleThreshold_triggered
 
 void MainWindow::on_actionDisplayBitPlane_triggered()
 {
-    DialogBitPlane *dialogBitPlane = new DialogBitPlane(nullptr);
+    DialogBitPlane *_dialogBitPlane = new DialogBitPlane(nullptr);
 
-    dialogBitPlane->show();
+    _dialogBitPlane->show();
 
     QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
 
-    dialogBitPlane->displayBitPlane(originImage);
+    _dialogBitPlane->displayBitPlane(originImage);
 
     delete originImage;
-    dialogBitPlane->exec();
+    _dialogBitPlane->exec();
 } // on_actionDisplayBitPlane_triggered
 
 void MainWindow::on_actionDisplayHistogram_triggered()
 {
 
-    DialogHistogram *dialogHistogram = new DialogHistogram(nullptr);
+    DialogHistogram *_dialogHistogram = new DialogHistogram(nullptr);
 
-    dialogHistogram->show();
+    _dialogHistogram->show();
 
     QImage *originImage = new QImage(rightPixmapItem->pixmap().toImage()); // 显示右侧图像直方图
 
-    dialogHistogram->displayHistogram(originImage);
+    _dialogHistogram->displayHistogram(originImage);
 
     delete originImage;
 } // on_actionDisplayHistogram_triggered
