@@ -482,6 +482,16 @@ void MainWindow::on_actionHistogramEqualization_triggered()
     updateRightScene((QImage &)(*newImage));
 } // on_actionHistogramEqualization_triggered
 
+void MainWindow::on_actionRotation_triggered()
+{
+    DialogRotation *_dialogRotation = new DialogRotation(this);
+
+    _dialogRotation->show();
+
+    connect(_dialogRotation, SIGNAL(signalRotationStart()), this, SLOT(emitSignalSendImage()));
+    connect(_dialogRotation, SIGNAL(signalRotationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
+} // on_actionRotation_triggered
+
 void MainWindow::on_actionTranslation_triggered()
 {
     DialogTranslation *_dialogTranslation = new DialogTranslation(this);
@@ -490,7 +500,7 @@ void MainWindow::on_actionTranslation_triggered()
 
     connect(_dialogTranslation, SIGNAL(signalTranslationStart()), this, SLOT(emitSignalSendImage()));
     connect(_dialogTranslation, SIGNAL(signalTranslationEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
-}
+} // on_actionTranslation_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {
