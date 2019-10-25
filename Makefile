@@ -1266,8 +1266,8 @@ compiler_moc_header_clean:
 		include/dialogscaling.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
-		include/spectrogram.h \
 		include/dialogtranslation.h \
+		include/spectrogram.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -4696,8 +4696,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		include/dialogscaling.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
-		include/spectrogram.h \
 		include/dialogtranslation.h \
+		include/spectrogram.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -5227,8 +5227,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		include/dialogscaling.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
-		include/spectrogram.h \
 		include/dialogtranslation.h \
+		include/spectrogram.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \

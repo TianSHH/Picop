@@ -70,6 +70,13 @@ void MainWindow::setup()
     actionSpectrogram = new QAction(this);
     actionSpectrogram->setObjectName(QStringLiteral("actionSpectrogram"));
 
+    menuSmooth = new QMenu(this);
+    menuSmooth->setObjectName(QStringLiteral("menuSmooth"));
+    actionAverageFiltering = new QAction(this);
+    actionAverageFiltering->setObjectName(QStringLiteral("actionAverageFiltering"));
+    actionMedianFiltering = new QAction(this);
+    actionMedianFiltering->setObjectName(QStringLiteral("actionMedianFiltering"));
+
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
 
@@ -105,6 +112,8 @@ void MainWindow::setup()
     menuGeometricOperation->setObjectName(QStringLiteral("menuGeometricOperation"));
     menuImageTransformation = new QMenu(menuBar);
     menuImageTransformation->setObjectName(QStringLiteral("menuImageTransformation"));
+    menuImageEnhancement = new QMenu(this);
+    menuImageEnhancement->setObjectName(QStringLiteral("menuImageEnhancement"));
     menuHelp = new QMenu(menuBar);
     menuHelp->setObjectName(QStringLiteral("menuHelp"));
     this->setMenuBar(menuBar);
@@ -128,6 +137,7 @@ void MainWindow::setup()
     menuBar->addAction(menuPointOperation->menuAction());
     menuBar->addAction(menuGeometricOperation->menuAction());
     menuBar->addAction(menuImageTransformation->menuAction());
+    menuBar->addAction(menuImageEnhancement->menuAction());
     menuBar->addAction(menuHelp->menuAction());
 
     menuFile->addAction(actionOpen);
@@ -157,6 +167,10 @@ void MainWindow::setup()
     menuSpatialTransformation->addAction(actionTranslation);
 
     menuImageTransformation->addAction(actionSpectrogram);
+
+    menuImageEnhancement->addMenu(menuSmooth);
+    menuSmooth->addAction(actionAverageFiltering);
+    menuSmooth->addAction(actionMedianFiltering);
 
     menuHelp->addAction(actionAbout);
 
@@ -212,7 +226,12 @@ void MainWindow::retranslate()
     actionScaling->setText(QApplication::translate("MainWindow", "缩放(&S)", Q_NULLPTR));
     actionRotation->setText(QApplication::translate("MainWindow", "旋转(&R)", Q_NULLPTR));
     actionTranslation->setText(QApplication::translate("MainWindow", "平移(&T)", Q_NULLPTR));
+
     actionSpectrogram->setText(QApplication::translate("MainWindow", "频谱图显示(&S)", Q_NULLPTR));
+
+    menuSmooth->setTitle(QApplication::translate("MainWindow", "平滑(&S)", Q_NULLPTR));
+    actionAverageFiltering->setText(QApplication::translate("MainWindow", "均值滤波(&A)", Q_NULLPTR));
+    actionMedianFiltering->setText(QApplication::translate("MainWindow", "中值滤波(&M)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -223,6 +242,7 @@ void MainWindow::retranslate()
     menuPointOperation->setTitle(QApplication::translate("MainWindow", "点运算(&P)", Q_NULLPTR));
     menuGeometricOperation->setTitle(QApplication::translate("MainWindow", "几何运算(&G)", Q_NULLPTR));
     menuImageTransformation->setTitle(QApplication::translate("MainWindow", "图像变换(&I)", Q_NULLPTR));
+    menuImageEnhancement->setTitle(QApplication::translate("MainWindow", "图像增强(&E&N)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 
     statusSize->setText(QApplication::translate("MainWindow", "", Q_NULLPTR));

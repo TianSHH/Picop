@@ -11,8 +11,8 @@
 #include "dialogrotation.h"
 #include "dialogsamplingrate.h"
 #include "dialogscaling.h"
-#include "spectrogram.h"
 #include "dialogtranslation.h"
+#include "spectrogram.h"
 #include <QApplication>
 #include <QCoreApplication>
 #include <QtCore/QDateTime>
@@ -69,6 +69,7 @@ public:
     QMenu *menuPointOperation;
     QMenu *menuGeometricOperation;
     QMenu *menuImageTransformation;
+    QMenu *menuImageEnhancement;
     QMenu *menuHelp;
 
     QAction *actionOpen;
@@ -96,6 +97,11 @@ public:
     QAction *actionTranslation;
 
     QAction *actionSpectrogram;
+
+    QMenu *menuSmooth;
+    QAction *actionAverageFiltering;
+    QAction *actionMedianFiltering;
+    // QAction *actionMedianFiltering;
 
     QAction *actionAbout;
 
