@@ -12,10 +12,14 @@
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QInputDialog>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QRadioButton>
+#include <opencv4/opencv2/core/core.hpp>
+#include <opencv4/opencv2/highgui/highgui.hpp>
+#include <opencv4/opencv2/imgproc/imgproc.hpp>
 
 class Smooth
 {
@@ -26,7 +30,7 @@ public:
     ~Smooth();
 
 public:
-    QImage averageFitlering(QImage *originImage);
-
+    QImage averageFiltering(QImage *originImage);
+    QImage medianFiltering(QImage *originImage);
 };
 #endif // SMOOTH_H
