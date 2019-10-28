@@ -12,6 +12,7 @@
 #include "dialogsamplingrate.h"
 #include "dialogscaling.h"
 #include "dialogtranslation.h"
+#include "smooth.h"
 #include "spectrogram.h"
 #include <QApplication>
 #include <QCoreApplication>
@@ -101,7 +102,6 @@ public:
     QMenu *menuSmooth;
     QAction *actionAverageFiltering;
     QAction *actionMedianFiltering;
-    // QAction *actionMedianFiltering;
 
     QAction *actionAbout;
 
@@ -158,6 +158,9 @@ private slots:
     void on_actionSpectrogram_triggered();
 
     // void on_actionAbout_triggered();
+
+    void on_actionAverageFiltering_triggered();
+    // void on_actionMedianFiltering_triggered();
 
     void updateRightImage(QImage &newImage);
 };

@@ -3,6 +3,7 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
+#include <QtCore/QObject>
 #include <QtCore/QVariant>
 #include <QtGui/QValidator>
 #include <QtWidgets/QAction>
@@ -23,14 +24,13 @@
 
 class Smooth
 {
-    Q_OBJECT
-
 public:
     Smooth();
     ~Smooth();
 
 public:
     QImage averageFiltering(QImage *originImage);
-    QImage medianFiltering(QImage *originImage);
+    // QImage medianFiltering(QImage *originImage);
 };
+
 #endif // SMOOTH_H

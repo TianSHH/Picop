@@ -504,7 +504,7 @@ void MainWindow::on_actionHistogramEqualization_triggered()
 
     QImage *originImage = new QImage(rightPixmapItem->pixmap().toImage()); // 显示右侧图像直方图
 
-    QImage *newImage = _dialogHistogram->histogramEqualization(originImage);
+    QImage *newImage = _dialogHistogram->histogramEqualization(originImage); // !
 
     updateRightScene((QImage &)(*newImage));
 } // on_actionHistogramEqualization_triggered
@@ -545,6 +545,17 @@ void MainWindow::on_actionSpectrogram_triggered()
 
     _spectrogram->displaySpectrogram(imagePath);
 } // on_actionSpectrogram_triggered
+
+void MainWindow::on_actionAverageFiltering_triggered()
+{
+    Smooth *_smooth = new Smooth();
+
+    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage newImage = _smooth->averageFiltering(originImage);
+
+    updateRightScene(newImage);
+} // on_actionAverageFiltering_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

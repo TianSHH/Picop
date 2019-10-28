@@ -29,6 +29,7 @@ SOURCES += \
     source/dialogrotation.cpp \
     source/dialogscaling.cpp \
     source/spectrogram.cpp \
+    source/smooth.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -45,6 +46,7 @@ HEADERS += \
     include/dialogrotation.h \
     include/dialogscaling.h \
     include/spectrogram.h \
+    include/smooth.h \
     include/qcustomplot.h
 
 
