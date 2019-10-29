@@ -12,7 +12,7 @@
 #include "dialogsamplingrate.h"
 #include "dialogscaling.h"
 #include "dialogtranslation.h"
-#include "smooth.h"
+#include "smoothmethod.h"
 #include "spectrogram.h"
 #include <QApplication>
 #include <QCoreApplication>
@@ -160,7 +160,7 @@ private slots:
     // void on_actionAbout_triggered();
 
     void on_actionAverageFiltering_triggered();
-    // void on_actionMedianFiltering_triggered();
+    void on_actionMedianFiltering_triggered();
 
     void updateRightImage(QImage &newImage);
 };

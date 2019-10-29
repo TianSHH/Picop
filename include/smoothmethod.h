@@ -1,5 +1,5 @@
-#ifndef SMOOTH_H
-#define SMOOTH_H
+#ifndef SMOOTHMETHOD_H
+#define SMOOTHMETHOD_H
 
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
@@ -22,15 +22,15 @@
 #include <opencv4/opencv2/highgui/highgui.hpp>
 #include <opencv4/opencv2/imgproc/imgproc.hpp>
 
-class Smooth
+class SmoothMethod
 {
 public:
-    Smooth();
-    ~Smooth();
+    SmoothMethod();
+    ~SmoothMethod();
 
 public:
     QImage averageFiltering(QImage *originImage);
-    // QImage medianFiltering(QImage *originImage);
+    QImage medianFiltering(QImage *originImage);
 };
 
-#endif // SMOOTH_H
+#endif // SMOOTHMETHOD_H

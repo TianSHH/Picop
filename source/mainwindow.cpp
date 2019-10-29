@@ -548,14 +548,25 @@ void MainWindow::on_actionSpectrogram_triggered()
 
 void MainWindow::on_actionAverageFiltering_triggered()
 {
-    Smooth *_smooth = new Smooth();
+    SmoothMethod *_smoothMethod = new SmoothMethod();
 
     QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
 
-    QImage newImage = _smooth->averageFiltering(originImage);
+    QImage newImage = _smoothMethod->averageFiltering(originImage);
 
     updateRightScene(newImage);
 } // on_actionAverageFiltering_triggered
+
+void MainWindow::on_actionMedianFiltering_triggered()
+{
+    SmoothMethod *_smoothMethod = new SmoothMethod();
+
+    QImage *originImage = new QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage newImage = _smoothMethod->medianFiltering(originImage);
+
+    updateRightScene(newImage);
+} // on_actionMedianFiltering_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {
