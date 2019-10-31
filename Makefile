@@ -64,7 +64,7 @@ SOURCES       = source/main.cpp \
 		source/dialogrotation.cpp \
 		source/dialogscaling.cpp \
 		source/spectrogram.cpp \
-		source/smooth.cpp \
+		source/smoothmethod.cpp \
 		source/qcustomplot.cpp ../debug/moc/moc_mainwindow.cpp \
 		../debug/moc/moc_dialogquantifylevel.cpp \
 		../debug/moc/moc_dialogsamplingrate.cpp \
@@ -92,7 +92,7 @@ OBJECTS       = ../debug/obj/main.o \
 		../debug/obj/dialogrotation.o \
 		../debug/obj/dialogscaling.o \
 		../debug/obj/spectrogram.o \
-		../debug/obj/smooth.o \
+		../debug/obj/smoothmethod.o \
 		../debug/obj/qcustomplot.o \
 		../debug/obj/moc_mainwindow.o \
 		../debug/obj/moc_dialogquantifylevel.o \
@@ -301,7 +301,7 @@ DIST          = ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/spec_pre.prf \
 		include/dialogrotation.h \
 		include/dialogscaling.h \
 		include/spectrogram.h \
-		include/smooth.h \
+		include/smoothmethod.h \
 		include/qcustomplot.h source/main.cpp \
 		source/mainwindow.cpp \
 		source/dialogquantifylevel.cpp \
@@ -316,7 +316,7 @@ DIST          = ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/spec_pre.prf \
 		source/dialogrotation.cpp \
 		source/dialogscaling.cpp \
 		source/spectrogram.cpp \
-		source/smooth.cpp \
+		source/smoothmethod.cpp \
 		source/qcustomplot.cpp
 QMAKE_TARGET  = picop
 DESTDIR       = ../debug/bin/
@@ -720,8 +720,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.8/5.9.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/dialogtranslation.h include/dialogrotation.h include/dialogscaling.h include/spectrogram.h include/smooth.h include/qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/dialogtranslation.cpp source/dialogrotation.cpp source/dialogscaling.cpp source/spectrogram.cpp source/smooth.cpp source/qcustomplot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/dialogtranslation.h include/dialogrotation.h include/dialogscaling.h include/spectrogram.h include/smoothmethod.h include/qcustomplot.h $(DISTDIR)/
+	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/dialogtranslation.cpp source/dialogrotation.cpp source/dialogscaling.cpp source/spectrogram.cpp source/smoothmethod.cpp source/qcustomplot.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1271,7 +1271,7 @@ compiler_moc_header_clean:
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
-		include/smooth.h \
+		include/smoothmethod.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
 		include/spectrogram.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
@@ -4703,7 +4703,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
-		include/smooth.h \
+		include/smoothmethod.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
 		include/spectrogram.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
@@ -5236,7 +5236,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
-		include/smooth.h \
+		include/smoothmethod.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
 		include/spectrogram.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
@@ -7730,7 +7730,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/spectrogram.o source/spectrogram.cpp
 
-../debug/obj/smooth.o: source/smooth.cpp include/smooth.h \
+../debug/obj/smoothmethod.o: source/smoothmethod.cpp include/smoothmethod.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
@@ -7891,7 +7891,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qradiobutton.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractbutton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/smooth.o source/smooth.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../debug/obj/smoothmethod.o source/smoothmethod.cpp
 
 ../debug/obj/qcustomplot.o: source/qcustomplot.cpp include/qcustomplot.h \
 		../../../../Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
