@@ -31,6 +31,8 @@ public:
 public:
     QImage averageFiltering(QImage *originImage);
     QImage medianFiltering(QImage *originImage);
+
+    int getMedianValue(const int *histogram, int threshold);
 };
 
 #endif // SMOOTHMETHOD_H
