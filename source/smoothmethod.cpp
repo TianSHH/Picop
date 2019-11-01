@@ -114,10 +114,10 @@ QImage SmoothMethod::medianFiltering(QImage *originImage)
         }
 
         // 使用直方图记录窗口中出现的像素的出现次数
-        int redHist[256] = {0};
-        int greenHist[256] = {0};
-        int blueHist[256] = {0};
-        int grayHist[256] = {0};
+        int redHist[255];
+        int greenHist[255];
+        int blueHist[255];
+        int grayHist[255];
 
         for (int i = len; i < middleImage.width() - len; i++)
         {
@@ -126,9 +126,9 @@ QImage SmoothMethod::medianFiltering(QImage *originImage)
                 if (j == len)
                 { // 每到新的一列, 初始化直方图
                     memset(redHist, 0, sizeof(redHist));
-                    memset(redHist, 0, sizeof(greenHist));
-                    memset(redHist, 0, sizeof(blueHist));
-                    memset(redHist, 0, sizeof(grayHist));
+                    memset(greenHist, 0, sizeof(greenHist));
+                    memset(blueHist, 0, sizeof(blueHist));
+                    memset(grayHist, 0, sizeof(grayHist));
 
                     for (int p = -len; p <= len; p++)
                     {
@@ -176,11 +176,12 @@ QImage SmoothMethod::medianFiltering(QImage *originImage)
                     }
                 }
 
-                int newRed = getMedianValue(redHist, threshold);
-                int newGreen = getMedianValue(greenHist, threshold);
-                int newBlue = getMedianValue(blueHist, threshold);
+                // 获取窗口内像素中值
+                int r = getMedianValue(redHist, threshold);
+                int g = getMedianValue(greenHist, threshold);
+                int b = getMedianValue(blueHist, threshold);
 
-                targetImage.setPixelColor(i - len, j - len, qRgb(newRed, newGreen, newBlue));
+                targetImage.setPixel(i - len, j - len, qRgb(r, g, b));
             }
         }
 
@@ -188,9 +189,11 @@ QImage SmoothMethod::medianFiltering(QImage *originImage)
     }
 } // medianFiltering
 
+// 获取窗口中像素的中值
 int SmoothMethod::getMedianValue(const int *histogram, int threshold)
 {
     int sum = 0;
+    int j = 0;
     for (int i = 0; i < 256; i++)
     {
         sum += histogram[i];
