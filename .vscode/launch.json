@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "../debug/bin/picop",
+            "program": "/home/xhls/Documents/code/picop/debug/bin/picop",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

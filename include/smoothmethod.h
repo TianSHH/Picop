@@ -31,8 +31,12 @@ public:
 public:
     QImage averageFiltering(QImage *originImage);
     QImage medianFiltering(QImage *originImage);
+    QImage KNNF(QImage originImage);
+    QImage KNNMF(QImage *originImage);
 
     int getMedianValue(const int *histogram, int threshold);
+    int getKValue(const int *histogram, int key, int K);
+    int getAverage(const int *arr, int len);
 };
 
 #endif // SMOOTHMETHOD_H
