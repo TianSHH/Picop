@@ -102,6 +102,8 @@ public:
     QMenu *menuSmooth;
     QAction *actionAverageFiltering;
     QAction *actionMedianFiltering;
+    QAction *actionKNNF;
+    QAction *actionKNNMF;
 
     QAction *actionAbout;
 
@@ -122,7 +124,7 @@ public:
     void setup();
     void retranslate();
     QString getUserPath();
-    void updateRightScene(QImage &newImage);
+    void updateRightImageManual(QImage &newImage);
     void closeImage();
     void setStatus(bool status);
 
@@ -157,10 +159,12 @@ private slots:
 
     void on_actionSpectrogram_triggered();
 
-    // void on_actionAbout_triggered();
-
     void on_actionAverageFiltering_triggered();
     void on_actionMedianFiltering_triggered();
+    void on_actionKNNF_triggered();
+    void on_actionKNNMF_triggered();
+
+    // void on_actionAbout_triggered();
 
     void updateRightImage(QImage &newImage);
 };

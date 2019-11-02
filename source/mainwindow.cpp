@@ -3,6 +3,7 @@
 // TODO 自选, 实现bmp2txt
 // TODO 优化直方图均衡化和直方图显示功能
 // TODO 图片旋转只支持正方形
+// ? K 邻域均值滤波 stack smashing detected
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -76,6 +77,10 @@ void MainWindow::setup()
     actionAverageFiltering->setObjectName(QStringLiteral("actionAverageFiltering"));
     actionMedianFiltering = new QAction(this);
     actionMedianFiltering->setObjectName(QStringLiteral("actionMedianFiltering"));
+    actionKNNF = new QAction(this);
+    actionKNNF->setObjectName(QStringLiteral("actionKNNF"));
+    actionKNNMF = new QAction(this);
+    actionKNNMF->setObjectName(QStringLiteral("actionKNNMF"));
 
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
@@ -171,6 +176,8 @@ void MainWindow::setup()
     menuImageEnhancement->addMenu(menuSmooth);
     menuSmooth->addAction(actionAverageFiltering);
     menuSmooth->addAction(actionMedianFiltering);
+    menuSmooth->addAction(actionKNNF);
+    menuSmooth->addAction(actionKNNMF);
 
     menuHelp->addAction(actionAbout);
 
@@ -232,6 +239,8 @@ void MainWindow::retranslate()
     menuSmooth->setTitle(QApplication::translate("MainWindow", "平滑(&S)", Q_NULLPTR));
     actionAverageFiltering->setText(QApplication::translate("MainWindow", "均值滤波(&A)", Q_NULLPTR));
     actionMedianFiltering->setText(QApplication::translate("MainWindow", "中值滤波(&M)", Q_NULLPTR));
+    actionKNNF->setText(QApplication::translate("MainWindow", "K近邻均值滤波", Q_NULLPTR));
+    actionKNNMF->setText(QApplication::translate("MainWindow", "K近邻中值滤波", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -254,7 +263,7 @@ QString MainWindow::getUserPath()
     return userPath;
 } // getUserPath
 
-void MainWindow::updateRightScene(QImage &newImage)
+void MainWindow::updateRightImageManual(QImage &newImage)
 {
     // rightPixmapItem = rightScene->addPixmap(QPixmap::fromImage(newImage));
     //    rightScene->setSceneRect(QRectF(pixmap.rect()));
@@ -262,7 +271,7 @@ void MainWindow::updateRightScene(QImage &newImage)
                        << "更新右侧图像";
     rightPixmapItem->setPixmap(QPixmap::fromImage(newImage));
     rightScene->setSceneRect(QRectF(newImage.rect()));
-} // updateRightScene
+} // updateRightImageManual
 
 void MainWindow::closeImage()
 {
@@ -506,7 +515,7 @@ void MainWindow::on_actionHistogramEqualization_triggered()
 
     QImage *newImage = _dialogHistogram->histogramEqualization(originImage); // !
 
-    updateRightScene((QImage &)(*newImage));
+    updateRightImageManual((QImage &)(*newImage));
 } // on_actionHistogramEqualization_triggered
 
 void MainWindow::on_actionScaling_triggered()
@@ -554,7 +563,7 @@ void MainWindow::on_actionAverageFiltering_triggered()
 
     QImage newImage = _smoothMethod->averageFiltering(originImage);
 
-    updateRightScene(newImage);
+    updateRightImageManual(newImage);
 } // on_actionAverageFiltering_triggered
 
 void MainWindow::on_actionMedianFiltering_triggered()
@@ -565,8 +574,25 @@ void MainWindow::on_actionMedianFiltering_triggered()
 
     QImage newImage = _smoothMethod->medianFiltering(originImage);
 
-    updateRightScene(newImage);
+    updateRightImageManual(newImage);
 } // on_actionMedianFiltering_triggered
+
+void MainWindow::on_actionKNNF_triggered()
+{
+    SmoothMethod *_smoothMethod = new SmoothMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _smoothMethod->KNNF(originImage);
+
+    updateRightImageManual(targetImage);
+
+} // on_actionKNNF_triggered
+
+void MainWindow::on_actionKNNMF_triggered()
+{
+
+} // on_actionKNNMF_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {
