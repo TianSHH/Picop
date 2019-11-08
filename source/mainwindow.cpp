@@ -550,9 +550,9 @@ void MainWindow::on_actionTranslation_triggered()
 
 void MainWindow::on_actionSpectrogram_triggered()
 {
-    Spectrogram *_spectrogram = new Spectrogram();
+//    Spectrogram *_spectrogram = new Spectrogram();
 
-    _spectrogram->displaySpectrogram(imagePath);
+//    _spectrogram->displaySpectrogram(imagePath);
 } // on_actionSpectrogram_triggered
 
 void MainWindow::on_actionAverageFiltering_triggered()

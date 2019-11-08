@@ -13,7 +13,7 @@
 #include "dialogscaling.h"
 #include "dialogtranslation.h"
 #include "smoothmethod.h"
-#include "spectrogram.h"
+//#include "spectrogram.h"
 #include <QApplication>
 #include <QCoreApplication>
 #include <QtCore/QDateTime>
@@ -38,9 +38,9 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
-#include <opencv4/opencv2/core/core.hpp>
-#include <opencv4/opencv2/highgui/highgui.hpp>
-#include <opencv4/opencv2/imgproc/imgproc.hpp>
+//#include <opencv4/opencv2/core/core.hpp>
+//#include <opencv4/opencv2/highgui/highgui.hpp>
+//#include <opencv4/opencv2/imgproc/imgproc.hpp>
 
 #define WINDOW_TITLE "Picop"
 #define WINDOW_CRITICAL "Error - Picop"
