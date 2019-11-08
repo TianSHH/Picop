@@ -43,7 +43,7 @@
             "type": "shell",
             "label": "test",
             "dependsOn": "build",
-            "command": "../debug/bin/picop",
+            "command": "${workSpaceFolder}bin/picop",
             "args": [],
             "group": {
                 "kind": "test",
