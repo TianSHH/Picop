@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "SharpenMethod.h"
 #include "dialogbitplane.h"
 #include "dialoggrayscalethreshold.h"
 #include "dialoghistogram.h"
@@ -104,6 +105,11 @@ public:
     QAction *actionMedianFiltering;
     QAction *actionKNNF;
     QAction *actionKNNMF;
+    QMenu *menuSharpen;
+    QAction *actionReborts;
+    QAction *actionSobel;
+    QAction *actionLaplace;
+    QAction *actionEnhancedLaplace;
 
     QAction *actionAbout;
 
@@ -163,10 +169,15 @@ private slots:
     void on_actionMedianFiltering_triggered();
     void on_actionKNNF_triggered();
     void on_actionKNNMF_triggered();
+    void on_actionReborts_triggered();
+    void on_actionSobel_triggered();
+    void on_actionLaplace_triggered();
+    void on_actionEnhancedLaplace_triggered();
 
     // void on_actionAbout_triggered();
 
-    void updateRightImage(QImage &newImage);
+    void
+    updateRightImage(QImage &newImage);
 };
 
 #endif // MAINWINDOW_H
