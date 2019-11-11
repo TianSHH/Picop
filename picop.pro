@@ -25,6 +25,8 @@ SOURCES += \
     source/dialogrotation.cpp \
     source/dialogscaling.cpp \
     source/smoothmethod.cpp \
+    source/SharpenMethod.cpp \
+    source/FilterMethod.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -41,6 +43,8 @@ HEADERS += \
     include/dialogrotation.h \
     include/dialogscaling.h \
     include/smoothmethod.h \
+    include/SharpenMethod.h \
+    include/FilterMethod.h \
     include/qcustomplot.h
 
 

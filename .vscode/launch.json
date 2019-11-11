@@ -8,7 +8,11 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
+<<<<<<< HEAD
             "program": "${workSpaceFolder}bin/picop",
+=======
+            "program": "/home/thl/Documents/code/picop/bin/picop",
+>>>>>>> dev
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -16,7 +20,7 @@
             "externalConsole": false,
             "MIMode": "gdb", // 使用的 debug 工具
             "miDebuggerPath": "/usr/bin/gdb", // gdb 所在目录
-            "preLaunchTask":"build", // 调试前先编译
+            "preLaunchTask": "build", // 调试前先编译
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
