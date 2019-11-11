@@ -15,12 +15,21 @@ QImage SharpenMethod::reborts(QImage originImage)
                        << "方法"
                        << "Reborts算子";
 
+    // csdn
+    // int rebortsFx[] = {0, 0, 0,
+    //                    0, 1, 0,
+    //                    0, 0, -1};
+    // int rebortsFy[] = {0, 0, 0,
+    //                    0, 0, 1,
+    //                    0, -1, 0};
+
+    // 课件
     int rebortsFx[] = {0, 0, 0,
-                       0, 1, 0,
-                       0, 0, -1};
+                       0, -1, 0,
+                       0, 0, 1};
     int rebortsFy[] = {0, 0, 0,
-                       0, 0, 1,
-                       0, -1, 0};
+                       0, 0, -1,
+                       0, 1, 0};
 
     FilterMethod _filterMethod;
 

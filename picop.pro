@@ -26,7 +26,7 @@ SOURCES += \
     source/dialogscaling.cpp \
     source/smoothmethod.cpp \
     source/SharpenMethod.cpp \
-    source/filterMethod.cpp \
+    source/FilterMethod.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -44,7 +44,7 @@ HEADERS += \
     include/dialogscaling.h \
     include/smoothmethod.h \
     include/SharpenMethod.h \
-    include/filterMethod.h \
+    include/FilterMethod.h \
     include/qcustomplot.h
 
 

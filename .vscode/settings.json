@@ -82,7 +82,8 @@
         "qcoreapplication": "cpp",
         "qobject": "cpp",
         "qtgui": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "qinputdialog": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
@@ -173,27 +174,26 @@
         "${workSpaceFolder}include/"
     ],
     "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
         "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.svn": true,
+        "**/*.sdf": true,
+        "**/*.stash": true,
+        "**/*.suo": true,
+        "**/*.user": true,
+        "**/*cache": true,
+        "**/build": true,
+        "**/CVS": true,
+        "**/debug": true,
+        "**/GeneratedFiles": true,
         "**/GPATH": true,
         "**/GRTAGS": true,
         "**/GTAGS": true,
-        "**/*.user": true,
-        "**/Makefile*": true,
-        "**/debug": true,
-        "**/release": true,
-        "**/Debug": true,
-        "**/Release": true,
-        "**/*.stash": true,
-        "**/*cache": true,
-        "**/*.sdf": true,
-        "**/*.suo": true,
         "**/ipch": true,
-        "**/x64": true,
-        "**/GeneratedFiles": true,
-        "**/build": true
+        "**/Makefile*": true,
+        "**/release": true,
+        "**/Release": true,
+        "**/x64": true
     }
 }

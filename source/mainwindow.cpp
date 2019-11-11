@@ -91,6 +91,8 @@ void MainWindow::setup()
     actionLaplace->setObjectName(QStringLiteral("actionLaplace"));
     actionEnhancedLaplace = new QAction(this);
     actionEnhancedLaplace->setObjectName(QStringLiteral("actionEnhancedLaplace"));
+    actionConvolution = new QAction(this);
+    actionConvolution->setObjectName(QStringLiteral("actionConvolution"));
 
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
@@ -193,6 +195,7 @@ void MainWindow::setup()
     menuSharpen->addAction(actionSobel);
     menuSharpen->addAction(actionLaplace);
     menuSharpen->addAction(actionEnhancedLaplace);
+    menuImageEnhancement->addAction(actionConvolution);
 
     menuHelp->addAction(actionAbout);
 
@@ -261,6 +264,7 @@ void MainWindow::retranslate()
     actionSobel->setText(QApplication::translate("MainWindow", "Sobel算子(&S)", Q_NULLPTR));
     actionLaplace->setText(QApplication::translate("MainWindow", "Laplace算子(&L)", Q_NULLPTR));
     actionEnhancedLaplace->setText(QApplication::translate("MainWindow", "增强Laplace算子(&E)", Q_NULLPTR));
+    actionConvolution->setText(QApplication::translate("MainWindiw", "计算卷积(&C)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -657,6 +661,17 @@ void MainWindow::on_actionEnhancedLaplace_triggered()
 
     updateRightImageManual(targetImage);
 } // on_actionEnhancedLaplace_triggered
+
+void MainWindow::on_actionConvolution_triggered()
+{
+    FilterMethod *_filterMethod = new FilterMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    _filterMethod->getFilterInfo(originImage);
+
+    // updateRightImageManual(targetImage);
+} // on_actionConvolution_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

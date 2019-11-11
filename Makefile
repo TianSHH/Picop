@@ -824,8 +824,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -948,6 +946,8 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
@@ -1072,39 +1072,14 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
-		include/dialogbitplane.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAbstractItemView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -1114,20 +1089,52 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidgetItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
+		include/dialogbitplane.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		include/dialoggrayscalethreshold.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
 		include/dialoghistogram.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QColor \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPainter \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
 		include/dialoglinearpointoperation.h \
 		include/dialoglogtransformation.h \
 		include/qcustomplot.h \
@@ -1198,7 +1205,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicstransform.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QVector3D \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgroupbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemeditorfactory.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeyeventtransition.h \
@@ -1239,8 +1245,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylepainter.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsystemtrayicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbox.h \
@@ -1278,7 +1282,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
 		include/smoothmethod.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -4257,8 +4260,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -4381,6 +4382,8 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
@@ -4505,39 +4508,14 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
-		include/dialogbitplane.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAbstractItemView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -4547,20 +4525,52 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidgetItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
+		include/dialogbitplane.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		include/dialoggrayscalethreshold.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
 		include/dialoghistogram.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QColor \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPainter \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
 		include/dialoglinearpointoperation.h \
 		include/dialoglogtransformation.h \
 		include/qcustomplot.h \
@@ -4631,7 +4641,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicstransform.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QVector3D \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgroupbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemeditorfactory.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeyeventtransition.h \
@@ -4672,8 +4681,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylepainter.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsystemtrayicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbox.h \
@@ -4711,7 +4718,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
 		include/smoothmethod.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -4791,8 +4797,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -4915,6 +4919,8 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
@@ -5039,39 +5045,14 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
-		include/dialogbitplane.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAbstractItemView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -5081,20 +5062,52 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidgetItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
+		include/dialogbitplane.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		include/dialoggrayscalethreshold.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
 		include/dialoghistogram.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QColor \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPainter \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
 		include/dialoglinearpointoperation.h \
 		include/dialoglogtransformation.h \
 		include/qcustomplot.h \
@@ -5165,7 +5178,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicstransform.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QVector3D \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgroupbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemeditorfactory.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeyeventtransition.h \
@@ -5206,8 +5218,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylepainter.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsystemtrayicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbox.h \
@@ -5245,7 +5255,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
 		include/smoothmethod.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -7856,8 +7865,6 @@ debug/obj/SharpenMethod.o: source/SharpenMethod.cpp include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -7980,6 +7987,8 @@ debug/obj/SharpenMethod.o: source/SharpenMethod.cpp include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
@@ -8103,7 +8112,42 @@ debug/obj/SharpenMethod.o: source/SharpenMethod.cpp include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlist.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAbstractItemView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidgetItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/SharpenMethod.o source/SharpenMethod.cpp
 
 debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
@@ -8170,8 +8214,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -8294,6 +8336,8 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
@@ -8417,7 +8461,42 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlist.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAbstractItemView \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidgetItem \
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/FilterMethod.o source/FilterMethod.cpp
 
 debug/obj/qcustomplot.o: source/qcustomplot.cpp include/qcustomplot.h \

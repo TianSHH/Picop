@@ -110,6 +110,7 @@ public:
     QAction *actionSobel;
     QAction *actionLaplace;
     QAction *actionEnhancedLaplace;
+    QAction *actionConvolution;
 
     QAction *actionAbout;
 
@@ -173,6 +174,7 @@ private slots:
     void on_actionSobel_triggered();
     void on_actionLaplace_triggered();
     void on_actionEnhancedLaplace_triggered();
+    void on_actionConvolution_triggered();
 
     // void on_actionAbout_triggered();
 

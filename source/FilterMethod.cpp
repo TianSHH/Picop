@@ -80,3 +80,69 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
 
     return targetImage;
 } // filtering
+
+void FilterMethod::getFilterInfo(QImage originImage)
+{
+    bool ok;
+
+    int filterSize = QInputDialog::getInt(nullptr, QObject::tr("获取卷积核大小"), "输入卷积核大小(1~30)", 3, 1, 30, 1, &ok);
+
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "自定义卷积核"
+                       << "卷积核大小" << filterSize << "X" << filterSize;
+
+    if (ok == true)
+    {
+        QTableWidget *tableWidget = new QTableWidget(filterSize, filterSize);
+
+        tableWidget->setWindowTitle("设置卷积核");
+
+        tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged); // 设置编辑方式为可编辑
+
+        for (int i = 0; i < filterSize; i++)
+        {
+            for (int j = 0; j < filterSize; j++)
+            {
+                tableWidget->setColumnWidth(j, 30);
+                tableWidget->setRowHeight(i, 30);
+                tableWidget->setItem(i, j, new QTableWidgetItem());
+                tableWidget->item(i, j)->setTextAlignment(Qt::AlignCenter);
+                tableWidget->item(i, j)->setBackground(QColor(85, 170, 255));
+            }
+        }
+
+        tableWidget->resize(filterSize * 30, filterSize * 30);
+
+        QDialog *_dialog = new QDialog(nullptr);
+
+        QGridLayout *_gridLayout = new QGridLayout(_dialog);
+        _gridLayout->setObjectName(QStringLiteral("_gridLayout"));
+
+        _gridLayout->addWidget(tableWidget, 0, 0, 1, 1);
+
+        tableWidget->show();
+
+        QDialogButtonBox *buttonBox;
+        buttonBox = new QDialogButtonBox();
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setOrientation(Qt::Horizontal);
+        buttonBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
+
+        _gridLayout->addWidget(buttonBox, 1, 0, 1, 1);
+
+        _dialog->setLayout(_gridLayout);
+
+        _dialog->resize(filterSize * 30 + 120, filterSize * 30 + 40);
+
+        _dialog->show();
+
+        // 起初是将所有的组件放到了 QWidget
+        // 但是 QWidget 中并没有 SLOT accept() 和 reject()
+        // 所以将容纳 QTableWidget 和 QButtonBox 的容器
+        // 换成 QDialog
+        QObject::connect(buttonBox, SIGNAL(accepted()), _dialog, SLOT(accept()));
+        QObject::connect(buttonBox, SIGNAL(rejected()), _dialog, SLOT(reject()));
+    }
+
+    // return this->filtering(originImage, filterSize, filterTemplateArray);
+} // getFilterInfo
