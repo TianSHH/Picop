@@ -64,11 +64,8 @@ SOURCES       = source/main.cpp \
 		source/dialogrotation.cpp \
 		source/dialogscaling.cpp \
 		source/smoothmethod.cpp \
-<<<<<<< HEAD
-=======
 		source/SharpenMethod.cpp \
 		source/FilterMethod.cpp \
->>>>>>> dev
 		source/qcustomplot.cpp debug/moc/moc_mainwindow.cpp \
 		debug/moc/moc_dialogquantifylevel.cpp \
 		debug/moc/moc_dialogsamplingrate.cpp \
@@ -96,11 +93,8 @@ OBJECTS       = debug/obj/main.o \
 		debug/obj/dialogrotation.o \
 		debug/obj/dialogscaling.o \
 		debug/obj/smoothmethod.o \
-<<<<<<< HEAD
-=======
 		debug/obj/SharpenMethod.o \
 		debug/obj/FilterMethod.o \
->>>>>>> dev
 		debug/obj/qcustomplot.o \
 		debug/obj/moc_mainwindow.o \
 		debug/obj/moc_dialogquantifylevel.o \
@@ -730,13 +724,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.9.8/5.9.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-<<<<<<< HEAD
-	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/dialogtranslation.h include/dialogrotation.h include/dialogscaling.h include/smoothmethod.h include/qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/dialogtranslation.cpp source/dialogrotation.cpp source/dialogscaling.cpp source/smoothmethod.cpp source/qcustomplot.cpp $(DISTDIR)/
-=======
 	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/dialogtranslation.h include/dialogrotation.h include/dialogscaling.h include/smoothmethod.h include/SharpenMethod.h include/FilterMethod.h include/qcustomplot.h $(DISTDIR)/
 	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/dialogtranslation.cpp source/dialogrotation.cpp source/dialogscaling.cpp source/smoothmethod.cpp source/SharpenMethod.cpp source/FilterMethod.cpp source/qcustomplot.cpp $(DISTDIR)/
->>>>>>> dev
 
 
 clean: compiler_clean 
@@ -770,12 +759,8 @@ debug/moc/moc_predefs.h: /opt/Qt5.9.8/5.9.8/gcc_64/mkspecs/features/data/dummy.c
 compiler_moc_header_make_all: debug/moc/moc_mainwindow.cpp debug/moc/moc_dialogquantifylevel.cpp debug/moc/moc_dialogsamplingrate.cpp debug/moc/moc_dialogbitplane.cpp debug/moc/moc_dialoghistogram.cpp debug/moc/moc_dialoggrayscalethreshold.cpp debug/moc/moc_dialoglinearpointoperation.cpp debug/moc/moc_dialoglogtransformation.cpp debug/moc/moc_dialogpowertransformation.cpp debug/moc/moc_dialogtranslation.cpp debug/moc/moc_dialogrotation.cpp debug/moc/moc_dialogscaling.cpp debug/moc/moc_qcustomplot.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) debug/moc/moc_mainwindow.cpp debug/moc/moc_dialogquantifylevel.cpp debug/moc/moc_dialogsamplingrate.cpp debug/moc/moc_dialogbitplane.cpp debug/moc/moc_dialoghistogram.cpp debug/moc/moc_dialoggrayscalethreshold.cpp debug/moc/moc_dialoglinearpointoperation.cpp debug/moc/moc_dialoglogtransformation.cpp debug/moc/moc_dialogpowertransformation.cpp debug/moc/moc_dialogtranslation.cpp debug/moc/moc_dialogrotation.cpp debug/moc/moc_dialogscaling.cpp debug/moc/moc_qcustomplot.cpp
-<<<<<<< HEAD
-debug/moc/moc_mainwindow.cpp: include/dialogbitplane.h \
-=======
 debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		include/FilterMethod.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
@@ -839,63 +824,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcolor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgb.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgba64.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbrush.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpolygon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qregion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtransform.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector2d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -1188,70 +1116,10 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
-		include/dialoggrayscalethreshold.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		include/dialoghistogram.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QColor \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QImage \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPainter \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
-		include/dialoglinearpointoperation.h \
-		include/dialoglogtransformation.h \
-		include/qcustomplot.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QTimer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasictimer.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
@@ -1273,7 +1141,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedPointer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QTimer \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintEvent \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMouseEvent \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWheelEvent \
@@ -1283,222 +1150,17 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMultiMap \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFlags \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStack \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstack.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCache \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMargins \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLContext \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglcontext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QScopedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QSurfaceFormat \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurfaceformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qt_windows.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengles2ext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglframebufferobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOffscreenSurface \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qoffscreensurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QEvent \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QRect \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/QGLPixelBuffer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglpixelbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qgl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintengine.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCache \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLFramebufferObject \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOffscreenSurface \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/QGLPixelBuffer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglpixelbuffer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qgl.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglcolormap.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qtopenglglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtNumeric \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupport \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupportDepends \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstracteventdispatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstracttransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydataops.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydatapointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbitarray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraymatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcollator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineparser.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcryptographichash.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdeadlinetimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qelapsedtimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdir.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdiriterator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeasingcurve.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qendian.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventtransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qexception.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfactoryinterface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileselector.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStringList \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfilesystemwatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfinalstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfutureinterface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrunnable.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qresultstore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuturesynchronizer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuturewatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhistorystate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qidentityproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qisenum.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonarray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonvalue.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibrary.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibraryinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversionnumber.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlinkedlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlockfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qloggingcategory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmessageauthenticationcode.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetaobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimedata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimedatabase.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimetype.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectcleanuphandler.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qoperatingsystemversion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qparallelanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpauseanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpluginloader.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocess.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpropertyanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariantanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qqueue.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qreadwritelock.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qresource.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsavefile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedvaluerollback.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsemaphore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsequentialanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsettings.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedmemory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsignalmapper.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsignaltransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsocketnotifier.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsortfilterproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstandardpaths.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstatemachine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstorageinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlistmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemsemaphore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporarydir.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporaryfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextboundaryfinder.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextcodec.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthread.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadpool.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadstorage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimeline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimezone.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtranslator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypetraits.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/quuid.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwaitcondition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qglyphrun.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrawfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontdatabase.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocument.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessible.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessiblebridge.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbackingstore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbitmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qclipboard.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdesktopservices.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdrag.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericpluginfactory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qiconengine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qiconengineplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimageiohandler.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimagereader.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimagewriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix4x4.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector3d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector4d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qquaternion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmovie.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengldebug.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglextrafunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpixeltransferoptions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedDataPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltexture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltextureblitter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMatrix3x3 \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMatrix4x4 \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltimerquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDeviceWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevicewindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDevice \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagedpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagelayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagesize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpdfwriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpicture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpictureformatplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmapcache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrasterwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qscreen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QList \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSize \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSizeF \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QTransform \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsessionmanager.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstandarditemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstatictext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstylehints.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsyntaxhighlighter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocumentfragment.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocumentwriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgets \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1543,10 +1205,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicstransform.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QVector3D \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgroupbox.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemeditorfactory.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeyeventtransition.h \
@@ -1587,11 +1245,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylepainter.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsystemtrayicon.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbox.h \
@@ -1629,10 +1282,6 @@ debug/moc/moc_mainwindow.cpp: include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
 		include/smoothmethod.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -4546,127 +4195,6 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 ####### Compile
 
 debug/obj/main.o: source/main.cpp include/mainwindow.h \
-<<<<<<< HEAD
-		include/dialogbitplane.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qchar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcore-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemdetection.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocessordetection.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcompilerdetection.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypeinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsysinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlogging.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qflags.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasicatomic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qgenericatomic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_msvc.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobalstatic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmutex.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnumeric.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversiontagging.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrefcount.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnamespace.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringbuilder.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qshareddata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhash.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiterator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qalgorithms.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhashfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpair.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraylist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregexp.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringmatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDebug \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdebug.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextstream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiodevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetatype.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvarlengtharray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontainerfwd.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlocale.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariant.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvector.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpoint.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qset.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcolor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgb.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgba64.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbrush.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpolygon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qregion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtransform.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector2d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-=======
 		include/SharpenMethod.h \
 		include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
@@ -5024,70 +4552,10 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
-		include/dialoggrayscalethreshold.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		include/dialoghistogram.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QColor \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QImage \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPainter \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
-		include/dialoglinearpointoperation.h \
-		include/dialoglogtransformation.h \
-		include/qcustomplot.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QTimer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasictimer.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
@@ -5109,7 +4577,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedPointer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QTimer \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintEvent \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMouseEvent \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWheelEvent \
@@ -5119,222 +4586,17 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMultiMap \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFlags \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStack \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstack.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCache \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMargins \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLContext \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglcontext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QScopedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QSurfaceFormat \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurfaceformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qt_windows.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengles2ext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglframebufferobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOffscreenSurface \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qoffscreensurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QEvent \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QRect \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/QGLPixelBuffer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglpixelbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qgl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintengine.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCache \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLFramebufferObject \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOffscreenSurface \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/QGLPixelBuffer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglpixelbuffer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qgl.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglcolormap.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qtopenglglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtNumeric \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupport \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupportDepends \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstracteventdispatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstracttransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydataops.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydatapointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbitarray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraymatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcollator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineparser.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcryptographichash.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdeadlinetimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qelapsedtimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdir.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdiriterator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeasingcurve.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qendian.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventtransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qexception.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfactoryinterface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileselector.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStringList \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfilesystemwatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfinalstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfutureinterface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrunnable.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qresultstore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuturesynchronizer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuturewatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhistorystate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qidentityproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qisenum.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonarray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonvalue.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibrary.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibraryinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversionnumber.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlinkedlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlockfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qloggingcategory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmessageauthenticationcode.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetaobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimedata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimedatabase.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimetype.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectcleanuphandler.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qoperatingsystemversion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qparallelanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpauseanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpluginloader.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocess.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpropertyanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariantanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qqueue.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qreadwritelock.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qresource.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsavefile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedvaluerollback.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsemaphore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsequentialanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsettings.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedmemory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsignalmapper.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsignaltransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsocketnotifier.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsortfilterproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstandardpaths.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstatemachine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstorageinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlistmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemsemaphore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporarydir.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporaryfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextboundaryfinder.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextcodec.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthread.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadpool.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadstorage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimeline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimezone.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtranslator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypetraits.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/quuid.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwaitcondition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qglyphrun.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrawfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontdatabase.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocument.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessible.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessiblebridge.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbackingstore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbitmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qclipboard.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdesktopservices.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdrag.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericpluginfactory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qiconengine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qiconengineplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimageiohandler.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimagereader.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimagewriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix4x4.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector3d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector4d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qquaternion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmovie.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengldebug.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglextrafunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpixeltransferoptions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedDataPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltexture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltextureblitter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMatrix3x3 \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMatrix4x4 \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltimerquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDeviceWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevicewindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDevice \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagedpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagelayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagesize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpdfwriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpicture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpictureformatplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmapcache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrasterwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qscreen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QList \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSize \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSizeF \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QTransform \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsessionmanager.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstandarditemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstatictext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstylehints.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsyntaxhighlighter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocumentfragment.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocumentwriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgets \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -5379,10 +4641,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicstransform.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QVector3D \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgroupbox.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemeditorfactory.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeyeventtransition.h \
@@ -5423,11 +4681,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylepainter.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsystemtrayicon.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbox.h \
@@ -5465,10 +4718,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
 		include/smoothmethod.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -5483,127 +4732,6 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/main.o source/main.cpp
 
 debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
-<<<<<<< HEAD
-		include/dialogbitplane.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qchar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcore-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemdetection.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocessordetection.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcompilerdetection.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypeinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsysinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlogging.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qflags.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasicatomic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qgenericatomic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qatomic_msvc.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobalstatic.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmutex.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnumeric.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversiontagging.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrefcount.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnamespace.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringbuilder.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qshareddata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhash.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiterator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qalgorithms.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhashfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpair.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraylist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregexp.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringmatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDebug \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdebug.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextstream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiodevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetatype.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvarlengtharray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontainerfwd.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlocale.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariant.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvector.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpoint.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qset.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcolor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgb.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgba64.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbrush.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpolygon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qregion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtransform.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector2d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-=======
 		include/SharpenMethod.h \
 		include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
@@ -5961,70 +5089,10 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsScene \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
-		include/dialoggrayscalethreshold.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		include/dialoghistogram.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QColor \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QImage \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPainter \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
-		include/dialoglinearpointoperation.h \
-		include/dialoglogtransformation.h \
-		include/qcustomplot.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QTimer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasictimer.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGraphicsView \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
@@ -6046,7 +5114,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedPointer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QTimer \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintEvent \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMouseEvent \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWheelEvent \
@@ -6056,222 +5123,17 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMultiMap \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFlags \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStack \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstack.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCache \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMargins \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLContext \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglcontext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QScopedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QSurfaceFormat \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurfaceformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qt_windows.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengles2ext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglframebufferobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOffscreenSurface \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qoffscreensurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QEvent \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QRect \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/QGLPixelBuffer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglpixelbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qgl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintengine.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCache \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLFramebufferObject \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOffscreenSurface \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/QGLPixelBuffer \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglpixelbuffer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qgl.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglcolormap.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qtopenglglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtNumeric \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupport \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupportDepends \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstracteventdispatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstracttransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydataops.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydatapointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbitarray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraymatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcollator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineparser.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcryptographichash.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdeadlinetimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qelapsedtimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdir.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdiriterator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeasingcurve.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qendian.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventtransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qexception.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfactoryinterface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileselector.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStringList \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfilesystemwatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfinalstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfutureinterface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrunnable.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qresultstore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuturesynchronizer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfuturewatcher.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhistorystate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qidentityproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qisenum.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonarray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonvalue.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qjsonobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibrary.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibraryinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversionnumber.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlinkedlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlockfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qloggingcategory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmessageauthenticationcode.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetaobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimedata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimedatabase.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimetype.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectcleanuphandler.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qoperatingsystemversion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qparallelanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpauseanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpluginloader.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocess.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpropertyanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariantanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qqueue.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qreadwritelock.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qresource.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsavefile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedvaluerollback.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsemaphore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsequentialanimationgroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsettings.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedmemory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsignalmapper.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsignaltransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsocketnotifier.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsortfilterproxymodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstandardpaths.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstatemachine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstorageinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlistmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemsemaphore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporarydir.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporaryfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextboundaryfinder.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextcodec.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthread.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadpool.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadstorage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimeline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimezone.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtranslator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypetraits.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/quuid.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwaitcondition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qxmlstream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qglyphrun.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrawfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontdatabase.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocument.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessible.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessiblebridge.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbackingstore.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbitmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qclipboard.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdesktopservices.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdrag.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericpluginfactory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qiconengine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qiconengineplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimageiohandler.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimagereader.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimagewriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix4x4.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector3d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector4d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qquaternion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmovie.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengldebug.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglextrafunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpixeltransferoptions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedDataPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltexture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltextureblitter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMatrix3x3 \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMatrix4x4 \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengltimerquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDeviceWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevicewindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDevice \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagedpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagelayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagesize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpdfwriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpicture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpictureformatplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmapcache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrasterwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qscreen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QList \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSize \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSizeF \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QTransform \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsessionmanager.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstandarditemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstatictext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qstylehints.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsyntaxhighlighter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocumentfragment.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocumentwriter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgets \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -6316,10 +5178,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicstransform.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QVector3D \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgroupbox.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemeditorfactory.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeyeventtransition.h \
@@ -6360,11 +5218,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylepainter.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsystemtrayicon.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbox.h \
@@ -6402,10 +5255,6 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		include/dialogtranslation.h \
 		include/smoothmethod.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCoreApplication \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFile \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFileInfo \
@@ -8313,10 +7162,6 @@ debug/obj/dialogpowertransformation.o: source/dialogpowertransformation.cpp incl
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/dialogpowertransformation.o source/dialogpowertransformation.cpp
-<<<<<<< HEAD
-
-debug/obj/dialogtranslation.o: source/dialogtranslation.cpp include/dialogtranslation.h \
-=======
 
 debug/obj/dialogtranslation.o: source/dialogtranslation.cpp include/dialogtranslation.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
@@ -8475,7 +7320,6 @@ debug/obj/dialogtranslation.o: source/dialogtranslation.cpp include/dialogtransl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/dialogtranslation.o source/dialogtranslation.cpp
 
 debug/obj/dialogrotation.o: source/dialogrotation.cpp include/dialogrotation.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
@@ -8540,11 +7384,8 @@ debug/obj/dialogrotation.o: source/dialogrotation.cpp include/dialogrotation.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -8634,15 +7475,9 @@ debug/obj/dialogrotation.o: source/dialogrotation.cpp include/dialogrotation.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h
-<<<<<<< HEAD
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/dialogtranslation.o source/dialogtranslation.cpp
-
-debug/obj/dialogrotation.o: source/dialogrotation.cpp include/dialogrotation.h \
-=======
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/dialogrotation.o source/dialogrotation.cpp
 
 debug/obj/dialogscaling.o: source/dialogscaling.cpp include/dialogscaling.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
@@ -8707,15 +7542,6 @@ debug/obj/dialogscaling.o: source/dialogscaling.cpp include/dialogscaling.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtMath \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
@@ -8724,7 +7550,6 @@ debug/obj/dialogscaling.o: source/dialogscaling.cpp include/dialogscaling.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
@@ -8791,11 +7616,6 @@ debug/obj/dialogscaling.o: source/dialogscaling.cpp include/dialogscaling.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
-=======
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qslider.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractslider.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyle.h \
@@ -8811,12 +7631,6 @@ debug/obj/dialogscaling.o: source/dialogscaling.cpp include/dialogscaling.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/dialogrotation.o source/dialogrotation.cpp
-
-debug/obj/dialogscaling.o: source/dialogscaling.cpp include/dialogscaling.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qradiobutton.h \
@@ -8824,7 +7638,6 @@ debug/obj/dialogscaling.o: source/dialogscaling.cpp include/dialogscaling.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/dialogscaling.o source/dialogscaling.cpp
 
 debug/obj/smoothmethod.o: source/smoothmethod.cpp include/smoothmethod.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
@@ -8888,10 +7701,7 @@ debug/obj/smoothmethod.o: source/smoothmethod.cpp include/smoothmethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QObject \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
@@ -8973,40 +7783,25 @@ debug/obj/smoothmethod.o: source/smoothmethod.cpp include/smoothmethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qradiobutton.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractbutton.h
-<<<<<<< HEAD
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/dialogscaling.o source/dialogscaling.cpp
-
-debug/obj/smoothmethod.o: source/smoothmethod.cpp include/smoothmethod.h \
-=======
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/smoothmethod.o source/smoothmethod.cpp
 
 debug/obj/SharpenMethod.o: source/SharpenMethod.cpp include/SharpenMethod.h \
 		include/FilterMethod.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
@@ -9070,81 +7865,6 @@ debug/obj/SharpenMethod.o: source/SharpenMethod.cpp include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QValidator \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcolor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgb.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgba64.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbrush.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpolygon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qregion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtransform.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector2d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qitemselectionmodel.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -9401,7 +8121,6 @@ debug/obj/SharpenMethod.o: source/SharpenMethod.cpp include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -9411,26 +8130,6 @@ debug/obj/SharpenMethod.o: source/SharpenMethod.cpp include/SharpenMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QInputDialog \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QMainWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QRadioButton \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qradiobutton.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractbutton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/smoothmethod.o source/smoothmethod.cpp
-
-debug/obj/qcustomplot.o: source/qcustomplot.cpp include/qcustomplot.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
@@ -9456,7 +8155,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qchar.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qconfig.h \
@@ -9478,22 +8176,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmutex.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnumeric.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversiontagging.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnamespace.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstring.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qchar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrefcount.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringbuilder.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qalgorithms.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiterator.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearray.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrefcount.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qnamespace.h \
@@ -9504,15 +8186,12 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiterator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlist.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qalgorithms.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhashfunctions.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpair.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraylist.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlist.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregexp.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringmatcher.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDebug \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdebug.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmap.h \
@@ -9521,125 +8200,12 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreevent.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qscopedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetatype.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvarlengtharray.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontainerfwd.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qobject_impl.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qshareddata.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qhash.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QTimer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasictimer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPainter \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpoint.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcolor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgb.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrgba64.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qimage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtransform.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmatrix.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpolygon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvector.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qregion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qiodevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbrush.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfont.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintEvent \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qkeysequence.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariant.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdebug.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextstream.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlocale.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qset.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector2d.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QMouseEvent \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWheelEvent \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPixmap \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVector \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QString \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMultiMap \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QFlags \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDebug \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStack \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstack.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QCache \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcache.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMargins \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLContext \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglcontext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QScopedPointer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QSurfaceFormat \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurfaceformat.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qt_windows.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengles2ext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglext.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglframebufferobject.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOffscreenSurface \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qoffscreensurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurface.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWindow \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QEvent \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QRect \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/QGLPixelBuffer \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglpixelbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qgl.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintengine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qglcolormap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtOpenGL/qtopenglglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtNumeric \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QWidget \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupport \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/QtPrintSupportDepends \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlocale.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariant.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvector.h \
@@ -9648,7 +8214,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qabstractanimation.h \
@@ -9662,35 +8227,23 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qanimationgroup.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydataops.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qarraydatapointer.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbitarray.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraymatcher.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbasictimer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbitarray.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbuffer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qbytearraymatcher.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcache.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcollator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcommandlineparser.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcoreapplication.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qcryptographichash.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdeadlinetimer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qelapsedtimer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdir.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileinfo.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfile.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfiledevice.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdiriterator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qeasingcurve.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qendian.h \
@@ -9698,10 +8251,7 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qexception.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfactoryinterface.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfileselector.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QObject \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QStringList \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfilesystemwatcher.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qfinalstate.h \
@@ -9722,18 +8272,12 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibrary.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlibraryinfo.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qversionnumber.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlinkedlist.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlockfile.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qloggingcategory.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlinkedlist.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qlockfile.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qloggingcategory.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmargins.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmath.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmessageauthenticationcode.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmetaobject.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qmimedata.h \
@@ -9744,21 +8288,15 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qparallelanimationgroup.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpauseanimation.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qplugin.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpointer.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpluginloader.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qprocess.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qpropertyanimation.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qvariantanimation.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qqueue.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qreadwritelock.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qrect.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsize.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qregularexpression.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qresource.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsavefile.h \
@@ -9771,10 +8309,7 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsignaltransition.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsocketnotifier.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsortfilterproxymodel.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstack.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstandardpaths.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstatemachine.h \
@@ -9782,10 +8317,7 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qstringlistmodel.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qsystemsemaphore.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporarydir.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QScopedPointer \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtemporaryfile.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextboundaryfinder.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtextcodec.h \
@@ -9793,18 +8325,12 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadpool.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qthreadstorage.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimeline.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimezone.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtranslator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypetraits.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimer.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtimezone.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtranslator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtypetraits.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurl.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qurlquery.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/quuid.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwaitcondition.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qwineventnotifier.h \
@@ -9812,11 +8338,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qtcoreversion.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGui \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QtGuiDepends \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextformat.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiglobal.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtgui-config.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
@@ -9844,23 +8365,17 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixelformat.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpixmap.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextoption.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qglyphrun.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qrawfont.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontdatabase.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextcursor.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtextdocument.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpalette.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessible.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessiblebridge.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleobject.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qaccessibleplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbackingstore.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QEvent \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMargins \
@@ -9869,16 +8384,12 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qsurfaceformat.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qicon.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qcursor.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qbitmap.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qclipboard.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdesktopservices.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qdrag.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontinfo.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qfontmetrics.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericmatrix.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericplugin.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qgenericpluginfactory.h \
@@ -9894,12 +8405,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvector4d.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qquaternion.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qmovie.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglbuffer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengldebug.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglextrafunctions.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglfunctions.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qoffscreensurface.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopengl.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qt_windows.h \
@@ -9913,7 +8418,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglextrafunctions.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglfunctions.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglframebufferobject.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpaintdevice.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglpixeltransferoptions.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QSharedDataPointer \
@@ -9927,22 +8431,15 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qopenglwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDeviceWindow \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintdevicewindow.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDevice \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QWindow \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QPaintDevice \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QOpenGLContext \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QImage \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagedpaintdevice.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagelayout.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpagesize.h \
-<<<<<<< HEAD
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpaintengine.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainter.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpdfwriter.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpicture.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpictureformatplugin.h \
@@ -9965,11 +8462,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtexttable.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qvalidator.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qtguiversion.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgets \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QtWidgetsDepends \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractbutton.h \
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAbstractItemView \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -9978,7 +8470,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizepolicy.h \
->>>>>>> dev
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -9988,180 +8479,6 @@ debug/obj/FilterMethod.o: source/FilterMethod.cpp include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qrubberband.h \
-<<<<<<< HEAD
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaccessiblewidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcalendarwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcheckbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcolordialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcolormap.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcolumnview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcombobox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcommandlinkbutton.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcommonstyle.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qcompleter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdatawidgetmapper.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdatetimeedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdial.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdirmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qfileiconprovider.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdockwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qdrawutil.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qerrormessage.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qfiledialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qfilesystemmodel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qfocusframe.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qfontcombobox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qfontdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qformlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QLayout \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgesture.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgesturerecognizer.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsanchorlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicslayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicslayoutitem.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicseffect.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsgridlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsitemanimation.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicslinearlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsproxywidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicswidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicstransform.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/QVector3D \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qgroupbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qinputdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemdelegate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qitemeditorfactory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeyeventtransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qkeysequenceedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlcdnumber.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlistview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qlistwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmdiarea.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmdisubwindow.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmenu.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmenubar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmessagebox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmouseeventtransition.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qopenglwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qplaintextedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextedit.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qprogressbar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qprogressdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qproxystyle.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QCommonStyle \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qradiobutton.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollbar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscroller.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPointF \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QScrollerProperties \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qscrollerproperties.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QMetaType \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qshortcut.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsizegrip.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qspinbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsplashscreen.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsplitter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstackedlayout.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstackedwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleditemdelegate.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylefactory.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstylepainter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qstyleplugin.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qsystemtrayicon.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtextbrowser.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbar.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbox.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtoolbutton.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtooltip.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtreeview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtreewidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qundogroup.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qundostack.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qundoview.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwhatsthis.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwidgetaction.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qwizard.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtwidgetsversion.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qtprintsupportglobal.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qtprintsupport-config.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qabstractprintdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qpagesetupdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qprintdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qprintengine.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qprinter.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qprinterinfo.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QPair \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qprintpreviewdialog.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qprintpreviewwidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtPrintSupport/qtprintsupportversion.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/qcustomplot.o source/qcustomplot.cpp
-
-debug/obj/moc_mainwindow.o: debug/moc/moc_mainwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_mainwindow.o debug/moc/moc_mainwindow.cpp
-
-debug/obj/moc_dialogquantifylevel.o: debug/moc/moc_dialogquantifylevel.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogquantifylevel.o debug/moc/moc_dialogquantifylevel.cpp
-
-debug/obj/moc_dialogsamplingrate.o: debug/moc/moc_dialogsamplingrate.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogsamplingrate.o debug/moc/moc_dialogsamplingrate.cpp
-
-debug/obj/moc_dialogbitplane.o: debug/moc/moc_dialogbitplane.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogbitplane.o debug/moc/moc_dialogbitplane.cpp
-
-debug/obj/moc_dialoghistogram.o: debug/moc/moc_dialoghistogram.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialoghistogram.o debug/moc/moc_dialoghistogram.cpp
-
-debug/obj/moc_dialoggrayscalethreshold.o: debug/moc/moc_dialoggrayscalethreshold.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialoggrayscalethreshold.o debug/moc/moc_dialoggrayscalethreshold.cpp
-
-debug/obj/moc_dialoglinearpointoperation.o: debug/moc/moc_dialoglinearpointoperation.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialoglinearpointoperation.o debug/moc/moc_dialoglinearpointoperation.cpp
-
-debug/obj/moc_dialoglogtransformation.o: debug/moc/moc_dialoglogtransformation.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialoglogtransformation.o debug/moc/moc_dialoglogtransformation.cpp
-
-debug/obj/moc_dialogpowertransformation.o: debug/moc/moc_dialogpowertransformation.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogpowertransformation.o debug/moc/moc_dialogpowertransformation.cpp
-
-debug/obj/moc_dialogtranslation.o: debug/moc/moc_dialogtranslation.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogtranslation.o debug/moc/moc_dialogtranslation.cpp
-
-debug/obj/moc_dialogrotation.o: debug/moc/moc_dialogrotation.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogrotation.o debug/moc/moc_dialogrotation.cpp
-
-debug/obj/moc_dialogscaling.o: debug/moc/moc_dialogscaling.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogscaling.o debug/moc/moc_dialogscaling.cpp
-
-=======
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qbuttongroup.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QDialogButtonBox \
@@ -10707,7 +9024,6 @@ debug/obj/moc_dialogrotation.o: debug/moc/moc_dialogrotation.cpp
 debug/obj/moc_dialogscaling.o: debug/moc/moc_dialogscaling.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_dialogscaling.o debug/moc/moc_dialogscaling.cpp
 
->>>>>>> dev
 debug/obj/moc_qcustomplot.o: debug/moc/moc_qcustomplot.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/moc_qcustomplot.o debug/moc/moc_qcustomplot.cpp
 

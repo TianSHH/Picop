@@ -81,8 +81,6 @@ void MainWindow::setup()
     actionKNNF->setObjectName(QStringLiteral("actionKNNF"));
     actionKNNMF = new QAction(this);
     actionKNNMF->setObjectName(QStringLiteral("actionKNNMF"));
-<<<<<<< HEAD
-=======
     menuSharpen = new QMenu(this);
     menuSharpen->setObjectName(QStringLiteral("menuSharpen"));
     actionReborts = new QAction(this);
@@ -95,7 +93,6 @@ void MainWindow::setup()
     actionEnhancedLaplace->setObjectName(QStringLiteral("actionEnhancedLaplace"));
     actionConvolution = new QAction(this);
     actionConvolution->setObjectName(QStringLiteral("actionConvolution"));
->>>>>>> dev
 
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
@@ -193,15 +190,12 @@ void MainWindow::setup()
     menuSmooth->addAction(actionMedianFiltering);
     menuSmooth->addAction(actionKNNF);
     menuSmooth->addAction(actionKNNMF);
-<<<<<<< HEAD
-=======
     menuImageEnhancement->addMenu(menuSharpen);
     menuSharpen->addAction(actionReborts);
     menuSharpen->addAction(actionSobel);
     menuSharpen->addAction(actionLaplace);
     menuSharpen->addAction(actionEnhancedLaplace);
     menuImageEnhancement->addAction(actionConvolution);
->>>>>>> dev
 
     menuHelp->addAction(actionAbout);
 
@@ -265,15 +259,12 @@ void MainWindow::retranslate()
     actionMedianFiltering->setText(QApplication::translate("MainWindow", "中值滤波(&M)", Q_NULLPTR));
     actionKNNF->setText(QApplication::translate("MainWindow", "K近邻均值滤波", Q_NULLPTR));
     actionKNNMF->setText(QApplication::translate("MainWindow", "K近邻中值滤波", Q_NULLPTR));
-<<<<<<< HEAD
-=======
     menuSharpen->setTitle(QApplication::translate("MainWindow", "锐化", Q_NULLPTR));
     actionReborts->setText(QApplication::translate("MainWindow", "Reborts算子(&R)", Q_NULLPTR));
     actionSobel->setText(QApplication::translate("MainWindow", "Sobel算子(&S)", Q_NULLPTR));
     actionLaplace->setText(QApplication::translate("MainWindow", "Laplace算子(&L)", Q_NULLPTR));
     actionEnhancedLaplace->setText(QApplication::translate("MainWindow", "增强Laplace算子(&E)", Q_NULLPTR));
     actionConvolution->setText(QApplication::translate("MainWindiw", "计算卷积(&C)", Q_NULLPTR));
->>>>>>> dev
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -583,15 +574,9 @@ void MainWindow::on_actionTranslation_triggered()
 
 void MainWindow::on_actionSpectrogram_triggered()
 {
-<<<<<<< HEAD
-//    Spectrogram *_spectrogram = new Spectrogram();
-
-//    _spectrogram->displaySpectrogram(imagePath);
-=======
     //    Spectrogram *_spectrogram = new Spectrogram();
 
     //    _spectrogram->displaySpectrogram(imagePath);
->>>>>>> dev
 } // on_actionSpectrogram_triggered
 
 void MainWindow::on_actionAverageFiltering_triggered()
@@ -633,8 +618,6 @@ void MainWindow::on_actionKNNMF_triggered()
 
 } // on_actionKNNMF_triggered
 
-<<<<<<< HEAD
-=======
 void MainWindow::on_actionReborts_triggered()
 {
     SharpenMethod *_sharpenMethod = new SharpenMethod();
@@ -690,7 +673,6 @@ void MainWindow::on_actionConvolution_triggered()
     // updateRightImageManual(targetImage);
 } // on_actionConvolution_triggered
 
->>>>>>> dev
 void MainWindow::updateRightImage(QImage &newImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"

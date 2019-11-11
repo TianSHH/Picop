@@ -105,15 +105,12 @@ public:
     QAction *actionMedianFiltering;
     QAction *actionKNNF;
     QAction *actionKNNMF;
-<<<<<<< HEAD
-=======
     QMenu *menuSharpen;
     QAction *actionReborts;
     QAction *actionSobel;
     QAction *actionLaplace;
     QAction *actionEnhancedLaplace;
     QAction *actionConvolution;
->>>>>>> dev
 
     QAction *actionAbout;
 
@@ -173,14 +170,11 @@ private slots:
     void on_actionMedianFiltering_triggered();
     void on_actionKNNF_triggered();
     void on_actionKNNMF_triggered();
-<<<<<<< HEAD
-=======
     void on_actionReborts_triggered();
     void on_actionSobel_triggered();
     void on_actionLaplace_triggered();
     void on_actionEnhancedLaplace_triggered();
     void on_actionConvolution_triggered();
->>>>>>> dev
 
     // void on_actionAbout_triggered();
 
