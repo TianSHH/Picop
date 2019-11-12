@@ -2,23 +2,22 @@
 
 a personal works of Digital Image Processing
 
-文件目录  
+目录结构  
 picop  
+|───bin  
 |───debug  
-|───|───bin  
 |───|───moc  
 |───|───obj  
-|───picop  
-|───|───include  
+|───include  
 |───|───| 头文件  
 |───|───|  
-|───|───source  
+|───source  
 |───|───| 源代码  
 |───|───|  
-|───|───Makefile  
-|───|───picop.pro  
-|───|───prcop.pro.user  
-|───|───README.md  
+|───Makefile  
+|───picop.pro  
+|───prcop.pro.user  
+|───README.md  
 
 运行环境
 Ubuntu19.10
