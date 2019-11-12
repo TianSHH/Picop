@@ -21,7 +21,7 @@ picop
 |───|───README.md  
 
 运行环境
-Ubuntu18.04
+Ubuntu19.10
 
 开发工具
 vscode + Qt5.9.8 + Opencv4.1.1
