@@ -6,18 +6,21 @@
 #include <QtCore>
 #include <QtGui>
 #include <QtWidgets/QAbstractItemView>
+#include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMainWindow>
 #include <QtWidgets/QTableWidget>
-#include <QtWidgets/QTableWidgetItem>
-#include <QtWidgets/QWidget>
 
-class FilterMethod
+class FilterMethod : public QDialog
 {
+
+    Q_OBJECT
+
 public:
-    FilterMethod();
+    explicit FilterMethod(QWidget *parent = nullptr);
     ~FilterMethod();
 
 public:
@@ -25,11 +28,26 @@ public:
     int *filterTemplateArray;
 
 public:
-    QImage filtering(QImage originImage, int filterSize, int *filterTemplateArray);
-    void getFilterInfo(QImage originImage);
+    QDialog *_dialog;
+    QGridLayout *_gridLayout;
+    QTableWidget *kernelTable;
+    QDialogButtonBox *buttonBox;
+    QMainWindow *ptr = (QMainWindow *)parent();
+
+public:
+    void setup();
+    void retranslate();
+
+    QImage filtering(QImage originImage, int filterSize, int *filterTemplateArray, bool flag);
+
+signals:
+    void signalFilterStart();
+    void signalFilterEnd(QImage &);
 
 private slots:
-    void collectingKernelInfo(QTableWidget * tableWidget);
+    void emitSignalFilterStart();
+
+    void collectKernelInfo(QImage *);
 };
 
 #endif // FILTERMETHOD_H

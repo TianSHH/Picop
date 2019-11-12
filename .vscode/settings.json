@@ -84,7 +84,20 @@
         "qtgui": "cpp",
         "random": "cpp",
         "qinputdialog": "cpp",
-        "qtablewidgetitem": "cpp"
+        "qtablewidgetitem": "cpp",
+        "atomic": "cpp",
+        "bit": "cpp",
+        "chrono": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "map": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "ratio": "cpp",
+        "cinttypes": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [

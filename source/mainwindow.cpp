@@ -664,12 +664,12 @@ void MainWindow::on_actionEnhancedLaplace_triggered()
 
 void MainWindow::on_actionConvolution_triggered()
 {
-    FilterMethod *_filterMethod = new FilterMethod();
+    FilterMethod *_filterMethod = new FilterMethod(this);
 
     QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
 
-    _filterMethod->getFilterInfo(originImage);
-
+    connect(_filterMethod, SIGNAL(signalFilterStart()), this, SLOT(emitSignalSendImage()));
+    connect(_filterMethod, SIGNAL(signalFilterEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
     // updateRightImageManual(targetImage);
 } // on_actionConvolution_triggered
 

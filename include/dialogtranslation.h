@@ -33,7 +33,7 @@ public:
     QDialogButtonBox *buttonBox;
 
     QGridLayout *gridLayout;
-    
+
     QMainWindow *ptr = (QMainWindow *)parentWidget();
 
 public:

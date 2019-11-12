@@ -1,14 +1,75 @@
 #include "FilterMethod.h"
 
-FilterMethod::FilterMethod()
+FilterMethod::FilterMethod(QWidget *parent) : QDialog(parent)
 {
+    setup();
+
+    setAttribute(Qt::WA_DeleteOnClose);
+
+    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalFilterStart()));
+    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(collectKernelInfo(QImage *)));
 }
 
 FilterMethod::~FilterMethod()
 {
 }
 
-QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTemplateArray)
+void FilterMethod::setup()
+{
+    bool ok;
+
+    this->filterSize = QInputDialog::getInt(nullptr, QObject::tr("获取卷积核大小"), "输入卷积核大小(1~30)", 3, 1, 30, 1, &ok);
+
+    if (ok)
+    {
+        _dialog = new QDialog(nullptr);
+
+        _gridLayout = new QGridLayout(_dialog);
+        _gridLayout->setObjectName(QStringLiteral("_gridLayout"));
+
+        kernelTable = new QTableWidget();
+        kernelTable->setWindowTitle("设置卷积核");
+        kernelTable->setEditTriggers(QAbstractItemView::CurrentChanged); // 设置编辑方式为可编辑
+        // 若预先不设置 kernelTable 的行列数
+        // 初始化没问题
+        // 但读取 kernelTable 中数据时, 只能获得第一行数据
+        kernelTable->setColumnCount(filterSize);
+        kernelTable->setRowCount(filterSize);
+
+        // 初始化卷积核
+        for (int i = 0; i < kernelTable->rowCount(); i++)
+        {
+            for (int j = 0; j < kernelTable->columnCount(); j++)
+            {
+                kernelTable->setColumnWidth(j, 30);
+                kernelTable->setRowHeight(i, 30);
+                kernelTable->setItem(i, j, new QTableWidgetItem());
+                // kernelTable->item(i, j)->setTextAlignment(Qt::AlignCenter);
+                kernelTable->item(i, j)->setBackground(QColor(85, 170, 255));
+                if ((i == filterSize / 2) && (j == filterSize / 2))
+                    kernelTable->item(i, j)->setText("1");
+                else
+                    kernelTable->item(i, j)->setText("0");
+            }
+        }
+        kernelTable->show();
+        _gridLayout->addWidget(kernelTable, 0, 0, 1, 1);
+
+        buttonBox = new QDialogButtonBox();
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setOrientation(Qt::Horizontal);
+        buttonBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
+        _gridLayout->addWidget(buttonBox, 1, 0, 1, 1);
+
+        _dialog->setLayout(_gridLayout);
+        _dialog->resize(filterSize * 30 + 37, filterSize * 30 + 76);
+        _dialog->show();
+    }
+} // setup
+
+void FilterMethod::retranslate() {}
+
+QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTemplateArray, bool flag)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "进行图像滤波"
@@ -78,65 +139,27 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
         }
     }
 
-    return targetImage;
+    if (flag == false)
+        return targetImage;
+    else
+        emit signalFilterEnd(targetImage);
 } // filtering
 
-void FilterMethod::getFilterInfo(QImage originImage)
+void FilterMethod::collectKernelInfo(QImage *originImage)
 {
-    bool ok;
+    _dialog->hide();
 
-    int filterSize = QInputDialog::getInt(nullptr, QObject::tr("获取卷积核大小"), "输入卷积核大小(1~30)", 3, 1, 30, 1, &ok);
+    filterTemplateArray = new int[kernelTable->rowCount() * kernelTable->columnCount()]();
 
-    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "自定义卷积核"
-                       << "卷积核大小" << filterSize << "X" << filterSize;
+    for (int i = 0; i < kernelTable->rowCount(); i++)
+        for (int j = 0; j < kernelTable->columnCount(); j++)
+            filterTemplateArray[i * kernelTable->rowCount() + j] = kernelTable->item(i, j)->text().toInt();
 
-    if (ok == true)
-    {
-        QDialog *_dialog = new QDialog(nullptr);
+    // 必要信息收集完毕, 开始滤波
+    filtering(*originImage, filterSize, filterTemplateArray, true);
+} // collectKernelInfo
 
-        QGridLayout *_gridLayout = new QGridLayout(_dialog);
-        _gridLayout->setObjectName(QStringLiteral("_gridLayout"));
-
-        QTableWidget *tableWidget = new QTableWidget(filterSize, filterSize);
-        tableWidget->setWindowTitle("设置卷积核");
-        tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged); // 设置编辑方式为可编辑
-
-        // 初始化卷积核
-        for (int i = 0; i < filterSize; i++)
-        {
-            for (int j = 0; j < filterSize; j++)
-            {
-                tableWidget->setColumnWidth(j, 30);
-                tableWidget->setRowHeight(i, 30);
-                tableWidget->setItem(i, j, new QTableWidgetItem());
-                tableWidget->item(i, j)->setTextAlignment(Qt::AlignCenter);
-                tableWidget->item(i, j)->setBackground(QColor(85, 170, 255));
-                if ((i == filterSize / 2) && (j == filterSize / 2))
-                    tableWidget->item(i, j)->setText("1");
-                else
-                    tableWidget->item(i, j)->setText("0");
-            }
-        }
-        tableWidget->show();
-        _gridLayout->addWidget(tableWidget, 0, 0, 1, 1);
-
-        QDialogButtonBox *buttonBox;
-        buttonBox = new QDialogButtonBox();
-        buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
-        _gridLayout->addWidget(buttonBox, 1, 0, 1, 1);
-
-        _dialog->setLayout(_gridLayout);
-        _dialog->resize(filterSize * 30 + 37, filterSize * 30 + 76);
-        _dialog->show();
-
-        // 起初是将所有的组件放到了 QWidget
-        // 但是 QWidget 中并没有 SLOT accept() 和 reject()
-        // 所以将容纳 QTableWidget 和 QButtonBox 的容器
-        // 换成 QDialog
-        }
-
-    // return this->filtering(originImage, filterSize, filterTemplateArray);
-} // getFilterInfo
+void FilterMethod::emitSignalFilterStart()
+{
+    emit signalFilterStart();
+} // emitSignalFilterStart
