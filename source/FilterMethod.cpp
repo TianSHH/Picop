@@ -102,6 +102,7 @@ void FilterMethod::getFilterInfo(QImage originImage)
         tableWidget->setWindowTitle("设置卷积核");
         tableWidget->setEditTriggers(QAbstractItemView::CurrentChanged); // 设置编辑方式为可编辑
 
+        // 初始化卷积核
         for (int i = 0; i < filterSize; i++)
         {
             for (int j = 0; j < filterSize; j++)
@@ -111,6 +112,10 @@ void FilterMethod::getFilterInfo(QImage originImage)
                 tableWidget->setItem(i, j, new QTableWidgetItem());
                 tableWidget->item(i, j)->setTextAlignment(Qt::AlignCenter);
                 tableWidget->item(i, j)->setBackground(QColor(85, 170, 255));
+                if ((i == filterSize / 2) && (j == filterSize / 2))
+                    tableWidget->item(i, j)->setText("1");
+                else
+                    tableWidget->item(i, j)->setText("0");
             }
         }
         tableWidget->show();
@@ -131,7 +136,7 @@ void FilterMethod::getFilterInfo(QImage originImage)
         // 但是 QWidget 中并没有 SLOT accept() 和 reject()
         // 所以将容纳 QTableWidget 和 QButtonBox 的容器
         // 换成 QDialog
-    }
+        }
 
     // return this->filtering(originImage, filterSize, filterTemplateArray);
 } // getFilterInfo

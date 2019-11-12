@@ -83,10 +83,12 @@
         "qobject": "cpp",
         "qtgui": "cpp",
         "random": "cpp",
-        "qinputdialog": "cpp"
+        "qinputdialog": "cpp",
+        "qtablewidgetitem": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
+        "/opt/Qt5.9.8/5.9.8/gcc_64/",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DAnimation",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DCore",

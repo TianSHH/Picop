@@ -5,6 +5,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
+                "/opt/Qt5.9.8/5.9.8/gcc_64/",
                 "/opt/Qt5.9.8/5.9.8/gcc_64/include/",
                 "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DAnimation",
                 "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DCore",
@@ -92,6 +93,7 @@
             ],
             "browse": {
                 "path": [
+                    "/opt/Qt5.9.8/5.9.8/gcc_64/",
                     "/opt/Qt5.9.8/5.9.8/gcc_64/include/",
                     "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DAnimation",
                     "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DCore",

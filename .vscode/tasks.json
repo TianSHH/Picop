@@ -8,7 +8,7 @@
             "args": [
                 "${workSpaceFolder}picop.pro",
                 "-spec",
-                "linux-g++",
+                "linux-g++-64",
                 "CONFIG+=debug",
                 "CONFIG+=qml_debug",
                 "|",
@@ -22,7 +22,7 @@
                 "lolcat",
                 ";",
                 "make",
-                "-j8",
+                "-j8", // 指定参加编译的CPU核数量
                 "|",
                 "lolcat"
             ],

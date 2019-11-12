@@ -27,6 +27,9 @@ public:
 public:
     QImage filtering(QImage originImage, int filterSize, int *filterTemplateArray);
     void getFilterInfo(QImage originImage);
+
+private slots:
+    void collectingKernelInfo(QTableWidget * tableWidget);
 };
 
-#endif FILTERMETHOD_H
+#endif // FILTERMETHOD_H

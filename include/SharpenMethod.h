@@ -18,4 +18,4 @@ public:
     QImage enhancedLaplace(QImage originImage);
 };
 
-#endif SHARPENMETHOD_H
+#endif // SHARPENMETHOD_H
