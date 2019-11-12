@@ -31,7 +31,7 @@ QImage SharpenMethod::reborts(QImage originImage)
                        0, 0, -1,
                        0, 1, 0};
 
-    FilterMethod _filterMethod;
+    FilterMethod _filterMethod(nullptr);
 
     QImage middleImageFx = _filterMethod.filtering(originImage, 3, rebortsFx, false);
     QImage middleImageFy = _filterMethod.filtering(originImage, 3, rebortsFy, false);
@@ -69,7 +69,7 @@ QImage SharpenMethod::sobel(QImage originImage)
                      0, 0, 0,
                      1, 2, 1};
 
-    FilterMethod _filterMethod;
+    FilterMethod _filterMethod(nullptr);
 
     QImage middleImageFx = _filterMethod.filtering(originImage, 3, sobelFx, false);
     QImage middleImageFy = _filterMethod.filtering(originImage, 3, sobelFy, false);
@@ -104,7 +104,7 @@ QImage SharpenMethod::laplace(QImage originImage)
                      -1, 4, -1,
                      0, -1, 0};
 
-    FilterMethod _filterMethod;
+    FilterMethod _filterMethod(nullptr);
 
     return _filterMethod.filtering(originImage, 3, laplace, false);
 } // laplace
@@ -128,7 +128,7 @@ QImage SharpenMethod::enhancedLaplace(QImage originImage)
                              -2, 4, -2,
                              1, -2, 1};
 
-    FilterMethod _filterMethod;
+    FilterMethod _filterMethod(nullptr);
 
     return _filterMethod.filtering(originImage, 3, enhancedLaplace, false);
 } // enhancedLaplace

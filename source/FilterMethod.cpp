@@ -2,12 +2,17 @@
 
 FilterMethod::FilterMethod(QWidget *parent) : QDialog(parent)
 {
-    setup();
+    if (parent != nullptr)
+    { // FilterMethod 没有父窗口,
+        // 即只使用 filtering 方法
+        // 不自定义滤波模板
+        setup();
 
-    setAttribute(Qt::WA_DeleteOnClose);
+        setAttribute(Qt::WA_DeleteOnClose);
 
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalFilterStart()));
-    connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(collectKernelInfo(QImage *)));
+        connect(buttonBox, SIGNAL(accepted()), this, SLOT(emitSignalFilterStart()));
+        connect(ptr, SIGNAL(signalSendImage(QImage *)), this, SLOT(collectKernelInfo(QImage *)));
+    }
 }
 
 FilterMethod::~FilterMethod()

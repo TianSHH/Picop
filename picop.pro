@@ -27,7 +27,7 @@ CONFIG += c++17 \
 
 INCLUDEPATH += ./ \
 	include/ \
-        source/
+    source/
 
 SOURCES += \
         source/main.cpp \
