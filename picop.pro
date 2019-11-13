@@ -46,6 +46,7 @@ SOURCES += \
     source/smoothmethod.cpp \
     source/SharpenMethod.cpp \
     source/FilterMethod.cpp \
+    source/ColorMethod.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -64,6 +65,7 @@ HEADERS += \
     include/smoothmethod.h \
     include/SharpenMethod.h \
     include/FilterMethod.h \
+    include/ColorMethod.h \
     include/qcustomplot.h
 
 

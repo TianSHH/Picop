@@ -94,6 +94,11 @@ void MainWindow::setup()
     actionConvolution = new QAction(this);
     actionConvolution->setObjectName(QStringLiteral("actionConvolution"));
 
+    actionToGray = new QAction(this);
+    actionToGray->setObjectName(QStringLiteral("actionToGray"));
+    actionTo256 = new QAction(this);
+    actionTo256->setObjectName(QStringLiteral("actionTo256"));
+
     actionAbout = new QAction(this);
     actionAbout->setObjectName(QStringLiteral("actionAbout"));
 
@@ -131,6 +136,8 @@ void MainWindow::setup()
     menuImageTransformation->setObjectName(QStringLiteral("menuImageTransformation"));
     menuImageEnhancement = new QMenu(this);
     menuImageEnhancement->setObjectName(QStringLiteral("menuImageEnhancement"));
+    menuColorTransformation = new QMenu(this);
+    menuColorTransformation->setObjectName(QStringLiteral("menuColorTransformation"));
     menuHelp = new QMenu(menuBar);
     menuHelp->setObjectName(QStringLiteral("menuHelp"));
     this->setMenuBar(menuBar);
@@ -155,6 +162,7 @@ void MainWindow::setup()
     menuBar->addAction(menuGeometricOperation->menuAction());
     menuBar->addAction(menuImageTransformation->menuAction());
     menuBar->addAction(menuImageEnhancement->menuAction());
+    menuBar->addAction(menuColorTransformation->menuAction());
     menuBar->addAction(menuHelp->menuAction());
 
     menuFile->addAction(actionOpen);
@@ -196,6 +204,9 @@ void MainWindow::setup()
     menuSharpen->addAction(actionLaplace);
     menuSharpen->addAction(actionEnhancedLaplace);
     menuImageEnhancement->addAction(actionConvolution);
+
+    menuColorTransformation->addAction(actionToGray);
+    menuColorTransformation->addAction(actionTo256);
 
     menuHelp->addAction(actionAbout);
 
@@ -266,6 +277,9 @@ void MainWindow::retranslate()
     actionEnhancedLaplace->setText(QApplication::translate("MainWindow", "增强Laplace算子(&E)", Q_NULLPTR));
     actionConvolution->setText(QApplication::translate("MainWindiw", "计算卷积(&C)", Q_NULLPTR));
 
+    actionToGray->setText(QApplication::translate("MainWindow", "转换为灰度图像", Q_NULLPTR));
+    actionTo256->setText(QApplication::translate("MainWindow", "转换为256色图像", Q_NULLPTR));
+
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
 
@@ -276,6 +290,7 @@ void MainWindow::retranslate()
     menuGeometricOperation->setTitle(QApplication::translate("MainWindow", "几何运算(&G)", Q_NULLPTR));
     menuImageTransformation->setTitle(QApplication::translate("MainWindow", "图像变换(&I)", Q_NULLPTR));
     menuImageEnhancement->setTitle(QApplication::translate("MainWindow", "图像增强(&E&N)", Q_NULLPTR));
+    menuColorTransformation->setTitle(QApplication::translate("MainWindow", "色彩变换(&C)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 
     statusSize->setText(QApplication::translate("MainWindow", "", Q_NULLPTR));
@@ -672,6 +687,28 @@ void MainWindow::on_actionConvolution_triggered()
     connect(_filterMethod, SIGNAL(signalFilterEnd(QImage &)), this, SLOT(updateRightImage(QImage &)));
     // updateRightImageManual(targetImage);
 } // on_actionConvolution_triggered
+
+void MainWindow::on_actionToGray_triggered()
+{
+    ColorMethod *_colorMethod = new ColorMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _colorMethod->toGrayImage(originImage);
+
+    updateRightImageManual(targetImage);
+} // on_actionToGray_triggered
+
+void MainWindow::on_actionTo256_triggered()
+{
+    ColorMethod *_colorMethod = new ColorMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _colorMethod->to256ColorImage(originImage);
+
+    updateRightImageManual(targetImage);
+}
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

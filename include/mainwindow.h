@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "ColorMethod.h"
 #include "SharpenMethod.h"
 #include "dialogbitplane.h"
 #include "dialoggrayscalethreshold.h"
@@ -72,6 +73,7 @@ public:
     QMenu *menuGeometricOperation;
     QMenu *menuImageTransformation;
     QMenu *menuImageEnhancement;
+    QMenu *menuColorTransformation;
     QMenu *menuHelp;
 
     QAction *actionOpen;
@@ -111,6 +113,10 @@ public:
     QAction *actionLaplace;
     QAction *actionEnhancedLaplace;
     QAction *actionConvolution;
+
+    // 颜色处理
+    QAction *actionToGray;
+    QAction *actionTo256;
 
     QAction *actionAbout;
 
@@ -175,6 +181,9 @@ private slots:
     void on_actionLaplace_triggered();
     void on_actionEnhancedLaplace_triggered();
     void on_actionConvolution_triggered();
+
+    void on_actionToGray_triggered();
+    void on_actionTo256_triggered();
 
     // void on_actionAbout_triggered();
 
