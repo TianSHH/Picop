@@ -3,6 +3,7 @@
 // TODO 自选, 实现bmp2txt
 // TODO 优化直方图均衡化和直方图显示功能
 // TODO 图片旋转只支持正方形
+// TODO 24位真彩色图像转256色图像有点慢, 需要做个进度条
 // ? K 邻域均值滤波 stack smashing detected
 #include "mainwindow.h"
 
