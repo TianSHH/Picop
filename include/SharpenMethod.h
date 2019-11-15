@@ -14,8 +14,8 @@ public:
 public:
     QImage reborts(QImage originImage);
     QImage sobel(QImage originImage);
-    QImage laplace(QImage originImage);
-    QImage enhancedLaplace(QImage originImage);
+    QImage laplacian(QImage originImage);
+    QImage enhancedLaplacian(QImage originImage);
 };
 
 #endif // SHARPENMETHOD_H

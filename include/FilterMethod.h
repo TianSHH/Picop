@@ -39,6 +39,13 @@ public:
     void retranslate();
 
     QImage filtering(QImage originImage, int filterSize, int *filterTemplateArray, bool flag);
+    QImage merging(QImage image1, QImage image2);
+
+    QImage reborts(QImage originImage);
+    QImage sobel(QImage originImage);
+    QImage laplacian(QImage originImage);
+    QImage enhancedLaplacian(QImage originImage);
+    QImage prewitt(QImage originImage);
 
 signals:
     void signalFilterStart();

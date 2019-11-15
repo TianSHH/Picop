@@ -19,6 +19,7 @@ FilterMethod::~FilterMethod()
 {
 }
 
+// 自定义卷积核时, 显示自定义界面
 void FilterMethod::setup()
 {
     bool ok;
@@ -77,7 +78,7 @@ void FilterMethod::retranslate() {}
 QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTemplateArray, bool flag)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
-                       << "进行图像滤波"
+                       << "图像滤波"
                        << "滤波器大小" << filterSize;
 
     int filterTemplateMatrix[filterSize][filterSize];
@@ -91,17 +92,10 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
 
     // 不需要处理 filterSize
     // 调用 filtering 之前其父函数已做处理
-    // if (filterSize%2==0)
-    //     filterSize +=1;
+    if (filterSize % 2 == 0)
+        filterSize += 1;
     int len = filterSize / 2;
     int lenLimit = len;
-
-    if (filterSize % 2 == 0)
-        lenLimit = len - 1;
-    else
-        lenLimit = len;
-
-    int a;
 
     QImage middleImage = QImage(originImage.width() + 2 * len, originImage.height() + 2 * len, QImage::Format_RGB32);
     QImage targetImage = QImage(originImage.width(), originImage.height(), QImage::Format_RGB32);
@@ -117,6 +111,9 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
             { // 像素点在边框中
                 middleImage.setPixelColor(i, j, Qt::white);
             }
+
+    qDebug() << "-----------------------------------------------__>" << middleImage.height();
+    qDebug() << middleImage.height() - len;
 
     for (int i = len; i < middleImage.width() - len; i++)
     {
@@ -136,11 +133,21 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
                 }
             }
 
+            //!新的像素值还要加上原来的像素值
+            // int oldR = qRed(originImage.pixel(i, j));
+            // r += oldR;
             r = qBound(0, r, 255);
+
+            // int oldG = qGreen(originImage.pixel(i, j));
+            // g += oldG;
             g = qBound(0, g, 255);
+
+            // int oldB = qBlue(originImage.pixel(i, j));
+            // b += oldB;
             b = qBound(0, b, 255);
 
-            targetImage.setPixel(i - len, j - len, qRgb(r, g, b));
+            if ((i >= len) && (i < (middleImage.width() - len)) && (j >= len) && (j < (middleImage.height() - len)))
+                targetImage.setPixel(i - len, j - len, qRgb(r, g, b));
         }
     }
 
@@ -149,6 +156,147 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
     else
         emit signalFilterEnd(targetImage);
 } // filtering
+
+QImage FilterMethod::merging(QImage image1, QImage image2)
+{
+    QImage targetImage = QImage(image1.width(), image1.height(), QImage ::Format_RGB32);
+
+    for (int i = 0; i < image1.width(); i++)
+    {
+        int r = 0;
+        int g = 0;
+        int b = 0;
+        for (int j = 0; j < image1.height(); j++)
+        {
+            r = qMax(qAbs(qRed(image1.pixel(i, j))), qAbs(qRed(image2.pixel(i, j))));
+            g = qMax(qAbs(qGreen(image1.pixel(i, j))), qAbs(qGreen(image2.pixel(i, j))));
+            b = qMax(qAbs(qBlue(image1.pixel(i, j))), qAbs(qBlue(image2.pixel(i, j))));
+
+            // r = qSqrt((qAbs(qRed(image1.pixel(i, j))) * qAbs(qRed(image1.pixel(i, j)))) + (qAbs(qRed(image2.pixel(i, j))) * qAbs(qRed(image2.pixel(i, j)))));
+            // g = qSqrt((qAbs(qGreen(image1.pixel(i, j))) * qAbs(qGreen(image1.pixel(i, j)))) + (qAbs(qGreen(image2.pixel(i, j))) * qAbs(qGreen(image2.pixel(i, j)))));
+            // b = qSqrt((qAbs(qBlue(image1.pixel(i, j))) * qAbs(qBlue(image1.pixel(i, j)))) + (qAbs(qBlue(image2.pixel(i, j))) * qAbs(qBlue(image2.pixel(i, j)))));
+
+            r = qBound(0, r, 255);
+            g = qBound(0, g, 255);
+            b = qBound(0, b, 255);
+
+            targetImage.setPixel(i, j, qRgb(r, g, b));
+        }
+    }
+
+    return targetImage;
+} // merging
+
+QImage FilterMethod::reborts(QImage originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行图像卷积"
+                       << "方法"
+                       << "Reborts算子";
+
+    int rebortsGx[] = {0, 0, 0,
+                       0, -1, 0,
+                       0, 0, 1};
+    int rebortsGy[] = {0, 0, 0,
+                       0, 0, -1,
+                       0, 1, 0};
+
+    QImage middleImageGx = filtering(originImage, 3, rebortsGx, false);
+    QImage middleImageGy = filtering(originImage, 3, rebortsGy, false);
+
+    return merging(middleImageGx, middleImageGy);
+} // reborts
+
+QImage FilterMethod::sobel(QImage originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行图像卷积"
+                       << "方法"
+                       << "Sobel算子";
+
+    int sobelGx[] = {1, 0, -1,
+                     2, 0, -2,
+                     1, 0, -1};
+    int sobelGy[] = {-1, -2, -1,
+                     0, 0, 0,
+                     1, 2, 1};
+
+    QImage middleImageGx = filtering(originImage, 3, sobelGx, false);
+    QImage middleImageGy = filtering(originImage, 3, sobelGy, false);
+
+    return merging(middleImageGx, middleImageGy);
+} // sobel
+
+QImage FilterMethod::laplacian(QImage originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行图像卷积"
+                       << "方法"
+                       << "Laplacian算子";
+
+    int laplacian[] = {0, -1, 0,
+                       -1, 4, -1,
+                       0, -1, 0};
+
+    return filtering(originImage, 3, laplacian, false);
+} // laplacian
+
+QImage FilterMethod::enhancedLaplacian(QImage originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行图像卷积"
+                       << "方法"
+                       << "Laplacian算子";
+
+    int enhancedLaplacian[] = {0, -1, 0,
+                               -1, 5, -1,
+                               0, -1, 0};
+
+    return filtering(originImage, 3, enhancedLaplacian, false);
+} // enhancedLaplacian
+
+QImage FilterMethod::prewitt(QImage originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行图像卷积"
+                       << "方法"
+                       << "prewitt算子";
+
+    int prewittGx[] = {-1, 0, 1,
+                       -1, 0, 1,
+                       -1, 0, 1};
+    int prewittGy[] = {-1, -1, -1,
+                       0, 0, 0,
+                       1, 1, 1};
+
+    QImage middleImageGx = filtering(originImage, 3, prewittGx, false);
+    QImage middleImageGy = filtering(originImage, 3, prewittGy, false);
+    QImage targetImage = QImage(middleImageGx.width(), middleImageGx.height(), QImage ::Format_RGB32);
+
+    for (int i = 0; i < middleImageGx.width(); i++)
+    {
+        int r = 0;
+        int g = 0;
+        int b = 0;
+        for (int j = 0; j < middleImageGx.height(); j++)
+        {
+            r = qMax(qAbs(qRed(middleImageGx.pixel(i, j))), qAbs(qRed(middleImageGy.pixel(i, j))));
+            g = qMax(qAbs(qGreen(middleImageGx.pixel(i, j))), qAbs(qGreen(middleImageGy.pixel(i, j))));
+            b = qMax(qAbs(qBlue(middleImageGx.pixel(i, j))), qAbs(qBlue(middleImageGy.pixel(i, j))));
+
+            // r = qSqrt((qAbs(qRed(middleImageGx.pixel(i, j))) * qAbs(qRed(middleImageGx.pixel(i, j)))) + (qAbs(qRed(middleImageGy.pixel(i, j))) * qAbs(qRed(middleImageGy.pixel(i, j)))));
+            // g = qSqrt((qAbs(qGreen(middleImageGx.pixel(i, j))) * qAbs(qGreen(middleImageGx.pixel(i, j)))) + (qAbs(qGreen(middleImageGy.pixel(i, j))) * qAbs(qGreen(middleImageGy.pixel(i, j)))));
+            // b = qSqrt((qAbs(qBlue(middleImageGx.pixel(i, j))) * qAbs(qBlue(middleImageGx.pixel(i, j)))) + (qAbs(qBlue(middleImageGy.pixel(i, j))) * qAbs(qBlue(middleImageGy.pixel(i, j)))));
+
+            r = qBound(0, r, 255);
+            g = qBound(0, g, 255);
+            b = qBound(0, b, 255);
+
+            targetImage.setPixel(i, j, qRgb(r, g, b));
+        }
+    }
+    return targetImage;
+}
 
 void FilterMethod::collectKernelInfo(QImage *originImage)
 {

@@ -95,6 +95,13 @@ void MainWindow::setup()
     actionConvolution = new QAction(this);
     actionConvolution->setObjectName(QStringLiteral("actionConvolution"));
 
+    menuEdgeDetect = new QMenu(this);
+    menuEdgeDetect->setObjectName(QStringLiteral("menuEdgeDetect"));
+    actionEdgeSobel = new QAction(this);
+    actionEdgeSobel->setObjectName(QStringLiteral("actionEdgeSobel"));
+    actionEdgePrewitt = new QAction(this);
+    actionEdgePrewitt->setObjectName(QStringLiteral("actionEdgePrewitt"));
+
     actionToGray = new QAction(this);
     actionToGray->setObjectName(QStringLiteral("actionToGray"));
     actionTo256 = new QAction(this);
@@ -139,6 +146,8 @@ void MainWindow::setup()
     menuImageEnhancement->setObjectName(QStringLiteral("menuImageEnhancement"));
     menuColorTransformation = new QMenu(this);
     menuColorTransformation->setObjectName(QStringLiteral("menuColorTransformation"));
+    menuImageSegmentation = new QMenu(this);
+    menuImageSegmentation->setObjectName(QStringLiteral("menuImageSegmentation"));
     menuHelp = new QMenu(menuBar);
     menuHelp->setObjectName(QStringLiteral("menuHelp"));
     this->setMenuBar(menuBar);
@@ -164,6 +173,7 @@ void MainWindow::setup()
     menuBar->addAction(menuImageTransformation->menuAction());
     menuBar->addAction(menuImageEnhancement->menuAction());
     menuBar->addAction(menuColorTransformation->menuAction());
+    menuBar->addAction(menuImageSegmentation->menuAction());
     menuBar->addAction(menuHelp->menuAction());
 
     menuFile->addAction(actionOpen);
@@ -205,6 +215,10 @@ void MainWindow::setup()
     menuSharpen->addAction(actionLaplace);
     menuSharpen->addAction(actionEnhancedLaplace);
     menuImageEnhancement->addAction(actionConvolution);
+
+    menuImageSegmentation->addMenu(menuEdgeDetect);
+    menuEdgeDetect->addAction(actionEdgeSobel);
+    menuEdgeDetect->addAction(actionEdgePrewitt);
 
     menuColorTransformation->addAction(actionToGray);
     menuColorTransformation->addAction(actionTo256);
@@ -281,6 +295,10 @@ void MainWindow::retranslate()
     actionToGray->setText(QApplication::translate("MainWindow", "转换为灰度图像", Q_NULLPTR));
     actionTo256->setText(QApplication::translate("MainWindow", "转换为256色图像", Q_NULLPTR));
 
+    menuEdgeDetect->setTitle(QApplication::translate("MainWindow", "边缘检测(&E)", Q_NULLPTR));
+    actionEdgeSobel->setText(QApplication::translate("MainWindow", "Sobel算子(&S)", Q_NULLPTR));
+    actionEdgePrewitt->setText(QApplication::translate("MainWindow", "Prewitt算子(&P)", Q_NULLPTR));
+
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
 
@@ -292,6 +310,7 @@ void MainWindow::retranslate()
     menuImageTransformation->setTitle(QApplication::translate("MainWindow", "图像变换(&I)", Q_NULLPTR));
     menuImageEnhancement->setTitle(QApplication::translate("MainWindow", "图像增强(&E&N)", Q_NULLPTR));
     menuColorTransformation->setTitle(QApplication::translate("MainWindow", "色彩变换(&C)", Q_NULLPTR));
+    menuImageSegmentation->setTitle(QApplication::translate("MainWindow", "图像分割(&S)", Q_NULLPTR));
     menuHelp->setTitle(QApplication::translate("MainWindow", "帮助(&H)", Q_NULLPTR));
 
     statusSize->setText(QApplication::translate("MainWindow", "", Q_NULLPTR));
@@ -662,7 +681,7 @@ void MainWindow::on_actionLaplace_triggered()
 
     QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
 
-    QImage targetImage = _sharpenMethod->laplace(originImage);
+    QImage targetImage = _sharpenMethod->laplacian(originImage);
 
     updateRightImageManual(targetImage);
 } // on_actionLaplace_triggered
@@ -673,7 +692,7 @@ void MainWindow::on_actionEnhancedLaplace_triggered()
 
     QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
 
-    QImage targetImage = _sharpenMethod->enhancedLaplace(originImage);
+    QImage targetImage = _sharpenMethod->enhancedLaplacian(originImage);
 
     updateRightImageManual(targetImage);
 } // on_actionEnhancedLaplace_triggered
@@ -707,6 +726,28 @@ void MainWindow::on_actionTo256_triggered()
     QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
 
     QImage targetImage = _colorMethod->to256ColorImage(originImage);
+
+    updateRightImageManual(targetImage);
+} // on_actionTo256_triggered
+
+void MainWindow::on_actionEdgeSobel_triggered()
+{
+    EdgeDetectMethod *_edgeDetectMethod = new EdgeDetectMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _edgeDetectMethod->sobel(originImage);
+
+    updateRightImageManual(targetImage);
+} // on_actionEdgeSobel_triggered
+
+void MainWindow::on_actionEdgePrewitt_triggered()
+{
+    EdgeDetectMethod *_edgeDetectMethod = new EdgeDetectMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _edgeDetectMethod->prewitt(originImage);
 
     updateRightImageManual(targetImage);
 }

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "ColorMethod.h"
+#include "EdgeDetectMethod.h"
 #include "SharpenMethod.h"
 #include "dialogbitplane.h"
 #include "dialoggrayscalethreshold.h"
@@ -74,6 +75,7 @@ public:
     QMenu *menuImageTransformation;
     QMenu *menuImageEnhancement;
     QMenu *menuColorTransformation;
+    QMenu *menuImageSegmentation;
     QMenu *menuHelp;
 
     QAction *actionOpen;
@@ -113,6 +115,10 @@ public:
     QAction *actionLaplace;
     QAction *actionEnhancedLaplace;
     QAction *actionConvolution;
+
+    QMenu *menuEdgeDetect;
+    QAction *actionEdgeSobel;
+    QAction *actionEdgePrewitt;
 
     // 颜色处理
     QAction *actionToGray;
@@ -184,6 +190,9 @@ private slots:
 
     void on_actionToGray_triggered();
     void on_actionTo256_triggered();
+
+    void on_actionEdgeSobel_triggered();
+    void on_actionEdgePrewitt_triggered();
 
     // void on_actionAbout_triggered();
 

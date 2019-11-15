@@ -67,8 +67,7 @@ void DialogGrayscaleThreshold::setGrayscaleThreshold(QImage *originImage)
     {
         for (int j = 0; j < height; j++)
         {
-            QColor color = QColor(originImage->pixel(i, j));
-            int gray = color.red();
+            int gray = qGray(originImage->pixel(i, j));
 
             if (gray < threshold)
                 originImage->setPixel(i, j, qRgb(0, 0, 0));
