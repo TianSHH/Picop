@@ -40,6 +40,7 @@ public:
 
     QImage filtering(QImage originImage, int filterSize, int *filterTemplateArray, bool flag);
     QImage merging(QImage image1, QImage image2);
+    QImage adding(QImage image1, QImage image2);
 
     QImage reborts(QImage originImage);
     QImage sobel(QImage originImage);

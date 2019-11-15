@@ -112,8 +112,8 @@ public:
     QMenu *menuSharpen;
     QAction *actionReborts;
     QAction *actionSobel;
-    QAction *actionLaplace;
-    QAction *actionEnhancedLaplace;
+    QAction *actionLaplacian;
+    QAction *actionEnhancedLaplacian;
     QAction *actionConvolution;
 
     QMenu *menuEdgeDetect;
@@ -184,8 +184,8 @@ private slots:
     void on_actionKNNMF_triggered();
     void on_actionReborts_triggered();
     void on_actionSobel_triggered();
-    void on_actionLaplace_triggered();
-    void on_actionEnhancedLaplace_triggered();
+    void on_actionLaplacian_triggered();
+    void on_actionEnhancedLaplacian_triggered();
     void on_actionConvolution_triggered();
 
     void on_actionToGray_triggered();
