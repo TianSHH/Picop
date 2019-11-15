@@ -88,10 +88,10 @@ void MainWindow::setup()
     actionReborts->setObjectName(QStringLiteral("actionReborts"));
     actionSobel = new QAction(this);
     actionSobel->setObjectName(QStringLiteral("actionSobel"));
-    actionLaplace = new QAction(this);
-    actionLaplace->setObjectName(QStringLiteral("actionLaplace"));
-    actionEnhancedLaplace = new QAction(this);
-    actionEnhancedLaplace->setObjectName(QStringLiteral("actionEnhancedLaplace"));
+    actionLaplacian = new QAction(this);
+    actionLaplacian->setObjectName(QStringLiteral("actionLaplacian"));
+    actionEnhancedLaplacian = new QAction(this);
+    actionEnhancedLaplacian->setObjectName(QStringLiteral("actionEnhancedLaplacian"));
     actionConvolution = new QAction(this);
     actionConvolution->setObjectName(QStringLiteral("actionConvolution"));
 
@@ -212,8 +212,8 @@ void MainWindow::setup()
     menuImageEnhancement->addMenu(menuSharpen);
     menuSharpen->addAction(actionReborts);
     menuSharpen->addAction(actionSobel);
-    menuSharpen->addAction(actionLaplace);
-    menuSharpen->addAction(actionEnhancedLaplace);
+    menuSharpen->addAction(actionLaplacian);
+    menuSharpen->addAction(actionEnhancedLaplacian);
     menuImageEnhancement->addAction(actionConvolution);
 
     menuImageSegmentation->addMenu(menuEdgeDetect);
@@ -288,8 +288,8 @@ void MainWindow::retranslate()
     menuSharpen->setTitle(QApplication::translate("MainWindow", "锐化", Q_NULLPTR));
     actionReborts->setText(QApplication::translate("MainWindow", "Reborts算子(&R)", Q_NULLPTR));
     actionSobel->setText(QApplication::translate("MainWindow", "Sobel算子(&S)", Q_NULLPTR));
-    actionLaplace->setText(QApplication::translate("MainWindow", "Laplace算子(&L)", Q_NULLPTR));
-    actionEnhancedLaplace->setText(QApplication::translate("MainWindow", "增强Laplace算子(&E)", Q_NULLPTR));
+    actionLaplacian->setText(QApplication::translate("MainWindow", "Laplacian算子(&L)", Q_NULLPTR));
+    actionEnhancedLaplacian->setText(QApplication::translate("MainWindow", "增强Laplacian算子(&E)", Q_NULLPTR));
     actionConvolution->setText(QApplication::translate("MainWindiw", "计算卷积(&C)", Q_NULLPTR));
 
     actionToGray->setText(QApplication::translate("MainWindow", "转换为灰度图像", Q_NULLPTR));
@@ -675,7 +675,7 @@ void MainWindow::on_actionSobel_triggered()
     updateRightImageManual(targetImage);
 } // on_actionSobel_triggered
 
-void MainWindow::on_actionLaplace_triggered()
+void MainWindow::on_actionLaplacian_triggered()
 {
     SharpenMethod *_sharpenMethod = new SharpenMethod();
 
@@ -684,9 +684,9 @@ void MainWindow::on_actionLaplace_triggered()
     QImage targetImage = _sharpenMethod->laplacian(originImage);
 
     updateRightImageManual(targetImage);
-} // on_actionLaplace_triggered
+} // on_actionLaplacian_triggered
 
-void MainWindow::on_actionEnhancedLaplace_triggered()
+void MainWindow::on_actionEnhancedLaplacian_triggered()
 {
     SharpenMethod *_sharpenMethod = new SharpenMethod();
 
@@ -695,7 +695,7 @@ void MainWindow::on_actionEnhancedLaplace_triggered()
     QImage targetImage = _sharpenMethod->enhancedLaplacian(originImage);
 
     updateRightImageManual(targetImage);
-} // on_actionEnhancedLaplace_triggered
+} // on_actionEnhancedLaplacian_triggered
 
 void MainWindow::on_actionConvolution_triggered()
 {

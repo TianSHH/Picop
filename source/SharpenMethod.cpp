@@ -17,7 +17,7 @@ QImage SharpenMethod::reborts(QImage originImage)
 
     FilterMethod _filterMethod(nullptr);
 
-    return _filterMethod.sobel(originImage);
+    return _filterMethod.reborts(originImage);
 } // reborts
 
 QImage SharpenMethod::sobel(QImage originImage)
