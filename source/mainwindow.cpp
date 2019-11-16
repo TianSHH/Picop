@@ -101,6 +101,8 @@ void MainWindow::setup()
     actionEdgeSobel->setObjectName(QStringLiteral("actionEdgeSobel"));
     actionEdgePrewitt = new QAction(this);
     actionEdgePrewitt->setObjectName(QStringLiteral("actionEdgePrewitt"));
+    actionEdgeLaplacian = new QAction(this);
+    actionEdgeLaplacian->setObjectName(QStringLiteral("actionEdgeLaplacian"));
 
     actionToGray = new QAction(this);
     actionToGray->setObjectName(QStringLiteral("actionToGray"));
@@ -219,6 +221,7 @@ void MainWindow::setup()
     menuImageSegmentation->addMenu(menuEdgeDetect);
     menuEdgeDetect->addAction(actionEdgeSobel);
     menuEdgeDetect->addAction(actionEdgePrewitt);
+    menuEdgeDetect->addAction(actionEdgeLaplacian);
 
     menuColorTransformation->addAction(actionToGray);
     menuColorTransformation->addAction(actionTo256);
@@ -298,6 +301,7 @@ void MainWindow::retranslate()
     menuEdgeDetect->setTitle(QApplication::translate("MainWindow", "边缘检测(&E)", Q_NULLPTR));
     actionEdgeSobel->setText(QApplication::translate("MainWindow", "Sobel算子(&S)", Q_NULLPTR));
     actionEdgePrewitt->setText(QApplication::translate("MainWindow", "Prewitt算子(&P)", Q_NULLPTR));
+    actionEdgeLaplacian->setText(QApplication::translate("MainWindow", "Laplacian(&L)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -750,7 +754,18 @@ void MainWindow::on_actionEdgePrewitt_triggered()
     QImage targetImage = _edgeDetectMethod->prewitt(originImage);
 
     updateRightImageManual(targetImage);
-}
+} // on_actionEdgePrewitt_triggered
+
+void MainWindow::on_actionEdgeLaplacian_triggered()
+{
+    EdgeDetectMethod *_edgeDetectMethod = new EdgeDetectMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _edgeDetectMethod->laplacian(originImage);
+
+    updateRightImageManual(targetImage);
+} // on_actionEdgeLaplacian_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

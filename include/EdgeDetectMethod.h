@@ -1,6 +1,7 @@
 #ifndef EDGEDETECTMETHOD_H
 #define EDGEDETECTMETHOD_H
 
+#include "ColorMethod.h"
 #include "SharpenMethod.h"
 #include <QtCore/QDebug>
 #include <QtGui>

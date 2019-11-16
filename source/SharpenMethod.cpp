@@ -8,6 +8,7 @@ SharpenMethod::~SharpenMethod()
 {
 }
 
+// Reborts 算子
 QImage SharpenMethod::reborts(QImage originImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -17,9 +18,12 @@ QImage SharpenMethod::reborts(QImage originImage)
 
     FilterMethod _filterMethod(nullptr);
 
-    return _filterMethod.reborts(originImage);
+    QImage middleImage = _filterMethod.reborts(originImage);
+
+    return _filterMethod.adding(originImage, middleImage);
 } // reborts
 
+// Sobel 算子
 QImage SharpenMethod::sobel(QImage originImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -29,9 +33,12 @@ QImage SharpenMethod::sobel(QImage originImage)
 
     FilterMethod _filterMethod(nullptr);
 
-    return _filterMethod.sobel(originImage);
+    QImage middleImage = _filterMethod.sobel(originImage);
+
+    return _filterMethod.adding(originImage, middleImage);
 } // sobel
 
+// Laplacian 算子
 QImage SharpenMethod::laplacian(QImage originImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -40,9 +47,12 @@ QImage SharpenMethod::laplacian(QImage originImage)
                        << "Laplacian算子";
     FilterMethod _filterMethod(nullptr);
 
-    return _filterMethod.laplacian(originImage);
+    QImage middleImage = _filterMethod.laplacian(originImage);
+
+    return _filterMethod.adding(originImage, middleImage);
 } // laplacian
 
+// 增强 Laplacian 算子
 QImage SharpenMethod::enhancedLaplacian(QImage originImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -52,5 +62,7 @@ QImage SharpenMethod::enhancedLaplacian(QImage originImage)
 
     FilterMethod _filterMethod(nullptr);
 
-    return _filterMethod.enhancedLaplacian(originImage);
+    QImage middleImage = _filterMethod.enhancedLaplacian(originImage);
+
+    return _filterMethod.adding(originImage, middleImage);
 } // enhancedLaplacian

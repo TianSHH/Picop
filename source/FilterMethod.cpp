@@ -75,6 +75,7 @@ void FilterMethod::setup()
 
 void FilterMethod::retranslate() {}
 
+// 图像滤波
 QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTemplateArray, bool flag)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
@@ -181,6 +182,8 @@ QImage FilterMethod::merging(QImage image1, QImage image2)
     return targetImage;
 } // merging
 
+// 将原图像和滤波之后的结果相加
+// 优化锐化效果
 QImage FilterMethod::adding(QImage image1, QImage image2)
 {
     int width = image1.width();
@@ -223,9 +226,7 @@ QImage FilterMethod::reborts(QImage originImage)
     QImage middleImageGx = filtering(originImage, 3, rebortsGx, false);
     QImage middleImageGy = filtering(originImage, 3, rebortsGy, false);
 
-    QImage middleImage = merging(middleImageGx, middleImageGy);
-
-    return adding(originImage, middleImage);
+    return merging(middleImageGx, middleImageGy);
 } // reborts
 
 QImage FilterMethod::sobel(QImage originImage)
@@ -245,9 +246,7 @@ QImage FilterMethod::sobel(QImage originImage)
     QImage middleImageGx = filtering(originImage, 3, sobelGx, false);
     QImage middleImageGy = filtering(originImage, 3, sobelGy, false);
 
-    QImage middleImage = merging(middleImageGx, middleImageGy);
-
-    return adding(originImage, middleImage);
+    return merging(middleImageGx, middleImageGy);
 } // sobel
 
 QImage FilterMethod::laplacian(QImage originImage)
@@ -261,8 +260,7 @@ QImage FilterMethod::laplacian(QImage originImage)
                        -1, 4, -1,
                        0, -1, 0};
 
-    QImage middleImage = filtering(originImage, 3, laplacian, false);
-    return adding(originImage, middleImage);
+    return filtering(originImage, 3, laplacian, false);
 } // laplacian
 
 QImage FilterMethod::enhancedLaplacian(QImage originImage)
@@ -276,8 +274,7 @@ QImage FilterMethod::enhancedLaplacian(QImage originImage)
                                -1, 5, -1,
                                0, -1, 0};
 
-    QImage middleImage = filtering(originImage, 3, enhancedLaplacian, false);
-    return adding(originImage, middleImage);
+    return filtering(originImage, 3, enhancedLaplacian, false);
 } // enhancedLaplacian
 
 QImage FilterMethod::prewitt(QImage originImage)
@@ -296,31 +293,8 @@ QImage FilterMethod::prewitt(QImage originImage)
 
     QImage middleImageGx = filtering(originImage, 3, prewittGx, false);
     QImage middleImageGy = filtering(originImage, 3, prewittGy, false);
-    QImage targetImage = QImage(middleImageGx.width(), middleImageGx.height(), QImage ::Format_RGB32);
 
-    for (int i = 0; i < middleImageGx.width(); i++)
-    {
-        int r = 0;
-        int g = 0;
-        int b = 0;
-        for (int j = 0; j < middleImageGx.height(); j++)
-        {
-            r = qMax(qAbs(qRed(middleImageGx.pixel(i, j))), qAbs(qRed(middleImageGy.pixel(i, j))));
-            g = qMax(qAbs(qGreen(middleImageGx.pixel(i, j))), qAbs(qGreen(middleImageGy.pixel(i, j))));
-            b = qMax(qAbs(qBlue(middleImageGx.pixel(i, j))), qAbs(qBlue(middleImageGy.pixel(i, j))));
-
-            // r = qSqrt((qAbs(qRed(middleImageGx.pixel(i, j))) * qAbs(qRed(middleImageGx.pixel(i, j)))) + (qAbs(qRed(middleImageGy.pixel(i, j))) * qAbs(qRed(middleImageGy.pixel(i, j)))));
-            // g = qSqrt((qAbs(qGreen(middleImageGx.pixel(i, j))) * qAbs(qGreen(middleImageGx.pixel(i, j)))) + (qAbs(qGreen(middleImageGy.pixel(i, j))) * qAbs(qGreen(middleImageGy.pixel(i, j)))));
-            // b = qSqrt((qAbs(qBlue(middleImageGx.pixel(i, j))) * qAbs(qBlue(middleImageGx.pixel(i, j)))) + (qAbs(qBlue(middleImageGy.pixel(i, j))) * qAbs(qBlue(middleImageGy.pixel(i, j)))));
-
-            r = qBound(0, r, 255);
-            g = qBound(0, g, 255);
-            b = qBound(0, b, 255);
-
-            targetImage.setPixel(i, j, qRgb(r, g, b));
-        }
-    }
-    return targetImage;
+    return merging(middleImageGx, middleImageGy);
 }
 
 void FilterMethod::collectKernelInfo(QImage *originImage)

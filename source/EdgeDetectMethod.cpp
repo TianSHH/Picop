@@ -16,24 +16,24 @@ QImage EdgeDetectMethod::sobel(QImage originImage)
                        << "方法"
                        << "Sobel算子";
 
-    // ColorMethod _colorMethod = ColorMethod();
+    ColorMethod _colorMethod = ColorMethod();
     SharpenMethod _sharpenMethod = SharpenMethod();
 
-    // originImage = _colorMethod.toGrayImage(originImage);
+    originImage = _colorMethod.toGrayImage(originImage);
 
     QImage targetImage = _sharpenMethod.sobel(originImage);
 
     // 二值化
-    for (int i = 0; i < targetImage.width(); i++)
-    {
-        for (int j = 0; j < targetImage.height(); j++)
-        {
-            if (qGray(targetImage.pixel(i, j)) >= 128)
-                targetImage.setPixel(i, j, qRgb(255, 255, 255));
-            else
-                targetImage.setPixel(i, j, qRgb(0, 0, 0));
-        }
-    }
+    // for (int i = 0; i < targetImage.width(); i++)
+    // {
+    //     for (int j = 0; j < targetImage.height(); j++)
+    //     {
+    //         if (qGray(targetImage.pixel(i, j)) >= 128)
+    //             targetImage.setPixel(i, j, qRgb(255, 255, 255));
+    //         else
+    //             targetImage.setPixel(i, j, qRgb(0, 0, 0));
+    //     }
+    // }
 
     return targetImage;
 } // sobel
@@ -45,7 +45,6 @@ QImage EdgeDetectMethod::prewitt(QImage originImage)
     // 对图像进行卷积
     QImage targetImage = _filterMethod.prewitt(originImage);
 
-    // 二值化
     for (int i = 0; i < targetImage.width(); i++)
     {
         for (int j = 0; j < targetImage.height(); j++)
@@ -58,4 +57,13 @@ QImage EdgeDetectMethod::prewitt(QImage originImage)
     }
 
     return targetImage;
-}
+} // prewitt
+
+QImage EdgeDetectMethod::laplacian(QImage originImage)
+{
+    FilterMethod _filterMethod(nullptr);
+
+    QImage targetImage = _filterMethod.laplacian(originImage);
+
+    return targetImage;
+} // laplacian
