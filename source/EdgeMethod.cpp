@@ -67,16 +67,10 @@ QImage EdgeMethod::edgeTracing(QImage originImage)
     QImage middleImage = QImage(width, height, QImage::Format_RGB888);
     QImage targetImage = QImage(width, height, QImage::Format_RGB888);
 
-    middleImage.fill(Qt::white);
     targetImage.fill(Qt::white);
+    middleImage.fill(Qt::white);
 
-    FilterMethod _filterMethod;
-
-    // step1 get gradient map
-    // 第一步, 得到梯度图
-    middleImage = _filterMethod.laplacian(originImage);
-
-    // 梯度图二值化
+    // 二值化
     for (int i = 0; i < width; i++)
     {
         for (int j = 0; j < height; j++)
@@ -92,30 +86,31 @@ QImage EdgeMethod::edgeTracing(QImage originImage)
         }
     }
 
-    // int pixels[8] = {0};
-    // bool map[width][height] = {false};
+    int pixels[8] = {0}; // 目标像素周围的 8 个像素
 
-    // for (int i = 1; i < width - 1; i++)
-    // {
-    //     for (int j = 1; j < height - 1; j++)
-    //     {
-    //         if (qRed(middleImage.pixel(i, j) == 0))
-    //         {
-    //             targetImage.setPixel(i, j, qRgb(0, 0, 0));
+    for (int i = 1; i < width - 1; i++)
+    {
+        for (int j = 1; j < height - 1; j++)
+        {
+            memset(pixels, 0, sizeof(pixels));
 
-    //             // int max =
+            if (QColor(middleImage.pixel(i, j)).red() == 0)
+            {
+                targetImage.setPixel(i, j, qRgb(0, 0, 0));
+                pixels[0] = QColor(middleImage.pixel(i - 1, j - 1)).red();
+                pixels[1] = QColor(middleImage.pixel(i - 1, j)).red();
+                pixels[2] = QColor(middleImage.pixel(i - 1, j + 1)).red();
+                pixels[3] = QColor(middleImage.pixel(i, j - 1)).red();
+                pixels[4] = QColor(middleImage.pixel(i, j + 1)).red();
+                pixels[5] = QColor(middleImage.pixel(i + 1, j - 1)).red();
+                pixels[6] = QColor(middleImage.pixel(i + 1, j)).red();
+                pixels[7] = QColor(middleImage.pixel(i + 1, j + 1)).red();
 
-    //             pixels[0] = QColor(middleImage.pixel(i - 1, j - 1)).red();
-    //             pixels[1] = QColor(middleImage.pixel(i - 1, j)).red();
-    //             pixels[2] = QColor(middleImage.pixel(i - 1, j + 1)).red();
-    //             pixels[3] = QColor(middleImage.pixel(i, j - 1)).red();
-    //             pixels[4] = QColor(middleImage.pixel(i, j + 1)).red();
-    //             pixels[5] = QColor(middleImage.pixel(i + 1, j - 1)).red();
-    //             pixels[6] = QColor(middleImage.pixel(i + 1, j)).red();
-    //             pixels[7] = QColor(middleImage.pixel(i + 1, j + 1)).red();
-    //         }
-    //     }
-    // }
+                if (pixels[0] + pixels[1] + pixels[2] + pixels[3] + pixels[4] + pixels[5] + pixels[6] + pixels[7] == 0)
+                    targetImage.setPixel(i, j, qRgb(255, 255, 255));
+            }
+        }
+    }
 
     return targetImage;
 } // edgeTracing
