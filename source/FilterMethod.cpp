@@ -132,21 +132,8 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
             }
 
             //!新的像素值还要加上原来的像素值
-<<<<<<< HEAD
             r = qBound(0, r, 255);
             g = qBound(0, g, 255);
-=======
-            // int oldR = qRed(originImage.pixel(i - len, j - len));
-            // r += oldR;
-            r = qBound(0, r, 255);
-
-            // int oldG = qGreen(originImage.pixel(i - len, j - len));
-            // g += oldG;
-            g = qBound(0, g, 255);
-
-            // int oldB = qBlue(originImage.pixel(i - len, j - len));
-            // b += oldB;
->>>>>>> 4fd6ad51c19307146e465a5c0dd2e5a33131b0ac
             b = qBound(0, b, 255);
 
             if ((i >= len) && (i < (middleImage.width() - len)) && (j >= len) && (j < (middleImage.height() - len)))

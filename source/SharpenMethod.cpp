@@ -18,13 +18,9 @@ QImage SharpenMethod::reborts(QImage originImage)
 
     FilterMethod _filterMethod(nullptr);
 
-<<<<<<< HEAD
     QImage middleImage = _filterMethod.reborts(originImage);
 
     return _filterMethod.adding(originImage, middleImage);
-=======
-    return _filterMethod.reborts(originImage);
->>>>>>> 4fd6ad51c19307146e465a5c0dd2e5a33131b0ac
 } // reborts
 
 // Sobel 算子
