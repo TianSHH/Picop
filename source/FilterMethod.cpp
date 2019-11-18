@@ -159,10 +159,12 @@ QImage FilterMethod::merging(QImage image1, QImage image2)
         int b = 0;
         for (int j = 0; j < image1.height(); j++)
         {
+            // 降低运算量
             // r = qMax(qAbs(qRed(image1.pixel(i, j))), qAbs(qRed(image2.pixel(i, j))));
             // g = qMax(qAbs(qGreen(image1.pixel(i, j))), qAbs(qGreen(image2.pixel(i, j))));
             // b = qMax(qAbs(qBlue(image1.pixel(i, j))), qAbs(qBlue(image2.pixel(i, j))));
 
+            // 获取梯度幅值
             r = qSqrt((qAbs(qRed(image1.pixel(i, j))) * qAbs(qRed(image1.pixel(i, j)))) + (qAbs(qRed(image2.pixel(i, j))) * qAbs(qRed(image2.pixel(i, j)))));
             g = qSqrt((qAbs(qGreen(image1.pixel(i, j))) * qAbs(qGreen(image1.pixel(i, j)))) + (qAbs(qGreen(image2.pixel(i, j))) * qAbs(qGreen(image2.pixel(i, j)))));
             b = qSqrt((qAbs(qBlue(image1.pixel(i, j))) * qAbs(qBlue(image1.pixel(i, j)))) + (qAbs(qBlue(image2.pixel(i, j))) * qAbs(qBlue(image2.pixel(i, j)))));
@@ -190,6 +192,11 @@ QImage FilterMethod::adding(QImage image1, QImage image2)
             int g = qGreen(image1.pixel(i, j)) + qGreen(image2.pixel(i, j));
             int b = qBlue(image1.pixel(i, j)) + qBlue(image2.pixel(i, j));
 
+            // 防止原图像和梯度图相加使得像素值超出范围
+            r = qBound(0, r, 255);
+            g = qBound(0, g, 255);
+            b = qBound(0, b, 255);
+
             targetImage.setPixel(i, j, qRgb(r, g, b));
         }
     }
@@ -214,9 +221,7 @@ QImage FilterMethod::reborts(QImage originImage)
     QImage middleImageGx = filtering(originImage, 3, rebortsGx, false);
     QImage middleImageGy = filtering(originImage, 3, rebortsGy, false);
 
-    QImage middleImage = merging(middleImageGx, middleImageGy);
-
-    return adding(originImage, middleImage);
+    return merging(middleImageGx, middleImageGy);
 } // reborts
 
 QImage FilterMethod::sobel(QImage originImage)
@@ -236,9 +241,7 @@ QImage FilterMethod::sobel(QImage originImage)
     QImage middleImageGx = filtering(originImage, 3, sobelGx, false);
     QImage middleImageGy = filtering(originImage, 3, sobelGy, false);
 
-    QImage middleImage = merging(middleImageGx, middleImageGy);
-
-    return adding(originImage, middleImage);
+    return merging(middleImageGx, middleImageGy);
 } // sobel
 
 QImage FilterMethod::laplacian(QImage originImage)
@@ -252,8 +255,7 @@ QImage FilterMethod::laplacian(QImage originImage)
                        -1, 4, -1,
                        0, -1, 0};
 
-    QImage middleImage = filtering(originImage, 3, laplacian, false);
-    return adding(originImage, middleImage);
+    return filtering(originImage, 3, laplacian, false);
 } // laplacian
 
 QImage FilterMethod::enhancedLaplacian(QImage originImage)
@@ -267,8 +269,7 @@ QImage FilterMethod::enhancedLaplacian(QImage originImage)
                                -1, 5, -1,
                                0, -1, 0};
 
-    QImage middleImage = filtering(originImage, 3, enhancedLaplacian, false);
-    return adding(originImage, middleImage);
+    return filtering(originImage, 3, enhancedLaplacian, false);
 } // enhancedLaplacian
 
 QImage FilterMethod::prewitt(QImage originImage)
