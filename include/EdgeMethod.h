@@ -5,7 +5,8 @@
 #include "FilterMethod.h"
 #include "SharpenMethod.h"
 #include <QtCore/QDebug>
-#include <QtGui>
+#include <QtGui/QImage>
+#include <QtGui/QPainter>
 
 class EdgeMethod
 {
@@ -20,6 +21,7 @@ public:
 
     // 边缘跟踪
     QImage edgeTracing(QImage originImage);
+    QImage lineDetection(QImage originImae);
 };
 
 #endif // EDGEMETHOD_H
