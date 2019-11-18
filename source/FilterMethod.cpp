@@ -159,13 +159,13 @@ QImage FilterMethod::merging(QImage image1, QImage image2)
         int b = 0;
         for (int j = 0; j < image1.height(); j++)
         {
-            r = qMax(qAbs(qRed(image1.pixel(i, j))), qAbs(qRed(image2.pixel(i, j))));
-            g = qMax(qAbs(qGreen(image1.pixel(i, j))), qAbs(qGreen(image2.pixel(i, j))));
-            b = qMax(qAbs(qBlue(image1.pixel(i, j))), qAbs(qBlue(image2.pixel(i, j))));
+            // r = qMax(qAbs(qRed(image1.pixel(i, j))), qAbs(qRed(image2.pixel(i, j))));
+            // g = qMax(qAbs(qGreen(image1.pixel(i, j))), qAbs(qGreen(image2.pixel(i, j))));
+            // b = qMax(qAbs(qBlue(image1.pixel(i, j))), qAbs(qBlue(image2.pixel(i, j))));
 
-            // r = qSqrt((qAbs(qRed(image1.pixel(i, j))) * qAbs(qRed(image1.pixel(i, j)))) + (qAbs(qRed(image2.pixel(i, j))) * qAbs(qRed(image2.pixel(i, j)))));
-            // g = qSqrt((qAbs(qGreen(image1.pixel(i, j))) * qAbs(qGreen(image1.pixel(i, j)))) + (qAbs(qGreen(image2.pixel(i, j))) * qAbs(qGreen(image2.pixel(i, j)))));
-            // b = qSqrt((qAbs(qBlue(image1.pixel(i, j))) * qAbs(qBlue(image1.pixel(i, j)))) + (qAbs(qBlue(image2.pixel(i, j))) * qAbs(qBlue(image2.pixel(i, j)))));
+            r = qSqrt((qAbs(qRed(image1.pixel(i, j))) * qAbs(qRed(image1.pixel(i, j)))) + (qAbs(qRed(image2.pixel(i, j))) * qAbs(qRed(image2.pixel(i, j)))));
+            g = qSqrt((qAbs(qGreen(image1.pixel(i, j))) * qAbs(qGreen(image1.pixel(i, j)))) + (qAbs(qGreen(image2.pixel(i, j))) * qAbs(qGreen(image2.pixel(i, j)))));
+            b = qSqrt((qAbs(qBlue(image1.pixel(i, j))) * qAbs(qBlue(image1.pixel(i, j)))) + (qAbs(qBlue(image2.pixel(i, j))) * qAbs(qBlue(image2.pixel(i, j)))));
 
             targetImage.setPixel(i, j, qRgb(r, g, b));
         }
