@@ -17,18 +17,17 @@ QImage EdgeDetectMethod::sobel(QImage originImage)
                        << "Sobel算子";
 
     ColorMethod _colorMethod = ColorMethod();
-    SharpenMethod _sharpenMethod = SharpenMethod();
-
     originImage = _colorMethod.toGrayImage(originImage);
 
+    SharpenMethod _sharpenMethod = SharpenMethod();
     QImage targetImage = _sharpenMethod.sobel(originImage);
 
-    // 二值化
+    // // 二值化
     // for (int i = 0; i < targetImage.width(); i++)
     // {
     //     for (int j = 0; j < targetImage.height(); j++)
     //     {
-    //         if (qGray(targetImage.pixel(i, j)) >= 128)
+    //         if (qGray(targetImage.pixel(i, j)) >= 30)
     //             targetImage.setPixel(i, j, qRgb(255, 255, 255));
     //         else
     //             targetImage.setPixel(i, j, qRgb(0, 0, 0));
@@ -40,30 +39,44 @@ QImage EdgeDetectMethod::sobel(QImage originImage)
 
 QImage EdgeDetectMethod::prewitt(QImage originImage)
 {
-    FilterMethod _filterMethod(nullptr);
+    ColorMethod _colorMethod = ColorMethod();
+    originImage = _colorMethod.toGrayImage(originImage);
 
-    // 对图像进行卷积
+    FilterMethod _filterMethod(nullptr);
     QImage targetImage = _filterMethod.prewitt(originImage);
 
-    for (int i = 0; i < targetImage.width(); i++)
-    {
-        for (int j = 0; j < targetImage.height(); j++)
-        {
-            if (qGray(targetImage.pixel(i, j)) >= 128)
-                targetImage.setPixel(i, j, qRgb(255, 255, 255));
-            else
-                targetImage.setPixel(i, j, qRgb(0, 0, 0));
-        }
-    }
+    // for (int i = 0; i < targetImage.width(); i++)
+    // {
+    //     for (int j = 0; j < targetImage.height(); j++)
+    //     {
+    //         if (qGray(targetImage.pixel(i, j)) >= 30)
+    //             targetImage.setPixel(i, j, qRgb(255, 255, 255));
+    //         else
+    //             targetImage.setPixel(i, j, qRgb(0, 0, 0));
+    //     }
+    // }
 
     return targetImage;
 } // prewitt
 
 QImage EdgeDetectMethod::laplacian(QImage originImage)
 {
-    FilterMethod _filterMethod(nullptr);
+    ColorMethod _colorMethod = ColorMethod();
+    originImage = _colorMethod.toGrayImage(originImage);
 
+    FilterMethod _filterMethod(nullptr);
     QImage targetImage = _filterMethod.laplacian(originImage);
+
+    for (int i = 0; i < targetImage.width(); i++)
+    {
+        for (int j = 0; j < targetImage.height(); j++)
+        {
+            if (qGray(targetImage.pixel(i, j)) >= 30)
+                targetImage.setPixel(i, j, qRgb(255, 255, 255));
+            else
+                targetImage.setPixel(i, j, qRgb(0, 0, 0));
+        }
+    }
 
     return targetImage;
 } // laplacian

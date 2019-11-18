@@ -132,16 +132,8 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
             }
 
             //!新的像素值还要加上原来的像素值
-            // int oldR = qRed(originImage.pixel(i - len, j - len));
-            // r += oldR;
             r = qBound(0, r, 255);
-
-            // int oldG = qGreen(originImage.pixel(i - len, j - len));
-            // g += oldG;
             g = qBound(0, g, 255);
-
-            // int oldB = qBlue(originImage.pixel(i - len, j - len));
-            // b += oldB;
             b = qBound(0, b, 255);
 
             if ((i >= len) && (i < (middleImage.width() - len)) && (j >= len) && (j < (middleImage.height() - len)))
@@ -287,9 +279,14 @@ QImage FilterMethod::prewitt(QImage originImage)
     int prewittGx[] = {-1, 0, 1,
                        -1, 0, 1,
                        -1, 0, 1};
-    int prewittGy[] = {-1, -1, -1,
+    // 原来的
+    // int prewittGy[] = {-1, -1, -1,
+    //    0, 0, 0,
+    //    1, 1, 1};
+    // 新的
+    int prewittGy[] = {1, 1, 1,
                        0, 0, 0,
-                       1, 1, 1};
+                       -1, -1, -1};
 
     QImage middleImageGx = filtering(originImage, 3, prewittGx, false);
     QImage middleImageGy = filtering(originImage, 3, prewittGy, false);

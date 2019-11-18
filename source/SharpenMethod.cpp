@@ -20,6 +20,7 @@ QImage SharpenMethod::reborts(QImage originImage)
 
     QImage middleImage = _filterMethod.reborts(originImage);
 
+    return middleImage;
     return _filterMethod.adding(originImage, middleImage);
 } // reborts
 
@@ -35,6 +36,7 @@ QImage SharpenMethod::sobel(QImage originImage)
 
     QImage middleImage = _filterMethod.sobel(originImage);
 
+    return middleImage;
     return _filterMethod.adding(originImage, middleImage);
 } // sobel
 
@@ -49,6 +51,7 @@ QImage SharpenMethod::laplacian(QImage originImage)
 
     QImage middleImage = _filterMethod.laplacian(originImage);
 
+    return middleImage;
     return _filterMethod.adding(originImage, middleImage);
 } // laplacian
 
@@ -64,5 +67,6 @@ QImage SharpenMethod::enhancedLaplacian(QImage originImage)
 
     QImage middleImage = _filterMethod.enhancedLaplacian(originImage);
 
+    return middleImage;
     return _filterMethod.adding(originImage, middleImage);
 } // enhancedLaplacian
