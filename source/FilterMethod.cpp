@@ -197,31 +197,6 @@ QImage FilterMethod::adding(QImage image1, QImage image2)
     return targetImage;
 } // merging
 
-QImage FilterMethod::adding(QImage image1, QImage image2)
-{
-    int width = image1.width();
-    int height = image1.height();
-    QImage targetImage = QImage(width, height, QImage::Format_RGB32);
-
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            int r = qRed(image1.pixel(i, j)) + qRed(image2.pixel(i, j));
-            int g = qGreen(image1.pixel(i, j)) + qGreen(image2.pixel(i, j));
-            int b = qBlue(image1.pixel(i, j)) + qBlue(image2.pixel(i, j));
-
-            r = qBound(0, r, 255);
-            g = qBound(0, g, 255);
-            b = qBound(0, b, 255);
-
-            targetImage.setPixel(i, j, qRgb(r, g, b));
-        }
-    }
-
-    return targetImage;
-} // adding
-
 QImage FilterMethod::reborts(QImage originImage)
 {
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"

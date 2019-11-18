@@ -121,6 +121,7 @@ public:
     QAction *actionEdgePrewitt;
     QAction *actionEdgeLaplacian;
     QAction *actionEdgeTracing;
+    QAction *actionEdgeHough;
 
     // 颜色处理
     QAction *actionToGray;
@@ -197,6 +198,7 @@ private slots:
     void on_actionEdgePrewitt_triggered();
     void on_actionEdgeLaplacian_triggered();
     void on_actionEdgeTracing_triggered();
+    void on_actionEdgeHough_triggered();
 
     // void on_actionAbout_triggered();
 

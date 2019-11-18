@@ -105,6 +105,8 @@ void MainWindow::setup()
     actionEdgeLaplacian->setObjectName(QStringLiteral("actionEdgeLaplacian"));
     actionEdgeTracing = new QAction(this);
     actionEdgeTracing->setObjectName(QStringLiteral("actionEdgeTracing"));
+    actionEdgeHough = new QAction(this);
+    actionEdgeHough->setObjectName(QStringLiteral("actionEdgeHough"));
 
     actionToGray = new QAction(this);
     actionToGray->setObjectName(QStringLiteral("actionToGray"));
@@ -225,6 +227,7 @@ void MainWindow::setup()
     menuEdgeDetect->addAction(actionEdgePrewitt);
     menuEdgeDetect->addAction(actionEdgeLaplacian);
     menuImageSegmentation->addAction(actionEdgeTracing);
+    menuImageSegmentation->addAction(actionEdgeHough);
 
     menuColorTransformation->addAction(actionToGray);
     menuColorTransformation->addAction(actionTo256);
@@ -306,6 +309,7 @@ void MainWindow::retranslate()
     actionEdgePrewitt->setText(QApplication::translate("MainWindow", "Prewitt算子(&P)", Q_NULLPTR));
     actionEdgeLaplacian->setText(QApplication::translate("MainWindow", "Laplacian(&L)", Q_NULLPTR));
     actionEdgeTracing->setText(QApplication::translate("MainWindow", "边缘跟踪(&T)", Q_NULLPTR));
+    actionEdgeHough->setText(QApplication::translate("MainWindow", "霍夫变换检测直线(&H)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -782,6 +786,10 @@ void MainWindow::on_actionEdgeTracing_triggered()
 
     updateRightImageManual(targetImage);
 } // on_actionEdgeTracing_triggered
+
+void MainWindow::on_actionEdgeHough_triggered()
+{
+} // on_actionEdgeHough_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {
