@@ -47,7 +47,7 @@ SOURCES += \
     source/SharpenMethod.cpp \
     source/FilterMethod.cpp \
     source/ColorMethod.cpp \
-    source/EdgeDetectMethod.cpp \
+    source/EdgeMethod.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -67,7 +67,7 @@ HEADERS += \
     include/SharpenMethod.h \
     include/FilterMethod.h \
     include/ColorMethod.h \
-    include/EdgeDetectMethod.h \
+    include/EdgeMethod.h \
     include/qcustomplot.h
 
 

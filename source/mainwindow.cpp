@@ -103,6 +103,8 @@ void MainWindow::setup()
     actionEdgePrewitt->setObjectName(QStringLiteral("actionEdgePrewitt"));
     actionEdgeLaplacian = new QAction(this);
     actionEdgeLaplacian->setObjectName(QStringLiteral("actionEdgeLaplacian"));
+    actionEdgeTracing = new QAction(this);
+    actionEdgeTracing->setObjectName(QStringLiteral("actionEdgeTracing"));
 
     actionToGray = new QAction(this);
     actionToGray->setObjectName(QStringLiteral("actionToGray"));
@@ -222,6 +224,7 @@ void MainWindow::setup()
     menuEdgeDetect->addAction(actionEdgeSobel);
     menuEdgeDetect->addAction(actionEdgePrewitt);
     menuEdgeDetect->addAction(actionEdgeLaplacian);
+    menuImageSegmentation->addAction(actionEdgeTracing);
 
     menuColorTransformation->addAction(actionToGray);
     menuColorTransformation->addAction(actionTo256);
@@ -302,6 +305,7 @@ void MainWindow::retranslate()
     actionEdgeSobel->setText(QApplication::translate("MainWindow", "Sobel算子(&S)", Q_NULLPTR));
     actionEdgePrewitt->setText(QApplication::translate("MainWindow", "Prewitt算子(&P)", Q_NULLPTR));
     actionEdgeLaplacian->setText(QApplication::translate("MainWindow", "Laplacian(&L)", Q_NULLPTR));
+    actionEdgeTracing->setText(QApplication::translate("MainWindow", "边缘跟踪(&T)", Q_NULLPTR));
 
     actionAbout->setText(QApplication::translate("MainWindow", "关于(&A)", Q_NULLPTR));
     actionAbout->setShortcut(QApplication::translate("MainWindow", "F1", Q_NULLPTR));
@@ -736,36 +740,48 @@ void MainWindow::on_actionTo256_triggered()
 
 void MainWindow::on_actionEdgeSobel_triggered()
 {
-    EdgeDetectMethod *_edgeDetectMethod = new EdgeDetectMethod();
+    EdgeMethod *_edgeMethod = new EdgeMethod();
 
     QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
 
-    QImage targetImage = _edgeDetectMethod->sobel(originImage);
+    QImage targetImage = _edgeMethod->sobel(originImage);
 
     updateRightImageManual(targetImage);
 } // on_actionEdgeSobel_triggered
 
 void MainWindow::on_actionEdgePrewitt_triggered()
 {
-    EdgeDetectMethod *_edgeDetectMethod = new EdgeDetectMethod();
+    EdgeMethod *_edgeMethod = new EdgeMethod();
 
     QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
 
-    QImage targetImage = _edgeDetectMethod->prewitt(originImage);
+    QImage targetImage = _edgeMethod->prewitt(originImage);
 
     updateRightImageManual(targetImage);
 } // on_actionEdgePrewitt_triggered
 
 void MainWindow::on_actionEdgeLaplacian_triggered()
 {
-    EdgeDetectMethod *_edgeDetectMethod = new EdgeDetectMethod();
+    EdgeMethod *_edgeMethod = new EdgeMethod();
 
     QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
 
-    QImage targetImage = _edgeDetectMethod->laplacian(originImage);
+    QImage targetImage = _edgeMethod->laplacian(originImage);
 
     updateRightImageManual(targetImage);
 } // on_actionEdgeLaplacian_triggered
+
+// 边缘跟踪
+void MainWindow::on_actionEdgeTracing_triggered()
+{
+    EdgeMethod *_edgeMethod = new EdgeMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _edgeMethod->edgeTracing(originImage);
+
+    updateRightImageManual(targetImage);
+} // on_actionEdgeTracing_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {

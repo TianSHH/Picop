@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include "ColorMethod.h"
-#include "EdgeDetectMethod.h"
+#include "EdgeMethod.h"
 #include "SharpenMethod.h"
 #include "dialogbitplane.h"
 #include "dialoggrayscalethreshold.h"
@@ -120,6 +120,7 @@ public:
     QAction *actionEdgeSobel;
     QAction *actionEdgePrewitt;
     QAction *actionEdgeLaplacian;
+    QAction *actionEdgeTracing;
 
     // 颜色处理
     QAction *actionToGray;
@@ -195,11 +196,11 @@ private slots:
     void on_actionEdgeSobel_triggered();
     void on_actionEdgePrewitt_triggered();
     void on_actionEdgeLaplacian_triggered();
+    void on_actionEdgeTracing_triggered();
 
     // void on_actionAbout_triggered();
 
-    void
-    updateRightImage(QImage &newImage);
+    void updateRightImage(QImage &newImage);
 };
 
 #endif // MAINWINDOW_H

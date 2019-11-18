@@ -67,7 +67,7 @@ SOURCES       = source/main.cpp \
 		source/SharpenMethod.cpp \
 		source/FilterMethod.cpp \
 		source/ColorMethod.cpp \
-		source/EdgeDetectMethod.cpp \
+		source/EdgeMethod.cpp \
 		source/qcustomplot.cpp debug/moc/moc_mainwindow.cpp \
 		debug/moc/moc_dialogquantifylevel.cpp \
 		debug/moc/moc_dialogsamplingrate.cpp \
@@ -99,7 +99,7 @@ OBJECTS       = debug/obj/main.o \
 		debug/obj/SharpenMethod.o \
 		debug/obj/FilterMethod.o \
 		debug/obj/ColorMethod.o \
-		debug/obj/EdgeDetectMethod.o \
+		debug/obj/EdgeMethod.o \
 		debug/obj/qcustomplot.o \
 		debug/obj/moc_mainwindow.o \
 		debug/obj/moc_dialogquantifylevel.o \
@@ -312,7 +312,7 @@ DIST          = /opt/Qt5.9.8/5.9.8/gcc_64/mkspecs/features/spec_pre.prf \
 		include/SharpenMethod.h \
 		include/FilterMethod.h \
 		include/ColorMethod.h \
-		include/EdgeDetectMethod.h \
+		include/EdgeMethod.h \
 		include/qcustomplot.h source/main.cpp \
 		source/mainwindow.cpp \
 		source/dialogquantifylevel.cpp \
@@ -330,7 +330,7 @@ DIST          = /opt/Qt5.9.8/5.9.8/gcc_64/mkspecs/features/spec_pre.prf \
 		source/SharpenMethod.cpp \
 		source/FilterMethod.cpp \
 		source/ColorMethod.cpp \
-		source/EdgeDetectMethod.cpp \
+		source/EdgeMethod.cpp \
 		source/qcustomplot.cpp
 QMAKE_TARGET  = picop
 DESTDIR       = bin/
@@ -734,8 +734,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.9.8/5.9.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/dialogtranslation.h include/dialogrotation.h include/dialogscaling.h include/smoothmethod.h include/SharpenMethod.h include/FilterMethod.h include/ColorMethod.h include/EdgeDetectMethod.h include/qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/dialogtranslation.cpp source/dialogrotation.cpp source/dialogscaling.cpp source/smoothmethod.cpp source/SharpenMethod.cpp source/FilterMethod.cpp source/ColorMethod.cpp source/EdgeDetectMethod.cpp source/qcustomplot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/mainwindow.h include/dialogquantifylevel.h include/dialogsamplingrate.h include/dialogbitplane.h include/dialoghistogram.h include/dialoggrayscalethreshold.h include/dialoglinearpointoperation.h include/dialoglogtransformation.h include/dialogpowertransformation.h include/dialogtranslation.h include/dialogrotation.h include/dialogscaling.h include/smoothmethod.h include/SharpenMethod.h include/FilterMethod.h include/ColorMethod.h include/EdgeMethod.h include/qcustomplot.h $(DISTDIR)/
+	$(COPY_FILE) --parents source/main.cpp source/mainwindow.cpp source/dialogquantifylevel.cpp source/dialogsamplingrate.cpp source/dialogbitplane.cpp source/dialoghistogram.cpp source/dialoggrayscalethreshold.cpp source/dialoglinearpointoperation.cpp source/dialoglogtransformation.cpp source/dialogpowertransformation.cpp source/dialogtranslation.cpp source/dialogrotation.cpp source/dialogscaling.cpp source/smoothmethod.cpp source/SharpenMethod.cpp source/FilterMethod.cpp source/ColorMethod.cpp source/EdgeMethod.cpp source/qcustomplot.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -857,8 +857,7 @@ debug/moc/moc_mainwindow.cpp: include/ColorMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		include/EdgeDetectMethod.h \
-		include/SharpenMethod.h \
+		include/EdgeMethod.h \
 		include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
@@ -1124,6 +1123,7 @@ debug/moc/moc_mainwindow.cpp: include/ColorMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		include/SharpenMethod.h \
 		include/dialogbitplane.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
@@ -4649,8 +4649,7 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		include/EdgeDetectMethod.h \
-		include/SharpenMethod.h \
+		include/EdgeMethod.h \
 		include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
@@ -4916,6 +4915,7 @@ debug/obj/main.o: source/main.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		include/SharpenMethod.h \
 		include/dialogbitplane.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
@@ -5188,8 +5188,7 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		include/EdgeDetectMethod.h \
-		include/SharpenMethod.h \
+		include/EdgeMethod.h \
 		include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
@@ -5455,6 +5454,7 @@ debug/obj/mainwindow.o: source/mainwindow.cpp include/mainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		include/SharpenMethod.h \
 		include/dialogbitplane.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QVariant \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QAction \
@@ -8965,7 +8965,7 @@ debug/obj/ColorMethod.o: source/ColorMethod.cpp include/ColorMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/ColorMethod.o source/ColorMethod.cpp
 
-debug/obj/EdgeDetectMethod.o: source/EdgeDetectMethod.cpp include/EdgeDetectMethod.h \
+debug/obj/EdgeMethod.o: source/EdgeMethod.cpp include/EdgeMethod.h \
 		include/ColorMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QDateTime \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatetime.h \
@@ -9054,7 +9054,6 @@ debug/obj/EdgeDetectMethod.o: source/EdgeDetectMethod.cpp include/EdgeDetectMeth
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qdatastream.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qline.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtGui/qpainterpath.h \
-		include/SharpenMethod.h \
 		include/FilterMethod.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/QtCoreDepends \
@@ -9319,8 +9318,9 @@ debug/obj/EdgeDetectMethod.o: source/EdgeDetectMethod.cpp include/EdgeDetectMeth
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/QTableWidget \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtablewidget.h \
-		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/EdgeDetectMethod.o source/EdgeDetectMethod.cpp
+		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtWidgets/qtableview.h \
+		include/SharpenMethod.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/obj/EdgeMethod.o source/EdgeMethod.cpp
 
 debug/obj/qcustomplot.o: source/qcustomplot.cpp include/qcustomplot.h \
 		/opt/Qt5.9.8/5.9.8/gcc_64/include/QtCore/qglobal.h \
