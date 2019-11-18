@@ -132,8 +132,21 @@ QImage FilterMethod::filtering(QImage originImage, int filterSize, int *filterTe
             }
 
             //!新的像素值还要加上原来的像素值
+<<<<<<< HEAD
             r = qBound(0, r, 255);
             g = qBound(0, g, 255);
+=======
+            // int oldR = qRed(originImage.pixel(i - len, j - len));
+            // r += oldR;
+            r = qBound(0, r, 255);
+
+            // int oldG = qGreen(originImage.pixel(i - len, j - len));
+            // g += oldG;
+            g = qBound(0, g, 255);
+
+            // int oldB = qBlue(originImage.pixel(i - len, j - len));
+            // b += oldB;
+>>>>>>> 4fd6ad51c19307146e465a5c0dd2e5a33131b0ac
             b = qBound(0, b, 255);
 
             if ((i >= len) && (i < (middleImage.width() - len)) && (j >= len) && (j < (middleImage.height() - len)))
@@ -190,6 +203,27 @@ QImage FilterMethod::adding(QImage image1, QImage image2)
             int g = qGreen(image1.pixel(i, j)) + qGreen(image2.pixel(i, j));
             int b = qBlue(image1.pixel(i, j)) + qBlue(image2.pixel(i, j));
 
+            targetImage.setPixel(i, j, qRgb(r, g, b));
+        }
+    }
+
+    return targetImage;
+} // merging
+
+QImage FilterMethod::adding(QImage image1, QImage image2)
+{
+    int width = image1.width();
+    int height = image1.height();
+    QImage targetImage = QImage(width, height, QImage::Format_RGB32);
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            int r = qRed(image1.pixel(i, j)) + qRed(image2.pixel(i, j));
+            int g = qGreen(image1.pixel(i, j)) + qGreen(image2.pixel(i, j));
+            int b = qBlue(image1.pixel(i, j)) + qBlue(image2.pixel(i, j));
+
             r = qBound(0, r, 255);
             g = qBound(0, g, 255);
             b = qBound(0, b, 255);
@@ -218,7 +252,9 @@ QImage FilterMethod::reborts(QImage originImage)
     QImage middleImageGx = filtering(originImage, 3, rebortsGx, false);
     QImage middleImageGy = filtering(originImage, 3, rebortsGy, false);
 
-    return merging(middleImageGx, middleImageGy);
+    QImage middleImage = merging(middleImageGx, middleImageGy);
+
+    return adding(originImage, middleImage);
 } // reborts
 
 QImage FilterMethod::sobel(QImage originImage)
@@ -238,7 +274,9 @@ QImage FilterMethod::sobel(QImage originImage)
     QImage middleImageGx = filtering(originImage, 3, sobelGx, false);
     QImage middleImageGy = filtering(originImage, 3, sobelGy, false);
 
-    return merging(middleImageGx, middleImageGy);
+    QImage middleImage = merging(middleImageGx, middleImageGy);
+
+    return adding(originImage, middleImage);
 } // sobel
 
 QImage FilterMethod::laplacian(QImage originImage)
@@ -252,7 +290,8 @@ QImage FilterMethod::laplacian(QImage originImage)
                        -1, 4, -1,
                        0, -1, 0};
 
-    return filtering(originImage, 3, laplacian, false);
+    QImage middleImage = filtering(originImage, 3, laplacian, false);
+    return adding(originImage, middleImage);
 } // laplacian
 
 QImage FilterMethod::enhancedLaplacian(QImage originImage)
@@ -266,7 +305,8 @@ QImage FilterMethod::enhancedLaplacian(QImage originImage)
                                -1, 5, -1,
                                0, -1, 0};
 
-    return filtering(originImage, 3, enhancedLaplacian, false);
+    QImage middleImage = filtering(originImage, 3, enhancedLaplacian, false);
+    return adding(originImage, middleImage);
 } // enhancedLaplacian
 
 QImage FilterMethod::prewitt(QImage originImage)
