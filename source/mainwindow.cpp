@@ -5,6 +5,9 @@
 // TODO 图片旋转只支持正方形
 // TODO 24位真彩色图像转256色图像有点慢, 需要做个进度条
 // ? K 邻域均值滤波 stack smashing detected
+// TODO 霍夫变换效率太低, 有待优化
+// TODO     方式一: 使用多线程
+// TODO     方式二: 使用累计概率霍夫变换 PPHT
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -789,6 +792,13 @@ void MainWindow::on_actionEdgeTracing_triggered()
 
 void MainWindow::on_actionEdgeHough_triggered()
 {
+    EdgeMethod *_edgeMethod = new EdgeMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _edgeMethod->lineDetection(originImage);
+
+    updateRightImageManual(targetImage);
 } // on_actionEdgeHough_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)

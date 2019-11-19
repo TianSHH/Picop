@@ -5,6 +5,7 @@
 #include "FilterMethod.h"
 #include "SharpenMethod.h"
 #include <QtCore/QDebug>
+#include <QtCore/QThread>
 #include <QtGui/QImage>
 #include <QtGui/QPainter>
 

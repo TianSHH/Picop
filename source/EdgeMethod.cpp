@@ -122,58 +122,112 @@ QImage EdgeMethod::lineDetection(QImage originImage)
     int height = originImage.height();
 
     // 直线的极坐标方程
-    // r = xcosθ + ysinθ
+    // rho = xcosθ + ysinθ
 
     double rMaxDouble = qSqrt(qPow(width, 2) + qPow(height, 2));
-    int rMax = (int)(rMaxDouble + 0.5); // 获取 r 的最大取值
-    int thetaMax = 360;
+    int rMax = (int)(rMaxDouble + 0.5); // 获取 rho 的最大取值
+    int thetaMax = 181;
 
     // 定义累加器
-    struct stru
+    struct accumulator
     {
-        int r;
+        int rho;
         int theta;
         int count;
-    } *pAccumulator = NULL;
 
-    int accuLen = (rMax + 1) * (thetaMax + 1);
-    pAccumulator = new stru[accuLen * sizeof(stru)];
+        // 结构体构造函数
+        accumulator()
+        {
+            rho = -1;
+            theta = -1;
+            count = 0;
+        }
 
-    // 初始化累加器
-    memset(pAccumulator, 0, accuLen * sizeof(stru));
+        void setValue(int rValue, int thetaValue, int countValue)
+        { // 结构体赋值函数
+            rho = rValue;
+            theta = thetaValue;
+            count = countValue;
+        }
+    };
+
+    QList<accumulator> list;
 
     // 获取边缘跟踪之后的图片
     QImage middleImage = edgeTracing(originImage);
 
     for (int i = 0; i < width; i++)
         for (int j = 0; j < height; j++)
-            if (qGray(middleImage.pixel(i, j)) > 0)            // 对于每个边缘点
+        {
+            qDebug() << i << j;
+            if (qGray(middleImage.pixel(i, j)) == 0) // 对于每个边缘点, 边缘点是黑色
+            {
                 for (int theta = 0; theta < thetaMax; theta++) // 让 theta 取遍所有可能值
                 {
-                    int r = i * qCos(theta) + j * qSin(theta);
-                    if (r >= 0 && r < rMax)
-                    {
-                        int index = r * (thetaMax + 1) + theta;
-                        pAccumulator[index].r = r;
-                        pAccumulator[index].theta = theta;
-                        pAccumulator[index].count++;
+                    double rad = theta * 2 * M_PI / 360;     // 转换为弧度
+                    int rho = i * qCos(rad) + j * qSin(rad); // 由弧度值和直角坐标算出 rho
+                    if (rho >= 0 && rho < rMax)
+                    { // rho 值可能为负
+
+                        bool appear = false; // 标记 list 中是否已经存在该点, 默认不存在
+
+                        for (int k = 0; k < list.length(); k++)
+                        { // 循环判断 list 中是否存在 rho, theta 等于当前 rho, theta 的元素
+                            if (list[k].rho == rho && list[k].theta == theta)
+                            { // 如果有, count++, 并退出循环
+                                list[k].count++;
+                                appear = true;
+                                break;
+                            }
+                        }
+                        if (appear == false)
+                        { // 若 list 中没有该点
+                            // 则将其加入
+                            accumulator temp;             // 若该点没出现过
+                            temp.setValue(rho, theta, 0); // 则将其加入到 list 中
+                            list.append(temp);
+                        }
                     }
                 }
+            }
+        }
 
-    // 排序
-
-    QPainter myPainter;
+    // 以参数空间中某点被经过的次数排序, 降序
+    qSort(list.begin(), list.end(), [](const accumulator &accumlatorA, const accumulator &accumlatorB) { return accumlatorA.count > accumlatorB.count; });
 
     QImage targetImage = originImage;
 
+    QPainter myPainter;
     myPainter.begin(&targetImage);
-    myPainter.setPen(Qt::green);
 
-    int lineNum = 3; // 绘制3条直线
+    int minLen = rMax / 10; // 绘制的直线最小长度为 rMax 的 20 分之一
 
-    for (int i = 0; i < lineNum; i++)
+    for (int i = 0; list[i].count >= minLen; i++)
     {
+        int rho = list[i].rho;
+        int theta = list[i].theta;
+
+        if (theta == 90)
+        { // 直线与 x 轴平行
+            // (0, rho) => (width, rho)
+            myPainter.setPen(Qt::red);
+            myPainter.drawLine(0, rho, width, rho);
+        }
+        else if (theta == 0)
+        { // 直线与 x 轴垂直
+            // (rho, 0) => (rho, width)
+            myPainter.setPen(Qt::blue);
+            myPainter.drawLine(rho, 0, rho, height);
+        }
+        else
+        { // (x, 0) => (0, y)
+            int x = rho / qCos(theta * 2 * M_PI / 360);
+            int y = rho / qSin(theta * 2 * M_PI / 360);
+
+            myPainter.setPen(Qt::green);
+            myPainter.drawLine(x, 0, 0, y);
+        }
     }
 
-    // 绘制直线
+    return targetImage;
 } // lineDetection
