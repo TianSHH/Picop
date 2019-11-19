@@ -789,6 +789,13 @@ void MainWindow::on_actionEdgeTracing_triggered()
 
 void MainWindow::on_actionEdgeHough_triggered()
 {
+    EdgeMethod *_edgeMethod = new EdgeMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _edgeMethod->lineDetection(originImage);
+
+    updateRightImageManual(targetImage);
 } // on_actionEdgeHough_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)

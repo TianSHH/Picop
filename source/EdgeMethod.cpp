@@ -126,41 +126,81 @@ QImage EdgeMethod::lineDetection(QImage originImage)
 
     double rMaxDouble = qSqrt(qPow(width, 2) + qPow(height, 2));
     int rMax = (int)(rMaxDouble + 0.5); // 获取 r 的最大取值
-    int thetaMax = 360;
+    int thetaMax = 91;
 
     // 定义累加器
-    struct stru
+    struct accumulator
     {
         int r;
         int theta;
         int count;
-    } *pAccumulator = NULL;
 
-    int accuLen = (rMax + 1) * (thetaMax + 1);
-    pAccumulator = new stru[accuLen * sizeof(stru)];
+        // 结构体构造函数
+        accumulator()
+        {
+            r = -1;
+            theta = -1;
+            count = 0;
+        }
 
-    // 初始化累加器
-    memset(pAccumulator, 0, accuLen * sizeof(stru));
+        void setValue(int rValue, int thetaValue, int countValue)
+        { // 结构体赋值函数
+            r = rValue;
+            theta = thetaValue;
+            count = countValue;
+        }
+    };
+
+    QList<accumulator> list;
 
     // 获取边缘跟踪之后的图片
     QImage middleImage = edgeTracing(originImage);
 
     for (int i = 0; i < width; i++)
         for (int j = 0; j < height; j++)
-            if (qGray(middleImage.pixel(i, j)) > 0)            // 对于每个边缘点
+        {
+            if (qGray(middleImage.pixel(i, j)) < 255) // 对于每个边缘点, 边缘点是黑色
+            {
                 for (int theta = 0; theta < thetaMax; theta++) // 让 theta 取遍所有可能值
                 {
-                    int r = i * qCos(theta) + j * qSin(theta);
+                    double rad = theta * 2 * M_PI / 360;   // 转换为弧度
+                    int r = i * qCos(rad) + j * qSin(rad); // 由弧度值和直角坐标算出 r
                     if (r >= 0 && r < rMax)
-                    {
-                        int index = r * (thetaMax + 1) + theta;
-                        pAccumulator[index].r = r;
-                        pAccumulator[index].theta = theta;
-                        pAccumulator[index].count++;
+                    { // r 值可能为负
+
+                        bool appear = false; // 标记 list 中是否已经存在该点, 默认不存在
+
+                        for (int k = 0; k < list.length(); k++)
+                        { // 循环判断 list 中是否存在 r, theta 等于当前 r, theta 的元素
+                            if (list[k].r == r && list[k].theta == theta)
+                            { // 如果有, count++, 并退出循环
+                                list[k].count++;
+                                appear = true;
+                                break;
+                            }
+                        }
+                        if (appear == false)
+                        { // 若 list 中没有该点
+                            // 则将其加入
+                            accumulator temp;           // 若该点没出现过
+                            temp.setValue(r, theta, 0); // 则将其加入到 list 中
+                            list.append(temp);
+                        }
                     }
                 }
+            }
+        }
 
-    // 排序
+    // 以参数空间中某点被经过的次数排序, 降序
+    qSort(list.begin(), list.end(), [](const accumulator &accumlatorA, const accumulator &accumlatorB) { return accumlatorA.count > accumlatorB.count; });
+
+    // 测试 list
+    // 输出 count 值前三的 accumulator
+    qDebug() << list.length();
+    for (int i = 0; i < 10; i++)
+    {
+        qDebug() << list[i].r << list[i].theta << list[i].count;
+    }
 
     QPainter myPainter;
 
@@ -169,11 +209,25 @@ QImage EdgeMethod::lineDetection(QImage originImage)
     myPainter.begin(&targetImage);
     myPainter.setPen(Qt::green);
 
-    int lineNum = 3; // 绘制3条直线
+    int lineNum = 30; // 绘制3条直线
 
     for (int i = 0; i < lineNum; i++)
     {
+        int r = list[i].r;
+        int theta = list[i].theta;
+
+        if (theta != 0)
+        { // (x, 0) => (0, y)
+            int x = -r * qCos(theta * 2 * M_PI / 360);
+            int y = r * qSin(theta * 2 * M_PI / 360);
+
+            myPainter.drawLine(x, 0, 0, y);
+        }
+        else
+        { // (r, 0) => (r, width)
+            myPainter.drawLine(r, 0, r, width);
+        }
     }
 
-    // 绘制直线
+    return targetImage;
 } // lineDetection
