@@ -27,7 +27,10 @@ CONFIG += c++17 \
 
 INCLUDEPATH += ./ \
 	include/ \
-    source/
+    source/ \
+    /usr/local/include/opencv4/
+
+LIBS += /usr/local/lib/libopencv*
 
 SOURCES += \
         source/main.cpp \

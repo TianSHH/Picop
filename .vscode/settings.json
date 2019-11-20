@@ -98,10 +98,14 @@
         "numeric": "cpp",
         "ratio": "cpp",
         "cinttypes": "cpp",
-        "qlist": "cpp"
+        "qlist": "cpp",
+        "qthread": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
     "C_Cpp.default.includePath": [
+        "${workSpaceFolder}include/**",
+        "/usr/local/include/opencv4/**",
+        "/usr/local/include/opencv4/**",
         "/opt/Qt5.9.8/5.9.8/gcc_64/",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DAnimation",
