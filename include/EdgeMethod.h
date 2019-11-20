@@ -3,16 +3,16 @@
 
 #include "ColorMethod.h"
 #include "FilterMethod.h"
+#include "FormatMethod.h"
 #include "SharpenMethod.h"
 #include <QtCore/QDebug>
 #include <QtCore/QThread>
 #include <QtGui/QImage>
 #include <QtGui/QPainter>
-#include <opencv4/opencv2/core/utility.hpp>
-#include <opencv4/opencv2/highgui/highgui.hpp>
-#include <opencv4/opencv2/imgcodecs/imgcodecs.hpp>
-#include <opencv4/opencv2/imgproc/imgproc.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/opencv.hpp>
 
+using namespace std;
 using namespace cv;
 
 class EdgeMethod

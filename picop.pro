@@ -51,6 +51,7 @@ SOURCES += \
     source/FilterMethod.cpp \
     source/ColorMethod.cpp \
     source/EdgeMethod.cpp \
+    source/FormatMethod.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -71,6 +72,7 @@ HEADERS += \
     include/FilterMethod.h \
     include/ColorMethod.h \
     include/EdgeMethod.h \
+    include/FormatMethod.h \
     include/qcustomplot.h
 
 

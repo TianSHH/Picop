@@ -105,7 +105,6 @@
     "C_Cpp.default.includePath": [
         "${workSpaceFolder}include/**",
         "/usr/local/include/opencv4/**",
-        "/usr/local/include/opencv4/**",
         "/opt/Qt5.9.8/5.9.8/gcc_64/",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/Qt3DAnimation",
@@ -191,7 +190,6 @@
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/QtX11Extras",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/QtXml",
         "/opt/Qt5.9.8/5.9.8/gcc_64/include/QtXmlPatterns",
-        "${workSpaceFolder}include/"
     ],
     "files.exclude": {
         "**/.DS_Store": true,

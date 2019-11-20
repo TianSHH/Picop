@@ -117,44 +117,44 @@ QImage EdgeMethod::edgeTracing(QImage originImage)
 
 QImage EdgeMethod::lineDetection(QImage originImage)
 {
-    // 选取图片左上角为原点
-    int width = originImage.width();
-    int height = originImage.height();
+    // // 选取图片左上角为原点
+    // int width = originImage.width();
+    // int height = originImage.height();
 
-    // 直线的极坐标方程
-    // rho = xcosθ + ysinθ
+    // // 直线的极坐标方程
+    // // rho = xcosθ + ysinθ
 
-    double rMaxDouble = qSqrt(qPow(width, 2) + qPow(height, 2));
-    int rMax = (int)(rMaxDouble + 0.5); // 获取 rho 的最大取值
-    int thetaMax = 91;
+    // double rMaxDouble = qSqrt(qPow(width, 2) + qPow(height, 2));
+    // int rMax = (int)(rMaxDouble + 0.5); // 获取 rho 的最大取值
+    // int thetaMax = 91;
 
-    // 定义累加器
-    struct accumulator
-    {
-        int rho;
-        int theta;
-        int count;
+    // // 定义累加器
+    // struct accumulator
+    // {
+    //     int rho;
+    //     int theta;
+    //     int count;
 
-        // 结构体构造函数
-        accumulator()
-        {
-            rho = -1;
-            theta = -1;
-            count = 0;
-        }
+    //     // 结构体构造函数
+    //     accumulator()
+    //     {
+    //         rho = -1;
+    //         theta = -1;
+    //         count = 0;
+    //     }
 
-        void setValue(int rValue, int thetaValue, int countValue)
-        { // 结构体赋值函数
-            rho = rValue;
-            theta = thetaValue;
-            count = countValue;
-        }
-    };
+    //     void setValue(int rValue, int thetaValue, int countValue)
+    //     { // 结构体赋值函数
+    //         rho = rValue;
+    //         theta = thetaValue;
+    //         count = countValue;
+    //     }
+    // };
 
-    QList<accumulator> list;
+    // QList<accumulator> list;
 
     // 获取边缘跟踪之后的图片
-    QImage middleImage = edgeTracing(originImage);
+    // QImage middleImage = edgeTracing(originImage);
 
     // for (int i = 0; i < width; i++)
     //     for (int j = 0; j < height; j++)
@@ -195,19 +195,67 @@ QImage EdgeMethod::lineDetection(QImage originImage)
     // // 以参数空间中某点被经过的次数排序, 降序
     // qSort(list.begin(), list.end(), [](const accumulator &accumlatorA, const accumulator &accumlatorB) { return accumlatorA.count > accumlatorB.count; });
 
-    QImage targetImage = originImage;
+    // QImage targetImage = originImage;
 
-    cv::Mat image = cv::Mat(targetImage.height(), targetImage.width(), CV_8UC4, (void *)targetImage.constBits(), targetImage.bytesPerLine());
+    // QPainter myPainter;
+    // myPainter.begin(&targetImage);
+    // myPainter.setPen(Qt::green);
 
-    cv::cvtColor(image, image, cv::COLOR_BGRA2BGR);
+    // int minLen = rMax / 10; // 绘制的直线最小长度为 rMax 的 20 分之一
 
-    cv::namedWindow("测试", 0);
+    // for (int i = 0; list[i].count >= minLen; i++)
+    // {
+    //     int rho = list[i].rho;
+    //     int theta = list[i].theta;
 
-    cv::resizeWindow("测试", 800, 600);
+    //     if (theta == 90)
+    //     { // 直线与 x 轴平行
+    //         // (0, rho) => (width, rho)
+    //         myPainter.setPen(Qt::red);
+    //         myPainter.drawLine(0, rho, width, rho);
+    //     }
+    //     else if (theta == 0)
+    //     { // 直线与 x 轴垂直
+    //         // (rho, 0) => (rho, width)
+    //         myPainter.setPen(Qt::blue);
+    //         myPainter.drawLine(rho, 0, rho, height);
+    //     }
+    //     else
+    //     { // (x, 0) => (0, y)
+    //         int x = rho / qCos(theta * 2 * M_PI / 360);
+    //         int y = rho / qSin(theta * 2 * M_PI / 360);
 
-    cv::imshow("测试", image);
+    //         myPainter.setPen(Qt::green);
+    //         myPainter.drawLine(x, 0, 0, y);
+    //     }
+    // }
 
-    qDebug() << targetImage.format();
+    // // 绘制直线
+    // return targetImage;
 
-    return targetImage;
+    FormatMethod _formatMethod;
+
+    Mat image = _formatMethod.toMat(originImage);
+
+    // Mat newImage = image.clone();
+
+    Mat cannyImage, distImage;
+
+    // 边缘提取
+    Canny(image, cannyImage, 50, 200, 3);
+    // 灰度转换
+    cvtColor(cannyImage, distImage, COLOR_GRAY2BGR);
+
+    vector<Vec4i> lines;
+
+    HoughLinesP(cannyImage, lines, 1, CV_PI / 180, 10, 50, 10);
+
+    for (int i = 0; i < lines.size(); i++)
+    {
+        Vec4i l = lines[i];
+
+        line(distImage, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(186, 88, 255), 1, LINE_AA);
+    }
+
+    return _formatMethod.toQImage(distImage);
 } // lineDetection
