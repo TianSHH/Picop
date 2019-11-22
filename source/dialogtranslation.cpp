@@ -66,8 +66,11 @@ void DialogTranslation::emitSignalTranslationEnd()
 
 void DialogTranslation::Translation(QImage *originImage)
 {
-    int deltaX = lineEditArgDeltaX->text().toInt();
-    int deltaY = lineEditArgDeltaY->text().toInt();
+    double deltaXDouble = lineEditArgDeltaX->text().toDouble();
+    double deltaYDouble = lineEditArgDeltaY->text().toDouble();
+
+    int deltaX = (int)(deltaXDouble + 0.5);
+    int deltaY = (int)(deltaYDouble + 0.5);
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "图像平移,"
