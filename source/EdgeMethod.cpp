@@ -77,58 +77,69 @@ QImage EdgeMethod::marr(QImage originImage)
 // 边缘跟踪
 QImage EdgeMethod::edgeTracing(QImage originImage)
 {
-    int width = originImage.width();
-    int height = originImage.height();
+    // int width = originImage.width();
+    // int height = originImage.height();
 
-    QImage middleImage = QImage(width, height, QImage::Format_RGB888);
-    QImage targetImage = QImage(width, height, QImage::Format_RGB888);
+    // QImage middleImage = QImage(width, height, QImage::Format_RGB888);
+    // QImage targetImage = QImage(width, height, QImage::Format_RGB888);
 
-    targetImage.fill(Qt::white);
-    middleImage.fill(Qt::white);
+    // targetImage.fill(Qt::white);
+    // middleImage.fill(Qt::white);
 
-    // 二值化
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            int gray = qGray(originImage.pixel(i, j));
+    // // 二值化
+    // for (int i = 0; i < width; i++)
+    // {
+    //     for (int j = 0; j < height; j++)
+    //     {
+    //         int gray = qGray(originImage.pixel(i, j));
 
-            if (gray > 128)
-                gray = 255;
-            else
-                gray = 0;
+    //         if (gray > 128)
+    //             gray = 255;
+    //         else
+    //             gray = 0;
 
-            middleImage.setPixel(i, j, qRgb(gray, gray, gray));
-        }
-    }
+    //         middleImage.setPixel(i, j, qRgb(gray, gray, gray));
+    //     }
+    // }
 
-    int pixels[8] = {0}; // 目标像素周围的 8 个像素
+    // int pixels[8] = {0}; // 目标像素周围的 8 个像素
 
-    for (int i = 1; i < width - 1; i++)
-    {
-        for (int j = 1; j < height - 1; j++)
-        {
-            memset(pixels, 0, sizeof(pixels));
+    // for (int i = 1; i < width - 1; i++)
+    // {
+    //     for (int j = 1; j < height - 1; j++)
+    //     {
+    //         memset(pixels, 0, sizeof(pixels));
 
-            if (qGray(middleImage.pixel(i, j)) == 0)
-            {
-                targetImage.setPixel(i, j, qRgb(0, 0, 0));
-                pixels[0] = qGray(middleImage.pixel(i - 1, j - 1));
-                pixels[1] = qGray(middleImage.pixel(i - 1, j));
-                pixels[2] = qGray(middleImage.pixel(i - 1, j + 1));
-                pixels[3] = qGray(middleImage.pixel(i, j - 1));
-                pixels[4] = qGray(middleImage.pixel(i, j + 1));
-                pixels[5] = qGray(middleImage.pixel(i + 1, j - 1));
-                pixels[6] = qGray(middleImage.pixel(i + 1, j));
-                pixels[7] = qGray(middleImage.pixel(i + 1, j + 1));
+    //         if (qGray(middleImage.pixel(i, j)) == 0)
+    //         {
+    //             targetImage.setPixel(i, j, qRgb(0, 0, 0));
+    //             pixels[0] = qGray(middleImage.pixel(i - 1, j - 1));
+    //             pixels[1] = qGray(middleImage.pixel(i - 1, j));
+    //             pixels[2] = qGray(middleImage.pixel(i - 1, j + 1));
+    //             pixels[3] = qGray(middleImage.pixel(i, j - 1));
+    //             pixels[4] = qGray(middleImage.pixel(i, j + 1));
+    //             pixels[5] = qGray(middleImage.pixel(i + 1, j - 1));
+    //             pixels[6] = qGray(middleImage.pixel(i + 1, j));
+    //             pixels[7] = qGray(middleImage.pixel(i + 1, j + 1));
 
-                if (pixels[0] + pixels[1] + pixels[2] + pixels[3] + pixels[4] + pixels[5] + pixels[6] + pixels[7] == 0)
-                    targetImage.setPixel(i, j, qRgb(255, 255, 255));
-            }
-        }
-    }
+    //             // 像素周围都是
+    //             if (pixels[0] + pixels[1] + pixels[2] + pixels[3] + pixels[4] + pixels[5] + pixels[6] + pixels[7] == 0)
+    //                 targetImage.setPixel(i, j, qRgb(255, 255, 255));
+    //         }
+    //     }
+    // }
 
-    return targetImage;
+    // return targetImage;
+    FormatMethod _formatMethod;
+
+    Mat image = _formatMethod.toMat(originImage);
+
+    Mat cannyImage;
+
+    // 边缘提取
+    Canny(image, cannyImage, 50, 200, 3);
+
+    return _formatMethod.toQImage(cannyImage);
 } // edgeTracing
 
 QImage EdgeMethod::lineDetection(QImage originImage)
