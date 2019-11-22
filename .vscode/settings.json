@@ -201,6 +201,7 @@
         "**/*.suo": true,
         "**/*.user": true,
         "**/*cache": true,
+        "**/bin": true,
         "**/build": true,
         "**/CVS": true,
         "**/debug": true,
