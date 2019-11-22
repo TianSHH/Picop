@@ -4,6 +4,7 @@
 #include "ColorMethod.h"
 #include "EdgeMethod.h"
 #include "SharpenMethod.h"
+#include "SpectrogramMethod.h"
 #include "dialogbitplane.h"
 #include "dialoggrayscalethreshold.h"
 #include "dialoghistogram.h"
@@ -16,7 +17,6 @@
 #include "dialogscaling.h"
 #include "dialogtranslation.h"
 #include "smoothmethod.h"
-//#include "spectrogram.h"
 #include <QApplication>
 #include <QCoreApplication>
 #include <QtCore/QDateTime>

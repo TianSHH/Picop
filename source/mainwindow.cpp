@@ -624,9 +624,9 @@ void MainWindow::on_actionTranslation_triggered()
 
 void MainWindow::on_actionSpectrogram_triggered()
 {
-    //    Spectrogram *_spectrogram = new Spectrogram();
+    SpectrogramMethod *_spectrogramMethod = new SpectrogramMethod();
 
-    //    _spectrogram->displaySpectrogram(imagePath);
+    _spectrogramMethod->displaySpectrogram(imagePath);
 } // on_actionSpectrogram_triggered
 
 void MainWindow::on_actionAverageFiltering_triggered()

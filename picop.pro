@@ -52,6 +52,7 @@ SOURCES += \
     source/ColorMethod.cpp \
     source/EdgeMethod.cpp \
     source/FormatMethod.cpp \
+    source/SpectrogramMethod.cpp \
     source/qcustomplot.cpp
 
 HEADERS += \
@@ -73,6 +74,7 @@ HEADERS += \
     include/ColorMethod.h \
     include/EdgeMethod.h \
     include/FormatMethod.h \
+    include/SpectrogramMethod.h \
     include/qcustomplot.h
 
 

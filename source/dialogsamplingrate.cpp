@@ -33,17 +33,17 @@ void DialogSamplingRate::setup()
 
     label = new QLabel(this);
     label->setObjectName(QStringLiteral("label"));
-    
+
     lineEdit = new QLineEdit(this);
     lineEdit->setObjectName(QStringLiteral("lineEdit"));
-    
+
     buttonBox = new QDialogButtonBox(this);
     buttonBox->setObjectName(QStringLiteral("buttonBox"));
     buttonBox->setOrientation(Qt::Horizontal);
     buttonBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
     QObject::connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
     QObject::connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
-    
+
     gridLayout = new QGridLayout(this);
     gridLayout->setObjectName(QStringLiteral("gridLayout"));
     gridLayout->addWidget(label, 0, 0, 1, 1);
@@ -58,7 +58,7 @@ void DialogSamplingRate::setup()
 void DialogSamplingRate::retranslate()
 {
     this->setWindowTitle(QApplication::translate("DialogSamplingRate", "Dialog", Q_NULLPTR));
-    
+
     label->setText(QApplication::translate("DialogSamplingRate", "设定采样率", Q_NULLPTR));
 } // retranslate
 
@@ -87,16 +87,11 @@ void DialogSamplingRate::setSamplingRate(QImage *originImage)
     for (int i = 0; i < width; i += rate)
         for (int j = 0; j < height; j += rate)
         {
-            QColor color = QColor(originImage->pixel(i, j));
-            int r = color.red();
-            int g = color.green();
-            int b = color.blue();
+            int rgb = QRgb(originImage->pixel(i, j));
 
-            originImage->setPixel(i + 1, j + 1, qRgb(r, g, b));
-
-            for (int p = 0; p < rate && i + p < height; p++)
-                for (int q = 0; q < rate && j + q < width; q++)
-                    originImage->setPixel(i + p, j + q, qRgb(r, g, b));
+            for (int p = 0; (p < rate) && ((i + p) < width); p++)
+                for (int q = 0; (q < rate) && ((j + q) < height); q++)
+                    originImage->setPixel(i + p, j + q, rgb);
         }
 
     emit signalSetSamplingRateFinished((QImage &)(*originImage));
