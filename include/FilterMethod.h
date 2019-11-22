@@ -47,6 +47,7 @@ public:
     QImage laplacian(QImage originImage);
     QImage enhancedLaplacian(QImage originImage);
     QImage prewitt(QImage originImage);
+    QImage marr(QImage originImage);
 
 signals:
     void signalFilterStart();

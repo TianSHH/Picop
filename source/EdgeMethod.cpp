@@ -58,6 +58,22 @@ QImage EdgeMethod::laplacian(QImage originImage)
     return targetImage;
 } // laplacian
 
+QImage EdgeMethod::marr(QImage originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "边缘检测"
+                       << "方法"
+                       << "Marr算子";
+
+    ColorMethod _colorMethod = ColorMethod();
+    originImage = _colorMethod.toGrayImage(originImage);
+
+    FilterMethod _filterMethod(nullptr);
+    QImage targetImage = _filterMethod.marr(originImage);
+
+    return targetImage;
+} // marr
+
 // 边缘跟踪
 QImage EdgeMethod::edgeTracing(QImage originImage)
 {
@@ -94,17 +110,17 @@ QImage EdgeMethod::edgeTracing(QImage originImage)
         {
             memset(pixels, 0, sizeof(pixels));
 
-            if (QColor(middleImage.pixel(i, j)).red() == 0)
+            if (qGray(middleImage.pixel(i, j)) == 0)
             {
                 targetImage.setPixel(i, j, qRgb(0, 0, 0));
-                pixels[0] = QColor(middleImage.pixel(i - 1, j - 1)).red();
-                pixels[1] = QColor(middleImage.pixel(i - 1, j)).red();
-                pixels[2] = QColor(middleImage.pixel(i - 1, j + 1)).red();
-                pixels[3] = QColor(middleImage.pixel(i, j - 1)).red();
-                pixels[4] = QColor(middleImage.pixel(i, j + 1)).red();
-                pixels[5] = QColor(middleImage.pixel(i + 1, j - 1)).red();
-                pixels[6] = QColor(middleImage.pixel(i + 1, j)).red();
-                pixels[7] = QColor(middleImage.pixel(i + 1, j + 1)).red();
+                pixels[0] = qGray(middleImage.pixel(i - 1, j - 1));
+                pixels[1] = qGray(middleImage.pixel(i - 1, j));
+                pixels[2] = qGray(middleImage.pixel(i - 1, j + 1));
+                pixels[3] = qGray(middleImage.pixel(i, j - 1));
+                pixels[4] = qGray(middleImage.pixel(i, j + 1));
+                pixels[5] = qGray(middleImage.pixel(i + 1, j - 1));
+                pixels[6] = qGray(middleImage.pixel(i + 1, j));
+                pixels[7] = qGray(middleImage.pixel(i + 1, j + 1));
 
                 if (pixels[0] + pixels[1] + pixels[2] + pixels[3] + pixels[4] + pixels[5] + pixels[6] + pixels[7] == 0)
                     targetImage.setPixel(i, j, qRgb(255, 255, 255));

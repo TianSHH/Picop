@@ -129,6 +129,7 @@ public:
     QAction *actionEdgeSobel;     // Sobel算子
     QAction *actionEdgePrewitt;   // Prewitt算子
     QAction *actionEdgeLaplacian; // Laplacian算子
+    QAction *actionEdgeMarr;      // Marr算子
     QAction *actionEdgeTracing;   // 边缘跟踪
     QAction *actionEdgeHough;     // 霍夫变换检测直线
 
@@ -202,6 +203,7 @@ private slots:
     void on_actionEdgeSobel_triggered();
     void on_actionEdgePrewitt_triggered();
     void on_actionEdgeLaplacian_triggered();
+    void on_actionEdgeMarr_triggered();
     void on_actionEdgeTracing_triggered();
     void on_actionEdgeHough_triggered();
 

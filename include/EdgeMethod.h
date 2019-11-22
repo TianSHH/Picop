@@ -25,6 +25,7 @@ public:
     QImage sobel(QImage originImage);
     QImage prewitt(QImage orginImage);
     QImage laplacian(QImage originImage);
+    QImage marr(QImage originImage);
 
     // 边缘跟踪
     QImage edgeTracing(QImage originImage);

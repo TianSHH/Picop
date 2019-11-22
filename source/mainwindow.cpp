@@ -106,6 +106,8 @@ void MainWindow::setup()
     actionEdgePrewitt->setObjectName(QStringLiteral("actionEdgePrewitt"));
     actionEdgeLaplacian = new QAction(this);
     actionEdgeLaplacian->setObjectName(QStringLiteral("actionEdgeLaplacian"));
+    actionEdgeMarr = new QAction(this);
+    actionEdgeMarr->setObjectName(QStringLiteral("actionEdgeMarr"));
     actionEdgeTracing = new QAction(this);
     actionEdgeTracing->setObjectName(QStringLiteral("actionEdgeTracing"));
     actionEdgeHough = new QAction(this);
@@ -230,6 +232,7 @@ void MainWindow::setup()
     menuEdgeDetect->addAction(actionEdgeSobel);
     menuEdgeDetect->addAction(actionEdgePrewitt);
     menuEdgeDetect->addAction(actionEdgeLaplacian);
+    menuEdgeDetect->addAction(actionEdgeMarr);
     menuImageSegmentation->addAction(actionEdgeTracing);
     menuImageSegmentation->addAction(actionEdgeHough);
 
@@ -312,6 +315,7 @@ void MainWindow::retranslate()
     actionEdgeSobel->setText(QApplication::translate("MainWindow", "Sobel算子(&S)", Q_NULLPTR));
     actionEdgePrewitt->setText(QApplication::translate("MainWindow", "Prewitt算子(&P)", Q_NULLPTR));
     actionEdgeLaplacian->setText(QApplication::translate("MainWindow", "Laplacian(&L)", Q_NULLPTR));
+    actionEdgeMarr->setText(QApplication::translate("MainWindow", "Marr算子(&M)", Q_NULLPTR));
     actionEdgeTracing->setText(QApplication::translate("MainWindow", "边缘跟踪(&T)", Q_NULLPTR));
     actionEdgeHough->setText(QApplication::translate("MainWindow", "霍夫变换检测直线(&H)", Q_NULLPTR));
 
@@ -808,6 +812,17 @@ void MainWindow::on_actionEdgeLaplacian_triggered()
 
     updateRightImageManual(targetImage);
 } // on_actionEdgeLaplacian_triggered
+
+void MainWindow::on_actionEdgeMarr_triggered()
+{
+    EdgeMethod *_edgeMethod = new EdgeMethod();
+
+    QImage originImage = QImage(leftPixmapItem->pixmap().toImage());
+
+    QImage targetImage = _edgeMethod->marr(originImage);
+
+    updateRightImageManual(targetImage);
+} // on_actionEdgeMarr_triggered
 
 // 边缘跟踪
 void MainWindow::on_actionEdgeTracing_triggered()

@@ -297,6 +297,22 @@ QImage FilterMethod::prewitt(QImage originImage)
     return merging(middleImageGx, middleImageGy);
 }
 
+QImage FilterMethod::marr(QImage originImage)
+{
+    qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
+                       << "进行图像卷积"
+                       << "方法"
+                       << "Marr算子";
+
+    int marr[] = {0, 0, -1, 0, 0,
+                  0, -1, -2, -1, 0,
+                  -1, -2, 16, -2, -1,
+                  0, -1, -2, -1, 0,
+                  0, 0, -1, 0, 0};
+
+    return filtering(originImage, 5, marr, false);
+} // marr
+
 void FilterMethod::collectKernelInfo(QImage *originImage)
 {
     _dialog->hide();
