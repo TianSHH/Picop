@@ -52,10 +52,20 @@ picop
 ├── picop.pro  
 └── README.md  
 
-## 运行环境
+## 开发环境
 Ubuntu19.10
 
 ## 开发工具
 vscode + Qt5.9.8 + OpenCV4.1.2
 
 ## 安装
+### 源代码编译
+```
+git clone git@github.com:TianSHH/picop.git
+cd ./picop/
+qmake picop.pro
+make
+./bin/picop
+```
+
+## 
