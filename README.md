@@ -59,7 +59,6 @@ Ubuntu19.10
 vscode + Qt5.9.8 + OpenCV4.1.2
 
 ## 安装
-### 源代码编译
 ```
 git clone git@github.com:TianSHH/picop.git
 cd ./picop/
