@@ -121,8 +121,8 @@ void DialogBitPlane::displayBitPlane(QImage *originImage)
             int gray = color.red();
             QString binary = QString::number(gray, 2);
 
-            { // 最低层
-                int bit = gray & 0x1;
+            {                         // 最低层
+                int bit = gray & 0x1; // 利用与运算取出8位中的最低位
                 if (bit == 1)
                     newImage7.setPixel(i, j, qRgb(255, 255, 255));
                 else
