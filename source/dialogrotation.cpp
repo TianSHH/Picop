@@ -62,57 +62,45 @@ void DialogRotation::Rotate(QImage *originImage)
     double factor = M_PI / 180.0;
     // 取模
     int angle = (lineEditAngle->text().toInt()) % 360;
-    double theta = angle * factor;
+    double radian = angle * factor;
 
     qDebug().noquote() << "[Debug]" << QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd hh:mm:ss.zzz") << ":"
                        << "图像旋转,"
                        << "旋转角度:" << angle << ";"
-                       << "旋转弧度:" << theta;
+                       << "旋转弧度:" << radian;
 
     int width = originImage->width();
     int height = originImage->height();
 
-    if (theta > M_PI && theta <= 2 * M_PI)
-        theta = 2 * M_PI - theta;
+    cv::Mat src, dst;
 
-    // 顺时针旋转 情况一
-    // 判断旋转角度象限
-    // 0 - π/2 => 第一象限, 用 + 表示
-    // π/2 - π => 第二象限, 用 - 表示
-    int symbol = qCos(theta) / qAbs(qCos(theta));
+    FormatMethod _formatMethod;
 
-    int newWidth = height * qSin(theta) + symbol * width * qCos(theta);
-    int newHeight = width * qSin(theta) + symbol * height * qCos(theta);
+    src = _formatMethod.toMat(*originImage);
 
-    QImage targetImage = QImage(newWidth, newHeight, QImage ::Format_RGB32);
+    int maxBorder = (int)(cv::max(src.cols, src.rows) * 1.414); // 即为sqrt(2)*max
+    int dx = (maxBorder - src.cols) / 2;
+    int dy = (maxBorder - src.rows) / 2;
+    copyMakeBorder(src, dst, dy, dy, dx, dx, cv::BORDER_CONSTANT);
 
-    for (int i = 0; i < newWidth; i++)
-        for (int j = 0; j < newHeight; j++)
-            targetImage.setPixel(i, j, qRgb(255, 255, 255));
+    // 旋转
+    cv::Point2f center((float)(dst.cols / 2), (float)(dst.rows / 2));
+    cv::Mat affine_matrix = getRotationMatrix2D(center, angle, 1.0); // 求得旋转矩阵
+    warpAffine(dst, dst, affine_matrix, dst.size());
 
-    // originImage 和 targetImage 原点坐标差值
-    int deltaX = (-width * qCos(theta) + symbol * (width * qCos(theta))) / 2;
-    int deltaY = (-height * qCos(theta) + symbol * (height * qCos(theta))) / 2 + width * qSin(theta);
+    // 计算图像旋转之后包含图像的最大的矩形
+    float sinVal = abs(sin(radian));
+    float cosVal = abs(cos(radian));
+    cv::Size targetSize((int)(src.cols * cosVal + src.rows * sinVal),
+                        (int)(src.cols * sinVal + src.rows * cosVal));
 
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            // 在 originImage 坐标系中变换后的坐标
-            int middleX = i * qCos(theta) - j * qSin(theta);
-            int middleY = i * qSin(theta) + j * qCos(theta);
+    // 剪掉多余边框
+    int x = (dst.cols - targetSize.width) / 2;
+    int y = (dst.rows - targetSize.height) / 2;
+    cv::Rect rect(x, y, targetSize.width, targetSize.height);
+    dst = cv::Mat(dst, rect);
 
-            QRgb rgb = QRgb(originImage->pixel(i, j));
-
-            // 由于图片坐标和笛卡尔坐标原点不同, 所以这里变换坐标轴
-            // targetImage 坐标系中的坐标
-            int targetX = middleX + deltaY;
-            int targetY = middleY + deltaX;
-
-            if ((targetX >= 0) && (targetX < newWidth) && (targetY >= 0) && (targetY < newHeight))
-                targetImage.setPixel(targetX, targetY, QRgb(rgb));
-        }
-    }
+    QImage targetImage = _formatMethod.toQImage(dst);
 
     emit signalRotationEnd((QImage &)targetImage);
 

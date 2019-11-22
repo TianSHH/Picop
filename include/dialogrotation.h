@@ -1,6 +1,7 @@
 #ifndef DIALOGROTATION_H
 #define DIALOAROTATION_H
 
+#include "FormatMethod.h"
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
 #include <QtCore/QVariant>
@@ -15,6 +16,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <opencv2/opencv.hpp>
 
 class DialogRotation : public QDialog
 {
