@@ -41,9 +41,6 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
-//#include <opencv4/opencv2/core/core.hpp>
-//#include <opencv4/opencv2/highgui/highgui.hpp>
-//#include <opencv4/opencv2/imgproc/imgproc.hpp>
 
 #define WINDOW_TITLE "Picop"
 #define WINDOW_CRITICAL "Error - Picop"
@@ -64,7 +61,7 @@ public:
     QGridLayout *gridLayout;
 
     QMenuBar *menuBar;
-    QToolBar *toolBar;
+    // QToolBar *toolBar;
     QStatusBar *statusBar;
 
     QMenu *menuFile;
@@ -78,56 +75,64 @@ public:
     QMenu *menuImageSegmentation;
     QMenu *menuHelp;
 
+    // 基本文件处理
     QAction *actionOpen;
     QAction *actionSave;
     QAction *actionSaveAs;
     QAction *actionClose;
     QAction *actionQuit;
 
-    QAction *actionSetSamplingRate;
-    QAction *actionSetQuantifyLevel;
-    QAction *actionSetGrayscaleThreshold;
+    // 第2章作业, 图像数字化与显示
+    QAction *actionSetSamplingRate;       // 设定采样率
+    QAction *actionSetQuantifyLevel;      // 设定量化等级
+    QAction *actionSetGrayscaleThreshold; // 设定灰度阀值
 
-    QAction *actionDisplayBitPlane;
-    QAction *actionDisplayHistogram;
+    // 第3,4章作业, 图像表示与处理
+    QAction *actionDisplayBitPlane;  // 显示位平面
+    QAction *actionDisplayHistogram; // 显示直方图
 
-    QAction *actionLinearTransformation;
+    // 第5章作业, 点运算
+    QAction *actionLinearTransformation; // 线性变换
     QMenu *menuNolinearPointOperation;
-    QAction *actionLogTransformation;
-    QAction *actionPowerTransformation;
-    QAction *actionHistogramEqualization;
+    QAction *actionLogTransformation;     // 对数变换
+    QAction *actionPowerTransformation;   // 幂次变换
+    QAction *actionHistogramEqualization; // 直方图均衡化
 
+    // 第6章作业, 几何运算
     QMenu *menuSpatialTransformation;
-    QAction *actionScaling;
-    QAction *actionRotation;
-    QAction *actionTranslation;
+    QAction *actionScaling;     // 缩放
+    QAction *actionRotation;    // 旋转
+    QAction *actionTranslation; // 平移
 
-    QAction *actionSpectrogram;
+    // 第8章作业, 图像变换
+    QAction *actionSpectrogram; // 频谱图
 
-    QMenu *menuSmooth;
-    QAction *actionAverageFiltering;
-    QAction *actionMedianFiltering;
-    QAction *actionKNNF;
-    QAction *actionKNNMF;
-    QMenu *menuSharpen;
-    QAction *actionReborts;
-    QAction *actionSobel;
-    QAction *actionLaplacian;
-    QAction *actionEnhancedLaplacian;
-    QAction *actionConvolution;
+    // 第9章作业 图像增强
+    QMenu *menuSmooth;                // 平滑
+    QAction *actionAverageFiltering;  // 均值滤波
+    QAction *actionMedianFiltering;   // 中值滤波
+    QAction *actionKNNF;              // K近邻均值滤波
+    QAction *actionKNNMF;             // K近邻中值滤波
+    QMenu *menuSharpen;               // 锐化
+    QAction *actionReborts;           // Reborts算子
+    QAction *actionSobel;             // Sobel算子
+    QAction *actionLaplacian;         // Laplacian算子
+    QAction *actionEnhancedLaplacian; // 增强Laplacian算子
+    QAction *actionConvolution;       // 自定义卷积
 
-    QMenu *menuEdgeDetect;
-    QAction *actionEdgeSobel;
-    QAction *actionEdgePrewitt;
-    QAction *actionEdgeLaplacian;
-    QAction *actionEdgeTracing;
-    QAction *actionEdgeHough;
+    // 第11章作业, 彩色处理
+    QAction *actionToGray; // 灰度转换
+    QAction *actionTo256;  // 24位真彩色转换为256色
 
-    // 颜色处理
-    QAction *actionToGray;
-    QAction *actionTo256;
+    // 第12章作业, 图像分割
+    QMenu *menuEdgeDetect;        // 边缘检测
+    QAction *actionEdgeSobel;     // Sobel算子
+    QAction *actionEdgePrewitt;   // Prewitt算子
+    QAction *actionEdgeLaplacian; // Laplacian算子
+    QAction *actionEdgeTracing;   // 边缘跟踪
+    QAction *actionEdgeHough;     // 霍夫变换检测直线
 
-    QAction *actionAbout;
+    QAction *actionAbout; // 关于本作业
 
     QLabel *statusSize;
 
@@ -200,7 +205,7 @@ private slots:
     void on_actionEdgeTracing_triggered();
     void on_actionEdgeHough_triggered();
 
-    // void on_actionAbout_triggered();
+    void on_actionAbout_triggered();
 
     void updateRightImage(QImage &newImage);
 };

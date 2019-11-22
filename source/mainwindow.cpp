@@ -161,9 +161,10 @@ void MainWindow::setup()
     menuHelp->setObjectName(QStringLiteral("menuHelp"));
     this->setMenuBar(menuBar);
 
-    toolBar = new QToolBar(this);
-    toolBar->setObjectName(QStringLiteral("toolBar"));
-    this->addToolBar(Qt::TopToolBarArea, toolBar);
+    // 暂时不添加工具栏
+    // toolBar = new QToolBar(this);
+    // toolBar->setObjectName(QStringLiteral("toolBar"));
+    // this->addToolBar(Qt::TopToolBarArea, toolBar);
 
     statusSize = new QLabel(this);
     statusSize->setObjectName(QStringLiteral("stuatusSize"));
@@ -371,6 +372,36 @@ void MainWindow::setStatus(bool status)
 
     actionDisplayBitPlane->setEnabled(status);
     actionDisplayHistogram->setEnabled(status);
+
+    actionLinearTransformation->setEnabled(status);
+    actionLogTransformation->setEnabled(status);
+    actionPowerTransformation->setEnabled(status);
+    actionHistogramEqualization->setEnabled(status);
+
+    actionScaling->setEnabled(status);
+    actionRotation->setEnabled(status);
+    actionTranslation->setEnabled(status);
+
+    actionSpectrogram->setEnabled(status);
+
+    actionAverageFiltering->setEnabled(status);
+    actionMedianFiltering->setEnabled(status);
+    actionKNNF->setEnabled(status);
+    actionKNNMF->setEnabled(status);
+    actionReborts->setEnabled(status);
+    actionSobel->setEnabled(status);
+    actionLaplacian->setEnabled(status);
+    actionEnhancedLaplacian->setEnabled(status);
+    actionConvolution->setEnabled(status);
+
+    actionEdgeSobel->setEnabled(status);
+    actionEdgePrewitt->setEnabled(status);
+    actionEdgeLaplacian->setEnabled(status);
+    actionEdgeTracing->setEnabled(status);
+    actionEdgeHough->setEnabled(status);
+
+    actionToGray->setEnabled(status);
+    actionTo256->setEnabled(status);
 } // setStatus
 
 void MainWindow::emitSignalSendImage()
@@ -800,6 +831,13 @@ void MainWindow::on_actionEdgeHough_triggered()
 
     updateRightImageManual(targetImage);
 } // on_actionEdgeHough_triggered
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QString aboutTitle = "关于Picop";
+    QString aboutInfo = "数字图像处理作业\n田世豪,1120170150\nhttps://github.com/TianSHH/Picop";
+    QMessageBox::about(this, aboutTitle, aboutInfo);
+} // on_actionAbout_triggered
 
 void MainWindow::updateRightImage(QImage &newImage)
 {
