@@ -94,6 +94,9 @@ QImage *DialogHistogram::histogramEqualization(QImage *originImage)
 
     for (int i = 0; i <= 255; i++)
     {
+        // 新的概率分布, 重新在0-255之间映射
+        // 下标是旧的像素值, 对应下标存储的值是映射结果
+        // 即新像素值
         newIndexGrayHs[i] = (int)(255 * grayHp[i] + 0.5);
         newIndexRedHs[i] = (int)(255 * redHp[i] + 0.5);
         newIndexGreenHs[i] = (int)(255 * greenHp[i] + 0.5);
@@ -103,9 +106,9 @@ QImage *DialogHistogram::histogramEqualization(QImage *originImage)
     // step4
     // 将老的索引值对应的概率合并, 作为对应的新的索引值的概率
 
-    for (int i = 0; i <= width; i++)
+    for (int i = 0; i < width; i++)
     {
-        for (int j = 0; j <= height; j++)
+        for (int j = 0; j < height; j++)
         {
             int gray = qGray(originImage->pixel(i, j));
             int red = qRed(originImage->pixel(i, j));
