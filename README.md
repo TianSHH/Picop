@@ -21,7 +21,7 @@ picop
 │   ├── EdgeMethod.h  
 │   ├── FilterMethod.h  
 │   ├── FormatMethod.h  
-│   ├── mainwindow.h      
+│   ├── mainwindow.h  
 │   ├── qcustomplot.h  
 │   ├── SharpenMethod.h  
 │   ├── smoothmethod.h  
@@ -52,10 +52,10 @@ picop
 ├── picop.pro  
 └── README.md  
 
-## 开发环境
+## 运行环境
 Ubuntu19.10
 
 ## 开发工具
 vscode + Qt5.9.8 + OpenCV4.1.2
 
-##安装
+## 安装
