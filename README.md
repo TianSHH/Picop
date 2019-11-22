@@ -56,6 +56,6 @@ picop
 Ubuntu19.10
 
 ## 开发工具
-vscode + Qt5.9.8 + Opencv4.1.2
+vscode + Qt5.9.8 + OpenCV4.1.2
 
 ##安装
