@@ -17,7 +17,7 @@ a personal works of Digital Image Processing
 1. 图像256色转换;
 1. 边缘检测,Sobel,Prewitt,Laplacian算子;
 1. Canny边缘跟踪;
-1. 基于Huffman变换的直线检测.
+1. 基于Hough变换的直线检测.
 
 ## 开发环境
 Ubuntu19.10
